@@ -3,16 +3,34 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>space.vakar.weather</groupId>
-  <artifactId>domain</artifactId>
+  <artifactId>parent</artifactId>
   <version>0.1</version>
-  <packaging>jar</packaging>
-
-  <name>domain</name>
-  <url>http://maven.apache.org</url>
+  <packaging>pom</packaging>
+  <name>Parent POM for weather project</name>
+  <url>http://weather.vakar.space</url>
+  
+  <modules>
+<module>domain</module>
+</modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  
+  <build>
+<pluginManagement>
+<plugins>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-compiler-plugin</artifactId>
+<configuration>
+<source>1.8</source>
+<target>1.8</target>
+</configuration>
+</plugin>
+</plugins>
+</pluginManagement>
+</build>
 
   <dependencies>
     <dependency>
