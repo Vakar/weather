@@ -10,46 +10,50 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 import space.vakar.weather.domain.api.WeatherRetriever;
 
-public class OpenWeatherRetriever implements WeatherRetriever{
-	
-	private String openWeatherURL = "http://api.openweathermap.org";
-	private String currentWeatherEndPoint = "/data/2.5/weather";
-	private static final String  APPID = "eede123ce615f9cc56910f9a0e024e3a";
+public class OpenWeatherRetriever implements WeatherRetriever {
+
+	private String serviceUrl = "http://api.openweathermap.org";
+	private String weatherEndPoint = "/data/2.5/weather";
+	private static final String APPID = "eede123ce615f9cc56910f9a0e024e3a";
 
 	@Override
-	public InputStream retrieveCurrantWeatherXML(String cityId) throws IOException {
-		String url = openWeatherURL + currentWeatherEndPoint
-				.concat("?q=" + cityId)
-				.concat("&APPID="+APPID)
-				.concat("&mode=xml");
+	public InputStream getWeatherXML(String cityId) throws IOException {
+		String url = serviceUrl + weatherEndPoint
+					 .concat("?q=" + cityId)
+					 .concat("&APPID=" + APPID)
+					 .concat("&mode=xml");
 		HttpClient client = HttpClientBuilder.create().build();
-		HttpGet request = new HttpGet(url);
-		HttpResponse response = client.execute(request);
+		HttpResponse response = client.execute(new HttpGet(url));
 		return response.getEntity().getContent();
 	}
 
-	public String getOpenWeatherURL() {
-		return openWeatherURL;
+
+	public String getServiceUrl() {
+		return serviceUrl;
 	}
 
-	public void setOpenWeatherURL(String openWeatherURL) {
-		this.openWeatherURL = openWeatherURL;
+
+	public void setServiceUrl(String serviceUrl) {
+		this.serviceUrl = serviceUrl;
 	}
 
-	public String getCurrentWeatherEndPoint() {
-		return currentWeatherEndPoint;
+
+	public String getWeatherEndPoint() {
+		return weatherEndPoint;
 	}
 
-	public void setCurrentWeatherEndPoint(String currentWeatherEndPoint) {
-		this.currentWeatherEndPoint = currentWeatherEndPoint;
+
+	public void setWeatherEndPoint(String weatherEndPoint) {
+		this.weatherEndPoint = weatherEndPoint;
 	}
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((currentWeatherEndPoint == null) ? 0 : currentWeatherEndPoint.hashCode());
-		result = prime * result + ((openWeatherURL == null) ? 0 : openWeatherURL.hashCode());
+		result = prime * result + ((weatherEndPoint == null) ? 0 : weatherEndPoint.hashCode());
+		result = prime * result + ((serviceUrl == null) ? 0 : serviceUrl.hashCode());
 		return result;
 	}
 
@@ -62,23 +66,23 @@ public class OpenWeatherRetriever implements WeatherRetriever{
 		if (getClass() != obj.getClass())
 			return false;
 		OpenWeatherRetriever other = (OpenWeatherRetriever) obj;
-		if (currentWeatherEndPoint == null) {
-			if (other.currentWeatherEndPoint != null)
+		if (weatherEndPoint == null) {
+			if (other.weatherEndPoint != null)
 				return false;
-		} else if (!currentWeatherEndPoint.equals(other.currentWeatherEndPoint))
+		} else if (!weatherEndPoint.equals(other.weatherEndPoint))
 			return false;
-		if (openWeatherURL == null) {
-			if (other.openWeatherURL != null)
+		if (serviceUrl == null) {
+			if (other.serviceUrl != null)
 				return false;
-		} else if (!openWeatherURL.equals(other.openWeatherURL))
+		} else if (!serviceUrl.equals(other.serviceUrl))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "OpenWeatherRetriever [openWeatherURL=" + openWeatherURL + ", currentWeatherEndPoint="
-				+ currentWeatherEndPoint + "]";
-	}	
-	
+		return "OpenWeatherRetriever [openWeatherURL=" + serviceUrl + ", currentWeatherEndPoint="
+				+ weatherEndPoint + "]";
+	}
+
 }

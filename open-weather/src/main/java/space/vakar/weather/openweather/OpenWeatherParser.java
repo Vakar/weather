@@ -3,12 +3,12 @@ package space.vakar.weather.openweather;
 import java.io.InputStream;
 
 import space.vakar.weather.domain.Weather;
-import space.vakar.weather.domain.api.WeatherParser;
+import space.vakar.weather.domain.api.AbstractWeatherParser;
 
-public class OpenWeatherParser implements WeatherParser{
+public class OpenWeatherParser extends AbstractWeatherParser{
 
 	@Override
-	public Weather parseCurrectWeather(InputStream inputStream) {
+	public Weather parse(InputStream inputStream) {
 		// TODO Auto-generated method stub
 		return null;
 	}
