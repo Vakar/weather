@@ -1,7 +1,8 @@
 package space.vakar.weather.domain.api;
 
-import space.vakar.weather.domain.Weather;
+import java.io.IOException;
+import java.io.InputStream;
 
 public interface WeatherRetriever {
-	public Weather retrieveCurrantWeather(String cityId);
+	public InputStream retrieveCurrantWeatherXML(String cityId) throws IOException;
 }
