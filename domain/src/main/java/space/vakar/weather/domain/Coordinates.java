@@ -12,8 +12,8 @@ public class Coordinates {
 		setLatitude(0);
 	}
 
-	public Coordinates(int id, double longitude, double latitude) {
-		setId(id);
+	public Coordinates(double longitude, double latitude) {
+		super();
 		setLongitude(longitude);
 		setLatitude(latitude);
 	}

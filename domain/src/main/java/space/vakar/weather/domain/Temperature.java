@@ -12,8 +12,8 @@ public class Temperature {
 		setUnit(TemperatureUnit.KELVIN);
 	}
 
-	public Temperature(int id, double value, TemperatureUnit unit) {
-		setId(id);
+	public Temperature(double value, TemperatureUnit unit) {
+		super();
 		setValue(value);
 		setUnit(unit);
 	}

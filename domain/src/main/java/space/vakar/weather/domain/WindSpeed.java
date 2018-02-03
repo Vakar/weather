@@ -11,9 +11,9 @@ public class WindSpeed {
 		setValue(0);
 		setName("");
 	}
-
-	public WindSpeed(int id, double value, String name) {
-		setId(id);
+	
+	public WindSpeed(double value, String name) {
+		super();
 		setValue(value);
 		setName(name);
 	}

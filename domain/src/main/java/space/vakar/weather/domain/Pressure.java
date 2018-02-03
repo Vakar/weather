@@ -13,7 +13,7 @@ public class Pressure {
 	}
 
 	public Pressure(double value, String unit) {
-		setId(id);
+		super();
 		setValue(value);
 		setUnit(unit);
 	}

@@ -13,9 +13,9 @@ public class WindDirection {
 		setCode("");
 		setName("");
 	}
-
-	public WindDirection(int id, double value, String code, String name) {
-		setId(id);
+	
+	public WindDirection(double value, String code, String name) {
+		super();
 		setValue(value);
 		setCode(code);
 		setName(name);

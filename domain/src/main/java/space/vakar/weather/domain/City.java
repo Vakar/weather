@@ -14,8 +14,8 @@ public class City {
 		setCoordinates(new Coordinates());
 	}
 
-	public City(int id, String name, String country, Coordinates coordinates) {
-		setId(id);
+	public City(String name, String country, Coordinates coordinates) {
+		super();
 		setName(name);
 		setCountry(country);
 		setCoordinates(coordinates);

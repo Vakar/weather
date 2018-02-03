@@ -4,5 +4,5 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public interface WeatherRetriever {
-	public InputStream retrieveCurrantWeatherXML(String cityId) throws IOException;
+	public InputStream getWeatherXML(String cityId) throws IOException;
 }

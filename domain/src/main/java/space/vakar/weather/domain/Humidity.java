@@ -12,8 +12,8 @@ public class Humidity {
 		setUnit("");
 	}
 
-	public Humidity(int id, double value, String unit) {
-		setId(id);
+	public Humidity(double value, String unit) {
+		super();
 		setValue(value);
 		setUnit(unit);
 	}

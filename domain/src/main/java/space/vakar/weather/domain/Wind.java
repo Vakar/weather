@@ -11,9 +11,9 @@ public class Wind {
 		setWindSpeed(new WindSpeed());
 		setWindDirection(new WindDirection());
 	}
-
-	public Wind(int id, WindSpeed windSpeed, WindDirection windDirection) {
-		setId(id);
+	
+	public Wind(WindSpeed windSpeed, WindDirection windDirection) {
+		super();
 		setWindSpeed(windSpeed);
 		setWindDirection(windDirection);
 	}

@@ -20,9 +20,9 @@ public class Weather {
 		setLastupdate(LocalDateTime.MIN);
 	}
 
-	public Weather(int id, Wind wind, Atmosphere atmosphere, City city, Temperature temperature,
+	public Weather(Wind wind, Atmosphere atmosphere, City city, Temperature temperature,
 			LocalDateTime lastupdate) {
-		setId(id);
+		super();
 		setWind(wind);
 		setAtmosphere(atmosphere);
 		setCity(city);
