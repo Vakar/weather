@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDateTime;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import space.vakar.weather.domain.Atmosphere;
@@ -25,16 +24,14 @@ public class OpenWeatherParserTest {
 	
 	private OpenWeatherParser weatherParser = new OpenWeatherParser();
 	
-	private Weather expectedWeather;
-	private InputStream inputStream;
-	
-	@Before
-	public void setUp() throws IOException {
-		expectedWeather = setUpExpectedWeather();
-		inputStream = setUpInputStream();
+	@Test
+	public void shouldReturnCorrectObject() throws IOException {
+		ClassLoader loader = getClass().getClassLoader();
+		InputStream inputStream = loader.getResource("weather.xml").openStream();
+		assertEquals(getExpectedWeather(), weatherParser.parse(inputStream));		
 	}
 	
-	private Weather setUpExpectedWeather() {
+	private Weather getExpectedWeather() {
 		WindSpeed windSpeed = new WindSpeed(7.7, "Moderate breeze");
 		WindDirection windDirection = new WindDirection(290, "WNW", "West-northwest");
 		Wind wind = new Wind(windSpeed, windDirection);
@@ -47,16 +44,4 @@ public class OpenWeatherParserTest {
 		LocalDateTime lastUpdate = LocalDateTime.parse("2018-01-31T08:27:00");
 		return new Weather(wind, atmosphere, city, temperature, lastUpdate);
 	}
-	
-	private InputStream setUpInputStream() throws IOException {
-		ClassLoader loader = getClass().getClassLoader();
-		return loader.getResource("weather.xml").openStream();
-	}
-	
-	@Test
-	public void shouldReturnCorrectObject() {
-		Weather weather = weatherParser.parse(inputStream);
-		assertEquals(expectedWeather, weather);		
-	}
-
 }
