@@ -79,28 +79,25 @@ public class Atmosphere {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, humidity, pressure, 
-				visibility, precipitation, sun);
+		return Objects.hash(id, humidity, pressure, visibility, precipitation, sun);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Atmosphere) {
-			final Atmosphere other = (Atmosphere) obj;
-			return Objects.equals(id, other.id)
-					&& Objects.equals(humidity, other.humidity)
-					&& Objects.equals(pressure, other.pressure)
-					&& Objects.equals(visibility, other.visibility)
-					&& Objects.equals(precipitation, other.precipitation)
-					&& Objects.equals(sun, other.sun);
-		} else {
-			return false;
+	public boolean equals(Object object) {
+		if (object instanceof Atmosphere) {
+			Atmosphere that = (Atmosphere) object;
+			return this.id == that.id && Objects.equals(this.humidity, that.humidity)
+					&& Objects.equals(this.pressure, that.pressure) && this.visibility == that.visibility
+					&& Objects.equals(this.precipitation, that.precipitation) && Objects.equals(this.sun, that.sun);
 		}
+		return false;
 	}
 
 	@Override
 	public String toString() {
-		return "Atmosphere [id=" + id + ", humidity=" + humidity + ", pressure=" + pressure + ", visibility="
-				+ visibility + ", precipitation=" + precipitation + ", sun=" + sun + "]";
+		String format = "Atmosphere [id=%s, humidity=%s, pressure=%s, visibility=%s, precipitation=%s, sun=%s]";
+		return String.format(format, id, humidity, pressure, visibility, precipitation, sun);
 	}
+
+	
 }

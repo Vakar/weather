@@ -55,22 +55,20 @@ public class WindDirection {
 		this.name = name;
 	}
 
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, value, code, name);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof WindDirection) {
-			final WindDirection other = (WindDirection) obj;
-			return Objects.equals(id, other.id)
-					&& Objects.equals(value, other.value)
-					&& Objects.equals(code, other.code)
-					&& Objects.equals(name, other.name);
-		} else {
-			return false;
+	public boolean equals(Object object) {
+		if (object instanceof WindDirection) {
+			WindDirection that = (WindDirection) object;
+			return this.id == that.id && this.value == that.value && Objects.equals(this.code, that.code)
+					&& Objects.equals(this.name, that.name);
 		}
+		return false;
 	}
 
 	@Override

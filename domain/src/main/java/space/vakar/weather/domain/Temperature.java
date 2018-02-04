@@ -43,24 +43,21 @@ public class Temperature {
 	public void setUnit(TemperatureUnit unit) {
 		this.unit = unit;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, value, unit);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Temperature) {
-			final Temperature other = (Temperature) obj;
-			return Objects.equals(id, other.id)
-					&& Objects.equals(value, other.value)
-					&& Objects.equals(unit, other.unit);
-		} else {
-			return false;
+	public boolean equals(Object object) {
+		if (object instanceof Temperature) {
+			Temperature that = (Temperature) object;
+			return this.id == that.id && this.value == that.value && Objects.equals(this.unit, that.unit);
 		}
+		return false;
 	}
-
+	
 	@Override
 	public String toString() {
 		String format = "Temperature [id=%s, value=%s, unit=%s]";

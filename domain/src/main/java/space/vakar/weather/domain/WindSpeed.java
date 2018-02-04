@@ -50,15 +50,12 @@ public class WindSpeed {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof WindSpeed) {
-			final WindSpeed other = (WindSpeed) obj;
-			return Objects.equals(id, other.id)
-					&& Objects.equals(value, other.value)
-					&& Objects.equals(name, other.name);
-		} else {
-			return false;
+	public boolean equals(Object object) {
+		if (object instanceof WindSpeed) {
+			WindSpeed that = (WindSpeed) object;
+			return this.id == that.id && this.value == that.value && Objects.equals(this.name, that.name);
 		}
+		return false;
 	}
 
 	@Override

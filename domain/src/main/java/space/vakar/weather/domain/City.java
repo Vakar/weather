@@ -61,16 +61,13 @@ public class City {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof City) {
-			final City other = (City) obj;
-			return Objects.equals(id, other.id)
-					&& Objects.equals(name, other.name)
-					&& Objects.equals(country, other.country)
-					&& Objects.equals(coordinates, other.coordinates);
-		} else {
-			return false;
+	public boolean equals(Object object) {
+		if (object instanceof City) {
+			City that = (City) object;
+			return this.id == that.id && Objects.equals(this.name, that.name)
+					&& Objects.equals(this.country, that.country) && Objects.equals(this.coordinates, that.coordinates);
 		}
+		return false;
 	}
 
 	@Override

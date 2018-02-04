@@ -79,25 +79,22 @@ public class Weather {
 		this.lastUpdate = lastUpdate;
 	}
 
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, wind, atmosphere, 
-				city, temperature, lastUpdate);
+		return Objects.hash(id, wind, atmosphere, city, temperature, lastUpdate);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Weather) {
-			final Weather other = (Weather) obj;
-			return Objects.equals(id, other.id)
-					&& Objects.equals(wind, other.wind)
-					&& Objects.equals(atmosphere, other.atmosphere)
-					&& Objects.equals(city, other.city)
-					&& Objects.equals(temperature, other.temperature)
-					&& Objects.equals(lastUpdate, other.lastUpdate);
-		} else {
-			return false;
+	public boolean equals(Object object) {
+		if (object instanceof Weather) {
+			Weather that = (Weather) object;
+			return this.id == that.id && Objects.equals(this.wind, that.wind)
+					&& Objects.equals(this.atmosphere, that.atmosphere) && Objects.equals(this.city, that.city)
+					&& Objects.equals(this.temperature, that.temperature)
+					&& Objects.equals(this.lastUpdate, that.lastUpdate);
 		}
+		return false;
 	}
 
 	@Override

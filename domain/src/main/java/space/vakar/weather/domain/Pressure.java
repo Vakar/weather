@@ -50,15 +50,12 @@ public class Pressure {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Pressure) {
-			final Pressure other = (Pressure) obj;
-			return Objects.equals(id, other.id)
-					&& Objects.equals(value, other.value)
-					&& Objects.equals(unit, other.unit);
-		} else {
-			return false;
+	public boolean equals(Object object) {
+		if (object instanceof Pressure) {
+			Pressure that = (Pressure) object;
+			return this.id == that.id && this.value == that.value && Objects.equals(this.unit, that.unit);
 		}
+		return false;
 	}
 
 	@Override

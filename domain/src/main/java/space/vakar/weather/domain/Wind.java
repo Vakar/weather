@@ -50,15 +50,13 @@ public class Wind {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Wind) {
-			final Wind other = (Wind) obj;
-			return Objects.equals(id, other.id)
-					&& Objects.equals(speed, other.speed)
-					&& Objects.equals(direction, other.direction);
-		} else {
-			return false;
+	public boolean equals(Object object) {
+		if (object instanceof Wind) {
+			Wind that = (Wind) object;
+			return this.id == that.id && Objects.equals(this.speed, that.speed)
+					&& Objects.equals(this.direction, that.direction);
 		}
+		return false;
 	}
 
 	@Override

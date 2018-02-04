@@ -44,21 +44,20 @@ public class Coordinates {
 		this.latitude = latitude;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, longitude, latitude);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Coordinates) {
-			final Coordinates other = (Coordinates) obj;
-			return Objects.equals(id, other.id)
-					&& Objects.equals(longitude, other.longitude)
-					&& Objects.equals(latitude, other.latitude);
-		} else {
-			return false;
+	public boolean equals(Object object) {
+		if (object instanceof Coordinates) {
+			Coordinates that = (Coordinates) object;
+			return this.id == that.id && this.longitude == that.longitude && this.latitude == that.latitude;
 		}
+		return false;
 	}
 
 	@Override

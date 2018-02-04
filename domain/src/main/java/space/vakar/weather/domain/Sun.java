@@ -51,20 +51,17 @@ public class Sun {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Sun) {
-			final Sun other = (Sun) obj;
-			return Objects.equals(id, other.id)
-					&& Objects.equals(rise, other.rise)
-					&& Objects.equals(set, other.set);
-		} else {
-			return false;
+	public boolean equals(Object object) {
+		if (object instanceof Sun) {
+			Sun that = (Sun) object;
+			return this.id == that.id && Objects.equals(this.rise, that.rise) && Objects.equals(this.set, that.set);
 		}
-	}
-
+		return false;
+	}	
+	
 	@Override
 	public String toString() {
 		String format = "Sun [id=%s, rise=%s, set=%s]";
 		return String.format(format, id, rise, set);
-	}	
+	}
 }
