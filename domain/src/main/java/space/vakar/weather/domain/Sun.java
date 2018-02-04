@@ -1,6 +1,7 @@
 package space.vakar.weather.domain;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Sun {
 
@@ -14,8 +15,8 @@ public class Sun {
 		setSet(LocalDateTime.MIN);
 	}
 
-	public Sun(int id, LocalDateTime rise, LocalDateTime set) {
-		setId(id);
+	public Sun(LocalDateTime rise, LocalDateTime set) {
+		this();
 		setRise(rise);
 		setSet(set);
 	}
@@ -46,37 +47,24 @@ public class Sun {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((rise == null) ? 0 : rise.hashCode());
-		result = prime * result + ((set == null) ? 0 : set.hashCode());
-		return result;
+		return Objects.hash(id, rise, set);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (obj instanceof Sun) {
+			final Sun other = (Sun) obj;
+			return Objects.equals(id, other.id)
+					&& Objects.equals(rise, other.rise)
+					&& Objects.equals(set, other.set);
+		} else {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Sun other = (Sun) obj;
-		if (rise == null) {
-			if (other.rise != null)
-				return false;
-		} else if (!rise.equals(other.rise))
-			return false;
-		if (set == null) {
-			if (other.set != null)
-				return false;
-		} else if (!set.equals(other.set))
-			return false;
-		return true;
+		}
 	}
 
 	@Override
 	public String toString() {
-		return "Sun [rise=" + rise + ", set=" + set + "]";
-	}
+		String format = "Sun [id=%s, rise=%s, set=%s]";
+		return String.format(format, id, rise, set);
+	}	
 }

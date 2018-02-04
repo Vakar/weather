@@ -1,21 +1,23 @@
 package space.vakar.weather.domain;
 
+import java.util.Objects;
+
 public class Wind {
 
 	private int id;
-	private WindSpeed windSpeed;
-	private WindDirection windDirection;
+	private WindSpeed speed;
+	private WindDirection direction;
 
 	public Wind() {
 		setId(0);
-		setWindSpeed(new WindSpeed());
-		setWindDirection(new WindDirection());
+		setSpeed(new WindSpeed());
+		setDirection(new WindDirection());
 	}
 	
-	public Wind(WindSpeed windSpeed, WindDirection windDirection) {
-		super();
-		setWindSpeed(windSpeed);
-		setWindDirection(windDirection);
+	public Wind(WindSpeed speed, WindDirection direction) {
+		this();
+		setSpeed(speed);
+		setDirection(direction);
 	}
 
 	public int getId() {
@@ -26,58 +28,42 @@ public class Wind {
 		this.id = id;
 	}
 
-	public WindSpeed getWindSpeed() {
-		return windSpeed;
+	public WindSpeed getSpeed() {
+		return speed;
 	}
 
-	public void setWindSpeed(WindSpeed windSpeed) {
-		this.windSpeed = windSpeed;
+	public void setSpeed(WindSpeed speed) {
+		this.speed = speed;
 	}
 
-	public WindDirection getWindDirection() {
-		return windDirection;
+	public WindDirection getDirection() {
+		return direction;
 	}
 
-	public void setWindDirection(WindDirection windDirection) {
-		this.windDirection = windDirection;
+	public void setDirection(WindDirection direction) {
+		this.direction = direction;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		result = prime * result + ((windDirection == null) ? 0 : windDirection.hashCode());
-		result = prime * result + ((windSpeed == null) ? 0 : windSpeed.hashCode());
-		return result;
+		return Objects.hash(id, speed, direction);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (obj instanceof Wind) {
+			final Wind other = (Wind) obj;
+			return Objects.equals(id, other.id)
+					&& Objects.equals(speed, other.speed)
+					&& Objects.equals(direction, other.direction);
+		} else {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Wind other = (Wind) obj;
-		if (id != other.id)
-			return false;
-		if (windDirection == null) {
-			if (other.windDirection != null)
-				return false;
-		} else if (!windDirection.equals(other.windDirection))
-			return false;
-		if (windSpeed == null) {
-			if (other.windSpeed != null)
-				return false;
-		} else if (!windSpeed.equals(other.windSpeed))
-			return false;
-		return true;
+		}
 	}
 
 	@Override
 	public String toString() {
-		return "Wind [id=" + id + ", windSpeed=" + windSpeed + ", windDirection=" + windDirection + "]";
-	}
+		String format = "Wind [id=%s, speed=%s, direction=%s]";
+		return String.format(format, id, speed, direction);
+	}	
 }

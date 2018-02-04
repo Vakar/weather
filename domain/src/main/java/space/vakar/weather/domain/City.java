@@ -1,5 +1,7 @@
 package space.vakar.weather.domain;
 
+import java.util.Objects;
+
 public class City {
 
 	private int id;
@@ -15,7 +17,7 @@ public class City {
 	}
 
 	public City(String name, String country, Coordinates coordinates) {
-		super();
+		this();
 		setName(name);
 		setCountry(country);
 		setCoordinates(coordinates);
@@ -52,20 +54,30 @@ public class City {
 	public void setCoordinates(Coordinates coordinates) {
 		this.coordinates = coordinates;
 	}
-
+	
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((coordinates == null) ? 0 : coordinates.hashCode());
-		result = prime * result + ((country == null) ? 0 : country.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
+		return Objects.hash(id, name, country, coordinates);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof City) {
+			final City other = (City) obj;
+			return Objects.equals(id, other.id)
+					&& Objects.equals(name, other.name)
+					&& Objects.equals(country, other.country)
+					&& Objects.equals(coordinates, other.coordinates);
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	public String toString() {
-		return "City [id=" + id + ", name=" + name + ", country=" + country + ", coordinates=" + coordinates + "]";
+		String format = "City [id=%s, name=%s, country=%s, coordinates=%s]";
+		return String.format(format, id, name, country, coordinates);
 	}
+
+	
 }

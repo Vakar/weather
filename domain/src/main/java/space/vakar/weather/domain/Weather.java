@@ -1,6 +1,7 @@
 package space.vakar.weather.domain;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Weather {
 
@@ -9,7 +10,7 @@ public class Weather {
 	private Atmosphere atmosphere;
 	private City city;
 	private Temperature temperature;
-	private LocalDateTime lastupdate;
+	private LocalDateTime lastUpdate;
 
 	public Weather() {
 		setId(0);
@@ -17,17 +18,17 @@ public class Weather {
 		setAtmosphere(new Atmosphere());
 		setCity(new City());
 		setTemperature(new Temperature());
-		setLastupdate(LocalDateTime.MIN);
+		setLastUpdate(LocalDateTime.MIN);
 	}
 
-	public Weather(Wind wind, Atmosphere atmosphere, City city, Temperature temperature,
-			LocalDateTime lastupdate) {
-		super();
+	public Weather(Wind wind, Atmosphere atmosphere, City city, 
+			Temperature temperature, LocalDateTime lastUpdate) {
+		this();
 		setWind(wind);
 		setAtmosphere(atmosphere);
 		setCity(city);
 		setTemperature(temperature);
-		setLastupdate(lastupdate);
+		setLastUpdate(lastUpdate);
 	}
 
 	public int getId() {
@@ -70,69 +71,40 @@ public class Weather {
 		this.temperature = temperature;
 	}
 
-	public LocalDateTime getLastupdate() {
-		return lastupdate;
+	public LocalDateTime getLastUpdate() {
+		return lastUpdate;
 	}
 
-	public void setLastupdate(LocalDateTime lastupdate) {
-		this.lastupdate = lastupdate;
+	public void setLastUpdate(LocalDateTime lastUpdate) {
+		this.lastUpdate = lastUpdate;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((atmosphere == null) ? 0 : atmosphere.hashCode());
-		result = prime * result + ((city == null) ? 0 : city.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((lastupdate == null) ? 0 : lastupdate.hashCode());
-		result = prime * result + ((temperature == null) ? 0 : temperature.hashCode());
-		result = prime * result + ((wind == null) ? 0 : wind.hashCode());
-		return result;
+		return Objects.hash(id, wind, atmosphere, 
+				city, temperature, lastUpdate);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (obj instanceof Weather) {
+			final Weather other = (Weather) obj;
+			return Objects.equals(id, other.id)
+					&& Objects.equals(wind, other.wind)
+					&& Objects.equals(atmosphere, other.atmosphere)
+					&& Objects.equals(city, other.city)
+					&& Objects.equals(temperature, other.temperature)
+					&& Objects.equals(lastUpdate, other.lastUpdate);
+		} else {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Weather other = (Weather) obj;
-		if (atmosphere == null) {
-			if (other.atmosphere != null)
-				return false;
-		} else if (!atmosphere.equals(other.atmosphere))
-			return false;
-		if (city == null) {
-			if (other.city != null)
-				return false;
-		} else if (!city.equals(other.city))
-			return false;
-		if (id != other.id)
-			return false;
-		if (lastupdate == null) {
-			if (other.lastupdate != null)
-				return false;
-		} else if (!lastupdate.equals(other.lastupdate))
-			return false;
-		if (temperature == null) {
-			if (other.temperature != null)
-				return false;
-		} else if (!temperature.equals(other.temperature))
-			return false;
-		if (wind == null) {
-			if (other.wind != null)
-				return false;
-		} else if (!wind.equals(other.wind))
-			return false;
-		return true;
+		}
 	}
 
 	@Override
 	public String toString() {
-		return "Weather [id=" + id + ", wind=" + wind + ", atmosphere=" + atmosphere + ", city=" + city
-				+ ", temperature=" + temperature + ", lastupdate=" + lastupdate + "]";
+		String format = "Weather [id=%s, wind=%s, atmosphere=%s, "
+				+ "city=%s, temperature=%s, lastUpdate=%s]";
+		return String.format(format, id, wind, atmosphere, 
+				city, temperature, lastUpdate);
 	}
 }

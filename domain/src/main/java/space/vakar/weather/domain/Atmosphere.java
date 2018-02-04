@@ -1,5 +1,7 @@
 package space.vakar.weather.domain;
 
+import java.util.Objects;
+
 public class Atmosphere {
 
 	private int id;
@@ -18,8 +20,9 @@ public class Atmosphere {
 		setSun(new Sun());
 	}
 
-	public Atmosphere(Humidity humidity, Pressure pressure, int visibility, double precipitation) {
-		super();
+	public Atmosphere(Humidity humidity, Pressure pressure, 
+			int visibility, double precipitation) {
+		this();
 		setHumidity(humidity);
 		setPressure(pressure);
 		setVisibility(visibility);
@@ -76,65 +79,30 @@ public class Atmosphere {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((humidity == null) ? 0 : humidity.hashCode());
-		result = prime * result + id;
-		long temp;
-		temp = Double.doubleToLongBits(precipitation);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result
-				+ ((pressure == null) ? 0 : pressure.hashCode());
-		result = prime * result + ((sun == null) ? 0 : sun.hashCode());
-		result = prime * result + visibility;
-		return result;
+		return Objects.hash(id, humidity, pressure, 
+				visibility, precipitation, sun);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (obj instanceof Atmosphere) {
+			final Atmosphere other = (Atmosphere) obj;
+			return Objects.equals(id, other.id)
+					&& Objects.equals(humidity, other.humidity)
+					&& Objects.equals(pressure, other.pressure)
+					&& Objects.equals(visibility, other.visibility)
+					&& Objects.equals(precipitation, other.precipitation)
+					&& Objects.equals(sun, other.sun);
+		} else {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Atmosphere other = (Atmosphere) obj;
-		if (humidity == null) {
-			if (other.humidity != null)
-				return false;
-		} else if (!humidity.equals(other.humidity))
-			return false;
-		if (id != other.id)
-			return false;
-		if (Double.doubleToLongBits(precipitation) != Double
-				.doubleToLongBits(other.precipitation))
-			return false;
-		if (pressure == null) {
-			if (other.pressure != null)
-				return false;
-		} else if (!pressure.equals(other.pressure))
-			return false;
-		if (sun == null) {
-			if (other.sun != null)
-				return false;
-		} else if (!sun.equals(other.sun))
-			return false;
-		if (visibility != other.visibility)
-			return false;
-		return true;
+		}
 	}
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Atmosphere [id=").append(id).append(", humidity=")
-				.append(humidity).append(", pressure=").append(pressure)
-				.append(", visibility=").append(visibility)
-				.append(", precipitation=").append(precipitation)
-				.append(", sun=").append(sun).append("]");
-		return builder.toString();
+		String format = "Atmosphere [id=%s, humidity=%s, pressure=%s, "
+				+ "visibility=%s, precipitation=%s, sun=%s]";
+		return String.format(format, id, humidity, pressure, 
+				visibility, precipitation, sun);
 	}
-
-
 }

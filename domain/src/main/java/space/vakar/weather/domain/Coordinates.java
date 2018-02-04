@@ -1,5 +1,7 @@
 package space.vakar.weather.domain;
 
+import java.util.Objects;
+
 public class Coordinates {
 
 	private int id;
@@ -13,7 +15,7 @@ public class Coordinates {
 	}
 
 	public Coordinates(double longitude, double latitude) {
-		super();
+		this();
 		setLongitude(longitude);
 		setLatitude(latitude);
 	}
@@ -44,38 +46,24 @@ public class Coordinates {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		long temp;
-		temp = Double.doubleToLongBits(latitude);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(longitude);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
+		return Objects.hash(id, longitude, latitude);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (obj instanceof Coordinates) {
+			final Coordinates other = (Coordinates) obj;
+			return Objects.equals(id, other.id)
+					&& Objects.equals(longitude, other.longitude)
+					&& Objects.equals(latitude, other.latitude);
+		} else {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Coordinates other = (Coordinates) obj;
-		if (id != other.id)
-			return false;
-		if (Double.doubleToLongBits(latitude) != Double.doubleToLongBits(other.latitude))
-			return false;
-		if (Double.doubleToLongBits(longitude) != Double.doubleToLongBits(other.longitude))
-			return false;
-		return true;
+		}
 	}
 
 	@Override
 	public String toString() {
-		return "Coordinates [id=" + id + ", longitude=" + longitude + ", latitude=" + latitude + "]";
+		String format = "Coordinates [id=%s, longitude=%s, latitude=%s]";
+		return String.format(format, id, longitude, latitude);
 	}
-
 }
