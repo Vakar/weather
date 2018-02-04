@@ -6,6 +6,6 @@ import space.vakar.weather.domain.Weather;
 
 public interface WeatherParser {
 
-	public Weather parse(InputStream inputStream);
+	public Weather parse(InputStream inputStream) throws Exception;
 
 }

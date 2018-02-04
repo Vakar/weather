@@ -5,8 +5,8 @@ public class Atmosphere {
 	private int id;
 	private Humidity humidity;
 	private Pressure pressure;
-	private int visibility;
-	private double precipitation;
+	private double visibility;
+	private Precipitation precipitation;
 	private Sun sun;
 
 	public Atmosphere() {
@@ -14,11 +14,11 @@ public class Atmosphere {
 		setHumidity(new Humidity());
 		setPressure(new Pressure());
 		setVisibility(0);
-		setPrecipitation(0);
+		setPrecipitation(new Precipitation());
 		setSun(new Sun());
 	}
 
-	public Atmosphere(Humidity humidity, Pressure pressure, int visibility, double precipitation) {
+	public Atmosphere(Humidity humidity, Pressure pressure, double visibility, Precipitation precipitation) {
 		super();
 		setHumidity(humidity);
 		setPressure(pressure);
@@ -50,19 +50,19 @@ public class Atmosphere {
 		this.pressure = pressure;
 	}
 
-	public int getVisibility() {
+	public double getVisibility() {
 		return visibility;
 	}
 
-	public void setVisibility(int visibility) {
+	public void setVisibility(double visibility) {
 		this.visibility = visibility;
 	}
 
-	public double getPrecipitation() {
+	public Precipitation getPrecipitation() {
 		return precipitation;
 	}
 
-	public void setPrecipitation(double precipitation) {
+	public void setPrecipitation(Precipitation precipitation) {
 		this.precipitation = precipitation;
 	}
 
@@ -78,16 +78,14 @@ public class Atmosphere {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((humidity == null) ? 0 : humidity.hashCode());
+		result = prime * result + ((humidity == null) ? 0 : humidity.hashCode());
 		result = prime * result + id;
-		long temp;
-		temp = Double.doubleToLongBits(precipitation);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result
-				+ ((pressure == null) ? 0 : pressure.hashCode());
+		result = prime * result + ((precipitation == null) ? 0 : precipitation.hashCode());
+		result = prime * result + ((pressure == null) ? 0 : pressure.hashCode());
 		result = prime * result + ((sun == null) ? 0 : sun.hashCode());
-		result = prime * result + visibility;
+		long temp;
+		temp = Double.doubleToLongBits(visibility);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -107,8 +105,10 @@ public class Atmosphere {
 			return false;
 		if (id != other.id)
 			return false;
-		if (Double.doubleToLongBits(precipitation) != Double
-				.doubleToLongBits(other.precipitation))
+		if (precipitation == null) {
+			if (other.precipitation != null)
+				return false;
+		} else if (!precipitation.equals(other.precipitation))
 			return false;
 		if (pressure == null) {
 			if (other.pressure != null)
@@ -120,21 +120,14 @@ public class Atmosphere {
 				return false;
 		} else if (!sun.equals(other.sun))
 			return false;
-		if (visibility != other.visibility)
+		if (Double.doubleToLongBits(visibility) != Double.doubleToLongBits(other.visibility))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Atmosphere [id=").append(id).append(", humidity=")
-				.append(humidity).append(", pressure=").append(pressure)
-				.append(", visibility=").append(visibility)
-				.append(", precipitation=").append(precipitation)
-				.append(", sun=").append(sun).append("]");
-		return builder.toString();
+		return "Atmosphere [id=" + id + ", humidity=" + humidity + ", pressure=" + pressure + ", visibility="
+				+ visibility + ", precipitation=" + precipitation + ", sun=" + sun + "]";
 	}
-
-
 }

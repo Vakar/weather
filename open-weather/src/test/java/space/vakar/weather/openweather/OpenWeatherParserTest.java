@@ -6,12 +6,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDateTime;
 
+import org.dom4j.DocumentException;
 import org.junit.Test;
 
 import space.vakar.weather.domain.Atmosphere;
 import space.vakar.weather.domain.City;
 import space.vakar.weather.domain.Coordinates;
 import space.vakar.weather.domain.Humidity;
+import space.vakar.weather.domain.Precipitation;
 import space.vakar.weather.domain.Pressure;
 import space.vakar.weather.domain.Temperature;
 import space.vakar.weather.domain.TemperatureUnit;
@@ -25,7 +27,7 @@ public class OpenWeatherParserTest {
 	private OpenWeatherParser weatherParser = new OpenWeatherParser();
 	
 	@Test
-	public void shouldReturnCorrectObject() throws IOException {
+	public void shouldReturnCorrectObject() throws Exception {
 		ClassLoader loader = getClass().getClassLoader();
 		InputStream inputStream = loader.getResource("weather.xml").openStream();
 		assertEquals(getExpectedWeather(), weatherParser.parse(inputStream));		
@@ -37,7 +39,8 @@ public class OpenWeatherParserTest {
 		Wind wind = new Wind(windSpeed, windDirection);
 		Humidity humidity = new Humidity(85, "%");
 		Pressure pressure = new Pressure(1002, "hPa");
-		Atmosphere atmosphere = new Atmosphere(humidity, pressure, 4828, 0);
+		Precipitation precipitation = new Precipitation(0, "no");
+		Atmosphere atmosphere = new Atmosphere(humidity, pressure, 4828, precipitation);
 		Coordinates coordinates = new Coordinates(-64.8, 46.1);
 		City city = new City("Moncton", "CA", coordinates);
 		Temperature temperature = new Temperature(261.15, TemperatureUnit.KELVIN);
