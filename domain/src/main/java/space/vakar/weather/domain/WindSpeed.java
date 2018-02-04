@@ -1,5 +1,7 @@
 package space.vakar.weather.domain;
 
+import java.util.Objects;
+
 public class WindSpeed {
 
 	private int id;
@@ -11,9 +13,9 @@ public class WindSpeed {
 		setValue(0);
 		setName("");
 	}
-	
+
 	public WindSpeed(double value, String name) {
-		super();
+		this();
 		setValue(value);
 		setName(name);
 	}
@@ -44,39 +46,24 @@ public class WindSpeed {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(value);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
+		return Objects.hash(id, value, name);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (obj instanceof WindSpeed) {
+			final WindSpeed other = (WindSpeed) obj;
+			return Objects.equals(id, other.id)
+					&& Objects.equals(value, other.value)
+					&& Objects.equals(name, other.name);
+		} else {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		WindSpeed other = (WindSpeed) obj;
-		if (id != other.id)
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (Double.doubleToLongBits(value) != Double.doubleToLongBits(other.value))
-			return false;
-		return true;
+		}
 	}
 
 	@Override
 	public String toString() {
-		return "WindSpeed [id=" + id + ", value=" + value + ", name=" + name + "]";
+		String format = "WindSpeed [id=%s, value=%s, name=%s]";
+		return String.format(format, id, value, name);
 	}
 }

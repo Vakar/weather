@@ -1,5 +1,7 @@
 package space.vakar.weather.domain;
 
+import java.util.Objects;
+
 public class Temperature {
 
 	private int id;
@@ -13,7 +15,7 @@ public class Temperature {
 	}
 
 	public Temperature(double value, TemperatureUnit unit) {
-		super();
+		this();
 		setValue(value);
 		setUnit(unit);
 	}
@@ -44,39 +46,25 @@ public class Temperature {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		result = prime * result + ((unit == null) ? 0 : unit.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(value);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
+		return Objects.hash(id, value, unit);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (obj instanceof Temperature) {
+			final Temperature other = (Temperature) obj;
+			return Objects.equals(id, other.id)
+					&& Objects.equals(value, other.value)
+					&& Objects.equals(unit, other.unit);
+		} else {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Temperature other = (Temperature) obj;
-		if (id != other.id)
-			return false;
-		if (unit == null) {
-			if (other.unit != null)
-				return false;
-		} else if (!unit.equals(other.unit))
-			return false;
-		if (Double.doubleToLongBits(value) != Double.doubleToLongBits(other.value))
-			return false;
-		return true;
+		}
 	}
 
 	@Override
 	public String toString() {
-		return "Temperature [id=" + id + ", value=" + value + ", unit=" + unit + "]";
+		String format = "Temperature [id=%s, value=%s, unit=%s]";
+		return String.format(format, id, value, unit);
 	}
+	
 }
