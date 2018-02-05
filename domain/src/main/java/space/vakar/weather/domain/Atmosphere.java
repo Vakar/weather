@@ -21,7 +21,7 @@ public class Atmosphere {
 	}
 
 	public Atmosphere(Humidity humidity, Pressure pressure, 
-			int visibility, double precipitation) {
+			int visibility, Precipitation precipitation) {
 		this();
 		setHumidity(humidity);
 		setPressure(pressure);
