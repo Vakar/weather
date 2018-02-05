@@ -1,15 +1,11 @@
 package space.vakar.weather.domain;
 
-import java.time.LocalDateTime;
-
-import utils.UnitInterpriter;
-
 public class WeatherBuilder {
 	
-	private String cityId;
+	private int cityId;
 	private String cityName;
-	private String coordinatesLongtitute;
-	private String coordinatesLatitute;
+	private double coordinatesLongtitute;
+	private double coordinatesLatitute;
 	private String country;
 	private String sunRise;
 	private String sunSet;
@@ -33,54 +29,25 @@ public class WeatherBuilder {
 	private String weatherValue;
 	private String lastUpdateValue;
 	
-	private WeatherBuilder() {
-		cityId = "";
-		cityName = "";
-		coordinatesLongtitute = "";
-		coordinatesLatitute = "";
-		country = "";
-		sunRise = "";
-		sunSet = "";
-		temperatureValue = "";
-		temperatureUnit = "";
-		humidityValue = "";
-		humidityUnit = "";
-		pressureValue = "";
-		pressureUnit = "";
-		windSpeedValue = "";
-		windSpeedName = "";
-		gustsValue = "";
-		windDirectionValue = "";
-		windDirectionCode = "";
-		windDirectionName = "";
-		cloudsValue = "";
-		cloudsName = "";
-		visibilityValue = "";
-		precipitationValue = "";
-		precipitationMode = "";
-		weatherValue = "";
-		lastUpdateValue = "";
-	}
-	
-	public WeatherBuilder cityId(String cityId) {
-		this.cityId = cityId;
-		return this;
-	}
+//	public WeatherBuilder cityId(String cityId) {
+//		this.cityId = cityId;
+//		return this;
+//	}
 	
 	public WeatherBuilder cityName(String cityName) {
 		this.cityName = cityName;
 		return this;
 	}
 	
-	public WeatherBuilder coordinatesLongtitute(String coordinatesLongtitute) {
-		this.coordinatesLongtitute = coordinatesLongtitute;
-		return this;
-	}
-	
-	public WeatherBuilder coordinatesLatitute(String coordinatesLatitute) {
-		this.coordinatesLatitute = coordinatesLatitute;
-		return this;
-	}
+//	public WeatherBuilder coordinatesLongtitute(String coordinatesLongtitute) {
+//		this.coordinatesLongtitute = coordinatesLongtitute;
+//		return this;
+//	}
+//	
+//	public WeatherBuilder coordinatesLatitute(String coordinatesLatitute) {
+//		this.coordinatesLatitute = coordinatesLatitute;
+//		return this;
+//	}
 	
 	public WeatherBuilder country(String country) {
 		this.country = country;
@@ -192,19 +159,19 @@ public class WeatherBuilder {
 		return this;
 	}
 	
-	public Weather build() {		
-		WindSpeed windSpeed = new WindSpeed(Double.valueOf(windSpeedValue), windSpeedName);		
-		WindDirection windDirection = new WindDirection(Double.valueOf(windDirectionValue), windDirectionCode, windDirectionName);		
-		Wind wind = new Wind(windSpeed, windDirection);		
-		Humidity humidity = new Humidity(Double.valueOf(humidityValue), humidityUnit);
-		Pressure pressure = new Pressure(Double.valueOf(pressureValue), pressureUnit);	
-		Precipitation precipitation = new Precipitation(Double.valueOf(precipitationValue), precipitationMode);
-		Atmosphere atmosphere = new Atmosphere(humidity, pressure, Double.valueOf(visibilityValue), precipitation);		
-		Coordinates coordinates = new Coordinates(Double.valueOf(coordinatesLongtitute), Double.valueOf(coordinatesLatitute));
-		City city = new City(cityName, country, coordinates);
-		TemperatureUnit temUnit = UnitInterpriter.interpriterTemperatureUnit(temperatureUnit);
-		Temperature temperature = new Temperature(Double.valueOf(temperatureValue), temUnit);		
-		LocalDateTime lastUpdate = LocalDateTime.parse(lastUpdateValue);
-		return new Weather(wind, atmosphere, city, temperature, lastUpdate);
-	}
+//	public Weather build() {		
+//		WindSpeed windSpeed = new WindSpeed(Double.valueOf(windSpeedValue), windSpeedName);		
+//		WindDirection windDirection = new WindDirection(Double.valueOf(windDirectionValue), windDirectionCode, windDirectionName);		
+//		Wind wind = new Wind(windSpeed, windDirection);		
+//		Humidity humidity = new Humidity(Double.valueOf(humidityValue), humidityUnit);
+//		Pressure pressure = new Pressure(Double.valueOf(pressureValue), pressureUnit);	
+//		Precipitation precipitation = new Precipitation(Double.valueOf(precipitationValue), precipitationMode);
+////		Atmosphere atmosphere = new Atmosphere(humidity, pressure, Double.valueOf(visibilityValue), precipitation);		
+//		Coordinates coordinates = new Coordinates(Double.valueOf(coordinatesLongtitute), Double.valueOf(coordinatesLatitute));
+//		City city = new City(cityName, country, coordinates);
+//		TemperatureUnit temUnit = UnitInterpriter.interpriterTemperatureUnit(temperatureUnit);
+//		Temperature temperature = new Temperature(Double.valueOf(temperatureValue), temUnit);		
+//		LocalDateTime lastUpdate = LocalDateTime.parse(lastUpdateValue);
+////		return new Weather(wind, atmosphere, city, temperature, lastUpdate);
+//	}
 }
