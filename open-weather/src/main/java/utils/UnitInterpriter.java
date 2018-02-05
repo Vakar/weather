@@ -15,5 +15,4 @@ public class UnitInterpriter {
 			return TemperatureUnit.UNIT_UNKNOWN;
 		}
 	}
-
 }

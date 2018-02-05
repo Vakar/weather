@@ -2,11 +2,9 @@ package space.vakar.weather.openweather;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDateTime;
 
-import org.dom4j.DocumentException;
 import org.junit.Test;
 
 import space.vakar.weather.domain.Atmosphere;
@@ -39,7 +37,7 @@ public class OpenWeatherParserTest {
 		Wind wind = new Wind(windSpeed, windDirection);
 		Humidity humidity = new Humidity(85, "%");
 		Pressure pressure = new Pressure(1002, "hPa");
-		Precipitation precipitation = new Precipitation(0, "no");
+		Precipitation precipitation = new Precipitation(13.4, "snow");
 		Atmosphere atmosphere = new Atmosphere(humidity, pressure, 4828, precipitation);
 		Coordinates coordinates = new Coordinates(-64.8, 46.1);
 		City city = new City("Moncton", "CA", coordinates);

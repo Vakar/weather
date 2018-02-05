@@ -15,7 +15,7 @@
 	</wind>
 	<clouds value="90" name="overcast clouds" />
 	<visibility value="4828" />
-	<precipitation mode="no" />
+	<precipitation value="13.4" mode="snow" />
 	<weather number="600" value="light snow" icon="13n" />
 	<lastupdate value="2018-01-31T08:27:00" />
 </current>
