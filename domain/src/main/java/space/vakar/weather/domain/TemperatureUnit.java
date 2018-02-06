@@ -1,15 +1,19 @@
 package space.vakar.weather.domain;
 
 public enum TemperatureUnit {
-	KELVIN("Kelvin"), CELSIUS("Celsius"), FAHRENHEIT("Fahrenheit"), UNIT_UNKNOWN("Unit unknown");
+	
+	KELVIN("kelvin"), 
+	CELSIUS("celsius"), 
+	FAHRENHEIT("fahrenheit"), 
+	UNIT_UNKNOWN("unit_unknown");
 
-	private final String unitName;
+	private final String openWeatherName;
 
-	TemperatureUnit(String name) {
-		this.unitName = name;
+	TemperatureUnit(String openWeatherName) {
+		this.openWeatherName = openWeatherName;
 	}
 
-	public String unitName() {
-		return unitName;
+	public String openWeatherName() {
+		return openWeatherName;
 	}
 }
