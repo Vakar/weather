@@ -13,6 +13,12 @@ public class Humidity {
 	/** % */
 	private String unit;
 
+	public Humidity(double value, String unit) {
+		super();
+		this.value = value;
+		this.unit = unit;
+	}
+
 	public double getValue() {
 		return value;
 	}

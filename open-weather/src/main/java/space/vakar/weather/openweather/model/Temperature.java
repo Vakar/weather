@@ -19,6 +19,13 @@ public class Temperature {
 	/** Unit of measurements. Possilbe valure is Celsius, Kelvin, Fahrenheit. */
 	private TemperatureUnit unit;
 
+	public Temperature(double value, double min, double max, TemperatureUnit unit) {
+		this.value = value;
+		this.min = min;
+		this.max = max;
+		this.unit = unit;
+	}
+
 	public double getValue() {
 		return value;
 	}

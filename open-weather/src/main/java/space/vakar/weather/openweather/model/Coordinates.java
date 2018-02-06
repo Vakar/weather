@@ -13,6 +13,12 @@ public class Coordinates {
 	/** Geographical location, latitude */
 	private double latitude;
 
+	public Coordinates(double longitude, double latitude) {
+		super();
+		this.longitude = longitude;
+		this.latitude = latitude;
+	}
+
 	public double getLongitude() {
 		return longitude;
 	}

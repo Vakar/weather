@@ -13,6 +13,11 @@ public class Precipitation {
 	/** Possible values are 'no", name of */
 	private String mode;
 
+	public Precipitation(double value, String mode) {
+		this.value = value;
+		this.mode = mode;
+	}
+
 	public double getValue() {
 		return value;
 	}

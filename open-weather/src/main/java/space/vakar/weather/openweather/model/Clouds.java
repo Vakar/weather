@@ -13,6 +13,11 @@ public class Clouds {
 	/** Name of the cloudiness */
 	private String name;
 
+	public Clouds(double value, String name) {
+		this.value = value;
+		this.name = name;
+	}
+
 	public double getValue() {
 		return value;
 	}

@@ -12,6 +12,10 @@ public class LastUpdate {
 	/** Last time when data was updated */
 	private LocalDateTime value;
 
+	public LastUpdate(LocalDateTime value) {
+		this.value = value;
+	}
+
 	public LocalDateTime getValue() {
 		return value;
 	}

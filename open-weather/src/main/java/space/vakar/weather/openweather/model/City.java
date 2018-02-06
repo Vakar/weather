@@ -21,7 +21,15 @@ public class City {
 	private Sun sun;
 
 	/** City geo location */
-	private Coordinates coordinates;
+	private Coordinates coordinates;	
+
+	public City(int id, String name, String country, Sun sun, Coordinates coordinates) {
+		this.id = id;
+		this.name = name;
+		this.country = country;
+		this.sun = sun;
+		this.coordinates = coordinates;
+	}
 
 	public int getId() {
 		return id;

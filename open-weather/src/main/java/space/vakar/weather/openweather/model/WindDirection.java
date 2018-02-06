@@ -17,6 +17,12 @@ public class WindDirection {
 	/** Full name of the wind direction. */
 	private String name;
 
+	public WindDirection(double value, String code, String name) {
+		this.value = value;
+		this.code = code;
+		this.name = name;
+	}
+
 	public double getValue() {
 		return value;
 	}
