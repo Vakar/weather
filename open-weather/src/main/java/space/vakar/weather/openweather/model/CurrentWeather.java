@@ -4,8 +4,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 
-@XmlRootElement
-public class Current {
+@XmlRootElement(name = "current")
+public class CurrentWeather {
 
 	private City city;
 	private Temperature temperature;
@@ -117,8 +117,8 @@ public class Current {
 
 	@Override
 	public boolean equals(Object object) {
-		if (object instanceof Current) {
-			Current that = (Current) object;
+		if (object instanceof CurrentWeather) {
+			CurrentWeather that = (CurrentWeather) object;
 			return Objects.equals(this.city, that.city) 
 					&& Objects.equals(this.temperature, that.temperature)
 					&& Objects.equals(this.humidity, that.humidity) 
