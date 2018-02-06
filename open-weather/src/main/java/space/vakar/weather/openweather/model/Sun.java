@@ -4,6 +4,10 @@ import java.time.LocalDateTime;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import utils.LocalDateTimeAdapter;
+
 import java.util.Objects;
 
 @XmlRootElement
@@ -25,6 +29,7 @@ public class Sun {
 	}
 
 	@XmlAttribute
+	@XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
 	public void setRise(LocalDateTime rise) {
 		this.rise = rise;
 	}
@@ -34,6 +39,7 @@ public class Sun {
 	}
 
 	@XmlAttribute
+	@XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
 	public void setSet(LocalDateTime set) {
 		this.set = set;
 	}

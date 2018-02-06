@@ -1,9 +1,12 @@
 package space.vakar.weather.openweather.model;
 
+import java.util.Objects;
+
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import space.vakar.weather.domain.TemperatureUnit;
-import java.util.Objects;
+import utils.TemperatureUnitAdapter;
 
 public class Temperature {
 	
@@ -58,6 +61,7 @@ public class Temperature {
 	}
 
 	@XmlAttribute
+	@XmlJavaTypeAdapter(TemperatureUnitAdapter.class)
 	public void setUnit(TemperatureUnit unit) {
 		this.unit = unit;
 	}

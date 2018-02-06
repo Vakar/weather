@@ -4,6 +4,10 @@ import java.time.LocalDateTime;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import utils.LocalDateTimeAdapter;
+
 import java.util.Objects;
 
 @XmlRootElement(name = "lastupdate")
@@ -21,6 +25,7 @@ public class LastUpdate {
 	}
 
 	@XmlAttribute
+	@XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
 	public void setValue(LocalDateTime value) {
 		this.value = value;
 	}
