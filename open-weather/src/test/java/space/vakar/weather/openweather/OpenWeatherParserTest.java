@@ -7,18 +7,23 @@ import java.time.LocalDateTime;
 
 import org.junit.Test;
 
-import space.vakar.weather.domain.Atmosphere;
-import space.vakar.weather.domain.City;
-import space.vakar.weather.domain.Coordinates;
-import space.vakar.weather.domain.Humidity;
-import space.vakar.weather.domain.Precipitation;
-import space.vakar.weather.domain.Pressure;
-import space.vakar.weather.domain.Temperature;
 import space.vakar.weather.domain.TemperatureUnit;
-import space.vakar.weather.domain.Weather;
-import space.vakar.weather.domain.Wind;
-import space.vakar.weather.domain.WindDirection;
-import space.vakar.weather.domain.WindSpeed;
+import space.vakar.weather.openweather.model.City;
+import space.vakar.weather.openweather.model.Clouds;
+import space.vakar.weather.openweather.model.Coordinates;
+import space.vakar.weather.openweather.model.CurrentWeather;
+import space.vakar.weather.openweather.model.Humidity;
+import space.vakar.weather.openweather.model.LastUpdate;
+import space.vakar.weather.openweather.model.Precipitation;
+import space.vakar.weather.openweather.model.Pressure;
+import space.vakar.weather.openweather.model.Sun;
+import space.vakar.weather.openweather.model.Temperature;
+import space.vakar.weather.openweather.model.Visibility;
+import space.vakar.weather.openweather.model.Weather;
+import space.vakar.weather.openweather.model.Wind;
+import space.vakar.weather.openweather.model.WindDirection;
+import space.vakar.weather.openweather.model.WindSpeed;
+import utils.CurrentWeatherBuilder;
 
 public class OpenWeatherParserTest {
 	
@@ -31,18 +36,24 @@ public class OpenWeatherParserTest {
 		assertEquals(getExpectedWeather(), weatherParser.parse(inputStream));		
 	}
 	
-	private Weather getExpectedWeather() {
-		WindSpeed windSpeed = new WindSpeed(7.7, "Moderate breeze");
-		WindDirection windDirection = new WindDirection(290, "WNW", "West-northwest");
-		Wind wind = new Wind(windSpeed, windDirection);
-		Humidity humidity = new Humidity(85, "%");
-		Pressure pressure = new Pressure(1002, "hPa");
-		Precipitation precipitation = new Precipitation(13.4, "snow");
-		Atmosphere atmosphere = new Atmosphere(humidity, pressure, 4828, precipitation);
+	private CurrentWeather getExpectedWeather() {
+		CurrentWeatherBuilder cwb = new CurrentWeatherBuilder();
+		LocalDateTime rise = LocalDateTime.parse("2018-01-31T11:42:29");
+		LocalDateTime set = LocalDateTime.parse("2018-01-31T21:23:30");
+		Sun sun = new Sun(rise, set);
 		Coordinates coordinates = new Coordinates(-64.8, 46.1);
-		City city = new City("Moncton", "CA", coordinates);
-		Temperature temperature = new Temperature(261.15, TemperatureUnit.KELVIN);
-		LocalDateTime lastUpdate = LocalDateTime.parse("2018-01-31T08:27:00");
-		return new Weather(wind, atmosphere, city, temperature, lastUpdate);
+		cwb.city(new City(0, "Moncton", "CA", sun, coordinates));
+		cwb.temperature(new Temperature(261.15, 261.15, 261.15, TemperatureUnit.KELVIN));
+		cwb.humidity(new Humidity(85, "%"));
+		cwb.pressure(new Pressure(1002, "hPa"));
+		WindSpeed speed = new WindSpeed(7.7, "Moderate breeze");
+		WindDirection direction = new WindDirection(290, "WNW", "West-northwest");
+		cwb.wind(new Wind(speed, direction));
+		cwb.clouds(new Clouds(90, "overcast clouds"));
+		cwb.visibility(new Visibility(4828));
+		cwb.precipitation(new Precipitation(13.4, "snow"));
+		cwb.weather(new Weather(600, "light snow", "13n"));
+		cwb.lastupdate(new LastUpdate(LocalDateTime.parse("2018-01-31T08:27:00")));
+		return cwb.build();
 	}
 }
