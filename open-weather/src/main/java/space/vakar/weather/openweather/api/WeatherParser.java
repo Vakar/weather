@@ -1,4 +1,4 @@
-package space.vakar.weather.domain.api;
+package space.vakar.weather.openweather.api;
 
 import java.io.InputStream;
 
