@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 import space.vakar.weather.domain.model.atmosphere.Atmosphere;
-import space.vakar.weather.domain.model.location.City;
+import space.vakar.weather.domain.model.location.Location;
 import space.vakar.weather.domain.model.temperature.Temperature;
 import space.vakar.weather.domain.model.wind.Wind;
 
@@ -13,8 +13,8 @@ public class Weather  implements Serializable{
 
 	private int id;
 	private Wind wind;
+	private Location location;
 	private Atmosphere atmosphere;
-	private City city;
 	private Temperature temperature;
 	private LocalDateTime lastUpdate;
 
@@ -22,17 +22,17 @@ public class Weather  implements Serializable{
 		setId(0);
 		setWind(new Wind());
 		setAtmosphere(new Atmosphere());
-		setCity(new City());
+		setLocation(new Location());
 		setTemperature(new Temperature());
 		setLastUpdate(LocalDateTime.MIN);
 	}
 
-	public Weather(Wind wind, Atmosphere atmosphere, City city, 
+	public Weather(Wind wind, Atmosphere atmosphere, Location location, 
 			Temperature temperature, LocalDateTime lastUpdate) {
 		this();
 		setWind(wind);
 		setAtmosphere(atmosphere);
-		setCity(city);
+		setLocation(location);
 		setTemperature(temperature);
 		setLastUpdate(lastUpdate);
 	}
@@ -61,14 +61,6 @@ public class Weather  implements Serializable{
 		this.atmosphere = atmosphere;
 	}
 
-	public City getCity() {
-		return city;
-	}
-
-	public void setCity(City city) {
-		this.city = city;
-	}
-
 	public Temperature getTemperature() {
 		return temperature;
 	}
@@ -85,10 +77,18 @@ public class Weather  implements Serializable{
 		this.lastUpdate = lastUpdate;
 	}
 
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, wind, atmosphere, city, temperature, lastUpdate);
+		return Objects.hash(id, wind, location, atmosphere, temperature,
+				lastUpdate);
 	}
 
 	@Override
@@ -96,7 +96,8 @@ public class Weather  implements Serializable{
 		if (object instanceof Weather) {
 			Weather that = (Weather) object;
 			return this.id == that.id && Objects.equals(this.wind, that.wind)
-					&& Objects.equals(this.atmosphere, that.atmosphere) && Objects.equals(this.city, that.city)
+					&& Objects.equals(this.location, that.location)
+					&& Objects.equals(this.atmosphere, that.atmosphere)
 					&& Objects.equals(this.temperature, that.temperature)
 					&& Objects.equals(this.lastUpdate, that.lastUpdate);
 		}
@@ -105,9 +106,9 @@ public class Weather  implements Serializable{
 
 	@Override
 	public String toString() {
-		String format = "Weather [id=%s, wind=%s, atmosphere=%s, "
-				+ "city=%s, temperature=%s, lastUpdate=%s]";
-		return String.format(format, id, wind, atmosphere, 
-				city, temperature, lastUpdate);
+		String format = "Weather [id=%s, wind=%s, location=%s, atmosphere=%s, "
+				+ "temperature=%s, lastUpdate=%s]";
+		return String.format(format, id, wind, location, atmosphere, 
+				temperature, lastUpdate);
 	}
 }

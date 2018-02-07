@@ -7,21 +7,15 @@ public class City  implements Serializable{
 
 	private int id;
 	private String name;
-	private String country;
-	private Coordinates coordinates;
 
 	public City() {
 		setId(0);
 		setName("");
-		setCountry("");
-		setCoordinates(new Coordinates());
 	}
 
 	public City(String name, String country, Coordinates coordinates) {
 		this();
 		setName(name);
-		setCountry(country);
-		setCoordinates(coordinates);
 	}
 
 	public int getId() {
@@ -40,42 +34,24 @@ public class City  implements Serializable{
 		this.name = name;
 	}
 
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public Coordinates getCoordinates() {
-		return coordinates;
-	}
-
-	public void setCoordinates(Coordinates coordinates) {
-		this.coordinates = coordinates;
-	}
-	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, country, coordinates);
+		return Objects.hash(id, name);
 	}
 
 	@Override
 	public boolean equals(Object object) {
 		if (object instanceof City) {
 			City that = (City) object;
-			return this.id == that.id && Objects.equals(this.name, that.name)
-					&& Objects.equals(this.country, that.country) && Objects.equals(this.coordinates, that.coordinates);
+			return this.id == that.id 
+					&& Objects.equals(this.name, that.name);
 		}
 		return false;
 	}
 
 	@Override
 	public String toString() {
-		String format = "City [id=%s, name=%s, country=%s, coordinates=%s]";
-		return String.format(format, id, name, country, coordinates);
+		String format = "City [id=%s, name=%s]";
+		return String.format(format, id, name);
 	}
-
-	
 }

@@ -9,12 +9,13 @@ public class Clouds {
 	private String name;
 
 	public Clouds() {
-		
+		setValue(0);
+		setName("");
 	}
 
 	public Clouds(double value, String name) {
-		this.value = value;
-		this.name = name;
+		setValue(value);
+		setName(name);
 	}
 
 	public double getValue() {

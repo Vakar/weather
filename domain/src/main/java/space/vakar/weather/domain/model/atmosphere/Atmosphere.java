@@ -3,8 +3,6 @@ package space.vakar.weather.domain.model.atmosphere;
 import java.io.Serializable;
 import java.util.Objects;
 
-import space.vakar.weather.domain.model.location.Sun;
-
 public class Atmosphere implements Serializable{
 	
 	private int id;
@@ -12,7 +10,7 @@ public class Atmosphere implements Serializable{
 	private Pressure pressure;
 	private double visibility;
 	private Precipitation precipitation;
-	private Sun sun;
+	private Clouds clouds;
 
 	public Atmosphere() {
 		setId(0);
@@ -20,7 +18,7 @@ public class Atmosphere implements Serializable{
 		setPressure(new Pressure());
 		setVisibility(0);
 		setPrecipitation(new Precipitation());
-		setSun(new Sun());
+		setClouds(new Clouds());
 	}
 
 	public Atmosphere(Humidity humidity, Pressure pressure, 
@@ -72,35 +70,39 @@ public class Atmosphere implements Serializable{
 		this.precipitation = precipitation;
 	}
 
-	public Sun getSun() {
-		return sun;
+	public Clouds getClouds() {
+		return clouds;
 	}
 
-	public void setSun(Sun sun) {
-		this.sun = sun;
+	public void setClouds(Clouds clouds) {
+		this.clouds = clouds;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, humidity, pressure, visibility, precipitation, sun);
+		return Objects.hash(id, humidity, pressure, visibility, precipitation,
+				clouds);
 	}
 
 	@Override
 	public boolean equals(Object object) {
 		if (object instanceof Atmosphere) {
 			Atmosphere that = (Atmosphere) object;
-			return this.id == that.id && Objects.equals(this.humidity, that.humidity)
-					&& Objects.equals(this.pressure, that.pressure) && this.visibility == that.visibility
-					&& Objects.equals(this.precipitation, that.precipitation) && Objects.equals(this.sun, that.sun);
+			return this.id == that.id
+					&& Objects.equals(this.humidity, that.humidity)
+					&& Objects.equals(this.pressure, that.pressure)
+					&& this.visibility == that.visibility
+					&& Objects.equals(this.precipitation, that.precipitation)
+					&& Objects.equals(this.clouds, that.clouds);
 		}
 		return false;
 	}
 
 	@Override
 	public String toString() {
-		String format = "Atmosphere [id=%s, humidity=%s, pressure=%s, visibility=%s, precipitation=%s, sun=%s]";
-		return String.format(format, id, humidity, pressure, visibility, precipitation, sun);
+		String format = "Atmosphere [id=%s, humidity=%s, pressure=%s, "
+				+ "visibility=%s, precipitation=%s, clouds=%s]";
+		return String.format(format, id, humidity, pressure, 
+				visibility, precipitation, clouds);
 	}
-
-	
 }
