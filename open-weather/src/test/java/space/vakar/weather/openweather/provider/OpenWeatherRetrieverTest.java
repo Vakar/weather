@@ -1,4 +1,4 @@
-package space.vakar.weather.openweather;
+package space.vakar.weather.openweather.provider;
 
 import static org.junit.Assert.assertTrue;
 
@@ -11,6 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import space.vakar.weather.openweather.provider.OpenWeatherRetriever;
 import space.vakar.weather.openweather.testutils.WeatherRequestHandler;
 
 public class OpenWeatherRetrieverTest {

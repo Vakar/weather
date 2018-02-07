@@ -1,4 +1,4 @@
-package space.vakar.weather.openweather;
+package space.vakar.weather.openweather.provider;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,6 +23,7 @@ import space.vakar.weather.openweather.model.Weather;
 import space.vakar.weather.openweather.model.Wind;
 import space.vakar.weather.openweather.model.WindDirection;
 import space.vakar.weather.openweather.model.WindSpeed;
+import space.vakar.weather.openweather.provider.OpenWeatherParser;
 
 public class OpenWeatherParserTest {
 	
