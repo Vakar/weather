@@ -42,7 +42,7 @@ public class OpenWeatherParserTest {
 		LocalDateTime set = LocalDateTime.parse("2018-01-31T21:23:30");
 		Sun sun = new Sun(rise, set);
 		Coordinates coordinates = new Coordinates(-64.8, 46.1);
-		cwb.city(new City(0, "Moncton", "CA", sun, coordinates));
+		cwb.city(new City(6076211, "Moncton", "CA", sun, coordinates));
 		cwb.temperature(new Temperature(261.15, 261.15, 261.15, TemperatureUnit.KELVIN));
 		cwb.humidity(new Humidity(85, "%"));
 		cwb.pressure(new Pressure(1002, "hPa"));
