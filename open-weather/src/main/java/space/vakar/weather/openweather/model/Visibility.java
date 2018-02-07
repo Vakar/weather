@@ -10,6 +10,10 @@ public class Visibility {
 	/** Visibility, meter */
 	private double value;
 
+	public Visibility() {
+		
+	}
+
 	public Visibility(double value) {
 		super();
 		this.value = value;

@@ -14,6 +14,10 @@ public class WindSpeed {
 	/** Type of the wind */
 	private String name;
 
+	public WindSpeed() {
+		
+	}
+
 	public WindSpeed(double value, String name) {
 		this.value = value;
 		this.name = name;

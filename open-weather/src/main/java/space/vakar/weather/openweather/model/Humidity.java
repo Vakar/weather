@@ -13,6 +13,10 @@ public class Humidity {
 	/** % */
 	private String unit;
 
+	public Humidity() {
+		
+	}
+
 	public Humidity(double value, String unit) {
 		super();
 		this.value = value;

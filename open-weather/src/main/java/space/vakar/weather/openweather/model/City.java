@@ -23,6 +23,10 @@ public class City {
 	/** City geo location */
 	private Coordinates coordinates;	
 
+	public City() {
+		
+	}
+
 	public City(int id, String name, String country, Sun sun, Coordinates coordinates) {
 		this.id = id;
 		this.name = name;
@@ -62,6 +66,7 @@ public class City {
 		return sun;
 	}
 
+	@XmlElement
 	public void setSun(Sun sun) {
 		this.sun = sun;
 	}
@@ -70,6 +75,7 @@ public class City {
 		return coordinates;
 	}
 
+	@XmlElement(name = "coord")
 	public void setCoordinates(Coordinates coordinates) {
 		this.coordinates = coordinates;
 	}

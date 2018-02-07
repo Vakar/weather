@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 
-@XmlRootElement(name="coord")
+@XmlRootElement
 public class Coordinates {
 	
 	/** Geographical location, longitude */
@@ -13,8 +13,11 @@ public class Coordinates {
 	/** Geographical location, latitude */
 	private double latitude;
 
+	public Coordinates() {
+		
+	}
+
 	public Coordinates(double longitude, double latitude) {
-		super();
 		this.longitude = longitude;
 		this.latitude = latitude;
 	}

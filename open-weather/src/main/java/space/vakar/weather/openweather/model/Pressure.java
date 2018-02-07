@@ -13,6 +13,10 @@ public class Pressure {
 	/** hPa */
 	private String unit;
 
+	public Pressure() {
+		
+	}
+
 	public Pressure(double value, String unit) {
 		this.value = value;
 		this.unit = unit;

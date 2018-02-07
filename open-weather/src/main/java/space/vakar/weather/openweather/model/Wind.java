@@ -11,6 +11,10 @@ public class Wind {
 	private WindSpeed speed;
 	private WindDirection direction;
 
+	public Wind() {
+		
+	}
+
 	public Wind(WindSpeed speed, WindDirection direction) {
 		this.speed = speed;
 		this.direction = direction;

@@ -17,6 +17,10 @@ public class Weather {
 	/** Weather icon id */
 	private String icon;
 
+	public Weather() {
+		
+	}
+
 	public Weather(int number, String value, String icon) {
 		this.number = number;
 		this.value = value;
