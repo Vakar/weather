@@ -1,8 +1,13 @@
-package space.vakar.weather.domain;
+package space.vakar.weather.domain.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
+
+import space.vakar.weather.domain.model.atmosphere.Atmosphere;
+import space.vakar.weather.domain.model.location.City;
+import space.vakar.weather.domain.model.temperature.Temperature;
+import space.vakar.weather.domain.model.wind.Wind;
 
 public class Weather  implements Serializable{
 

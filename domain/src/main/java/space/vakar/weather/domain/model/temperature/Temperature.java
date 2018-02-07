@@ -1,21 +1,21 @@
-package space.vakar.weather.domain;
+package space.vakar.weather.domain.model.temperature;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Humidity  implements Serializable{
+public class Temperature  implements Serializable{
 
 	private int id;
 	private double value;
-	private String unit;
+	private TemperatureUnit unit;
 
-	public Humidity() {
+	public Temperature() {
 		setId(0);
 		setValue(0);
-		setUnit("");
+		setUnit(TemperatureUnit.KELVIN);
 	}
 
-	public Humidity(double value, String unit) {
+	public Temperature(double value, TemperatureUnit unit) {
 		this();
 		setValue(value);
 		setUnit(unit);
@@ -37,14 +37,14 @@ public class Humidity  implements Serializable{
 		this.value = value;
 	}
 
-	public String getUnit() {
+	public TemperatureUnit getUnit() {
 		return unit;
 	}
 
-	public void setUnit(String unit) {
+	public void setUnit(TemperatureUnit unit) {
 		this.unit = unit;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, value, unit);
@@ -52,16 +52,17 @@ public class Humidity  implements Serializable{
 
 	@Override
 	public boolean equals(Object object) {
-		if (object instanceof Humidity) {
-			Humidity that = (Humidity) object;
+		if (object instanceof Temperature) {
+			Temperature that = (Temperature) object;
 			return this.id == that.id && this.value == that.value && Objects.equals(this.unit, that.unit);
 		}
 		return false;
 	}
-
+	
 	@Override
 	public String toString() {
-		String format = "Humidity [id=%s, value=%s, unit=%s]";
+		String format = "Temperature [id=%s, value=%s, unit=%s]";
 		return String.format(format, id, value, unit);
-	}	
+	}
+	
 }

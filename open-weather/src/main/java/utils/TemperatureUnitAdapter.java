@@ -2,7 +2,7 @@ package utils;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-import space.vakar.weather.domain.TemperatureUnit;
+import space.vakar.weather.domain.model.temperature.TemperatureUnit;
 
 public class TemperatureUnitAdapter extends XmlAdapter<String, TemperatureUnit>{
 

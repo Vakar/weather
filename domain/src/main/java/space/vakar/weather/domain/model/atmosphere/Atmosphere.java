@@ -1,7 +1,9 @@
-package space.vakar.weather.domain;
+package space.vakar.weather.domain.model.atmosphere;
 
 import java.io.Serializable;
 import java.util.Objects;
+
+import space.vakar.weather.domain.model.location.Sun;
 
 public class Atmosphere implements Serializable{
 	

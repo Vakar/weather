@@ -1,21 +1,21 @@
-package space.vakar.weather.domain;
+package space.vakar.weather.domain.model.atmosphere;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Pressure  implements Serializable{
+public class Humidity  implements Serializable{
 
 	private int id;
 	private double value;
 	private String unit;
 
-	public Pressure() {
+	public Humidity() {
 		setId(0);
 		setValue(0);
 		setUnit("");
 	}
 
-	public Pressure(double value, String unit) {
+	public Humidity(double value, String unit) {
 		this();
 		setValue(value);
 		setUnit(unit);
@@ -52,8 +52,8 @@ public class Pressure  implements Serializable{
 
 	@Override
 	public boolean equals(Object object) {
-		if (object instanceof Pressure) {
-			Pressure that = (Pressure) object;
+		if (object instanceof Humidity) {
+			Humidity that = (Humidity) object;
 			return this.id == that.id && this.value == that.value && Objects.equals(this.unit, that.unit);
 		}
 		return false;
@@ -61,9 +61,7 @@ public class Pressure  implements Serializable{
 
 	@Override
 	public String toString() {
-		String format = "Pressure [id=%s, value=%s, unit=%s]";
+		String format = "Humidity [id=%s, value=%s, unit=%s]";
 		return String.format(format, id, value, unit);
-	}
-
-	
+	}	
 }

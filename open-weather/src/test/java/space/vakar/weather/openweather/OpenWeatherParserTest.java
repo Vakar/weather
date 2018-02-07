@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 import org.junit.Test;
 
-import space.vakar.weather.domain.TemperatureUnit;
+import space.vakar.weather.domain.model.temperature.TemperatureUnit;
 import space.vakar.weather.openweather.model.City;
 import space.vakar.weather.openweather.model.Clouds;
 import space.vakar.weather.openweather.model.Coordinates;
