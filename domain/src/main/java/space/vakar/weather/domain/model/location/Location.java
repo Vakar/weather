@@ -18,9 +18,7 @@ public class Location {
 		setCountry("");
 	}
 
-	public Location(int id, Coordinates coordinates, Sun sun, City city,
-			String country) {
-		setId(id);
+	public Location(Coordinates coordinates, Sun sun, City city, String country) {
 		setCoordinates(coordinates);
 		setSun(sun);
 		setCity(city);

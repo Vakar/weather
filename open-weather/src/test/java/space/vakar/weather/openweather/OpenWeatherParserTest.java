@@ -23,7 +23,6 @@ import space.vakar.weather.openweather.model.Weather;
 import space.vakar.weather.openweather.model.Wind;
 import space.vakar.weather.openweather.model.WindDirection;
 import space.vakar.weather.openweather.model.WindSpeed;
-import utils.CurrentWeatherBuilder;
 
 public class OpenWeatherParserTest {
 	
@@ -37,18 +36,18 @@ public class OpenWeatherParserTest {
 	}
 	
 	private CurrentWeather getExpectedWeather() {
-		CurrentWeatherBuilder cwb = new CurrentWeatherBuilder();		
-		cwb.city(getCity());
-		cwb.temperature(new Temperature(261.15, 261.15, 261.15, TemperatureUnit.KELVIN));
-		cwb.humidity(new Humidity(85, "%"));
-		cwb.pressure(new Pressure(1002, "hPa"));		
-		cwb.wind(getWind());
-		cwb.clouds(new Clouds(90, "overcast clouds"));
-		cwb.visibility(new Visibility(4828));
-		cwb.precipitation(new Precipitation(13.4, "snow"));
-		cwb.weather(new Weather(600, "light snow", "13n"));
-		cwb.lastupdate(new LastUpdate(LocalDateTime.parse("2018-01-31T08:27:00")));
-		return cwb.build();
+		CurrentWeather weather = new CurrentWeather();		
+		weather.setCity(getCity());
+		weather.setTemperature(new Temperature(261.15, 261.15, 261.15, TemperatureUnit.KELVIN));
+		weather.setHumidity(new Humidity(85, "%"));
+		weather.setPressure(new Pressure(1002, "hPa"));		
+		weather.setWind(getWind());
+		weather.setClouds(new Clouds(90, "overcast clouds"));
+		weather.setVisibility(new Visibility(4828));
+		weather.setPrecipitation(new Precipitation(13.4, "snow"));
+		weather.setWeather(new Weather(600, "light snow", "13n"));
+		weather.setLastupdate(getLastUpdate());
+		return weather;
 	}
 	
 	private City getCity() {
@@ -63,5 +62,9 @@ public class OpenWeatherParserTest {
 		WindSpeed speed = new WindSpeed(7.7, "Moderate breeze");
 		WindDirection direction = new WindDirection(290, "WNW", "West-northwest");
 		return new Wind(speed, direction);
+	}
+	
+	private LastUpdate  getLastUpdate() {
+		return new LastUpdate(LocalDateTime.parse("2018-01-31T08:27:00"));
 	}
 }

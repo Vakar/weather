@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Clouds {
 
+	private int id;
 	private double value;
-
 	private String name;
 
 	public Clouds() {
@@ -16,6 +16,14 @@ public class Clouds {
 	public Clouds(double value, String name) {
 		setValue(value);
 		setName(name);
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public double getValue() {
@@ -36,14 +44,15 @@ public class Clouds {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(value, name);
+		return Objects.hash(id, value, name);
 	}
 
 	@Override
 	public boolean equals(Object object) {
 		if (object instanceof Clouds) {
 			Clouds that = (Clouds) object;
-			return this.value == that.value 
+			return this.id == that.id 
+					&& Objects.equals(this.value, that.value)
 					&& Objects.equals(this.name, that.name);
 		}
 		return false;
@@ -51,7 +60,7 @@ public class Clouds {
 
 	@Override
 	public String toString() {
-		String format = "Clouds [value=%s, name=%s]";
-		return String.format(format, value, name);
+		String format = "Clouds [id=%s, value=%s, name=%s]";
+		return String.format(format, id, value, name);
 	}
 }

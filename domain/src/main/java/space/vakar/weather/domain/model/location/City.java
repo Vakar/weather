@@ -13,8 +13,13 @@ public class City  implements Serializable{
 		setName("");
 	}
 
-	public City(String name, String country, Coordinates coordinates) {
+	public City(String name) {
 		this();
+		setName(name);
+	}
+
+	public City(int id, String name) {
+		setId(id);
 		setName(name);
 	}
 

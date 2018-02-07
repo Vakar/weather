@@ -22,12 +22,13 @@ public class Atmosphere implements Serializable{
 	}
 
 	public Atmosphere(Humidity humidity, Pressure pressure, 
-			int visibility, Precipitation precipitation) {
+			double visibility, Precipitation precipitation, Clouds clouds) {
 		this();
 		setHumidity(humidity);
 		setPressure(pressure);
 		setVisibility(visibility);
 		setPrecipitation(precipitation);
+		setClouds(clouds);
 	}
 
 	public int getId() {
