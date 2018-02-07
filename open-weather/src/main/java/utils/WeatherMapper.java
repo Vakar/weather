@@ -12,6 +12,8 @@ import space.vakar.weather.domain.model.location.City;
 import space.vakar.weather.domain.model.location.Coordinates;
 import space.vakar.weather.domain.model.location.Location;
 import space.vakar.weather.domain.model.location.Sun;
+import space.vakar.weather.domain.model.temperature.Temperature;
+import space.vakar.weather.domain.model.temperature.TemperatureUnit;
 import space.vakar.weather.domain.model.wind.Wind;
 import space.vakar.weather.domain.model.wind.WindDirection;
 import space.vakar.weather.domain.model.wind.WindSpeed;
@@ -25,8 +27,8 @@ public class WeatherMapper {
 	      weather.setWind(getWind(currentWeather));
 	      weather.setAtmosphere(getAtmosphere(currentWeather));
 	      weather.setLocation(getLocation(currentWeather));
-	      weather.setTemperature(temperature);
-	      weather.setLastUpdate(lastUpdate);
+	      weather.setTemperature(getTemperature(currentWeather));
+	      weather.setLastUpdate(currentWeather.getLastupdate().getValue());
 	      return weather;
 	}
 	
@@ -106,5 +108,11 @@ public class WeatherMapper {
 		int id = currentWeather.getCity().getId();
 		String name = currentWeather.getCity().getName();
 		return new City(id, name);
+	}
+	
+	private static Temperature getTemperature(CurrentWeather currentWeather) {
+		double value = currentWeather.getTemperature().getValue();
+		TemperatureUnit unit = currentWeather.getTemperature().getUnit();
+		return new Temperature(value, unit);
 	}
 }
