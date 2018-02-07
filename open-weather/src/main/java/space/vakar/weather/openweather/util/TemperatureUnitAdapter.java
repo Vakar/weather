@@ -1,4 +1,4 @@
-package utils;
+package space.vakar.weather.openweather.util;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 

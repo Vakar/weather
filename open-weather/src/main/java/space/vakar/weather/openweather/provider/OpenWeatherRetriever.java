@@ -1,4 +1,4 @@
-package space.vakar.weather.openweather;
+package space.vakar.weather.openweather.provider;
 
 import java.io.IOException;
 import java.io.InputStream;

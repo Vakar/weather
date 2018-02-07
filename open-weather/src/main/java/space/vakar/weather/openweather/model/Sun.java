@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import utils.LocalDateTimeAdapter;
+import space.vakar.weather.openweather.util.LocalDateTimeAdapter;
 
 import java.util.Objects;
 

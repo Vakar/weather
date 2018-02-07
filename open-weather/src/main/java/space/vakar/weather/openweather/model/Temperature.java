@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import space.vakar.weather.domain.model.temperature.TemperatureUnit;
-import utils.TemperatureUnitAdapter;
+import space.vakar.weather.openweather.util.TemperatureUnitAdapter;
 
 public class Temperature {
 	
