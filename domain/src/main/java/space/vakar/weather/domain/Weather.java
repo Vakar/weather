@@ -1,9 +1,10 @@
 package space.vakar.weather.domain;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Weather {
+public class Weather  implements Serializable{
 
 	private int id;
 	private Wind wind;

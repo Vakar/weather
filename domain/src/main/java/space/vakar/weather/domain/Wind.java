@@ -1,8 +1,9 @@
 package space.vakar.weather.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Wind {
+public class Wind  implements Serializable{
 
 	private int id;
 	private WindSpeed speed;

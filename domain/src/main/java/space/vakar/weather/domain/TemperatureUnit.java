@@ -1,6 +1,6 @@
 package space.vakar.weather.domain;
 
-public enum TemperatureUnit {	
+public enum TemperatureUnit{	
 	KELVIN, 
 	CELSIUS, 
 	FAHRENHEIT, 

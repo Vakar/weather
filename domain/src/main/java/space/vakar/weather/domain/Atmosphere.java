@@ -1,9 +1,10 @@
 package space.vakar.weather.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Atmosphere {
-
+public class Atmosphere implements Serializable{
+	
 	private int id;
 	private Humidity humidity;
 	private Pressure pressure;

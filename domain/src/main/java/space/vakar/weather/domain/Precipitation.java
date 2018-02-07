@@ -1,8 +1,9 @@
 package space.vakar.weather.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Precipitation {
+public class Precipitation  implements Serializable{
 
 	private int id;
 	private double value;

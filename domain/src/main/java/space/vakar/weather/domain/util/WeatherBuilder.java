@@ -1,6 +1,8 @@
-package space.vakar.weather.domain;
+package space.vakar.weather.domain.util;
 
-public class WeatherBuilder {
+import java.io.Serializable;
+
+public class WeatherBuilder{
 	
 	private int cityId;
 	private String cityName;
