@@ -8,7 +8,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
-import space.vakar.weather.domain.api.WeatherRetriever;
+import space.vakar.weather.openweather.api.WeatherRetriever;
+import java.util.Objects;
 
 public class OpenWeatherRetriever implements WeatherRetriever {
 
@@ -46,43 +47,26 @@ public class OpenWeatherRetriever implements WeatherRetriever {
 	public void setWeatherEndPoint(String weatherEndPoint) {
 		this.weatherEndPoint = weatherEndPoint;
 	}
-
-
+	
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((weatherEndPoint == null) ? 0 : weatherEndPoint.hashCode());
-		result = prime * result + ((serviceUrl == null) ? 0 : serviceUrl.hashCode());
-		return result;
+		return Objects.hash(serviceUrl, weatherEndPoint);
 	}
 
+
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		OpenWeatherRetriever other = (OpenWeatherRetriever) obj;
-		if (weatherEndPoint == null) {
-			if (other.weatherEndPoint != null)
-				return false;
-		} else if (!weatherEndPoint.equals(other.weatherEndPoint))
-			return false;
-		if (serviceUrl == null) {
-			if (other.serviceUrl != null)
-				return false;
-		} else if (!serviceUrl.equals(other.serviceUrl))
-			return false;
-		return true;
+	public boolean equals(Object object) {
+		if (object instanceof OpenWeatherRetriever) {
+			OpenWeatherRetriever that = (OpenWeatherRetriever) object;
+			return Objects.equals(this.serviceUrl, that.serviceUrl)
+					&& Objects.equals(this.weatherEndPoint, that.weatherEndPoint);
+		}
+		return false;
 	}
 
 	@Override
 	public String toString() {
-		return "OpenWeatherRetriever [openWeatherURL=" + serviceUrl + ", currentWeatherEndPoint="
-				+ weatherEndPoint + "]";
+		String format = "OpenWeatherRetriever [serviceUrl=%s, weatherEndPoint=%s]";
+		return String.format(format, serviceUrl, weatherEndPoint);
 	}
-
 }
