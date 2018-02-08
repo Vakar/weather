@@ -42,6 +42,7 @@ public abstract class AbstractJavaBeanTest<T> {
 	public void equalsAndHashCodeShouldFollowContract() {
 		EqualsVerifier.forClass(getBeanInstance().getClass())
 				.suppress(Warning.STRICT_INHERITANCE, Warning.NONFINAL_FIELDS)
+				.withRedefinedSuperclass()
 				.verify();
 	}
 
