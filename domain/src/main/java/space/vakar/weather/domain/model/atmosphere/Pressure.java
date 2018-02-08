@@ -1,32 +1,21 @@
 package space.vakar.weather.domain.model.atmosphere;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class Pressure  implements Serializable{
+import space.vakar.weather.domain.model.DomainObject;
 
-	private int id;
+public class Pressure  extends DomainObject{
+
 	private double value;
 	private String unit;
 
 	public Pressure() {
-		setId(0);
-		setValue(0);
 		setUnit("");
 	}
 
 	public Pressure(double value, String unit) {
-		this();
 		setValue(value);
 		setUnit(unit);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public double getValue() {

@@ -1,35 +1,24 @@
 package space.vakar.weather.domain.model.wind;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class WindDirection  implements Serializable{
+import space.vakar.weather.domain.model.DomainObject;
 
-	private int id;
+public class WindDirection  extends DomainObject{
+
 	private double value;
 	private String code;
 	private String name;
 
 	public WindDirection() {
-		setId(0);
-		setValue(0);
 		setCode("");
 		setName("");
 	}
 	
 	public WindDirection(double value, String code, String name) {
-		this();
 		setValue(value);
 		setCode(code);
 		setName(name);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public double getValue() {

@@ -1,32 +1,21 @@
 package space.vakar.weather.domain.model.temperature;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class Temperature  implements Serializable{
+import space.vakar.weather.domain.model.DomainObject;
 
-	private int id;
+public class Temperature  extends DomainObject{
+
 	private double value;
 	private TemperatureUnit unit;
 
 	public Temperature() {
-		setId(0);
-		setValue(0);
 		setUnit(TemperatureUnit.KELVIN);
 	}
 
 	public Temperature(double value, TemperatureUnit unit) {
-		this();
 		setValue(value);
 		setUnit(unit);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public double getValue() {

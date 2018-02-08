@@ -1,30 +1,21 @@
 package space.vakar.weather.domain.model.atmosphere;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class Clouds implements Serializable{
+import space.vakar.weather.domain.model.DomainObject;
 
-	private int id;
+public class Clouds extends DomainObject{
+
 	private double value;
 	private String name;
 
 	public Clouds() {
-		setValue(0);
 		setName("");
 	}
 
 	public Clouds(double value, String name) {
 		setValue(value);
 		setName(name);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public double getValue() {

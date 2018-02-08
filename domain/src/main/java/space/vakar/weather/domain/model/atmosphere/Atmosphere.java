@@ -1,11 +1,11 @@
 package space.vakar.weather.domain.model.atmosphere;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class Atmosphere implements Serializable{
+import space.vakar.weather.domain.model.DomainObject;
+
+public class Atmosphere extends DomainObject{
 	
-	private int id;
 	private Humidity humidity;
 	private Pressure pressure;
 	private double visibility;
@@ -13,30 +13,19 @@ public class Atmosphere implements Serializable{
 	private Clouds clouds;
 
 	public Atmosphere() {
-		setId(0);
 		setHumidity(new Humidity());
 		setPressure(new Pressure());
-		setVisibility(0);
 		setPrecipitation(new Precipitation());
 		setClouds(new Clouds());
 	}
 
 	public Atmosphere(Humidity humidity, Pressure pressure, 
 			double visibility, Precipitation precipitation, Clouds clouds) {
-		this();
 		setHumidity(humidity);
 		setPressure(pressure);
 		setVisibility(visibility);
 		setPrecipitation(precipitation);
 		setClouds(clouds);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public Humidity getHumidity() {

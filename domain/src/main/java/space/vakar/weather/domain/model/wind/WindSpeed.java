@@ -1,32 +1,21 @@
 package space.vakar.weather.domain.model.wind;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class WindSpeed  implements Serializable{
+import space.vakar.weather.domain.model.DomainObject;
 
-	private int id;
+public class WindSpeed  extends DomainObject{
+
 	private double value;
 	private String name;
 
 	public WindSpeed() {
-		setId(0);
-		setValue(0);
 		setName("");
 	}
 
 	public WindSpeed(double value, String name) {
-		this();
 		setValue(value);
 		setName(name);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public double getValue() {

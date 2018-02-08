@@ -1,32 +1,21 @@
 package space.vakar.weather.domain.model.atmosphere;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class Humidity  implements Serializable{
+import space.vakar.weather.domain.model.DomainObject;
 
-	private int id;
+public class Humidity  extends DomainObject{
+	
 	private double value;
 	private String unit;
 
 	public Humidity() {
-		setId(0);
-		setValue(0);
 		setUnit("");
 	}
 
 	public Humidity(double value, String unit) {
-		this();
 		setValue(value);
 		setUnit(unit);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public double getValue() {

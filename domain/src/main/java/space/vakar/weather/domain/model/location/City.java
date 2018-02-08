@@ -1,34 +1,24 @@
 package space.vakar.weather.domain.model.location;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class City  implements Serializable{
+import space.vakar.weather.domain.model.DomainObject;
 
-	private int id;
+public class City  extends DomainObject{
+
 	private String name;
 
 	public City() {
-		setId(0);
 		setName("");
 	}
 
 	public City(String name) {
-		this();
 		setName(name);
 	}
 
 	public City(int id, String name) {
 		setId(id);
 		setName(name);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {

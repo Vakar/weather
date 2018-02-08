@@ -1,18 +1,17 @@
 package space.vakar.weather.domain.model.location;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class Location implements Serializable{
+import space.vakar.weather.domain.model.DomainObject;
 
-	private int id;
+public class Location extends DomainObject{
+
 	private Coordinates coordinates;
 	private Sun sun;
 	private City city;
 	private String country;
 	
 	public Location() {
-		setId(0);
 		setCoordinates(new Coordinates());
 		setSun(new Sun());
 		setCity(new City());
@@ -24,14 +23,6 @@ public class Location implements Serializable{
 		setSun(sun);
 		setCity(city);
 		setCountry(country);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public Coordinates getCoordinates() {

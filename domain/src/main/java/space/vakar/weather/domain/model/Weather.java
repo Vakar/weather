@@ -1,6 +1,5 @@
 package space.vakar.weather.domain.model;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -9,9 +8,8 @@ import space.vakar.weather.domain.model.location.Location;
 import space.vakar.weather.domain.model.temperature.Temperature;
 import space.vakar.weather.domain.model.wind.Wind;
 
-public class Weather  implements Serializable{
+public class Weather  extends DomainObject{
 
-	private int id;
 	private Wind wind;
 	private Location location;
 	private Atmosphere atmosphere;
@@ -19,7 +17,6 @@ public class Weather  implements Serializable{
 	private LocalDateTime lastUpdate;
 
 	public Weather() {
-		setId(0);
 		setWind(new Wind());
 		setAtmosphere(new Atmosphere());
 		setLocation(new Location());
@@ -29,20 +26,11 @@ public class Weather  implements Serializable{
 
 	public Weather(Wind wind, Atmosphere atmosphere, Location location, 
 			Temperature temperature, LocalDateTime lastUpdate) {
-		this();
 		setWind(wind);
 		setAtmosphere(atmosphere);
 		setLocation(location);
 		setTemperature(temperature);
 		setLastUpdate(lastUpdate);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public Wind getWind() {

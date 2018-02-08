@@ -1,22 +1,19 @@
 package space.vakar.weather.domain.model.location;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class Coordinates  implements Serializable{
+import space.vakar.weather.domain.model.DomainObject;
 
-	private int id;
+public class Coordinates  extends DomainObject{
+
 	private double longitude;
 	private double latitude;
 
 	public Coordinates() {
-		setId(0);
-		setLongitude(0);
-		setLatitude(0);
+		
 	}
 
 	public Coordinates(double longitude, double latitude) {
-		this();
 		setLongitude(longitude);
 		setLatitude(latitude);
 	}
@@ -44,8 +41,6 @@ public class Coordinates  implements Serializable{
 	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
-
-	
 
 	@Override
 	public int hashCode() {

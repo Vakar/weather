@@ -1,32 +1,21 @@
 package space.vakar.weather.domain.model.atmosphere;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class Precipitation  implements Serializable{
+import space.vakar.weather.domain.model.DomainObject;
 
-	private int id;
+public class Precipitation  extends DomainObject{
+
 	private double value;
 	private String mode;
 
 	public Precipitation() {
-		setId(id);
-		setValue(value);
 		setMode(mode);
 	}
 
 	public Precipitation(double value, String mode) {
-		super();
 		setValue(value);
 		setMode(mode);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public double getValue() {

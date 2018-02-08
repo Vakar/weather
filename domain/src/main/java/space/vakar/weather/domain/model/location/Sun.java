@@ -1,33 +1,23 @@
 package space.vakar.weather.domain.model.location;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Sun  implements Serializable{
+import space.vakar.weather.domain.model.DomainObject;
 
-	private int id;
+public class Sun  extends DomainObject{
+
 	private LocalDateTime rise;
 	private LocalDateTime set;
 
 	public Sun() {
-		setId(0);
 		setRise(LocalDateTime.MIN);
 		setSet(LocalDateTime.MIN);
 	}
 
 	public Sun(LocalDateTime rise, LocalDateTime set) {
-		this();
 		setRise(rise);
 		setSet(set);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public LocalDateTime getRise() {
