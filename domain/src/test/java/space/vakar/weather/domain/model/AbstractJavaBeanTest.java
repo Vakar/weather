@@ -67,17 +67,16 @@ public abstract class AbstractJavaBeanTest<T> {
 		beanTester.getFactoryCollection()
 		.addFactory(Precipitation.class, new PrecipitationFactory());
 		beanTester.getFactoryCollection()
-		.addFactory(Pressure.class, new PressureFactory());
-		beanTester.testBean(getBeanInstance().getClass());
-		beanTester.getFactoryCollection()
+		.addFactory(Pressure.class, new PressureFactory());		
+		beanTester.getFactoryCollection()		
 		.addFactory(Atmosphere.class, new AtmosphereFactory());
 		beanTester.getFactoryCollection()
 		.addFactory(Location.class, new LocationFactory());
 		beanTester.getFactoryCollection()
 		.addFactory(Temperature.class, new TemperatureFactory());
-		beanTester.getFactoryCollection()
-		
+		beanTester.getFactoryCollection()		
 		.addFactory(Wind.class, new WindFactory());
+		beanTester.testBean(getBeanInstance().getClass());
 	}
 
 	protected abstract T getBeanInstance();
