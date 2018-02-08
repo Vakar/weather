@@ -56,7 +56,9 @@ public class Coordinates  implements Serializable{
 	public boolean equals(Object object) {
 		if (object instanceof Coordinates) {
 			Coordinates that = (Coordinates) object;
-			return this.id == that.id && this.longitude == that.longitude && this.latitude == that.latitude;
+			return this.id == that.id 
+					&& Double.compare(this.longitude , that.longitude ) == 0
+					&& Double.compare(this.latitude , that.latitude) == 0;
 		}
 		return false;
 	}

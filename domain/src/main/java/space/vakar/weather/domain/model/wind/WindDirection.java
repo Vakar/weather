@@ -66,7 +66,9 @@ public class WindDirection  implements Serializable{
 	public boolean equals(Object object) {
 		if (object instanceof WindDirection) {
 			WindDirection that = (WindDirection) object;
-			return this.id == that.id && this.value == that.value && Objects.equals(this.code, that.code)
+			return this.id == that.id 
+					&& Double.compare(this.value, that.value) == 0  
+					&& Objects.equals(this.code, that.code)
 					&& Objects.equals(this.name, that.name);
 		}
 		return false;
@@ -76,5 +78,5 @@ public class WindDirection  implements Serializable{
 	public String toString() {
 		String format = "WindDirection [id=%s, value=%s, code=%s, name=%s]";
 		return String.format(format, id, value, code, name);
-	}	
+	}
 }

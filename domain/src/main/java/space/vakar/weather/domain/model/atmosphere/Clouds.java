@@ -1,8 +1,9 @@
 package space.vakar.weather.domain.model.atmosphere;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Clouds {
+public class Clouds implements Serializable{
 
 	private int id;
 	private double value;
@@ -52,7 +53,7 @@ public class Clouds {
 		if (object instanceof Clouds) {
 			Clouds that = (Clouds) object;
 			return this.id == that.id 
-					&& Objects.equals(this.value, that.value)
+					&& Double.compare(this.value, that.value) == 0
 					&& Objects.equals(this.name, that.name);
 		}
 		return false;

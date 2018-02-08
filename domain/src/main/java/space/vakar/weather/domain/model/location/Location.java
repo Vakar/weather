@@ -1,8 +1,9 @@
 package space.vakar.weather.domain.model.location;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Location {
+public class Location implements Serializable{
 
 	private int id;
 	private Coordinates coordinates;

@@ -92,7 +92,7 @@ public class Atmosphere implements Serializable{
 			return this.id == that.id
 					&& Objects.equals(this.humidity, that.humidity)
 					&& Objects.equals(this.pressure, that.pressure)
-					&& this.visibility == that.visibility
+					&& Double.compare(this.visibility , that.visibility) == 0 
 					&& Objects.equals(this.precipitation, that.precipitation)
 					&& Objects.equals(this.clouds, that.clouds);
 		}

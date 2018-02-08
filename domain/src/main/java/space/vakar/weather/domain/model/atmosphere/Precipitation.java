@@ -54,7 +54,9 @@ public class Precipitation  implements Serializable{
 	public boolean equals(Object object) {
 		if (object instanceof Precipitation) {
 			Precipitation that = (Precipitation) object;
-			return this.id == that.id && this.value == that.value && Objects.equals(this.mode, that.mode);
+			return this.id == that.id 
+					&& Double.compare(this.value , that.value ) == 0
+					&& Objects.equals(this.mode, that.mode);
 		}
 		return false;
 	}

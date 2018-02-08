@@ -54,7 +54,9 @@ public class Pressure  implements Serializable{
 	public boolean equals(Object object) {
 		if (object instanceof Pressure) {
 			Pressure that = (Pressure) object;
-			return this.id == that.id && this.value == that.value && Objects.equals(this.unit, that.unit);
+			return this.id == that.id 
+					&& Double.compare(this.value , that.value) == 0 
+					&& Objects.equals(this.unit, that.unit);
 		}
 		return false;
 	}
@@ -64,6 +66,4 @@ public class Pressure  implements Serializable{
 		String format = "Pressure [id=%s, value=%s, unit=%s]";
 		return String.format(format, id, value, unit);
 	}
-
-	
 }

@@ -54,7 +54,9 @@ public class WindSpeed  implements Serializable{
 	public boolean equals(Object object) {
 		if (object instanceof WindSpeed) {
 			WindSpeed that = (WindSpeed) object;
-			return this.id == that.id && this.value == that.value && Objects.equals(this.name, that.name);
+			return this.id == that.id 
+					&& Double.compare(this.value, that.value) == 0 
+					&& Objects.equals(this.name, that.name);
 		}
 		return false;
 	}

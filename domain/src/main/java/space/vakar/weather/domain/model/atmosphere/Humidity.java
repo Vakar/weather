@@ -54,7 +54,9 @@ public class Humidity  implements Serializable{
 	public boolean equals(Object object) {
 		if (object instanceof Humidity) {
 			Humidity that = (Humidity) object;
-			return this.id == that.id && this.value == that.value && Objects.equals(this.unit, that.unit);
+			return this.id == that.id 
+					&& Double.compare(this.value , that.value ) == 0
+					&& Objects.equals(this.unit, that.unit);
 		}
 		return false;
 	}
