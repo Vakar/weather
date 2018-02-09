@@ -1,4 +1,4 @@
-package space.vakar.weather.domain.ipa;
+package space.vakar.weather.domain.api;
 
 public interface WeatherProviderProducer {
 	
