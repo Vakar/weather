@@ -82,7 +82,7 @@ public abstract class AbstractJavaBeanTest<T> {
 
 	protected abstract T getBeanInstance();
 
-	class LocalDateTimeFactory implements Factory {
+	class LocalDateTimeFactory implements Factory<LocalDateTime> {
 
 		@Override
 		public LocalDateTime create() {
@@ -90,35 +90,35 @@ public abstract class AbstractJavaBeanTest<T> {
 		}
 	}
 	
-	class WindSpeedFactory implements Factory{
+	class WindSpeedFactory implements Factory<WindSpeed>{
 		@Override
 		public WindSpeed create() {
 			return new WindSpeed(20, "wind");
 		}
 	}
 	
-	class WindDirectionFactory implements Factory{
+	class WindDirectionFactory implements Factory<WindDirection>{
 		@Override
 		public WindDirection create() {
 			return new WindDirection(290, "N", "North");
 		}
 	}
 	
-	class CityFactory implements Factory{
+	class CityFactory implements Factory<City>{
 		@Override
 		public City create() {
 			return new City(1, "New York");
 		}
 	}
 	
-	class CoordinatesFactory implements Factory{
+	class CoordinatesFactory implements Factory<Coordinates>{
 		@Override
 		public Coordinates create() {
 			return new Coordinates(-45.7, 58.7);
 		}
 	}
 	
-	class SunFactory implements Factory{
+	class SunFactory implements Factory<Sun>{
 		@Override
 		public Sun create() {
 			LocalDateTime rise = LocalDateTime.parse("2018-02-08T11:31:48");
@@ -127,53 +127,53 @@ public abstract class AbstractJavaBeanTest<T> {
 		}
 	}
 	
-	class CloudsFactory implements Factory{
+	class CloudsFactory implements Factory<Clouds>{
 		@Override
 		public Clouds create() {
 			return new Clouds(90, "overcast clouds");
 		}
 	}
 	
-	class HumidityFactory implements Factory{
+	class HumidityFactory implements Factory<Humidity>{
 		@Override
 		public Humidity create() {
 			return new Humidity(85, "%");
 		}
 	}
 	
-	class PrecipitationFactory implements Factory{
+	class PrecipitationFactory implements Factory<Precipitation>{
 		@Override
 		public Precipitation create() {
 			return new Precipitation(12.3, "snow");
 		}
 	}
 	
-	class PressureFactory implements Factory{
+	class PressureFactory implements Factory<Pressure>{
 		@Override
 		public Pressure create() {
 			return new Pressure(1010, "hPa");
 		}
 	}
 	
-	class AtmosphereFactory implements Factory{
+	class AtmosphereFactory implements Factory<Atmosphere>{
 		@Override
 		public Atmosphere create() {
 			return new Atmosphere();
 		}
 	}
-	class LocationFactory implements Factory{
+	class LocationFactory implements Factory<Location>{
 		@Override
 		public Location create() {
 			return new Location();
 		}
 	}
-	class TemperatureFactory implements Factory{
+	class TemperatureFactory implements Factory<Temperature>{
 		@Override
 		public Temperature create() {
 			return new Temperature(200, TemperatureUnit.KELVIN);
 		}
 	}
-	class WindFactory implements Factory{
+	class WindFactory implements Factory<Wind>{
 		@Override
 		public Wind create() {
 			return new Wind();
