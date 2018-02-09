@@ -1,4 +1,4 @@
-package space.vakar.weather.openweather.api;
+package space.vakar.weather.domain.api;
 
 import space.vakar.weather.domain.model.Weather;
 
