@@ -21,7 +21,7 @@ import space.vakar.weather.provider.openweather.model.WindSpeed;
 
 public class CurrentWeatherPopulator {
 
-	public static void populate(CurrentWeather weather) {
+	public static void populateData(CurrentWeather weather) {
 		weather.setCity(getCity());
 		weather.setTemperature(new Temperature(261.15, 261.15, 261.15, TemperatureUnit.KELVIN));
 		weather.setHumidity(new Humidity(85, "%"));

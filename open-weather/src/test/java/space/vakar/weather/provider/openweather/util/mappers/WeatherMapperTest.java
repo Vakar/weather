@@ -17,7 +17,7 @@ public class WeatherMapperTest {
 		Weather expectedWeather = new Weather();
 		WeatherPopulator.populate(expectedWeather);
 		CurrentWeather currentWeather = new CurrentWeather();
-		CurrentWeatherPopulator.populate(currentWeather);
+		CurrentWeatherPopulator.populateData(currentWeather);
 		Weather weather = WeatherMapper.from(currentWeather);
 		assertEquals(expectedWeather, weather);
 	}
