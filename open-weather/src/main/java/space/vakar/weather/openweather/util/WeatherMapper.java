@@ -19,7 +19,6 @@ import space.vakar.weather.domain.model.wind.WindDirection;
 import space.vakar.weather.domain.model.wind.WindSpeed;
 import space.vakar.weather.openweather.model.CurrentWeather;
 
-
 public class WeatherMapper {
 	
 	public static Weather from(CurrentWeather currentWeather) {
