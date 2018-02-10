@@ -14,7 +14,7 @@ import org.junit.Test;
 import space.vakar.weather.provider.openweather.Retriever;
 import space.vakar.weather.provider.openweather.testutils.WeatherRequestHandler;
 
-public class OpenWeatherRetrieverTest {
+public class RetrieverTest {
 
 	private Retriever weatherRetriever = new Retriever();
 	private LocalTestServer server = new LocalTestServer(null, null);
@@ -35,7 +35,7 @@ public class OpenWeatherRetrieverTest {
 	public void shouldReturnInputStream() throws IOException {		
 		ClassLoader loader = getClass().getClassLoader();
 		InputStream expected = loader.getResource("weather.xml").openStream();
-		InputStream weather = weatherRetriever.getWeatherXML("Moncton");
+		InputStream weather = weatherRetriever.requestCurrentWeatherXML("Moncton");
 		assertTrue(IOUtils.contentEquals(expected, weather));
 	}
 

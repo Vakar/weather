@@ -21,6 +21,7 @@ import space.vakar.weather.provider.openweather.model.CurrentWeather;
 
 public class WeatherMapper {
 
+	// TODO - bad method name
 	public static Weather from(CurrentWeather currentWeather) {
 		Weather weather = new Weather();
 		weather.setWind(getWind(currentWeather));

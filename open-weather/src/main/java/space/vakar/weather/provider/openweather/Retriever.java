@@ -2,24 +2,20 @@ package space.vakar.weather.provider.openweather;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
-import space.vakar.weather.provider.openweather.api.WeatherRetriever;
-
-import java.util.Objects;
-
-class Retriever implements WeatherRetriever {
+class Retriever  {
 
 	private String serviceUrl = "http://api.openweathermap.org";
 	private String weatherEndPoint = "/data/2.5/weather";
 	private static final String APPID = "eede123ce615f9cc56910f9a0e024e3a";
 
-	@Override
-	public InputStream getWeatherXML(String cityId) throws IOException {
+	public InputStream requestCurrentWeatherXML(String cityId) throws IOException {
 		String url = serviceUrl + weatherEndPoint
 					 .concat("?q=" + cityId)
 					 .concat("&APPID=" + APPID)

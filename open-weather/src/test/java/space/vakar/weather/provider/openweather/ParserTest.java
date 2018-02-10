@@ -9,16 +9,26 @@ import javax.xml.bind.JAXBException;
 
 import org.junit.Before;
 import org.junit.Test;
-
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import static org.mockito.Mockito.*;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
 import space.vakar.weather.provider.openweather.testutils.CurrentWeatherPopulator;
 
-public class OpenWeatherParserTest {
+@RunWith(MockitoJUnitRunner.class)
+public class ParserTest {
+	
+	@Mock
+	Retriever retriverMock;
+	
+	@InjectMocks
+	Parser parser;
 	
 	CurrentWeather expectedWeather;
-	
 	InputStream inputStream;
-	
+
 	@Before
 	public void setUp() throws IOException {
 		expectedWeather = new CurrentWeather();
@@ -26,9 +36,10 @@ public class OpenWeatherParserTest {
 		ClassLoader loader = getClass().getClassLoader();
 		inputStream = loader.getResource("weather.xml").openStream();
 	}
-	
+
 	@Test
-	public void shouldReturnCorrectObject() throws JAXBException {
-		assertEquals(expectedWeather, Parser.parse(inputStream));		
+	public void shouldReturnCorrectObject() throws JAXBException, IOException {		
+		when(retriverMock.requestCurrentWeatherXML("Moncton")).thenReturn(inputStream);		
+		assertEquals(expectedWeather, parser.currentWeather("Moncton"));
 	}
 }
