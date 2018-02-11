@@ -13,6 +13,7 @@
 	<modules>
 		<module>domain</module>
 		<module>open-weather</module>
+		<module>weather-service</module>
 	</modules>
 
 	<properties>
