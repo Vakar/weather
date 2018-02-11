@@ -10,7 +10,7 @@ public class Temperature  extends DomainObject{
 	private TemperatureUnit unit;
 
 	public Temperature() {
-		setUnit(TemperatureUnit.KELVIN);
+
 	}
 
 	public Temperature(double value, TemperatureUnit unit) {

@@ -10,7 +10,7 @@ public class Precipitation  extends DomainObject{
 	private String mode;
 
 	public Precipitation() {
-		setMode(mode);
+
 	}
 
 	public Precipitation(double value, String mode) {

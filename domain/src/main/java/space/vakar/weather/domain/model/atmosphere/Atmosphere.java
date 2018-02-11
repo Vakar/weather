@@ -13,10 +13,7 @@ public class Atmosphere extends DomainObject{
 	private Clouds clouds;
 
 	public Atmosphere() {
-		setHumidity(new Humidity());
-		setPressure(new Pressure());
-		setPrecipitation(new Precipitation());
-		setClouds(new Clouds());
+
 	}
 
 	public Atmosphere(Humidity humidity, Pressure pressure, 

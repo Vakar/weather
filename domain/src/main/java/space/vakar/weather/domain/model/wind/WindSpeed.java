@@ -10,7 +10,7 @@ public class WindSpeed  extends DomainObject{
 	private String name;
 
 	public WindSpeed() {
-		setName("");
+
 	}
 
 	public WindSpeed(double value, String name) {

@@ -10,7 +10,7 @@ public class Pressure  extends DomainObject{
 	private String unit;
 
 	public Pressure() {
-		setUnit("");
+
 	}
 
 	public Pressure(double value, String unit) {

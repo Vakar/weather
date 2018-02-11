@@ -17,11 +17,7 @@ public class Weather  extends DomainObject{
 	private LocalDateTime lastUpdate;
 
 	public Weather() {
-		setWind(new Wind());
-		setAtmosphere(new Atmosphere());
-		setLocation(new Location());
-		setTemperature(new Temperature());
-		setLastUpdate(LocalDateTime.MIN);
+
 	}
 
 	public Weather(Wind wind, Atmosphere atmosphere, Location location, 

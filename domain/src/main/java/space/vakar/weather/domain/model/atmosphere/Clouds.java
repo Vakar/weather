@@ -10,7 +10,7 @@ public class Clouds extends DomainObject{
 	private String name;
 
 	public Clouds() {
-		setName("");
+
 	}
 
 	public Clouds(double value, String name) {

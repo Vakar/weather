@@ -10,7 +10,7 @@ public class Humidity  extends DomainObject{
 	private String unit;
 
 	public Humidity() {
-		setUnit("");
+
 	}
 
 	public Humidity(double value, String unit) {

@@ -10,8 +10,7 @@ public class Wind  extends DomainObject{
 	private WindDirection direction;
 
 	public Wind() {
-		setSpeed(new WindSpeed());
-		setDirection(new WindDirection());
+
 	}
 	
 	public Wind(WindSpeed speed, WindDirection direction) {

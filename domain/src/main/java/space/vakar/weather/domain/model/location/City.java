@@ -9,7 +9,7 @@ public class City  extends DomainObject{
 	private String name;
 
 	public City() {
-		setName("");
+
 	}
 
 	public City(String name) {

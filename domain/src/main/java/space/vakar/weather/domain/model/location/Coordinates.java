@@ -10,7 +10,7 @@ public class Coordinates  extends DomainObject{
 	private double latitude;
 
 	public Coordinates() {
-		
+
 	}
 
 	public Coordinates(double longitude, double latitude) {

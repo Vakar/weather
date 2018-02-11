@@ -11,8 +11,7 @@ public class Sun  extends DomainObject{
 	private LocalDateTime set;
 
 	public Sun() {
-		setRise(LocalDateTime.MIN);
-		setSet(LocalDateTime.MIN);
+
 	}
 
 	public Sun(LocalDateTime rise, LocalDateTime set) {

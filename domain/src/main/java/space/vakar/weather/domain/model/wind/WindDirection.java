@@ -11,8 +11,7 @@ public class WindDirection  extends DomainObject{
 	private String name;
 
 	public WindDirection() {
-		setCode("");
-		setName("");
+
 	}
 	
 	public WindDirection(double value, String code, String name) {

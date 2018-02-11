@@ -12,10 +12,7 @@ public class Location extends DomainObject{
 	private String country;
 	
 	public Location() {
-		setCoordinates(new Coordinates());
-		setSun(new Sun());
-		setCity(new City());
-		setCountry("");
+
 	}
 
 	public Location(Coordinates coordinates, Sun sun, City city, String country) {
