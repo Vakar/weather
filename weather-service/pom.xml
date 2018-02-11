@@ -8,13 +8,17 @@
 		<artifactId>parent</artifactId>
 		<version>0.1</version>
 	</parent>
-	
+
 	<artifactId>weather-service</artifactId>
-	<version>0.1</version>
 	<name>Service layer</name>
 	<url>http://weather.vakar.space</url>
-	
+
 	<dependencies>
+		<dependency>
+			<groupId>space.vakar.weather</groupId>
+			<artifactId>domain</artifactId>
+			<version>0.1</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
