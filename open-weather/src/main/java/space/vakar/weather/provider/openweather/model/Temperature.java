@@ -19,7 +19,7 @@ public class Temperature {
 	/** Maximum temperature at the moment of calculation. This is deviation from 'temp' that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). */
 	private double max;
 	
-	/** Unit of measurements. Possilbe valure is Celsius, Kelvin, Fahrenheit. */
+	/** Unit of measurements. Possible valure is Celsius, Kelvin, Fahrenheit. */
 	private TemperatureUnit unit;
 
 	public Temperature() {

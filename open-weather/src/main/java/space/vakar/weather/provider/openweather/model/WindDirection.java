@@ -11,7 +11,7 @@ public class WindDirection {
 	/** Wind direction, degrees  */
 	private double value;
 	
-	/** Code of the wind direction. Possilbe value is WSW, N, S etc */
+	/** Code of the wind direction. Possible value is WSW, N, S etc */
 	private String code;
 	
 	/** Full name of the wind direction. */
