@@ -14,8 +14,15 @@ public class Provider implements WeatherProvider {
 	private Parser parser = new Parser();
 
 	@Override
-	public Weather provideWeather(String city) throws JAXBException, IOException {
-		CurrentWeather currentWeather = parser.currentWeather(city);
+	public Weather provideWeather(String city) {
+		CurrentWeather currentWeather;
+		try {
+			currentWeather = parser.currentWeather(city);
+		} catch (JAXBException e) {
+			throw new OpenWeatherException("Can't parse input stream");
+		} catch (IOException e) {
+			throw new OpenWeatherException("Can't get stream from server");
+		}
 		return WeatherMapper.from(currentWeather);
 	}
 }
