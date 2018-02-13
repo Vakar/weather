@@ -2,9 +2,10 @@ package space.vakar.weather.domain.model.atmosphere;
 
 import java.util.Objects;
 
+import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
 
-public class Pressure  extends DomainObject{
+public class Pressure  extends DomainObject implements Defaultable<Pressure>{
 
 	private double value;
 	private String unit;
@@ -16,6 +17,13 @@ public class Pressure  extends DomainObject{
 	public Pressure(double value, String unit) {
 		setValue(value);
 		setUnit(unit);
+	}
+	
+	public Pressure defaultInstance() {
+		setId(0);
+		setValue(Double.NaN);
+		setUnit("default_unit");
+		return this;
 	}
 
 	public double getValue() {

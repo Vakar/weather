@@ -2,9 +2,10 @@ package space.vakar.weather.domain.model.wind;
 
 import java.util.Objects;
 
+import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
 
-public class Wind  extends DomainObject{
+public class Wind  extends DomainObject implements Defaultable<Wind>{
 	
 	private WindSpeed speed;
 	private WindDirection direction;
@@ -16,6 +17,13 @@ public class Wind  extends DomainObject{
 	public Wind(WindSpeed speed, WindDirection direction) {
 		setSpeed(speed);
 		setDirection(direction);
+	}
+	
+	public Wind defaultInstance() {
+		setId(0);
+		setSpeed(new WindSpeed().defaultInstance());
+		setDirection(new WindDirection().defaultInstance());
+		return this;
 	}
 
 	public WindSpeed getSpeed() {

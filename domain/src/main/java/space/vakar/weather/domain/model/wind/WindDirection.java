@@ -2,9 +2,10 @@ package space.vakar.weather.domain.model.wind;
 
 import java.util.Objects;
 
+import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
 
-public class WindDirection  extends DomainObject{
+public class WindDirection  extends DomainObject implements Defaultable<WindDirection>{
 
 	private double value;
 	private String code;
@@ -18,6 +19,14 @@ public class WindDirection  extends DomainObject{
 		setValue(value);
 		setCode(code);
 		setName(name);
+	}
+	
+	public WindDirection defaultInstance() {
+		setId(0);
+		setValue(Double.NaN);
+		setCode("default_code");
+		setName("default_name");
+		return this;
 	}
 
 	public double getValue() {

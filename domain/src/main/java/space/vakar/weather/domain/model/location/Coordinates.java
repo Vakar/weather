@@ -2,9 +2,10 @@ package space.vakar.weather.domain.model.location;
 
 import java.util.Objects;
 
+import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
 
-public class Coordinates  extends DomainObject{
+public class Coordinates  extends DomainObject implements Defaultable<Coordinates>{
 
 	private double longitude;
 	private double latitude;
@@ -16,6 +17,13 @@ public class Coordinates  extends DomainObject{
 	public Coordinates(double longitude, double latitude) {
 		setLongitude(longitude);
 		setLatitude(latitude);
+	}
+	
+	public Coordinates defaultInstance() {
+		setId(0);
+		setLongitude(Double.NaN);
+		setLatitude(Double.NaN);
+		return this;
 	}
 
 	public int getId() {

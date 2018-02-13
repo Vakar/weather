@@ -2,9 +2,10 @@ package space.vakar.weather.domain.model.location;
 
 import java.util.Objects;
 
+import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
 
-public class City  extends DomainObject{
+public class City  extends DomainObject implements Defaultable<City>{
 
 	private String name;
 
@@ -19,6 +20,12 @@ public class City  extends DomainObject{
 	public City(int id, String name) {
 		setId(id);
 		setName(name);
+	}
+	
+	public City defaultInstance() {
+		setId(0);
+		setName("default_name");
+		return this;
 	}
 
 	public String getName() {

@@ -2,9 +2,10 @@ package space.vakar.weather.domain.model.temperature;
 
 import java.util.Objects;
 
+import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
 
-public class Temperature  extends DomainObject{
+public class Temperature  extends DomainObject implements Defaultable<Temperature>{
 
 	private double value;
 	private TemperatureUnit unit;
@@ -16,6 +17,13 @@ public class Temperature  extends DomainObject{
 	public Temperature(double value, TemperatureUnit unit) {
 		setValue(value);
 		setUnit(unit);
+	}
+	
+	public Temperature defaultInstance() {
+		setId(0);
+		setValue(Double.NaN);
+		setUnit(TemperatureUnit.UNIT_UNKNOWN);
+		return this;
 	}
 
 	public double getValue() {

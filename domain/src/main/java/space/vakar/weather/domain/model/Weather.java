@@ -3,12 +3,13 @@ package space.vakar.weather.domain.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.atmosphere.Atmosphere;
 import space.vakar.weather.domain.model.location.Location;
 import space.vakar.weather.domain.model.temperature.Temperature;
 import space.vakar.weather.domain.model.wind.Wind;
 
-public class Weather  extends DomainObject{
+public class Weather  extends DomainObject implements Defaultable<Weather>{
 
 	private Wind wind;
 	private Location location;
@@ -27,6 +28,16 @@ public class Weather  extends DomainObject{
 		setLocation(location);
 		setTemperature(temperature);
 		setLastUpdate(lastUpdate);
+	}
+	
+	public Weather defaultInstance() {
+		setId(0);
+		setWind(new Wind().defaultInstance());
+		setAtmosphere(new Atmosphere().defaultInstance());
+		setLocation(new Location().defaultInstance());
+		setTemperature(new Temperature().defaultInstance());
+		setLastUpdate(LocalDateTime.MIN);
+		return this;
 	}
 
 	public Wind getWind() {

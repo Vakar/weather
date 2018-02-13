@@ -2,9 +2,10 @@ package space.vakar.weather.domain.model.atmosphere;
 
 import java.util.Objects;
 
+import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
 
-public class Precipitation  extends DomainObject{
+public class Precipitation  extends DomainObject implements Defaultable<Precipitation>{
 
 	private double value;
 	private String mode;
@@ -16,6 +17,13 @@ public class Precipitation  extends DomainObject{
 	public Precipitation(double value, String mode) {
 		setValue(value);
 		setMode(mode);
+	}
+	
+	public Precipitation defaultInstance() {
+		setId(0);
+		setValue(Double.NaN);
+		setMode("default_mode");
+		return this;
 	}
 
 	public double getValue() {

@@ -2,9 +2,10 @@ package space.vakar.weather.domain.model.atmosphere;
 
 import java.util.Objects;
 
+import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
 
-public class Clouds extends DomainObject{
+public class Clouds extends DomainObject implements Defaultable<Clouds>{
 
 	private double value;
 	private String name;
@@ -16,6 +17,13 @@ public class Clouds extends DomainObject{
 	public Clouds(double value, String name) {
 		setValue(value);
 		setName(name);
+	}
+	
+	public Clouds defaultInstance() {
+		setId(0);
+		setValue(Double.NaN);
+		setName("default_name");
+		return this;
 	}
 
 	public double getValue() {

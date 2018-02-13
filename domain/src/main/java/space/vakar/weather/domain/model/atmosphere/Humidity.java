@@ -2,9 +2,10 @@ package space.vakar.weather.domain.model.atmosphere;
 
 import java.util.Objects;
 
+import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
 
-public class Humidity  extends DomainObject{
+public class Humidity  extends DomainObject implements Defaultable<Humidity>{
 	
 	private double value;
 	private String unit;
@@ -16,6 +17,13 @@ public class Humidity  extends DomainObject{
 	public Humidity(double value, String unit) {
 		setValue(value);
 		setUnit(unit);
+	}
+	
+	public Humidity defaultInstance() {
+		setId(0);
+		setValue(Double.NaN);
+		setUnit("default_unit");
+		return this;
 	}
 
 	public double getValue() {
