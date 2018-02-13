@@ -18,6 +18,6 @@ public interface WeatherParser {
 	 * @throws JAXBException if an error was encountered while creating the <tt>JAXBContext</tt>
 	 * @throws IOException in case of a connection problem or the connection was aborted
 	 */
-	public CurrentWeather currentWeather(int cityId) throws JAXBException, IOException;
+	public CurrentWeather weather(int cityId) throws JAXBException, IOException;
 
 }

@@ -24,7 +24,7 @@ public class AgentImpl implements Agent {
 		return container.pull(cityName);
 	}
 	
-	private Weather refresh(String cityName) {
+	private Weather refresh(int cityName) {
 		Weather weather = provider.provideWeather(cityName);
 		container.push(weather); 
 		return weather;

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="city" type="city"/>
+
+  <xs:element name="clouds" type="clouds"/>
+
+  <xs:element name="coordinates" type="coordinates"/>
+
+  <xs:element name="current" type="currentWeather"/>
+
+  <xs:element name="direction" type="windDirection"/>
+
+  <xs:element name="humidity" type="humidity"/>
+
+  <xs:element name="lastupdate" type="lastUpdate"/>
+
+  <xs:element name="precipitation" type="precipitation"/>
+
+  <xs:element name="pressure" type="pressure"/>
+
+  <xs:element name="speed" type="windSpeed"/>
+
+  <xs:element name="sun" type="sun"/>
+
+  <xs:element name="visibility" type="visibility"/>
+
+  <xs:element name="weather" type="weather"/>
+
+  <xs:element name="wind" type="wind"/>
+
+  <xs:complexType name="currentWeather">
+    <xs:sequence>
+      <xs:element ref="city" minOccurs="0"/>
+      <xs:element ref="clouds" minOccurs="0"/>
+      <xs:element ref="humidity" minOccurs="0"/>
+      <xs:element ref="lastupdate" minOccurs="0"/>
+      <xs:element ref="precipitation" minOccurs="0"/>
+      <xs:element ref="pressure" minOccurs="0"/>
+      <xs:element name="temperature" type="temperature" minOccurs="0"/>
+      <xs:element ref="visibility" minOccurs="0"/>
+      <xs:element ref="weather" minOccurs="0"/>
+      <xs:element ref="wind" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="city">
+    <xs:sequence>
+      <xs:element name="coord" type="coordinates" minOccurs="0"/>
+      <xs:element name="country" type="xs:string" minOccurs="0"/>
+      <xs:element ref="sun" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:int" use="required"/>
+    <xs:attribute name="name" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="coordinates">
+    <xs:sequence/>
+    <xs:attribute name="lat" type="xs:double" use="required"/>
+    <xs:attribute name="lon" type="xs:double" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="sun">
+    <xs:sequence/>
+    <xs:attribute name="rise" type="xs:string"/>
+    <xs:attribute name="set" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="clouds">
+    <xs:sequence/>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="value" type="xs:double" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="humidity">
+    <xs:sequence/>
+    <xs:attribute name="unit" type="xs:string"/>
+    <xs:attribute name="value" type="xs:double" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="lastUpdate">
+    <xs:sequence/>
+    <xs:attribute name="value" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="precipitation">
+    <xs:sequence/>
+    <xs:attribute name="mode" type="xs:string"/>
+    <xs:attribute name="value" type="xs:double" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="pressure">
+    <xs:sequence/>
+    <xs:attribute name="unit" type="xs:string"/>
+    <xs:attribute name="value" type="xs:double" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="temperature">
+    <xs:sequence/>
+    <xs:attribute name="max" type="xs:double" use="required"/>
+    <xs:attribute name="min" type="xs:double" use="required"/>
+    <xs:attribute name="unit" type="xs:string"/>
+    <xs:attribute name="value" type="xs:double" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="visibility">
+    <xs:sequence/>
+    <xs:attribute name="value" type="xs:double" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="weather">
+    <xs:sequence/>
+    <xs:attribute name="icon" type="xs:string"/>
+    <xs:attribute name="number" type="xs:int" use="required"/>
+    <xs:attribute name="value" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="wind">
+    <xs:sequence>
+      <xs:element ref="direction" minOccurs="0"/>
+      <xs:element ref="speed" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="windDirection">
+    <xs:sequence/>
+    <xs:attribute name="code" type="xs:string"/>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="value" type="xs:double" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="windSpeed">
+    <xs:sequence/>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="value" type="xs:double" use="required"/>
+  </xs:complexType>
+</xs:schema>
+

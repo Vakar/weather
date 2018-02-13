@@ -17,7 +17,7 @@ public class Provider implements WeatherProvider {
 	public Weather provideWeather(int city) 
 			throws JAXBException, IOException, OpenWeatherException {
 		CurrentWeather currentWeather;
-		currentWeather = parser.currentWeather(city);
+		currentWeather = parser.weather(city);
 		return GetWeather.from(currentWeather);
 	}
 }

@@ -15,7 +15,7 @@ class Parser implements WeatherParser{
 	
 	private WeatherRetriever retriever = new Retriever();
 
-	public CurrentWeather currentWeather(int cityId) 
+	public CurrentWeather weather(int cityId) 
 			throws JAXBException, IOException {
 		InputStream in = retriever.weatherXML(cityId);	
 		Unmarshaller unmarshaller = createUnmarshaller(CurrentWeather.class);

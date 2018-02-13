@@ -39,7 +39,7 @@ public class ProviderTest {
 
 	@Test
 	public void test() throws Exception {
-		when(parserMock.currentWeather(6076211)).thenReturn(currentWeather);	
+		when(parserMock.weather(6076211)).thenReturn(currentWeather);	
 		Weather weather = provider.provideWeather(6076211);
 		assertEquals(expectedWeather, weather);
 	}
