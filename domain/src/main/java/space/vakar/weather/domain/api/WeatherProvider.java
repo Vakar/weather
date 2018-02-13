@@ -4,6 +4,6 @@ import space.vakar.weather.domain.model.Weather;
 
 public interface WeatherProvider {
 	
-	public Weather provideWeather(String city);
+	public Weather provideWeather(int city) throws Exception;
 
 }

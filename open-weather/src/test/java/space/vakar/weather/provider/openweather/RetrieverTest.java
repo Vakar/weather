@@ -2,7 +2,6 @@ package space.vakar.weather.provider.openweather;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +19,9 @@ public class RetrieverTest {
 
 	private Retriever weatherRetriever;
 	private static LocalTestServer server;
+	
+	private static final int VALID_CITY_ID = 1;
+	private static final int NOT_VALID_CITY_ID = -1;
 	
 	@Before
 	public void setUp() {
@@ -41,33 +43,35 @@ public class RetrieverTest {
 	}
 
 	@Test
-	public void shouldReturnInputStream_WhenAllRequestCorrect() throws IOException {
+	public void shouldReturnInputStream_WhenAllUrlCorrect() throws IOException, OpenWeatherException {
 		InputStream expected = streamFromFile("weather.xml");	
 		weatherRetriever.setAppId("valid_app_id");
-		InputStream weather = weatherRetriever.requestCurrentWeatherXML("valid_city_name");
+		InputStream weather = weatherRetriever.weatherXML(VALID_CITY_ID);
 		assertTrue(IOUtils.contentEquals(expected, weather));
 	}
 
 	@Test
 	public void shouldReturnOpenWeatherExceptionWith404ErrorMessage_WhenCityIdNotValid() throws IOException {
-		weatherRetriever.setAppId("valid_app_id");		
+		String message = null;			
 		try {
-			weatherRetriever.requestCurrentWeatherXML("not_valid_city_name");
+			weatherRetriever.setAppId("valid_app_id");	
+			weatherRetriever.weatherXML(NOT_VALID_CITY_ID);
 		} catch (OpenWeatherException e) {
-			assertEquals("HTTP/1.1 404 Not Found", e.getMessage());
-//			fail("OpenWeatherException wasn't throw!");
+			message = e.getMessage();
 		}
-		
+		assertEquals("HTTP/1.1 404 Not Found", message);
 	}
 
+	@Test
 	public void shouldReturnOpenWeatherExceptionWith401ErrorMessage_WhenAppIdNotValid() throws IOException {
-		weatherRetriever.setAppId("not_valid_app_id");		
+		String message = null;				
 		try {
-			weatherRetriever.requestCurrentWeatherXML("valid_city_name");
+			weatherRetriever.setAppId("not_valid_app_id");
+			weatherRetriever.weatherXML(VALID_CITY_ID);
 		} catch (OpenWeatherException e) {
-			assertEquals("HTTP/1.1 404 Not Found", e.getMessage());
+			message = e.getMessage();
 		}
-		fail("Not yet implemented");
+		assertEquals("HTTP/1.1 401 Unauthorized", message);
 	}
 	
 	private InputStream streamFromFile(String filePath) {

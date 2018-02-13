@@ -10,19 +10,14 @@ import space.vakar.weather.provider.openweather.model.CurrentWeather;
 import space.vakar.weather.provider.openweather.util.mappers.GetWeather;
 
 public class Provider implements WeatherProvider {
-	
+
 	private Parser parser = new Parser();
 
 	@Override
-	public Weather provideWeather(String city) {
+	public Weather provideWeather(int city) 
+			throws JAXBException, IOException, OpenWeatherException {
 		CurrentWeather currentWeather;
-		try {
-			currentWeather = parser.currentWeather(city);
-		} catch (JAXBException e) {
-			throw new OpenWeatherException("Can't parse input stream");
-		} catch (IOException e) {
-			throw new OpenWeatherException("Can't get stream from server");
-		}
+		currentWeather = parser.currentWeather(city);
 		return GetWeather.from(currentWeather);
 	}
 }

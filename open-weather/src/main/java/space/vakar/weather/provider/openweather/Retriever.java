@@ -9,29 +9,30 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
-class Retriever  {
+import space.vakar.weather.provider.openweather.api.WeatherRetriever;
+
+class Retriever implements WeatherRetriever {
 
 	private String serviceUrl = "http://api.openweathermap.org";
 	private String weatherEndPoint = "/data/2.5/weather";
 	private String appId = "eede123ce615f9cc56910f9a0e024e3a";
+	private HttpClient httpClient = HttpClientBuilder.create().build();
 
-	public InputStream requestCurrentWeatherXML(String cityId) throws IOException {
-		String url = serviceUrl + weatherEndPoint
-					 .concat("?q=" + cityId)
-					 .concat("&APPID=" + appId)
-					 .concat("&mode=xml");
-		HttpClient client = HttpClientBuilder.create().build();
-		HttpResponse response = client.execute(new HttpGet(url));		
-		validateResponce(response);
-		return response.getEntity().getContent();
+	public InputStream weatherXML(int cityId) throws IOException, OpenWeatherException {
+		String url = serviceUrl + weatherEndPoint 
+				+ "?id=" + cityId 
+				+ "&APPID=" + appId 
+				+ "&mode=xml";
+		validateResponce(httpClient.execute(new HttpGet(url)));
+		return httpClient.execute(new HttpGet(url)).getEntity().getContent();
 	}
-	
-	private void validateResponce(HttpResponse response) {
+
+	private void validateResponce(HttpResponse response) throws OpenWeatherException{
 		int statusCode = response.getStatusLine().getStatusCode();
-		if(statusCode != 200) {
+		if (statusCode != 200) {
 			throw new OpenWeatherException(response.getStatusLine().toString());
 		}
-	}	
+	}
 
 	public String getServiceUrl() {
 		return serviceUrl;
@@ -41,16 +42,14 @@ class Retriever  {
 		this.serviceUrl = serviceUrl;
 	}
 
-
 	public String getWeatherEndPoint() {
 		return weatherEndPoint;
 	}
 
-
 	public void setWeatherEndPoint(String weatherEndPoint) {
 		this.weatherEndPoint = weatherEndPoint;
 	}
-	
+
 	public String getAppId() {
 		return appId;
 	}
@@ -63,7 +62,6 @@ class Retriever  {
 	public int hashCode() {
 		return Objects.hash(serviceUrl, weatherEndPoint);
 	}
-
 
 	@Override
 	public boolean equals(Object object) {

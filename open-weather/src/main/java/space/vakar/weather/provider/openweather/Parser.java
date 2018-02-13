@@ -7,15 +7,17 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import space.vakar.weather.provider.openweather.api.WeatherParser;
+import space.vakar.weather.provider.openweather.api.WeatherRetriever;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
 
-class Parser{
+class Parser implements WeatherParser{
 	
-	private Retriever retriever = new Retriever();
+	private WeatherRetriever retriever = new Retriever();
 
-	public CurrentWeather currentWeather(String city) 
+	public CurrentWeather currentWeather(int cityId) 
 			throws JAXBException, IOException {
-		InputStream in = retriever.requestCurrentWeatherXML(city);	
+		InputStream in = retriever.weatherXML(cityId);	
 		Unmarshaller unmarshaller = createUnmarshaller(CurrentWeather.class);
 		return (CurrentWeather)unmarshaller.unmarshal(in);
 	}
@@ -25,11 +27,11 @@ class Parser{
 		return jaxbContext.createUnmarshaller();
 	}
 
-	public Retriever getRetriever() {
+	public WeatherRetriever getRetriever() {
 		return retriever;
 	}
 
-	public void setRetriever(Retriever retriever) {
+	public void setRetriever(WeatherRetriever retriever) {
 		this.retriever = retriever;
 	}
 }

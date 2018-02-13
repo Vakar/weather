@@ -12,9 +12,9 @@ import org.apache.http.protocol.HttpRequestHandler;
 
 public class WeatherRequestHandler implements HttpRequestHandler{
 	
-	private static final String VALID_URL = "/data/2.5/weather?q=valid_city_name&APPID=valid_app_id&mode=xml";
-	private static final String CITY_NOT_VALID_URL = "/data/2.5/weather?q=not_valid_city_name&APPID=valid_app_id&mode=xml";
-	private static final String APPID_NOT_VALID_URL = "/data/2.5/weather?q=valid_city_name&APPID=not_valid_app_id&mode=xml";
+	private static final String VALID_URL = "/data/2.5/weather?id=1&APPID=valid_app_id&mode=xml";
+	private static final String CITY_NOT_VALID_URL = "/data/2.5/weather?id=-1&APPID=valid_app_id&mode=xml";
+	private static final String APPID_NOT_VALID_URL = "/data/2.5/weather?id=1&APPID=not_valid_app_id&mode=xml";
 	
 	@Override
 	public void handle(HttpRequest req, HttpResponse res, HttpContext context)
