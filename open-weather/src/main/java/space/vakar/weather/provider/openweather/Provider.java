@@ -7,7 +7,7 @@ import javax.xml.bind.JAXBException;
 import space.vakar.weather.domain.api.WeatherProvider;
 import space.vakar.weather.domain.model.Weather;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
-import space.vakar.weather.provider.openweather.util.mappers.WeatherMapper;
+import space.vakar.weather.provider.openweather.util.mappers.GetWeather;
 
 public class Provider implements WeatherProvider {
 	
@@ -23,6 +23,6 @@ public class Provider implements WeatherProvider {
 		} catch (IOException e) {
 			throw new OpenWeatherException("Can't get stream from server");
 		}
-		return WeatherMapper.from(currentWeather);
+		return GetWeather.from(currentWeather);
 	}
 }

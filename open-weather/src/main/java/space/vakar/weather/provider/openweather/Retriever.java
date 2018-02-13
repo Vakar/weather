@@ -13,23 +13,29 @@ class Retriever  {
 
 	private String serviceUrl = "http://api.openweathermap.org";
 	private String weatherEndPoint = "/data/2.5/weather";
-	private static final String APPID = "eede123ce615f9cc56910f9a0e024e3a";
+	private String appId = "eede123ce615f9cc56910f9a0e024e3a";
 
 	public InputStream requestCurrentWeatherXML(String cityId) throws IOException {
 		String url = serviceUrl + weatherEndPoint
 					 .concat("?q=" + cityId)
-					 .concat("&APPID=" + APPID)
+					 .concat("&APPID=" + appId)
 					 .concat("&mode=xml");
 		HttpClient client = HttpClientBuilder.create().build();
-		HttpResponse response = client.execute(new HttpGet(url));
+		HttpResponse response = client.execute(new HttpGet(url));		
+		validateResponce(response);
 		return response.getEntity().getContent();
 	}
-
+	
+	private void validateResponce(HttpResponse response) {
+		int statusCode = response.getStatusLine().getStatusCode();
+		if(statusCode != 200) {
+			throw new OpenWeatherException(response.getStatusLine().toString());
+		}
+	}	
 
 	public String getServiceUrl() {
 		return serviceUrl;
 	}
-
 
 	public void setServiceUrl(String serviceUrl) {
 		this.serviceUrl = serviceUrl;
@@ -45,6 +51,14 @@ class Retriever  {
 		this.weatherEndPoint = weatherEndPoint;
 	}
 	
+	public String getAppId() {
+		return appId;
+	}
+
+	public void setAppId(String aPPID) {
+		appId = aPPID;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(serviceUrl, weatherEndPoint);
