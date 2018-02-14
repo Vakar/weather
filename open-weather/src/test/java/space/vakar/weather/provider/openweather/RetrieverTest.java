@@ -33,8 +33,7 @@ public class RetrieverTest {
 	public static void setUpBeforeClass() throws Exception {
 		server = new LocalTestServer(null, null);
 		server.start();
-		server.register("/data/2.5/*", new WeatherRequestHandler());	
-		
+		server.register("/data/2.5/*", new WeatherRequestHandler());		
 	}
 
 	@AfterClass

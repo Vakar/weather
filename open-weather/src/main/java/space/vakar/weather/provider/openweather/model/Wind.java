@@ -9,8 +9,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Wind {
 
 	private WindSpeed speed;
+	private Gusts gusts;
 	private WindDirection direction;
-
 	public Wind() {
 		
 	}
@@ -29,6 +29,15 @@ public class Wind {
 		this.speed = speed;
 	}
 
+	public Gusts getGusts() {
+		return gusts;
+	}
+
+	@XmlElement
+	public void setGusts(Gusts gusts) {
+		this.gusts = gusts;
+	}
+
 	public WindDirection getDirection() {
 		return direction;
 	}
@@ -40,14 +49,15 @@ public class Wind {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(speed, direction);
+		return Objects.hash(speed, gusts, direction);
 	}
 
 	@Override
 	public boolean equals(Object object) {
 		if (object instanceof Wind) {
 			Wind that = (Wind) object;
-			return Objects.equals(this.speed, that.speed) 
+			return Objects.equals(this.speed, that.speed)
+					&& Objects.equals(this.gusts, that.gusts)
 					&& Objects.equals(this.direction, that.direction);
 		}
 		return false;
@@ -55,7 +65,7 @@ public class Wind {
 
 	@Override
 	public String toString() {
-		String format = "Wind [speed=%s, direction=%s]";
-		return String.format(format, speed, direction);
+		String format = "Wind [speed=%s, gusts=%s, direction=%s]";
+		return String.format(format, speed,	gusts, direction);
 	}
 }

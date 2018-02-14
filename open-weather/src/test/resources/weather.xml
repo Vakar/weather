@@ -10,7 +10,7 @@
 	<pressure value="1002" unit="hPa" />
 	<wind>
 		<speed value="7.7" name="Moderate breeze" />
-		<gusts />
+		<gusts value="11.3"></gusts>
 		<direction value="290" code="WNW" name="West-northwest" />
 	</wind>
 	<clouds value="90" name="overcast clouds" />

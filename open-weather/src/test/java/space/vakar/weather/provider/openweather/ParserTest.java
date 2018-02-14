@@ -63,6 +63,7 @@ public class ParserTest {
 		unmarshaller.setSchema(schema);
 		unmarshaller.setEventHandler(new EmployeeValidationEventHandler());
 		CurrentWeather r = (CurrentWeather) unmarshaller.unmarshal(inputStream);
+		System.out.println(r.toString());
 	}
 
 	class EmployeeValidationEventHandler implements ValidationEventHandler {
