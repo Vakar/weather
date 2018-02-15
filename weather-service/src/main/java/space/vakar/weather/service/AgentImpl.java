@@ -7,64 +7,69 @@ import space.vakar.weather.service.api.WeatherContainer;
 import java.util.Objects;
 
 public class AgentImpl implements Agent {
-	
-	private WeatherProvider provider;
-	private WeatherContainer container;
 
-	@Override
-	public Weather weather(String cityName) {
-		return isValide(cityName) ? send(cityName) : refresh(cityName);
-	}
-	
-	private boolean isValide(String cityName) {
-		return container.isExist(cityName) && container.isFresh(cityName);
-	}
-	
-	private Weather send(String cityName) {
-		return container.pull(cityName);
-	}
-	
-	private Weather refresh(int cityName) {
-		Weather weather = provider.provideWeather(cityName);
-		container.push(weather); 
-		return weather;
-	}
+  private WeatherProvider provider;
+  private WeatherContainer container;
 
-	public WeatherProvider getProvider() {
-		return provider;
-	}
+  @Override
+  public Weather weather(int cityId) {
+    return isValide(cityId) ? send(cityId) : refreshAndSend(cityId);
+  }
 
-	public void setProvider(WeatherProvider provider) {
-		this.provider = provider;
-	}
+  private boolean isValide(int cityId) {
+    return container.isExist(cityId) && container.isFresh(cityId);
+  }
 
-	public WeatherContainer getContainer() {
-		return container;
-	}
+  private Weather send(int cityId) {
+    return container.pull(cityId);
+  }
 
-	public void setContainer(WeatherContainer container) {
-		this.container = container;
-	}
+  private Weather refreshAndSend(int cityId) {
+    Weather weather = null;
+    try {
+      weather = provider.provideWeather(cityId);
+    } catch (Exception e) {
+      new WeatherServiceException("Can't receive weather from provider module", e);
+    }
+    container.push(weather);
+    return weather;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(provider, container);
-	}
+  public WeatherProvider getProvider() {
+    return provider;
+  }
 
-	@Override
-	public boolean equals(Object object) {
-		if (object instanceof AgentImpl) {
-			AgentImpl that = (AgentImpl) object;
-			return Objects.equals(this.provider, that.provider)
-					&& Objects.equals(this.container, that.container);
-		}
-		return false;
-	}
+  public void setProvider(WeatherProvider provider) {
+    this.provider = provider;
+  }
 
-	@Override
-	public String toString() {
-		String format = "AgentImpl [provider=%s, container=%s]";
-		return String.format(format, provider, container);
-	}
-	
+  public WeatherContainer getContainer() {
+    return container;
+  }
+
+  public void setContainer(WeatherContainer container) {
+    this.container = container;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(provider, container);
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof AgentImpl) {
+      AgentImpl that = (AgentImpl) object;
+      return Objects.equals(this.provider, that.provider)
+          && Objects.equals(this.container, that.container);
+    }
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    String format = "AgentImpl [provider=%s, container=%s]";
+    return String.format(format, provider, container);
+  }
+
 }

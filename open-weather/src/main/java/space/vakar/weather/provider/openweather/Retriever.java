@@ -16,18 +16,18 @@ class Retriever implements WeatherRetriever {
   private HttpClient httpClient = HttpClientBuilder.create().build();
 
   public InputStream weatherXML(int cityId) {
-    HttpResponse res =  responseHttpGet(weatherXmlUrl(cityId));
+    HttpResponse res = responseHttpGet(weatherXmlUrl(cityId));
     validateResponce(res);
     return streamFrom(res);
   }
-  
-  private HttpResponse responseHttpGet(String url) {
+
+  private HttpResponse responseHttpGet(String url) throws OpenWeatherException{
     HttpResponse res;
     try {
-       res = httpClient.execute(new HttpGet(url));
+      res = httpClient.execute(new HttpGet(url));
     } catch (Exception e) {
-      throw new OpenWeatherException("Can't get responce from server");
-    } 
+      throw new OpenWeatherException("Can't get responce from server", e);
+    }
     return res;
   }
 
@@ -42,13 +42,13 @@ class Retriever implements WeatherRetriever {
     }
   }
 
-  private InputStream streamFrom(HttpResponse res) {
+  private InputStream streamFrom(HttpResponse res) throws OpenWeatherException {
     InputStream in;
     try {
       in = res.getEntity().getContent();
-   } catch (Exception e) {
-     throw new OpenWeatherException("Can't open InputStream from HttpResponse");
-   } 
+    } catch (Exception e) {
+      throw new OpenWeatherException("Can't open InputStream from HttpResponse", e);
+    }
     return in;
   }
 

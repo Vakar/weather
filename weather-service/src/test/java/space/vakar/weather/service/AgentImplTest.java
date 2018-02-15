@@ -37,41 +37,41 @@ public class AgentImplTest {
 
 	@Test
 	public void shouldGetWeatherFromContainer_WhenWeatherInContainerAndFresh() {
-		when(container.isExist("Moncton")).thenReturn(true);
-		when(container.isFresh("Moncton")).thenReturn(true);
-		when(container.pull("Moncton")).thenReturn(weather);
-		assertEquals(weather, agent.weather("Moncton"));
+		when(container.isExist(1)).thenReturn(true);
+		when(container.isFresh(1)).thenReturn(true);
+		when(container.pull(1)).thenReturn(weather);
+		assertEquals(weather, agent.weather(1));
 	}
 	
 	@Test
-	public void shouldGetWeatherFromProvider_WhenWeatherNotInContainer() {
-		when(container.isExist("Moncton")).thenReturn(false);
-		when(provider.provideWeather("Moncton")).thenReturn(weather);
-		assertEquals(weather, agent.weather("Moncton"));
+	public void shouldGetWeatherFromProvider_WhenWeatherNotInContainer() throws Exception {
+		when(container.isExist(1)).thenReturn(false);
+		when(provider.provideWeather(1)).thenReturn(weather);
+		assertEquals(weather, agent.weather(1));
 	}
 	
 	@Test
-	public void shouldPushWeatherIntoContainer_WhenWeatherNotInContainer() {
-		when(container.isExist("Moncton")).thenReturn(false);
-		when(provider.provideWeather("Moncton")).thenReturn(weather);
-		agent.weather("Moncton");
+	public void shouldPushWeatherIntoContainer_WhenWeatherNotInContainer() throws Exception {
+		when(container.isExist(1)).thenReturn(false);
+		when(provider.provideWeather(1)).thenReturn(weather);
+		agent.weather(1);
 		verify(container).push(weather);
 	}
 	
 	@Test
-	public void shouldGetWeatherFromProvider_WhenWeatherInContainerAndIsNotFreshr() {
-		when(container.isExist("Moncton")).thenReturn(true);
-		when(container.isFresh("Moncton")).thenReturn(false);
-		when(provider.provideWeather("Moncton")).thenReturn(weather);
-		assertEquals(weather, agent.weather("Moncton"));
+	public void shouldGetWeatherFromProvider_WhenWeatherInContainerAndIsNotFreshr() throws Exception {
+		when(container.isExist(1)).thenReturn(true);
+		when(container.isFresh(1)).thenReturn(false);
+		when(provider.provideWeather(1)).thenReturn(weather);
+		assertEquals(weather, agent.weather(1));
 	}
 	
 	@Test
-	public void shouldPushWeatherIntoContainer_WhenWeatherInContaineAndIsNotFreshr() {
-		when(container.isExist("Moncton")).thenReturn(true);
-		when(container.isFresh("Moncton")).thenReturn(false);
-		when(provider.provideWeather("Moncton")).thenReturn(weather);
-		agent.weather("Moncton");
+	public void shouldPushWeatherIntoContainer_WhenWeatherInContaineAndIsNotFreshr() throws Exception {
+		when(container.isExist(1)).thenReturn(true);
+		when(container.isFresh(1)).thenReturn(false);
+		when(provider.provideWeather(1)).thenReturn(weather);
+		agent.weather(1);
 		verify(container).push(weather);
 	}
 }

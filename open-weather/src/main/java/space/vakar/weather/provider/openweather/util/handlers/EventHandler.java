@@ -7,6 +7,6 @@ import space.vakar.weather.provider.openweather.OpenWeatherException;
 public class EventHandler implements ValidationEventHandler {
   @Override
   public boolean handleEvent(ValidationEvent event) {
-    throw new OpenWeatherException(event.getMessage());
+    throw new OpenWeatherException("XML validation error");
   }
 }
