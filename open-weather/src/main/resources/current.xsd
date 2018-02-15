@@ -16,7 +16,7 @@
 	<xs:element name="visibility" type="visibility" />
 	<xs:element name="weather" type="weather" />
 	<xs:element name="wind" type="wind" />
-	
+
 	<xs:complexType name="currentWeather">
 		<xs:all>
 			<xs:element ref="city" />
@@ -35,84 +35,257 @@
 	<xs:complexType name="city">
 		<xs:all>
 			<xs:element name="coord" type="coordinates" />
-			<xs:element name="country" type="xs:string" />
+			<xs:element name="country">
+				<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0" />
+					<xs:maxLength value="256" />
+				</xs:restriction>
+			</xs:simpleType>
+			</xs:element>
 			<xs:element ref="sun" />
 		</xs:all>
-		<xs:attribute name="id" type="xs:int" use="required" />
-		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="id" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="0" />
+					<xs:maxInclusive value="2147483647" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="name" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0" />
+					<xs:maxLength value="256" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:complexType>
 
 	<xs:complexType name="coordinates">
-		<xs:attribute name="lat" type="xs:double" use="required" />
-		<xs:attribute name="lon" type="xs:double" use="required" />
+		<xs:attribute name="lat" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:double">
+					<xs:minInclusive value="-90" />
+					<xs:maxInclusive value="90" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="lon" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:double">
+					<xs:minInclusive value="-180" />
+					<xs:maxInclusive value="180" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:complexType>
 
 	<xs:complexType name="sun">
-		<xs:attribute name="rise" type="xs:string" use="required" />
-		<xs:attribute name="set" type="xs:string" use="required" />
+		<xs:attribute name="rise" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="set" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:complexType>
 
 	<xs:complexType name="clouds">
-		<xs:attribute name="name" type="xs:string" use="required" />
-		<xs:attribute name="value" type="xs:double" use="required" />
+		<xs:attribute name="name" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0" />
+					<xs:maxLength value="256" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:double">
+					<xs:minInclusive value="0" />
+					<xs:maxInclusive value="100" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:complexType>
 
 	<xs:complexType name="humidity">
-		<xs:attribute name="unit" type="xs:string" use="required" />
-		<xs:attribute name="value" type="xs:double" use="required" />
+		<xs:attribute name="unit" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="%" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:double">
+					<xs:minInclusive value="0" />
+					<xs:maxInclusive value="100" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:complexType>
 
 	<xs:complexType name="lastUpdate">
-		<xs:attribute name="value" type="xs:string" use="required" />
+		<xs:attribute name="value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:complexType>
 
 	<xs:complexType name="precipitation">
-		<xs:attribute name="mode" type="xs:string" use="required" />
+		<xs:attribute name="mode" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0" />
+					<xs:maxLength value="256" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<!-- TODO validation and default value -->
 		<xs:attribute name="value" type="xs:double" use="optional" />
+		<xs:attribute name="unit" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0" />
+					<xs:maxLength value="256" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:complexType>
 
 	<xs:complexType name="pressure">
-		<xs:attribute name="unit" type="xs:string" use="required" />
-		<xs:attribute name="value" type="xs:double" use="required" />
+		<xs:attribute name="unit" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="hPa" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:double">
+					<xs:minInclusive value="500" />
+					<xs:maxInclusive value="1500" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:complexType>
 
 	<xs:complexType name="temperature">
-		<xs:attribute name="max" type="xs:double" use="required" />
-		<xs:attribute name="min" type="xs:double" use="required" />
+		<!-- TODO validation and default value -->
+		<xs:attribute name="value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:double">
+					<xs:minInclusive value="-273.15" />
+					<xs:maxInclusive value="1000" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<!-- TODO validation and default value -->
+		<xs:attribute name="max" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:double">
+					<xs:minInclusive value="-273.15" />
+					<xs:maxInclusive value="1000" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<!-- TODO validation and default value -->
+		<xs:attribute name="min" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:double">
+					<xs:minInclusive value="-273.15" />
+					<xs:maxInclusive value="1000" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 		<xs:attribute name="unit">
-			<!-- temperature unit restriction -->
 			<xs:simpleType>
 				<xs:restriction base="xs:string">
 					<xs:pattern value="kelvin|celsius|fahrenheit" />
 				</xs:restriction>
 			</xs:simpleType>
 		</xs:attribute>
-		<xs:attribute name="value" type="xs:double" use="required" />
 	</xs:complexType>
 
 	<xs:complexType name="visibility">
-		<xs:attribute name="value" type="xs:double" use="required" />
+		<xs:attribute name="value" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:double">
+					<xs:minInclusive value="0" />
+					<xs:maxInclusive value="200000000" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:complexType>
 
 	<xs:complexType name="weather">
-		<xs:attribute name="icon" type="xs:string" use="required" />
-		<xs:attribute name="number" type="xs:int" use="required" />
-		<xs:attribute name="value" type="xs:string" use="required" />
+		<xs:attribute name="icon" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0" />
+					<xs:maxLength value="256" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="number" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="200" />
+					<xs:maxInclusive value="1000" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0" />
+					<xs:maxLength value="256" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:complexType>
 
 	<xs:complexType name="wind">
 		<xs:all>
 			<xs:element ref="speed" />
-			<xs:element ref="gusts"/>
+			<xs:element ref="gusts" />
 			<xs:element ref="direction" />
 		</xs:all>
 	</xs:complexType>
 
 	<xs:complexType name="windDirection">
-		<xs:attribute name="code" type="xs:string" use="required" />
-		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="code">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0" />
+					<xs:maxLength value="256" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="name" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0" />
+					<xs:maxLength value="256" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 		<xs:attribute name="value" use="required">
-			<!-- degree restriction -->
 			<xs:simpleType>
 				<xs:restriction base="xs:double">
 					<xs:minInclusive value="0" />
@@ -123,12 +296,33 @@
 	</xs:complexType>
 
 	<xs:complexType name="windSpeed">
-		<xs:attribute name="name" type="xs:string" use="required" />
-		<xs:attribute name="value" type="xs:double" use="required" />
+		<xs:attribute name="name" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0" />
+					<xs:maxLength value="256" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:double">
+					<xs:minInclusive value="0" />
+					<xs:maxInclusive value="500" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:complexType>
-	
+
 	<xs:complexType name="gusts">
-		<xs:attribute name="value" type="xs:double" use="optional" />
+		<xs:attribute name="value">
+			<xs:simpleType>
+				<xs:restriction base="xs:double">
+					<xs:minInclusive value="0" />
+					<xs:maxInclusive value="500" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:complexType>
 </xs:schema>
 

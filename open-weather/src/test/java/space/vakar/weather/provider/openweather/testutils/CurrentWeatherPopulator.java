@@ -7,6 +7,7 @@ import space.vakar.weather.provider.openweather.model.City;
 import space.vakar.weather.provider.openweather.model.Clouds;
 import space.vakar.weather.provider.openweather.model.Coordinates;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
+import space.vakar.weather.provider.openweather.model.Gusts;
 import space.vakar.weather.provider.openweather.model.Humidity;
 import space.vakar.weather.provider.openweather.model.LastUpdate;
 import space.vakar.weather.provider.openweather.model.Precipitation;
@@ -44,8 +45,9 @@ public class CurrentWeatherPopulator {
 
 	private static  Wind getWind() {
 		WindSpeed speed = new WindSpeed(7.7, "Moderate breeze");
-		WindDirection direction = new WindDirection(290, "WNW", "West-northwest");
-		return new Wind(speed, direction);
+		Gusts gusts = new Gusts(11.3);
+		WindDirection direction = new WindDirection(290, "WNW", "West-northwest");		
+		return new Wind(speed, gusts, direction);
 	}
 
 	private static LastUpdate getLastUpdate() {

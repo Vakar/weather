@@ -12,6 +12,8 @@ public class Precipitation {
 	
 	/** Possible values are 'no", name of */
 	private String mode;
+	
+	private String unit;
 
 	public Precipitation() {
 		
@@ -40,24 +42,33 @@ public class Precipitation {
 		this.mode = mode;
 	}
 
+	public String getUnit() {
+		return unit;
+	}
+
+	@XmlAttribute
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(value, mode);
+		return Objects.hash(value, mode, unit);
 	}
 
 	@Override
 	public boolean equals(Object object) {
 		if (object instanceof Precipitation) {
 			Precipitation that = (Precipitation) object;
-			return this.value == that.value 
-					&& Objects.equals(this.mode, that.mode);
+			return this.value == that.value && Objects.equals(this.mode, that.mode)
+					&& Objects.equals(this.unit, that.unit);
 		}
 		return false;
 	}
 
 	@Override
 	public String toString() {
-		String format = "Precipitation [value=%s, mode=%s]";
-		return String.format(format, value, mode);
+		String format = "Precipitation [value=%s, mode=%s, unit=%s]";
+		return String.format(format, value, mode, unit);
 	}
 }
