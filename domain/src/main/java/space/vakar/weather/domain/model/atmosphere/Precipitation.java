@@ -1,5 +1,6 @@
 package space.vakar.weather.domain.model.atmosphere;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 import space.vakar.weather.domain.api.Defaultable;
@@ -7,30 +8,30 @@ import space.vakar.weather.domain.model.DomainObject;
 
 public class Precipitation  extends DomainObject implements Defaultable<Precipitation>{
 
-	private double value;
+	private BigDecimal value;
 	private String mode;
 
 	public Precipitation() {
 
 	}
 
-	public Precipitation(double value, String mode) {
+	public Precipitation(BigDecimal value, String mode) {
 		setValue(value);
 		setMode(mode);
 	}
 	
 	public Precipitation defaultInstance() {
 		setId(0);
-		setValue(Double.NaN);
+		setValue(new BigDecimal(-1.0));
 		setMode("default_mode");
 		return this;
 	}
 
-	public double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
-	public void setValue(double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -52,7 +53,7 @@ public class Precipitation  extends DomainObject implements Defaultable<Precipit
 		if (object instanceof Precipitation) {
 			Precipitation that = (Precipitation) object;
 			return this.id == that.id 
-					&& Double.compare(this.value , that.value ) == 0
+					&& Objects.equals(this.value, that.value)
 					&& Objects.equals(this.mode, that.mode);
 		}
 		return false;
@@ -62,7 +63,5 @@ public class Precipitation  extends DomainObject implements Defaultable<Precipit
 	public String toString() {
 		String format = "Precipitation [id=%s, value=%s, mode=%s]";
 		return String.format(format, id, value, mode);
-	}
-
-	
+	}	
 }

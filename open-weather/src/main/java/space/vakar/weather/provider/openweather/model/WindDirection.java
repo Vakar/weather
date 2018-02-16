@@ -1,7 +1,7 @@
 package space.vakar.weather.provider.openweather.model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
-
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class WindDirection {
 	
 	/** Wind direction, degrees  */
-	private double value;
+	private BigDecimal value;
 	
 	/** Code of the wind direction. Possilbe value is WSW, N, S etc */
 	private String code;
@@ -21,18 +21,18 @@ public class WindDirection {
 		
 	}
 
-	public WindDirection(double value, String code, String name) {
+	public WindDirection(BigDecimal value, String code, String name) {
 		this.value = value;
 		this.code = code;
 		this.name = name;
 	}
 
-	public double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
 	@XmlAttribute
-	public void setValue(double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -63,7 +63,7 @@ public class WindDirection {
 	public boolean equals(Object object) {
 		if (object instanceof WindDirection) {
 			WindDirection that = (WindDirection) object;
-			return this.value == that.value 
+			return Objects.equals(this.value, that.value)
 					&& Objects.equals(this.code, that.code)
 					&& Objects.equals(this.name, that.name);
 		}

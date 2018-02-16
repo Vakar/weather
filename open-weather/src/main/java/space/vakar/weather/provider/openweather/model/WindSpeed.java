@@ -1,7 +1,7 @@
 package space.vakar.weather.provider.openweather.model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
-
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class WindSpeed {
 	
 	/** Wind speed, mps */
-	private double value;
+	private BigDecimal value;
 	
 	/** Type of the wind */
 	private String name;
@@ -18,17 +18,17 @@ public class WindSpeed {
 		
 	}
 
-	public WindSpeed(double value, String name) {
+	public WindSpeed(BigDecimal value, String name) {
 		this.value = value;
 		this.name = name;
 	}
 
-	public double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
 	@XmlAttribute
-	public void setValue(double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -50,7 +50,7 @@ public class WindSpeed {
 	public boolean equals(Object object) {
 		if (object instanceof WindSpeed) {
 			WindSpeed that = (WindSpeed) object;
-			return this.value == that.value 
+			return Objects.equals(this.value, that.value)
 					&& Objects.equals(this.name, that.name);
 		}
 		return false;

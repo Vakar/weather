@@ -2,41 +2,42 @@ package space.vakar.weather.provider.openweather.model;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @XmlRootElement
 public class Coordinates {
 	
 	/** Geographical location, longitude */
-	private double longitude;
+	private BigDecimal longitude;
 	
 	/** Geographical location, latitude */
-	private double latitude;
+	private BigDecimal latitude;
 
 	public Coordinates() {
 		
 	}
 
-	public Coordinates(double longitude, double latitude) {
+	public Coordinates(BigDecimal longitude, BigDecimal latitude) {
 		this.longitude = longitude;
 		this.latitude = latitude;
 	}
 
-	public double getLongitude() {
+	public BigDecimal getLongitude() {
 		return longitude;
 	}
 
 	@XmlAttribute(name="lon")
-	public void setLongitude(double longitude) {
+	public void setLongitude(BigDecimal longitude) {
 		this.longitude = longitude;
 	}
 
-	public double getLatitude() {
+	public BigDecimal getLatitude() {
 		return latitude;
 	}
 
 	@XmlAttribute(name="lat")
-	public void setLatitude(double latitude) {
+	public void setLatitude(BigDecimal latitude) {
 		this.latitude = latitude;
 	}
 
@@ -49,8 +50,8 @@ public class Coordinates {
 	public boolean equals(Object object) {
 		if (object instanceof Coordinates) {
 			Coordinates that = (Coordinates) object;
-			return this.longitude == that.longitude 
-					&& this.latitude == that.latitude;
+			return Objects.equals(this.longitude, that.longitude)
+					&& Objects.equals(this.latitude, that.latitude);
 		}
 		return false;
 	}

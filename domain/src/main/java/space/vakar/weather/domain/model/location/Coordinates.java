@@ -1,5 +1,6 @@
 package space.vakar.weather.domain.model.location;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 import space.vakar.weather.domain.api.Defaultable;
@@ -7,22 +8,22 @@ import space.vakar.weather.domain.model.DomainObject;
 
 public class Coordinates  extends DomainObject implements Defaultable<Coordinates>{
 
-	private double longitude;
-	private double latitude;
+	private BigDecimal longitude;
+	private BigDecimal latitude;
 
 	public Coordinates() {
 
 	}
 
-	public Coordinates(double longitude, double latitude) {
+	public Coordinates(BigDecimal longitude, BigDecimal latitude) {
 		setLongitude(longitude);
 		setLatitude(latitude);
 	}
 	
 	public Coordinates defaultInstance() {
 		setId(0);
-		setLongitude(Double.NaN);
-		setLatitude(Double.NaN);
+		setLongitude(new BigDecimal(-1.0));
+		setLatitude(new BigDecimal(-1.0));
 		return this;
 	}
 
@@ -34,19 +35,19 @@ public class Coordinates  extends DomainObject implements Defaultable<Coordinate
 		this.id = id;
 	}
 
-	public double getLongitude() {
+	public BigDecimal getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(double longitude) {
+	public void setLongitude(BigDecimal longitude) {
 		this.longitude = longitude;
 	}
 
-	public double getLatitude() {
+	public BigDecimal getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(double latitude) {
+	public void setLatitude(BigDecimal latitude) {
 		this.latitude = latitude;
 	}
 
@@ -60,8 +61,8 @@ public class Coordinates  extends DomainObject implements Defaultable<Coordinate
 		if (object instanceof Coordinates) {
 			Coordinates that = (Coordinates) object;
 			return this.id == that.id 
-					&& Double.compare(this.longitude , that.longitude ) == 0
-					&& Double.compare(this.latitude , that.latitude) == 0;
+					&& Objects.equals(this.longitude, that.longitude)
+					&& Objects.equals(this.latitude, that.latitude);
 		}
 		return false;
 	}

@@ -1,5 +1,6 @@
 package space.vakar.weather.domain.model.temperature;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 import space.vakar.weather.domain.api.Defaultable;
@@ -7,30 +8,30 @@ import space.vakar.weather.domain.model.DomainObject;
 
 public class Temperature  extends DomainObject implements Defaultable<Temperature>{
 
-	private double value;
+	private BigDecimal value;
 	private TemperatureUnit unit;
 
 	public Temperature() {
 
 	}
 
-	public Temperature(double value, TemperatureUnit unit) {
+	public Temperature(BigDecimal value, TemperatureUnit unit) {
 		setValue(value);
 		setUnit(unit);
 	}
 	
 	public Temperature defaultInstance() {
 		setId(0);
-		setValue(Double.NaN);
+		setValue(new BigDecimal(-1.0));
 		setUnit(TemperatureUnit.UNIT_UNKNOWN);
 		return this;
 	}
 
-	public double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
-	public void setValue(double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -52,7 +53,7 @@ public class Temperature  extends DomainObject implements Defaultable<Temperatur
 		if (object instanceof Temperature) {
 			Temperature that = (Temperature) object;
 			return this.id == that.id 
-					&& Double.compare(this.value, that.value) == 0 
+					&& Objects.equals(this.value, that.value)
 					&& Objects.equals(this.unit, that.unit);
 		}
 		return false;

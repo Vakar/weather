@@ -2,13 +2,14 @@ package space.vakar.weather.provider.openweather.model;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @XmlRootElement
 public class Pressure {
 	
 	/** Pressure value */
-	private double value;
+	private BigDecimal value;
 	
 	/** hPa */
 	private String unit;
@@ -17,17 +18,17 @@ public class Pressure {
 		
 	}
 
-	public Pressure(double value, String unit) {
+	public Pressure(BigDecimal value, String unit) {
 		this.value = value;
 		this.unit = unit;
 	}
 
-	public double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
 	@XmlAttribute
-	public void setValue(double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -49,7 +50,7 @@ public class Pressure {
 	public boolean equals(Object object) {
 		if (object instanceof Pressure) {
 			Pressure that = (Pressure) object;
-			return this.value == that.value 
+			return Objects.equals(this.value, that.value)
 					&& Objects.equals(this.unit, that.unit);
 		}
 		return false;

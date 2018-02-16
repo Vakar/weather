@@ -2,13 +2,14 @@ package space.vakar.weather.provider.openweather.model;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @XmlRootElement
 public class Humidity {
 	
 	/** Humidity value */
-	private double value;
+	private BigDecimal value;
 	
 	/** % */
 	private String unit;
@@ -17,18 +18,18 @@ public class Humidity {
 		
 	}
 
-	public Humidity(double value, String unit) {
+	public Humidity(BigDecimal value, String unit) {
 		super();
 		this.value = value;
-		this.unit = unit;
+		this.unit = unit; 
 	}
 
-	public double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
 	@XmlAttribute
-	public void setValue(double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -50,7 +51,7 @@ public class Humidity {
 	public boolean equals(Object object) {
 		if (object instanceof Humidity) {
 			Humidity that = (Humidity) object;
-			return this.value == that.value 
+			return Objects.equals(this.value, that.value) 
 					&& Objects.equals(this.unit, that.unit);
 		}
 		return false;

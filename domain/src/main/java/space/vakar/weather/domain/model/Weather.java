@@ -15,10 +15,10 @@ import space.vakar.weather.domain.model.wind.Wind;
 
 public class Weather  extends DomainObject implements Defaultable<Weather>{
 
-	@NotNull
+	@NotNull @Valid
 	private Wind wind;
 	
-	@NotNull
+	@NotNull @Valid
 	private Location location;
 	
 	@NotNull @Valid

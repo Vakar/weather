@@ -3,6 +3,7 @@ package space.vakar.weather.domain.model;
 import static org.junit.Assert.assertEquals;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.apache.commons.lang.SerializationUtils;
@@ -93,14 +94,14 @@ public abstract class AbstractJavaBeanTest<T> {
 	class WindSpeedFactory implements Factory<WindSpeed>{
 		@Override
 		public WindSpeed create() {
-			return new WindSpeed(20, "wind");
+			return new WindSpeed(new BigDecimal(20), "wind");
 		}
 	}
 	
 	class WindDirectionFactory implements Factory<WindDirection>{
 		@Override
 		public WindDirection create() {
-			return new WindDirection(290, "N", "North");
+			return new WindDirection(new BigDecimal(290), "N", "North");
 		}
 	}
 	
@@ -114,7 +115,7 @@ public abstract class AbstractJavaBeanTest<T> {
 	class CoordinatesFactory implements Factory<Coordinates>{
 		@Override
 		public Coordinates create() {
-			return new Coordinates(-45.7, 58.7);
+			return new Coordinates(new BigDecimal(-45.7), new BigDecimal(58.7));
 		}
 	}
 	
@@ -130,28 +131,28 @@ public abstract class AbstractJavaBeanTest<T> {
 	class CloudsFactory implements Factory<Clouds>{
 		@Override
 		public Clouds create() {
-			return new Clouds(90, "overcast clouds");
+			return new Clouds(new BigDecimal(90), "overcast clouds");
 		}
 	}
 	
 	class HumidityFactory implements Factory<Humidity>{
 		@Override
 		public Humidity create() {
-			return new Humidity(85, "%");
+			return new Humidity(new BigDecimal(85), "%");
 		}
 	}
 	
 	class PrecipitationFactory implements Factory<Precipitation>{
 		@Override
 		public Precipitation create() {
-			return new Precipitation(12.3, "snow");
+			return new Precipitation(new BigDecimal(12.3), "snow");
 		}
 	}
 	
 	class PressureFactory implements Factory<Pressure>{
 		@Override
 		public Pressure create() {
-			return new Pressure(1010, "hPa");
+			return new Pressure(new BigDecimal(1010), "hPa");
 		}
 	}
 	
@@ -170,7 +171,7 @@ public abstract class AbstractJavaBeanTest<T> {
 	class TemperatureFactory implements Factory<Temperature>{
 		@Override
 		public Temperature create() {
-			return new Temperature(200, TemperatureUnit.KELVIN);
+			return new Temperature(new BigDecimal(200), TemperatureUnit.KELVIN);
 		}
 	}
 	class WindFactory implements Factory<Wind>{

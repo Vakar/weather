@@ -2,13 +2,14 @@ package space.vakar.weather.provider.openweather.model;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @XmlRootElement
 public class Precipitation {
 	
 	/** Precipitation, mm */
-	private double value;
+	private BigDecimal value;
 	
 	/** Possible values are 'no", name of */
 	private String mode;
@@ -19,17 +20,17 @@ public class Precipitation {
 		
 	}
 
-	public Precipitation(double value, String mode) {
+	public Precipitation(BigDecimal value, String mode) {
 		this.value = value;
 		this.mode = mode;
 	}
 
-	public double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
 	@XmlAttribute
-	public void setValue(double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -60,7 +61,7 @@ public class Precipitation {
 	public boolean equals(Object object) {
 		if (object instanceof Precipitation) {
 			Precipitation that = (Precipitation) object;
-			return this.value == that.value && Objects.equals(this.mode, that.mode)
+			return Objects.equals(this.value, that.value) && Objects.equals(this.mode, that.mode)
 					&& Objects.equals(this.unit, that.unit);
 		}
 		return false;

@@ -1,5 +1,6 @@
 package space.vakar.weather.provider.openweather.model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,22 +9,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Gusts {
 
   /** Wind gusts speed, mps */
-  private double value;
+  private BigDecimal value;
 
   public Gusts() {
 
   }
 
-  public Gusts(double value) {
+  public Gusts(BigDecimal value) {
     setValue(value);
   }
 
-  public double getValue() {
+  public BigDecimal getValue() {
     return value;
   }
 
   @XmlAttribute
-  public void setValue(double value) {
+  public void setValue(BigDecimal value) {
     this.value = value;
   }
 
@@ -36,7 +37,7 @@ public class Gusts {
   public boolean equals(Object object) {
     if (object instanceof Gusts) {
       Gusts that = (Gusts) object;
-      return this.value == that.value;
+      return Objects.equals(this.value, that.value);
     }
     return false;
   }
