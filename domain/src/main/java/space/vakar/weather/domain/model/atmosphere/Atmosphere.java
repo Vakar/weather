@@ -2,15 +2,27 @@ package space.vakar.weather.domain.model.atmosphere;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
+
 import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
 
 public class Atmosphere extends DomainObject implements Defaultable<Atmosphere>{
 	
+	@NotNull
 	private Humidity humidity;
+	
+	@NotNull
 	private Pressure pressure;
+	
+	@PositiveOrZero
 	private double visibility;
+	
+	@NotNull
 	private Precipitation precipitation;
+	
+	@NotNull
 	private Clouds clouds;
 
 	public Atmosphere() {
