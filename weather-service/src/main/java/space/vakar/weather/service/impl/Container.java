@@ -1,4 +1,4 @@
-package space.vakar.weather.service;
+package space.vakar.weather.service.impl;
 
 import java.time.LocalDateTime;
 import java.util.ArrayDeque;

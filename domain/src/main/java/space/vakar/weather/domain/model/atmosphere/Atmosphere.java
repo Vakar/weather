@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PositiveOrZero;
 
 import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
@@ -17,7 +16,7 @@ public class Atmosphere extends DomainObject implements Defaultable<Atmosphere>{
 	@NotNull
 	private Pressure pressure;
 	
-	@PositiveOrZero
+	@NotNull
 	private BigDecimal visibility;
 	
 	@NotNull

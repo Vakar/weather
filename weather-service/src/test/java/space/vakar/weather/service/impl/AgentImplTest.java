@@ -1,4 +1,4 @@
-package space.vakar.weather.service;
+package space.vakar.weather.service.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -17,6 +17,7 @@ import io.github.benas.randombeans.api.EnhancedRandom;
 import space.vakar.weather.domain.api.WeatherProvider;
 import space.vakar.weather.domain.model.Weather;
 import space.vakar.weather.service.api.WeatherContainer;
+import space.vakar.weather.service.impl.AgentImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AgentImplTest {

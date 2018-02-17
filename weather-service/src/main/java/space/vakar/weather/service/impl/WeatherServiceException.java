@@ -1,4 +1,4 @@
-package space.vakar.weather.service;
+package space.vakar.weather.service.impl;
 
 public class WeatherServiceException extends RuntimeException {
 

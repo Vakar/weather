@@ -1,4 +1,4 @@
-package space.vakar.weather.service;
+package space.vakar.weather.service.impl;
 
 import space.vakar.weather.domain.model.Weather;
 import space.vakar.weather.service.api.Agent;
