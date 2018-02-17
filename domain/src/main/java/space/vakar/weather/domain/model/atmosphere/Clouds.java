@@ -1,36 +1,37 @@
 package space.vakar.weather.domain.model.atmosphere;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
 
 public class Clouds extends DomainObject implements Defaultable<Clouds>{
-
-	private double value;
+    
+	private BigDecimal value;
 	private String name;
 
 	public Clouds() {
 
 	}
 
-	public Clouds(double value, String name) {
+	public Clouds(BigDecimal value, String name) {
 		setValue(value);
 		setName(name);
 	}
 	
 	public Clouds defaultInstance() {
 		setId(0);
-		setValue(Double.NaN);
+		setValue(new BigDecimal(-1.0));
 		setName("default_name");
 		return this;
 	}
 
-	public double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
-	public void setValue(double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -52,7 +53,7 @@ public class Clouds extends DomainObject implements Defaultable<Clouds>{
 		if (object instanceof Clouds) {
 			Clouds that = (Clouds) object;
 			return this.id == that.id 
-					&& Double.compare(this.value, that.value) == 0
+					&& Objects.equals(this.value, that.value)
 					&& Objects.equals(this.name, that.name);
 		}
 		return false;

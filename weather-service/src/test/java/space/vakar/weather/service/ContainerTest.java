@@ -6,18 +6,13 @@ import org.junit.Test;
 
 public class ContainerTest {
 	
-	@Test
+
 	public void containerCapacityShouldNotBeBiggerThan_1000() {
 		fail("Not yet implemented");
 	}
 	
-	@Test
+
 	public void shouldSetObjectFirst_WhenPushObjectToContainer() {
-		fail("Not yet implemented");
-	}
-	
-	@Test // TODO validate in Agent
-	public void shouldNotAddNullObjectToContainer() {
 		fail("Not yet implemented");
 	}
 	

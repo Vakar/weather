@@ -66,7 +66,7 @@
 	<xs:complexType name="coordinates">
 		<xs:attribute name="lat" use="required">
 			<xs:simpleType>
-				<xs:restriction base="xs:double">
+				<xs:restriction base="xs:decimal">
 					<xs:minInclusive value="-90" />
 					<xs:maxInclusive value="90" />
 				</xs:restriction>
@@ -74,7 +74,7 @@
 		</xs:attribute>
 		<xs:attribute name="lon" use="required">
 			<xs:simpleType>
-				<xs:restriction base="xs:double">
+				<xs:restriction base="xs:decimal">
 					<xs:minInclusive value="-180" />
 					<xs:maxInclusive value="180" />
 				</xs:restriction>
@@ -110,7 +110,7 @@
 		</xs:attribute>
 		<xs:attribute name="value" use="required">
 			<xs:simpleType>
-				<xs:restriction base="xs:double">
+				<xs:restriction base="xs:decimal">
 					<xs:minInclusive value="0" />
 					<xs:maxInclusive value="100" />
 				</xs:restriction>
@@ -128,7 +128,7 @@
 		</xs:attribute>
 		<xs:attribute name="value" use="required">
 			<xs:simpleType>
-				<xs:restriction base="xs:double">
+				<xs:restriction base="xs:decimal">
 					<xs:minInclusive value="0" />
 					<xs:maxInclusive value="100" />
 				</xs:restriction>
@@ -156,7 +156,7 @@
 			</xs:simpleType>
 		</xs:attribute>
 		<!-- TODO validation and default value -->
-		<xs:attribute name="value" type="xs:double" use="optional" />
+		<xs:attribute name="value" type="xs:decimal" use="optional" />
 		<xs:attribute name="unit" use="optional">
 			<xs:simpleType>
 				<xs:restriction base="xs:string">
@@ -177,7 +177,7 @@
 		</xs:attribute>
 		<xs:attribute name="value" use="required">
 			<xs:simpleType>
-				<xs:restriction base="xs:double">
+				<xs:restriction base="xs:decimal">
 					<xs:minInclusive value="500" />
 					<xs:maxInclusive value="1500" />
 				</xs:restriction>
@@ -189,7 +189,7 @@
 		<!-- TODO validation and default value -->
 		<xs:attribute name="value" use="required">
 			<xs:simpleType>
-				<xs:restriction base="xs:double">
+				<xs:restriction base="xs:decimal">
 					<xs:minInclusive value="-273.15" />
 					<xs:maxInclusive value="1000" />
 				</xs:restriction>
@@ -198,7 +198,7 @@
 		<!-- TODO validation and default value -->
 		<xs:attribute name="max" use="required">
 			<xs:simpleType>
-				<xs:restriction base="xs:double">
+				<xs:restriction base="xs:decimal">
 					<xs:minInclusive value="-273.15" />
 					<xs:maxInclusive value="1000" />
 				</xs:restriction>
@@ -207,7 +207,7 @@
 		<!-- TODO validation and default value -->
 		<xs:attribute name="min" use="required">
 			<xs:simpleType>
-				<xs:restriction base="xs:double">
+				<xs:restriction base="xs:decimal">
 					<xs:minInclusive value="-273.15" />
 					<xs:maxInclusive value="1000" />
 				</xs:restriction>
@@ -225,7 +225,7 @@
 	<xs:complexType name="visibility">
 		<xs:attribute name="value" use="optional">
 			<xs:simpleType>
-				<xs:restriction base="xs:double">
+				<xs:restriction base="xs:decimal">
 					<xs:minInclusive value="0" />
 					<xs:maxInclusive value="200000000" />
 				</xs:restriction>
@@ -287,7 +287,7 @@
 		</xs:attribute>
 		<xs:attribute name="value" use="required">
 			<xs:simpleType>
-				<xs:restriction base="xs:double">
+				<xs:restriction base="xs:decimal">
 					<xs:minInclusive value="0" />
 					<xs:maxInclusive value="360" />
 				</xs:restriction>
@@ -306,7 +306,7 @@
 		</xs:attribute>
 		<xs:attribute name="value" use="required">
 			<xs:simpleType>
-				<xs:restriction base="xs:double">
+				<xs:restriction base="xs:decimal">
 					<xs:minInclusive value="0" />
 					<xs:maxInclusive value="500" />
 				</xs:restriction>
@@ -317,7 +317,7 @@
 	<xs:complexType name="gusts">
 		<xs:attribute name="value">
 			<xs:simpleType>
-				<xs:restriction base="xs:double">
+				<xs:restriction base="xs:decimal">
 					<xs:minInclusive value="0" />
 					<xs:maxInclusive value="500" />
 				</xs:restriction>

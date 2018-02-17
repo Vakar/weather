@@ -1,5 +1,6 @@
 package space.vakar.weather.domain.model.atmosphere;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 import space.vakar.weather.domain.api.Defaultable;
@@ -7,30 +8,30 @@ import space.vakar.weather.domain.model.DomainObject;
 
 public class Pressure  extends DomainObject implements Defaultable<Pressure>{
 
-	private double value;
+	private BigDecimal value;
 	private String unit;
 
 	public Pressure() {
 
 	}
 
-	public Pressure(double value, String unit) {
+	public Pressure(BigDecimal value, String unit) {
 		setValue(value);
 		setUnit(unit);
 	}
 	
 	public Pressure defaultInstance() {
 		setId(0);
-		setValue(Double.NaN);
+		setValue(new BigDecimal(-1.0));
 		setUnit("default_unit");
 		return this;
 	}
 
-	public double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
-	public void setValue(double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -52,7 +53,7 @@ public class Pressure  extends DomainObject implements Defaultable<Pressure>{
 		if (object instanceof Pressure) {
 			Pressure that = (Pressure) object;
 			return this.id == that.id 
-					&& Double.compare(this.value , that.value) == 0 
+					&& Objects.equals(this.value, that.value)
 					&& Objects.equals(this.unit, that.unit);
 		}
 		return false;

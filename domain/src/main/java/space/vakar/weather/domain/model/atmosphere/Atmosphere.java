@@ -1,5 +1,6 @@
 package space.vakar.weather.domain.model.atmosphere;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
@@ -17,7 +18,7 @@ public class Atmosphere extends DomainObject implements Defaultable<Atmosphere>{
 	private Pressure pressure;
 	
 	@PositiveOrZero
-	private double visibility;
+	private BigDecimal visibility;
 	
 	@NotNull
 	private Precipitation precipitation;
@@ -30,7 +31,7 @@ public class Atmosphere extends DomainObject implements Defaultable<Atmosphere>{
 	}
 
 	public Atmosphere(Humidity humidity, Pressure pressure, 
-			double visibility, Precipitation precipitation, Clouds clouds) {
+			BigDecimal visibility, Precipitation precipitation, Clouds clouds) {
 		setHumidity(humidity);
 		setPressure(pressure);
 		setVisibility(visibility);
@@ -42,7 +43,7 @@ public class Atmosphere extends DomainObject implements Defaultable<Atmosphere>{
 		setId(0);
 		setHumidity(new Humidity().defaultInstance());
 		setPressure(new Pressure().defaultInstance());
-		setVisibility(Double.NaN);
+		setVisibility(new BigDecimal(-1.0));
 		setPrecipitation(new Precipitation().defaultInstance());
 		setClouds(new Clouds().defaultInstance());
 		return this;
@@ -64,11 +65,11 @@ public class Atmosphere extends DomainObject implements Defaultable<Atmosphere>{
 		this.pressure = pressure;
 	}
 
-	public double getVisibility() {
+	public BigDecimal getVisibility() {
 		return visibility;
 	}
 
-	public void setVisibility(double visibility) {
+	public void setVisibility(BigDecimal visibility) {
 		this.visibility = visibility;
 	}
 
@@ -101,7 +102,7 @@ public class Atmosphere extends DomainObject implements Defaultable<Atmosphere>{
 			return this.id == that.id
 					&& Objects.equals(this.humidity, that.humidity)
 					&& Objects.equals(this.pressure, that.pressure)
-					&& Double.compare(this.visibility , that.visibility) == 0 
+					&& Objects.equals(this.visibility, that.visibility)
 					&& Objects.equals(this.precipitation, that.precipitation)
 					&& Objects.equals(this.clouds, that.clouds);
 		}

@@ -1,15 +1,22 @@
 package space.vakar.weather.domain.model.location;
 
 import java.util.Objects;
-
+import javax.validation.constraints.NotNull;
 import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
 
 public class Location extends DomainObject implements Defaultable<Location>{
 
+    @NotNull
 	private Coordinates coordinates;
+    
+    @NotNull
 	private Sun sun;
+    
+    @NotNull
 	private City city;
+    
+    @NotNull
 	private String country;
 	
 	public Location() {

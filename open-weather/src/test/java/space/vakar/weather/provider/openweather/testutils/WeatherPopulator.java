@@ -1,5 +1,6 @@
 package space.vakar.weather.provider.openweather.testutils;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import space.vakar.weather.domain.model.Weather;
@@ -31,22 +32,22 @@ public class WeatherPopulator {
 	}
 	
 	private static Wind getWind() {
-		WindSpeed speed = new WindSpeed(7.7, "Moderate breeze");
-		WindDirection direction = new WindDirection(290, "WNW", "West-northwest");
+		WindSpeed speed = new WindSpeed(new BigDecimal("7.7"), "Moderate breeze");
+		WindDirection direction = new WindDirection(new BigDecimal("290"), "WNW", "West-northwest");
 		return new Wind(speed, direction);
 	}
 	
 	private static Atmosphere getAtmosphere() {
-		Humidity humidity = new Humidity(85, "%");
-		Pressure pressure = new Pressure(1002, "hPa");
-		double visibility = 4828;
-		Precipitation precipitation = new Precipitation(13.4, "snow");
-		Clouds clouds = new Clouds(90, "overcast clouds");
+		Humidity humidity = new Humidity(new BigDecimal("85"), "%");
+		Pressure pressure = new Pressure(new BigDecimal("1002"), "hPa");
+		BigDecimal visibility = new BigDecimal("4828");
+		Precipitation precipitation = new Precipitation(new BigDecimal("13.4"), "snow");
+		Clouds clouds = new Clouds(new BigDecimal("90"), "overcast clouds");
 		return new Atmosphere(humidity, pressure, visibility, precipitation, clouds);
 	}
 	
 	private static Location getLocation() {
-		Coordinates coordinates = new Coordinates(-64.8, 46.1);
+		Coordinates coordinates = new Coordinates(new BigDecimal("-64.8"), new BigDecimal("46.1"));
 		Sun sun = getSun();
 		City city = new City(6076211, "Moncton");
 		String country = "CA";
@@ -60,7 +61,7 @@ public class WeatherPopulator {
 	}
 	
 	private static Temperature getTemperature() {
-		double value = 261.15;
+		BigDecimal value = new BigDecimal("261.15");
 		TemperatureUnit unit = TemperatureUnit.KELVIN;
 		return new Temperature(value, unit);
 	}

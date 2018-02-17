@@ -1,5 +1,6 @@
 package space.vakar.weather.domain.model.wind;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 import space.vakar.weather.domain.api.Defaultable;
@@ -7,30 +8,30 @@ import space.vakar.weather.domain.model.DomainObject;
 
 public class WindSpeed  extends DomainObject implements Defaultable<WindSpeed>{
 
-	private double value;
+	private BigDecimal value;
 	private String name;
 
 	public WindSpeed() {
 
 	}
 
-	public WindSpeed(double value, String name) {
+	public WindSpeed(BigDecimal value, String name) {
 		setValue(value);
 		setName(name);
 	}
 	
 	public WindSpeed defaultInstance() {
 		setId(0);
-		setValue(Double.NaN);
+		setValue(new BigDecimal(-1.0));
 		setName("default_name");
 		return this;
 	}
 
-	public double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
-	public void setValue(double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -52,7 +53,7 @@ public class WindSpeed  extends DomainObject implements Defaultable<WindSpeed>{
 		if (object instanceof WindSpeed) {
 			WindSpeed that = (WindSpeed) object;
 			return this.id == that.id 
-					&& Double.compare(this.value, that.value) == 0 
+					&& Objects.equals(this.value, that.value)
 					&& Objects.equals(this.name, that.name);
 		}
 		return false;

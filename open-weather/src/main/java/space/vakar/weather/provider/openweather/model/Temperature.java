@@ -1,62 +1,61 @@
 package space.vakar.weather.provider.openweather.model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
-
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 import space.vakar.weather.domain.model.temperature.TemperatureUnit;
 import space.vakar.weather.provider.openweather.util.adapters.TemperatureUnitAdapter;
 
 public class Temperature {
 	
 	/** Temperature */
-	private double value;
+	private BigDecimal value;
 	
 	/** Minimum temperature at the moment of calculation. This is deviation from 'temp' that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). */
-	private double min;
+	private BigDecimal min;
 	
 	/** Maximum temperature at the moment of calculation. This is deviation from 'temp' that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). */
-	private double max;
+	private BigDecimal max;
 	
-	/** Unit of measurements. Possilbe valure is Celsius, Kelvin, Fahrenheit. */
+	/** Unit of measurements. Possible value is Celsius, Kelvin, Fahrenheit. */
 	private TemperatureUnit unit;
 
 	public Temperature() {
 		
 	}
 
-	public Temperature(double value, double min, double max, TemperatureUnit unit) {
+	public Temperature(BigDecimal value, BigDecimal min, BigDecimal max, TemperatureUnit unit) {
 		this.value = value;
 		this.min = min;
 		this.max = max;
 		this.unit = unit;
 	}
 
-	public double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
 	@XmlAttribute
-	public void setValue(double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
-	public double getMin() {
+	public BigDecimal getMin() {
 		return min;
 	}
 
 	@XmlAttribute
-	public void setMin(double min) {
+	public void setMin(BigDecimal min) {
 		this.min = min;
 	}
 
-	public double getMax() {
+	public BigDecimal getMax() {
 		return max;
 	}
 
 	@XmlAttribute
-	public void setMax(double max) {
+	public void setMax(BigDecimal max) {
 		this.max = max;
 	}
 
@@ -79,9 +78,9 @@ public class Temperature {
 	public boolean equals(Object object) {
 		if (object instanceof Temperature) {
 			Temperature that = (Temperature) object;
-			return this.value == that.value 
-					&& this.min == that.min 
-					&& this.max == that.max
+			return Objects.equals(this.value, that.value)
+					&& Objects.equals(this.min, that.min)
+					&& Objects.equals(this.max, that.max)
 					&& Objects.equals(this.unit, that.unit);
 		}
 		return false;

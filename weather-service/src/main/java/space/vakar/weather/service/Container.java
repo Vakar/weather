@@ -36,7 +36,7 @@ public class Container implements WeatherContainer {
 
 	class Node {
 		private Weather weather;
-		private String cityName;
+		private String cityId;
 		private LocalDateTime updateTime;
 	}
 }

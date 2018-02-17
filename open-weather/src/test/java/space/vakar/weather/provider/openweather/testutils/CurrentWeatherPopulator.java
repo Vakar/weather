@@ -1,5 +1,6 @@
 package space.vakar.weather.provider.openweather.testutils;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import space.vakar.weather.domain.model.temperature.TemperatureUnit;
@@ -24,13 +25,13 @@ public class CurrentWeatherPopulator {
 
 	public static void populateData(CurrentWeather weather) {
 		weather.setCity(getCity());
-		weather.setTemperature(new Temperature(261.15, 261.15, 261.15, TemperatureUnit.KELVIN));
-		weather.setHumidity(new Humidity(85, "%"));
-		weather.setPressure(new Pressure(1002, "hPa"));
+		weather.setTemperature(new Temperature(new BigDecimal("261.15"), new BigDecimal("261.15"), new BigDecimal("261.15"), TemperatureUnit.KELVIN));
+		weather.setHumidity(new Humidity(new BigDecimal("85"), "%"));
+		weather.setPressure(new Pressure(new BigDecimal("1002"), "hPa"));
 		weather.setWind(getWind());
-		weather.setClouds(new Clouds(90, "overcast clouds"));
-		weather.setVisibility(new Visibility(4828));
-		weather.setPrecipitation(new Precipitation(13.4, "snow"));
+		weather.setClouds(new Clouds(new BigDecimal("90"), "overcast clouds"));
+		weather.setVisibility(new Visibility(new BigDecimal("4828")));
+		weather.setPrecipitation(new Precipitation(new BigDecimal("13.4"), "snow"));
 		weather.setWeather(new Weather(600, "light snow", "13n"));
 		weather.setLastupdate(getLastUpdate());
 	}
@@ -39,14 +40,14 @@ public class CurrentWeatherPopulator {
 		LocalDateTime rise = LocalDateTime.parse("2018-01-31T11:42:29");
 		LocalDateTime set = LocalDateTime.parse("2018-01-31T21:23:30");
 		Sun sun = new Sun(rise, set);
-		Coordinates coordinates = new Coordinates(-64.8, 46.1);
+		Coordinates coordinates = new Coordinates(new BigDecimal("-64.8"), new BigDecimal("46.1"));
 		return new City(6076211, "Moncton", "CA", sun, coordinates);
 	}
 
 	private static  Wind getWind() {
-		WindSpeed speed = new WindSpeed(7.7, "Moderate breeze");
-		Gusts gusts = new Gusts(11.3);
-		WindDirection direction = new WindDirection(290, "WNW", "West-northwest");		
+		WindSpeed speed = new WindSpeed(new BigDecimal("7.7"), "Moderate breeze");
+		Gusts gusts = new Gusts(new BigDecimal("11.3"));
+		WindDirection direction = new WindDirection(new BigDecimal("290"), "WNW", "West-northwest");		
 		return new Wind(speed, gusts, direction);
 	}
 

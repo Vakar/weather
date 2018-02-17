@@ -1,30 +1,31 @@
 package space.vakar.weather.provider.openweather.model;
 
+import java.math.BigDecimal;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Objects;
 
 @XmlRootElement
 public class Visibility {
 	
 	/** Visibility, meter */
-	private double value;
+	private BigDecimal value;
 
 	public Visibility() {
 		
 	}
 
-	public Visibility(double value) {
+	public Visibility(BigDecimal value) {
 		super();
 		this.value = value;
 	}
 
-	public double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
 	@XmlAttribute
-	public void setValue(double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -37,7 +38,7 @@ public class Visibility {
 	public boolean equals(Object object) {
 		if (object instanceof Visibility) {
 			Visibility that = (Visibility) object;
-			return this.value == that.value;
+			return Objects.equals(this.value, that.value);
 		}
 		return false;
 	}
