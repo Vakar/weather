@@ -1,8 +1,10 @@
 package space.vakar.weather.service;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import javax.validation.ValidationException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +22,8 @@ import space.vakar.weather.service.api.WeatherContainer;
 public class AgentImplTest {
 
 	private Weather weather;
+	
+	private Weather weatherWithNullFields;
 
 	@Mock
 	private WeatherContainer container;
@@ -33,6 +37,7 @@ public class AgentImplTest {
 	@Before
 	public void setUp() {
 		weather = EnhancedRandom.random(Weather.class);
+		weatherWithNullFields = new Weather();
 	}
 
 	@Test
@@ -67,11 +72,18 @@ public class AgentImplTest {
 	}
 	
 	@Test
-	public void shouldPushWeatherIntoContainer_WhenWeatherInContaineAndIsNotFreshr() throws Exception {
+	public void shouldPushWeatherIntoContainer_WhenWeatherInContaineAndIsNotFresh() throws Exception {
 		when(container.isExist(1)).thenReturn(true);
 		when(container.isFresh(1)).thenReturn(false);
 		when(provider.provideWeather(1)).thenReturn(weather);
 		agent.weather(1);
 		verify(container).push(weather);
+	}
+	
+	@Test(expected = ValidationException.class)
+	public void shouldThrowException_WhenFieldsHaveNullValue() throws Exception {
+		when(container.isExist(1)).thenReturn(false);
+		when(provider.provideWeather(1)).thenReturn(weatherWithNullFields);
+		agent.weather(1);
 	}
 }

@@ -17,19 +17,19 @@ public class Container implements WeatherContainer {
 	}
 
 	@Override
-	public Weather pull(String cityName) {
+	public Weather pull(int cityId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean isExist(String citName) {
+	public boolean isExist(int citId) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean isFresh(String cityName) {
+	public boolean isFresh(int cityId) {
 		// TODO Auto-generated method stub
 		return false;
 	}

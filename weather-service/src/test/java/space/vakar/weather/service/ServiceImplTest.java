@@ -32,8 +32,8 @@ public class ServiceImplTest {
 
 	@Test
 	public void shouldReturnWeather() {
-		when(agent.weather("Moncton")).thenReturn(weather);
-		assertEquals(weather, service.weather("Moncton"));
+		when(agent.weather(1)).thenReturn(weather);
+		assertEquals(weather, service.weather(1));
 	}
 
 }

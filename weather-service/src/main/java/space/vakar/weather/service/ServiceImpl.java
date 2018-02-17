@@ -9,8 +9,8 @@ public class ServiceImpl implements space.vakar.weather.service.api.Service {
 	private Agent agent;
 
 	@Override
-	public Weather weather(String cityName) {
-		return agent.weather(cityName);
+	public Weather weather(int cityId) {
+		return agent.weather(cityId);
 	}
 
 	public Agent getAgent() {
