@@ -5,73 +5,86 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.junit.Assume.assumeTrue;
-
-import java.time.LocalDateTime;
-
+import java.util.Map;
+import java.util.TreeMap;
 import org.junit.Before;
 import org.junit.Test;
-
 import io.github.benas.randombeans.api.EnhancedRandom;
 import space.vakar.weather.domain.model.Weather;
 
 public class ContainerTest {
 
-	private Container container;
+  private Container container;
+  private Weather weatherA;
+  private Weather weatherB;
+  private Weather weatherC;
+  
+  private static final int WEATHER_A_CITY_ID = 1;
+  private static final int WEATHER_B_CITY_ID = 2;
+  private static final int WEATHER_C_CITY_ID = 3;
 
-	private Weather weatherA;
-	private Weather weatherB;
-	private Weather weatherC;
-	
-	private int cityId;
+  @Before
+  public void setUpContainer() {
+    container = new Container();
+    Map<Integer, Weather> map = new TreeMap<>();
+    map.put(WEATHER_A_CITY_ID, weatherA);
+    map.put(WEATHER_B_CITY_ID, weatherB);
+    container.setMap(map);
+  }
 
-	@Before
-	public void setUp() {
-		weatherA = EnhancedRandom.random(Weather.class);
-		weatherB = EnhancedRandom.random(Weather.class);
-		weatherC = EnhancedRandom.random(Weather.class);
-		cityId = 1;
-		container = new Container();
-		container.getStack().addLast(
-				container.new Node(weatherA, 1, LocalDateTime.now()));
-		container.getStack().addLast(
-				container.new Node(weatherB, 3, LocalDateTime.now()));
-	}
+  @Before
+  public void setUpWeather() {
+    weatherA = EnhancedRandom.random(Weather.class);
+    weatherB = EnhancedRandom.random(Weather.class);
+    weatherC = EnhancedRandom.random(Weather.class);
+  }
 
-	@Test
-	public void shouldReturnFalse_WhenContainerDoesNotHaveNodeWithSearchingCityId() {
-		assertFalse(container.isExist(2));
-	}
+  @Test
+  public void shouldPutObjectToContainer_WhenPushObjectAndCityIdValid() {
+    container.push(weatherC, WEATHER_C_CITY_ID);
+    assertEquals(weatherC, container.getMap().get(WEATHER_C_CITY_ID));
+  }
 
-	@Test
-	public void shouldReturnTrue_WhenContainerHaveNodeWithSearchingCityId() {
-		assertTrue(container.isExist(1));
-	}
-	
-	@Test
-	public void shouldReturnWeatherByCityId_WhenExists() {
-		assertEquals(weatherB, container.pull(3));
-	}
-	
-	@Test
-	public void shouldReturnNull_WhenNotExist() {
-		assertNull(container.pull(33));
-	}
+  @Test
+  public void shoulRemoveOldObjectFromContainer_WhenObjectWithTheSameCityIdExist() {       
+    Weather newWeatherA = EnhancedRandom.random(Weather.class);
+    container.push(newWeatherA, WEATHER_A_CITY_ID);
+    assertEquals(newWeatherA, container.getMap().get(WEATHER_A_CITY_ID));
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void shouldThrowException_WhenObjectIsNull() {
+    container.push(null, 23);
+  }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void shouldThrowException_WhenCityIdBellowZero() {
+    container.push(weatherC, -1);
+  }
 
-	@Test
-	public void shouldSetObjectFirst_WhenPushObjectToContainer() {
-		assumeTrue(!container.getStack().isEmpty());
-		assumeTrue(!weatherC.equals(container.getStack().getFirst().getWeather()));
-		container.push(weatherC, 23);
-		assertEquals(weatherC, container.getStack().getFirst().getWeather());
-	}
+  @Test
+  public void shouldReturnFalse_WhenContainerDoesNotHaveNodeWithSearchingCityId() {
+    assertFalse(container.isExist(WEATHER_C_CITY_ID));
+  }
 
-	public void containerCapacityShouldNotBeBiggerThan_1000() {
-		fail("Not yet implemented");
-	}
+  @Test
+  public void shouldReturnTrue_WhenContainerHaveNodeWithSearchingCityId() {
+    assertTrue(container.isExist(WEATHER_A_CITY_ID));
+  }
 
-	public void shouldRemoveObjectWithSameCityName_WhenPushNewObject() {
-		fail("Not yet implemented");
-	}
+  @Test
+  public void shouldReturnWeatherByCityId_WhenExists() {
+    assertEquals(weatherB, container.pull(WEATHER_B_CITY_ID));
+  }
+
+  @Test
+  public void shouldReturnNull_WhenNotExist() {
+    assertNull(container.pull(WEATHER_C_CITY_ID));
+  }
+
+  @Test
+  public void containerCapacityShouldNotBeBiggerThan_1000() {
+    fail("Not yet implemented");
+  }
 
 }
