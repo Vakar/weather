@@ -61,7 +61,7 @@ public class AgentImplTest {
 		when(container.isExist(1)).thenReturn(false);
 		when(provider.provideWeather(1)).thenReturn(weather);
 		agent.weather(1);
-		verify(container).push(weather);
+		verify(container).push(weather,1);
 	}
 	
 	@Test
@@ -78,7 +78,7 @@ public class AgentImplTest {
 		when(container.isFresh(1)).thenReturn(false);
 		when(provider.provideWeather(1)).thenReturn(weather);
 		agent.weather(1);
-		verify(container).push(weather);
+		verify(container).push(weather,1);
 	}
 	
 	@Test(expected = ValidationException.class)

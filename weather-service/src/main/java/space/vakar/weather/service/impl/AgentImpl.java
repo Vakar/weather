@@ -31,7 +31,7 @@ public class AgentImpl implements Agent {
 	private Weather refreshAndSend(int cityId) {
 		Weather weather = askProvider(cityId);
 		validate(weather);
-		container.push(weather);
+		container.push(weather,cityId);
 		return weather;
 	}
 
