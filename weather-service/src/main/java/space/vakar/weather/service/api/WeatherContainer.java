@@ -1,6 +1,8 @@
 package space.vakar.weather.service.api;
 
 import java.io.Serializable;
+import java.time.Duration;
+
 import space.vakar.weather.domain.model.Weather;
 
 public interface WeatherContainer extends Serializable{	
@@ -14,5 +16,5 @@ public interface WeatherContainer extends Serializable{
 	public void push(Weather weather, int cityId) throws IllegalArgumentException;
 	public Weather pull(int cityId);
 	public boolean isExist(int cityId);
-	public boolean isFresh(int cityId);
+	public boolean isFresh(int cityId, Duration duration);
 }

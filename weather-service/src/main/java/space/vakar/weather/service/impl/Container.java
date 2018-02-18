@@ -1,47 +1,63 @@
 package space.vakar.weather.service.impl;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
+
 import space.vakar.weather.domain.model.Weather;
 import space.vakar.weather.service.api.WeatherContainer;
 
-public class Container implements WeatherContainer{
+public class Container implements WeatherContainer {
 
-  private Map<Integer, Weather> map = new TreeMap<>();
+	private Map<Integer, Weather> map = Collections
+			.synchronizedMap(new TreeMap<>());
 
-  public Map<Integer, Weather> getMap() {
-    return map;
-  }
+	private static final int MAX_CAPACITY = 1000;
 
-  public void setMap(Map<Integer, Weather> map) {
-    this.map = map;
-  }
+	public Map<Integer, Weather> getMap() {
+		return map;
+	}
 
-  @Override
-  public void push(Weather weather, int cityId) {
-    if (weather == null)
-      throw new IllegalArgumentException();
-    if (cityId < 0)
-      throw new IllegalArgumentException();
-    weather.setLastUpdate(LocalDateTime.now());
-    map.put(cityId, weather);
-  }
+	public void setMap(Map<Integer, Weather> map) {
+		this.map = map;
+	}
 
-  @Override
-  public Weather pull(int cityId) {
-    return map.get(cityId);
-  }
+	@Override
+	public void push(Weather weather, int cityId) {
+		validateNotNull(weather);
+		validatePositivOrZero(cityId);
+		if (map.size() >= MAX_CAPACITY - 1)
+			map.clear();
+		weather.setLastUpdate(LocalDateTime.now());
+		map.put(cityId, weather);
+	}
 
-  @Override
-  public boolean isExist(int cityId) {
-    return map.containsKey(cityId);
-  }
+	private void validateNotNull(Weather weather) {
+		if (weather == null)
+			throw new IllegalArgumentException();
+	}
 
-  @Override
-  public boolean isFresh(int cityId) {
-    // TODO Auto-generated method stub
-    return false;
-  }
+	private void validatePositivOrZero(int number) {
+		if (number < 0)
+			throw new IllegalArgumentException();
+	}
 
+	@Override
+	public Weather pull(int cityId) {
+		return map.get(cityId);
+	}
+
+	@Override
+	public boolean isExist(int cityId) {
+		return map.containsKey(cityId);
+	}
+
+	@Override
+	public boolean isFresh(int cityId, Duration validDuration) {
+		LocalDateTime lastUpdate = map.get(cityId).getLastUpdate();
+		Duration d = Duration.between(lastUpdate, LocalDateTime.now());
+		return d.getSeconds() < validDuration.getSeconds() ? true : false;
+	}
 }
