@@ -1,11 +1,8 @@
 package space.vakar.weather.service.impl;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
-
 import space.vakar.weather.domain.model.Weather;
 import space.vakar.weather.service.api.WeatherContainer;
 
@@ -27,10 +24,7 @@ public class Container implements WeatherContainer {
 	@Override
 	public void push(Weather weather, int cityId) {
 		validateNotNull(weather);
-		validatePositivOrZero(cityId);
-		if (map.size() >= MAX_CAPACITY - 1)
-			map.clear();
-		weather.setLastUpdate(LocalDateTime.now());
+		cleanMapIfFull();
 		map.put(cityId, weather);
 	}
 
@@ -38,26 +32,14 @@ public class Container implements WeatherContainer {
 		if (weather == null)
 			throw new IllegalArgumentException();
 	}
-
-	private void validatePositivOrZero(int number) {
-		if (number < 0)
-			throw new IllegalArgumentException();
+	
+	private void cleanMapIfFull() {
+	  if (map.size() >= MAX_CAPACITY)
+        map.clear();
 	}
 
 	@Override
 	public Weather pull(int cityId) {
 		return map.get(cityId);
-	}
-
-	@Override
-	public boolean isExist(int cityId) {
-		return map.containsKey(cityId);
-	}
-
-	@Override
-	public boolean isFresh(int cityId, Duration validDuration) {
-		LocalDateTime lastUpdate = map.get(cityId).getLastUpdate();
-		Duration d = Duration.between(lastUpdate, LocalDateTime.now());
-		return d.getSeconds() < validDuration.getSeconds() ? true : false;
 	}
 }

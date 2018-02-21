@@ -1,19 +1,13 @@
 package space.vakar.weather.service.impl;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
-
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.TreeMap;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import io.github.benas.randombeans.api.EnhancedRandom;
 import space.vakar.weather.domain.model.Weather;
 
@@ -24,10 +18,6 @@ public class ContainerTest {
 	private Weather weatherA;
 	private Weather weatherB;
 	private Weather weatherC;
-	
-	private static final Duration MINUTES_30 = Duration.ofMinutes(30);
-	private static final Duration HOUR = Duration.ofHours(1);
-	private static final Duration HOURS_1_MINUTES_1 = Duration.ofMinutes(61);
 
 	private static final int WEATHER_A_CITY_ID = 1;
 	private static final int WEATHER_B_CITY_ID = 2;
@@ -51,13 +41,13 @@ public class ContainerTest {
 	}
 
 	@Test
-	public void shouldPutObjectToContainer_WhenPushObjectAndCityIdValid() {
+	public void shouldPutObjectToContainer_WhenPushObjectNotNullValid() {
 		container.push(weatherC, WEATHER_C_CITY_ID);
 		assertEquals(weatherC, container.getMap().get(WEATHER_C_CITY_ID));
 	}
 
 	@Test
-	public void shoulRemoveOldObjectFromContainer_WhenObjectWithTheSameCityIdExist() {
+	public void shoulReplaceOldObjectFromContainer_WhenObjectWithTheSameCityIdExist() {
 		Weather newWeatherA = EnhancedRandom.random(Weather.class);
 		container.push(newWeatherA, WEATHER_A_CITY_ID);
 		assertEquals(newWeatherA, container.getMap().get(WEATHER_A_CITY_ID));
@@ -80,21 +70,6 @@ public class ContainerTest {
 		container.push(null, 23);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void shouldThrowException_WhenCityIdBellowZero() {
-		container.push(weatherC, -1);
-	}
-
-	@Test
-	public void shouldReturnFalse_WhenContainerDoesNotHaveNodeWithSearchingCityId() {
-		assertFalse(container.isExist(WEATHER_C_CITY_ID));
-	}
-
-	@Test
-	public void shouldReturnTrue_WhenContainerHaveNodeWithSearchingCityId() {
-		assertTrue(container.isExist(WEATHER_A_CITY_ID));
-	}
-
 	@Test
 	public void shouldReturnWeatherByCityId_WhenExists() {
 		assertEquals(weatherB, container.pull(WEATHER_B_CITY_ID));
@@ -104,18 +79,4 @@ public class ContainerTest {
 	public void shouldReturnNull_WhenNotExist() {
 		assertNull(container.pull(WEATHER_C_CITY_ID));
 	}
-
-	@Test
-	public void shoulReturnTrue_WhenWeatherNotOlderThenDuration() {
-		container.getMap().get(WEATHER_A_CITY_ID).setLastUpdate(LocalDateTime.now().minus(MINUTES_30));
-		assertTrue(container.isFresh(WEATHER_A_CITY_ID, HOUR));
-	}
-	
-	@Test
-	public void shoulReturnFalse_WhenWeatherOlderThenDuration() {
-		container.getMap().get(WEATHER_A_CITY_ID).setLastUpdate(LocalDateTime.now().minus(HOURS_1_MINUTES_1));
-		assertFalse(container.isFresh(WEATHER_A_CITY_ID, HOUR));
-	}
-	
-	//TODO create thread safe tests
 }
