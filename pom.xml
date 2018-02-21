@@ -14,6 +14,8 @@
 		<module>domain</module>
 		<module>open-weather</module>
 		<module>weather-service</module>
+		
+		<module>jsp-view</module>
 	</modules>
 
 	<properties>
