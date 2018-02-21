@@ -40,7 +40,7 @@ public class AgentImplTest {
     freshWeather = EnhancedRandom.random(Weather.class);
     freshWeather.setLastUpdate(LocalDateTime.now().minusMinutes(30));
     notFreshWeather = EnhancedRandom.random(Weather.class);
-    notFreshWeather.setLastUpdate(LocalDateTime.now().minusHours(1));
+    notFreshWeather.setLastUpdate(LocalDateTime.now().minusHours(2));
     weatherWithNullFields = new Weather();
   }
 

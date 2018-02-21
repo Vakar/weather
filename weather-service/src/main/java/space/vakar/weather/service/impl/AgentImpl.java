@@ -15,7 +15,7 @@ public class AgentImpl implements Agent {
   private WeatherProvider provider;
   private WeatherContainer container;
   
-  private static final Duration HOUR = Duration.ofHours(1);
+  private static final Duration TWO_HOURS = Duration.ofHours(2);
 
   @Override
   public Weather weather(int cityId) {
@@ -30,7 +30,7 @@ public class AgentImpl implements Agent {
   @Override
   public boolean isFresh(Weather weather) {
     Duration lastUpdateDelta = Duration.between(weather.getLastUpdate(), LocalDateTime.now());
-    return lastUpdateDelta.compareTo(HOUR) < 0? true : false;
+    return lastUpdateDelta.compareTo(TWO_HOURS) < 0? true : false;
 }
 
   private Weather askProviderAndCash(int cityId) {    
