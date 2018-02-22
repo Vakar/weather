@@ -50,6 +50,7 @@ public class ParserTest {
   
   @Test(expected = OpenWeatherException.class)
   public void shouldThrowException_WhenParsingNotValidXML() throws Exception {
-    when(retriverMock.weatherXML(1)).thenReturn(notValidWeatherStream);   
+    when(retriverMock.weatherXML(1)).thenReturn(notValidWeatherStream);  
+    parser.weather(1);
   }
 }
