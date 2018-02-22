@@ -9,12 +9,12 @@ import java.time.LocalDateTime;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import io.github.benas.randombeans.api.EnhancedRandom;
 import space.vakar.weather.domain.api.WeatherProvider;
 import space.vakar.weather.domain.model.Weather;
+import space.vakar.weather.service.api.Agent;
 import space.vakar.weather.service.api.WeatherContainer;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -32,7 +32,6 @@ public class AgentImplTest {
   @Mock
   private WeatherProvider provider;
 
-  @InjectMocks
   private AgentImpl agent;
 
   @Before
@@ -42,6 +41,7 @@ public class AgentImplTest {
     notFreshWeather = EnhancedRandom.random(Weather.class);
     notFreshWeather.setLastUpdate(LocalDateTime.now().minusHours(2));
     weatherWithNullFields = new Weather();
+    agent = new AgentImpl(provider, container);
   }
 
   @Test
@@ -95,5 +95,11 @@ public class AgentImplTest {
   @Test
   public void shoulReturnFalse_WhenWeatherNotFresh() {
     assertFalse(agent.isFresh(notFreshWeather));
+  }
+  
+  @Test
+  public void test() {
+    Agent a = new AgentImpl();
+    System.out.println(a.weather(6076211).toString());
   }
 }

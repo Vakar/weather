@@ -11,16 +11,21 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>space.vakar.weather</groupId>
+			<artifactId>weather-service</artifactId>
+			<version>0.1</version>
+		</dependency>
+		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-web-api</artifactId>
 			<version>6.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
 	</dependencies>
 
 	<build>

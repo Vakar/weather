@@ -7,15 +7,25 @@ import javax.validation.ValidationException;
 import space.vakar.weather.domain.api.WeatherProvider;
 import space.vakar.weather.domain.model.Weather;
 import space.vakar.weather.domain.util.BeanValidator;
+import space.vakar.weather.provider.openweather.Provider;
 import space.vakar.weather.service.api.Agent;
 import space.vakar.weather.service.api.WeatherContainer;
 
 public class AgentImpl implements Agent {
 
-  private WeatherProvider provider;
-  private WeatherContainer container;
+  private WeatherProvider provider = new Provider();
+  private WeatherContainer container = new Container();
   
-  private static final Duration TWO_HOURS = Duration.ofHours(2);
+  private static final Duration TWO_HOURS = Duration.ofHours(2);  
+
+  public AgentImpl() {
+    
+  }
+
+  public AgentImpl(WeatherProvider provider, WeatherContainer container) {
+    setProvider(provider);
+    setContainer(container);
+  }
 
   @Override
   public Weather weather(int cityId) {
@@ -40,7 +50,7 @@ public class AgentImpl implements Agent {
       validate(weather);
       container.push(weather, cityId);
     } catch (Exception e) {
-      throw new WeatherServiceException("Can't get weather from provider", e);
+      throw new WeatherServiceException("Can't get weather from provider cause" + e.getMessage(), e);
     }        
     return weather;
   }

@@ -7,11 +7,13 @@
 <title>Weather</title>
 </head>
 <body>
+<!--  
 <h3>${weather.cityName}</h3>
 <p>Lon:${weather.cityLon} Lat:${weather.cityLat}</p>
 <h3>Temperature</h3>
 <p>${weather.temperatureValue} ${weather.temperatureUnit }</p>
 <h3>Humidity</h3>
 <p>${weather.humidityValue} ${weather.humidityUnit}</p>
+-->
 </body>
 </html>

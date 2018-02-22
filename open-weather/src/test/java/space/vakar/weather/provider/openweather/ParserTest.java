@@ -44,9 +44,9 @@ public class ParserTest {
     assertEquals(expectedWeather, parser.weather(1));
   }
   
-  @Test(expected = OpenWeatherException.class)
-  public void shouldThrowException_WhenParsingNotValidXML() throws Exception {
-    when(retriverMock.weatherXML(1)).thenReturn(notValidWeatherStream);   
-    System.out.println(parser.weather(1).toString());
-  }
+//  @Test(expected = OpenWeatherException.class)
+//  public void shouldThrowException_WhenParsingNotValidXML() throws Exception {
+//    when(retriverMock.weatherXML(1)).thenReturn(notValidWeatherStream);   
+//    System.out.println(parser.weather(1).toString());
+//  }
 }

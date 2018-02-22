@@ -2,18 +2,14 @@ package space.vakar.weather.service.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import io.github.benas.randombeans.api.EnhancedRandom;
 import space.vakar.weather.domain.model.Weather;
 import space.vakar.weather.service.api.Agent;
-import space.vakar.weather.service.impl.ServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ServiceImplTest {
@@ -23,12 +19,12 @@ public class ServiceImplTest {
 	@Mock
 	private Agent agent;
 
-	@InjectMocks
-	private ServiceImpl service;
+	private WeatherServiceImpl service;
 
 	@Before
 	public void setUp() {
 		weather = EnhancedRandom.random(Weather.class);
+		service = new WeatherServiceImpl(agent);
 	}
 
 	@Test
