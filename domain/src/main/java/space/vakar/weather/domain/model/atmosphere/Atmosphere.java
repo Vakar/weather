@@ -3,26 +3,19 @@ package space.vakar.weather.domain.model.atmosphere;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import javax.validation.constraints.NotNull;
-
 import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.DomainObject;
 
 public class Atmosphere extends DomainObject implements Defaultable<Atmosphere>{
 	
-	@NotNull
 	private Humidity humidity;
 	
-	@NotNull
 	private Pressure pressure;
 	
-	@NotNull
 	private BigDecimal visibility;
 	
-	@NotNull
 	private Precipitation precipitation;
 	
-	@NotNull
 	private Clouds clouds;
 
 	public Atmosphere() {

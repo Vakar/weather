@@ -5,16 +5,18 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
 import java.time.LocalDateTime;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+
 import io.github.benas.randombeans.api.EnhancedRandom;
 import space.vakar.weather.domain.api.WeatherProvider;
 import space.vakar.weather.domain.model.Weather;
-import space.vakar.weather.service.api.Agent;
 import space.vakar.weather.service.api.WeatherContainer;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -22,7 +24,6 @@ public class AgentImplTest {
 
   private Weather freshWeather;
   private Weather notFreshWeather;
-  private Weather weatherWithNullFields;
   
   private static final int CITY_ID = 1;
 
@@ -40,7 +41,6 @@ public class AgentImplTest {
     freshWeather.setLastUpdate(LocalDateTime.now().minusMinutes(30));
     notFreshWeather = EnhancedRandom.random(Weather.class);
     notFreshWeather.setLastUpdate(LocalDateTime.now().minusHours(2));
-    weatherWithNullFields = new Weather();
     agent = new AgentImpl(provider, container);
   }
 
@@ -80,13 +80,6 @@ public class AgentImplTest {
     verify(container).push(freshWeather, CITY_ID);
   }
 
-  @Test(expected = WeatherServiceException.class)
-  public void shouldThrowException_WhenFieldsHaveNullValue() throws Exception {
-    when(container.pull(CITY_ID)).thenReturn(null);
-    when(provider.provideWeather(CITY_ID)).thenReturn(weatherWithNullFields);
-    agent.weather(CITY_ID);
-  }
-
   @Test
   public void shoulReturnTrue_WhenWeatherFresh() {
     assertTrue(agent.isFresh(freshWeather));
@@ -95,11 +88,5 @@ public class AgentImplTest {
   @Test
   public void shoulReturnFalse_WhenWeatherNotFresh() {
     assertFalse(agent.isFresh(notFreshWeather));
-  }
-  
-  @Test
-  public void test() {
-    Agent a = new AgentImpl();
-    System.out.println(a.weather(6076211).toString());
   }
 }

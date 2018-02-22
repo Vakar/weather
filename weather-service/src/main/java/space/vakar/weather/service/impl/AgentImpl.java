@@ -3,10 +3,9 @@ package space.vakar.weather.service.impl;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
-import javax.validation.ValidationException;
+
 import space.vakar.weather.domain.api.WeatherProvider;
 import space.vakar.weather.domain.model.Weather;
-import space.vakar.weather.domain.util.BeanValidator;
 import space.vakar.weather.provider.openweather.Provider;
 import space.vakar.weather.service.api.Agent;
 import space.vakar.weather.service.api.WeatherContainer;
@@ -47,18 +46,11 @@ public class AgentImpl implements Agent {
     Weather weather = null;
     try {
       weather = provider.provideWeather(cityId);
-      validate(weather);
       container.push(weather, cityId);
     } catch (Exception e) {
       throw new WeatherServiceException("Can't get weather from provider cause" + e.getMessage(), e);
     }        
     return weather;
-  }
-
-  private void validate(Weather weather) throws ValidationException {
-    if (BeanValidator.validate(weather).size() > 0) {
-      throw new ValidationException(weather.getClass().getName() + " isn't valid");
-    }
   }
 
   public WeatherProvider getProvider() {

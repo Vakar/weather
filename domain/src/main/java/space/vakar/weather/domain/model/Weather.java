@@ -3,8 +3,6 @@ package space.vakar.weather.domain.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import javax.validation.constraints.NotNull;
-
 import space.vakar.weather.domain.api.Defaultable;
 import space.vakar.weather.domain.model.atmosphere.Atmosphere;
 import space.vakar.weather.domain.model.location.Location;
@@ -13,19 +11,14 @@ import space.vakar.weather.domain.model.wind.Wind;
 
 public class Weather  extends DomainObject implements Defaultable<Weather>{
 
-	@NotNull
 	private Wind wind;
 	
-	@NotNull
 	private Location location;
 	
-	@NotNull
 	private Atmosphere atmosphere;
 	
-	@NotNull
 	private Temperature temperature;
 	
-	@NotNull
 	private LocalDateTime lastUpdate;
 
 	public Weather() {

@@ -29,7 +29,6 @@ public class WeatherServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  Weather weather = weatherService.weather(6076211);
 	  WeatherWebModel weatherModel = mapper.from(weather);	  
-	  System.out.println(weatherModel);
 	  request.setAttribute("weather", weatherModel);
 	  request.getRequestDispatcher("/WEB-INF/views/weather.jsp").forward(request, response);
 	}

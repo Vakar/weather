@@ -2,9 +2,12 @@ package space.vakar.weather.provider.openweather;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
+
 import java.io.IOException;
 import java.io.InputStream;
+
 import javax.xml.bind.JAXBException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +15,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.xml.sax.SAXException;
+
 import space.vakar.weather.provider.openweather.api.WeatherRetriever;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
 import space.vakar.weather.provider.openweather.testutils.CurrentWeatherPopulator;
@@ -44,9 +48,8 @@ public class ParserTest {
     assertEquals(expectedWeather, parser.weather(1));
   }
   
-//  @Test(expected = OpenWeatherException.class)
-//  public void shouldThrowException_WhenParsingNotValidXML() throws Exception {
-//    when(retriverMock.weatherXML(1)).thenReturn(notValidWeatherStream);   
-//    System.out.println(parser.weather(1).toString());
-//  }
+  @Test(expected = OpenWeatherException.class)
+  public void shouldThrowException_WhenParsingNotValidXML() throws Exception {
+    when(retriverMock.weatherXML(1)).thenReturn(notValidWeatherStream);   
+  }
 }
