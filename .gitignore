@@ -4,3 +4,4 @@
 .settings
 domain/target/
 target/
+openweather.properties

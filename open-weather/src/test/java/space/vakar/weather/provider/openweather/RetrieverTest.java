@@ -58,7 +58,7 @@ public class RetrieverTest {
 		} catch (OpenWeatherException e) {
 			message = e.getMessage();
 		}
-		assertEquals("HTTP/1.1 404 Not Found", message);
+		assertEquals("OpenWeather server response status code: HTTP/1.1 404 Not Found", message);
 	}
 
 	@Test
@@ -70,7 +70,7 @@ public class RetrieverTest {
 		} catch (OpenWeatherException e) {
 			message = e.getMessage();
 		}
-		assertEquals("HTTP/1.1 401 Unauthorized", message);
+		assertEquals("OpenWeather server response status code: HTTP/1.1 401 Unauthorized", message);
 	}
 	
 	private InputStream streamFromFile(String filePath) {
