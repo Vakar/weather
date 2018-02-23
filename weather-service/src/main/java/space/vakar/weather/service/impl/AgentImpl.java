@@ -3,7 +3,8 @@ package space.vakar.weather.service.impl;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
-
+import org.apache.log4j.Logger;
+import com.google.gson.Gson;
 import space.vakar.weather.domain.api.WeatherProvider;
 import space.vakar.weather.domain.model.Weather;
 import space.vakar.weather.provider.openweather.Provider;
@@ -11,6 +12,8 @@ import space.vakar.weather.service.api.Agent;
 import space.vakar.weather.service.api.WeatherContainer;
 
 public class AgentImpl implements Agent {
+  
+  private final static Logger LOG = Logger.getLogger(AgentImpl.class);
 
   private WeatherProvider provider = new Provider();
   private WeatherContainer container = new Container();
@@ -46,9 +49,10 @@ public class AgentImpl implements Agent {
     Weather weather = null;
     try {
       weather = provider.provideWeather(cityId);
+      LOG.debug("Get weather from provider: " + new Gson().toJson(weather));
       container.push(weather, cityId);
     } catch (Exception e) {
-      throw new WeatherServiceException("Can't get weather from provider cause" + e.getMessage(), e);
+      throw new WeatherServiceException("Can't get weather from provider", e);
     }        
     return weather;
   }

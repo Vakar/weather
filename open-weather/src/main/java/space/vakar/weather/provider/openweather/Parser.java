@@ -25,7 +25,7 @@ class Parser implements WeatherParser {
       unmarshaller.setEventHandler(new EventHandler());
       weather = (CurrentWeather) unmarshaller.unmarshal(retriever.weatherXML(cityId));
     } catch (Exception e) {
-      throw new OpenWeatherException("Can't not unmarshal weather cause: " + e.getMessage());
+      throw new OpenWeatherException("Can't not unmarshal weather XML.", e);
     }    
     return weather;
   }

@@ -6,9 +6,12 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.log4j.Logger;
 import space.vakar.weather.provider.openweather.api.WeatherRetriever;
 
 class Retriever implements WeatherRetriever {
+  
+  private final static Logger LOG = Logger.getLogger(WeatherRetriever.class);
 
   private String serviceUrl = "http://api.openweathermap.org";
   private String weatherEndPoint = "/data/2.5/weather";
@@ -24,15 +27,18 @@ class Retriever implements WeatherRetriever {
   private HttpResponse responseHttpGet(String url) throws OpenWeatherException{
     HttpResponse res;
     try {
+      LOG.debug("TRY: make GET request to OpenWeather server: " + url);
       res = httpClient.execute(new HttpGet(url));
     } catch (Exception e) {
       throw new OpenWeatherException("Can't get responce from server", e);
     }
+    LOG.debug("SUCCESS: get response from OpenWeather server");
     return res;
   }
 
   private String weatherXmlUrl(int cityId) {
-    return serviceUrl + weatherEndPoint + "?id=" + cityId + "&APPID=" + appId + "&mode=xml";
+    String UrlFormat = "%s%s?id=%s&APPID=%s&mode=xml";
+    return String.format(UrlFormat, serviceUrl, weatherEndPoint, cityId, appId);
   }
 
   private void validateResponce(HttpResponse response) throws OpenWeatherException {
