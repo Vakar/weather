@@ -1,10 +1,9 @@
-package space.vakar.weather.domain.model.temperature;
+package space.vakar.weather.domain.model.impl.temperature;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-
-import space.vakar.weather.domain.api.Defaultable;
-import space.vakar.weather.domain.model.DomainObject;
+import space.vakar.weather.domain.model.api.Defaultable;
+import space.vakar.weather.domain.model.impl.DomainObject;
 
 public class Temperature  extends DomainObject implements Defaultable<Temperature>{
 

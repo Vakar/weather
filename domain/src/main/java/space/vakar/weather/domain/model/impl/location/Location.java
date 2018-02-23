@@ -1,9 +1,8 @@
-package space.vakar.weather.domain.model.location;
+package space.vakar.weather.domain.model.impl.location;
 
 import java.util.Objects;
-
-import space.vakar.weather.domain.api.Defaultable;
-import space.vakar.weather.domain.model.DomainObject;
+import space.vakar.weather.domain.model.api.Defaultable;
+import space.vakar.weather.domain.model.impl.DomainObject;
 
 public class Location extends DomainObject implements Defaultable<Location>{
 

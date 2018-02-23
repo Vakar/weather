@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import org.apache.log4j.Logger;
 import com.google.gson.Gson;
-import space.vakar.weather.domain.model.Weather;
+import space.vakar.weather.domain.model.impl.Weather;
 import space.vakar.weather.service.api.WeatherContainer;
 
 public class Container implements WeatherContainer {

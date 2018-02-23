@@ -1,13 +1,12 @@
-package space.vakar.weather.domain.model;
+package space.vakar.weather.domain.model.impl;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
-
-import space.vakar.weather.domain.api.Defaultable;
-import space.vakar.weather.domain.model.atmosphere.Atmosphere;
-import space.vakar.weather.domain.model.location.Location;
-import space.vakar.weather.domain.model.temperature.Temperature;
-import space.vakar.weather.domain.model.wind.Wind;
+import space.vakar.weather.domain.model.api.Defaultable;
+import space.vakar.weather.domain.model.impl.atmosphere.Atmosphere;
+import space.vakar.weather.domain.model.impl.location.Location;
+import space.vakar.weather.domain.model.impl.temperature.Temperature;
+import space.vakar.weather.domain.model.impl.wind.Wind;
 
 public class Weather  extends DomainObject implements Defaultable<Weather>{
 

@@ -1,9 +1,8 @@
-package space.vakar.weather.domain.model.wind;
+package space.vakar.weather.domain.model.impl.wind;
 
 import java.util.Objects;
-
-import space.vakar.weather.domain.api.Defaultable;
-import space.vakar.weather.domain.model.DomainObject;
+import space.vakar.weather.domain.model.api.Defaultable;
+import space.vakar.weather.domain.model.impl.DomainObject;
 
 public class Wind  extends DomainObject implements Defaultable<Wind>{
 	

@@ -11,8 +11,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
-import space.vakar.weather.domain.model.Weather;
+import space.vakar.weather.domain.model.impl.Weather;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
 import space.vakar.weather.provider.openweather.testutils.CurrentWeatherPopulator;
 import space.vakar.weather.provider.openweather.testutils.WeatherPopulator;

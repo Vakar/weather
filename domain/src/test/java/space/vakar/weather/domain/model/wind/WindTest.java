@@ -5,6 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import space.vakar.weather.domain.model.AbstractJavaBeanTest;
+import space.vakar.weather.domain.model.impl.wind.Wind;
+import space.vakar.weather.domain.model.impl.wind.WindDirection;
+import space.vakar.weather.domain.model.impl.wind.WindSpeed;
 
 public class WindTest extends AbstractJavaBeanTest<Wind>{
 

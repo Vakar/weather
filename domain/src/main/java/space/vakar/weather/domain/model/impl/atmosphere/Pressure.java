@@ -1,26 +1,25 @@
-package space.vakar.weather.domain.model.atmosphere;
+package space.vakar.weather.domain.model.impl.atmosphere;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import space.vakar.weather.domain.model.api.Defaultable;
+import space.vakar.weather.domain.model.impl.DomainObject;
 
-import space.vakar.weather.domain.api.Defaultable;
-import space.vakar.weather.domain.model.DomainObject;
+public class Pressure  extends DomainObject implements Defaultable<Pressure>{
 
-public class Humidity  extends DomainObject implements Defaultable<Humidity>{
-	
 	private BigDecimal value;
 	private String unit;
 
-	public Humidity() {
+	public Pressure() {
 
 	}
 
-	public Humidity(BigDecimal value, String unit) {
+	public Pressure(BigDecimal value, String unit) {
 		setValue(value);
 		setUnit(unit);
 	}
 	
-	public Humidity defaultInstance() {
+	public Pressure defaultInstance() {
 		setId(0);
 		setValue(new BigDecimal(-1.0));
 		setUnit("default_unit");
@@ -50,8 +49,8 @@ public class Humidity  extends DomainObject implements Defaultable<Humidity>{
 
 	@Override
 	public boolean equals(Object object) {
-		if (object instanceof Humidity) {
-			Humidity that = (Humidity) object;
+		if (object instanceof Pressure) {
+			Pressure that = (Pressure) object;
 			return this.id == that.id 
 					&& Objects.equals(this.value, that.value)
 					&& Objects.equals(this.unit, that.unit);
@@ -61,7 +60,7 @@ public class Humidity  extends DomainObject implements Defaultable<Humidity>{
 
 	@Override
 	public String toString() {
-		String format = "Humidity [id=%s, value=%s, unit=%s]";
+		String format = "Pressure [id=%s, value=%s, unit=%s]";
 		return String.format(format, id, value, unit);
-	}	
+	}
 }

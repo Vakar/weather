@@ -15,8 +15,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import io.github.benas.randombeans.api.EnhancedRandom;
-import space.vakar.weather.domain.api.WeatherProvider;
-import space.vakar.weather.domain.model.Weather;
+import space.vakar.weather.domain.model.impl.Weather;
+import space.vakar.weather.provider.openweather.api.WeatherProvider;
 import space.vakar.weather.service.api.WeatherContainer;
 
 @RunWith(MockitoJUnitRunner.class)

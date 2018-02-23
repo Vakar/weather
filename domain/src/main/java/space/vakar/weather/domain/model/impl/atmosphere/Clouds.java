@@ -1,26 +1,25 @@
-package space.vakar.weather.domain.model.wind;
+package space.vakar.weather.domain.model.impl.atmosphere;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import space.vakar.weather.domain.model.api.Defaultable;
+import space.vakar.weather.domain.model.impl.DomainObject;
 
-import space.vakar.weather.domain.api.Defaultable;
-import space.vakar.weather.domain.model.DomainObject;
-
-public class WindSpeed  extends DomainObject implements Defaultable<WindSpeed>{
-
+public class Clouds extends DomainObject implements Defaultable<Clouds>{
+    
 	private BigDecimal value;
 	private String name;
 
-	public WindSpeed() {
+	public Clouds() {
 
 	}
 
-	public WindSpeed(BigDecimal value, String name) {
+	public Clouds(BigDecimal value, String name) {
 		setValue(value);
 		setName(name);
 	}
 	
-	public WindSpeed defaultInstance() {
+	public Clouds defaultInstance() {
 		setId(0);
 		setValue(new BigDecimal(-1.0));
 		setName("default_name");
@@ -50,8 +49,8 @@ public class WindSpeed  extends DomainObject implements Defaultable<WindSpeed>{
 
 	@Override
 	public boolean equals(Object object) {
-		if (object instanceof WindSpeed) {
-			WindSpeed that = (WindSpeed) object;
+		if (object instanceof Clouds) {
+			Clouds that = (Clouds) object;
 			return this.id == that.id 
 					&& Objects.equals(this.value, that.value)
 					&& Objects.equals(this.name, that.name);
@@ -61,7 +60,7 @@ public class WindSpeed  extends DomainObject implements Defaultable<WindSpeed>{
 
 	@Override
 	public String toString() {
-		String format = "WindSpeed [id=%s, value=%s, name=%s]";
+		String format = "Clouds [id=%s, value=%s, name=%s]";
 		return String.format(format, id, value, name);
 	}
 }

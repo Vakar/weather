@@ -5,11 +5,11 @@ import static org.junit.Assert.assertEquals;
 import java.time.LocalDateTime;
 
 import org.junit.Test;
-
-import space.vakar.weather.domain.model.atmosphere.Atmosphere;
-import space.vakar.weather.domain.model.location.Location;
-import space.vakar.weather.domain.model.temperature.Temperature;
-import space.vakar.weather.domain.model.wind.Wind;
+import space.vakar.weather.domain.model.impl.Weather;
+import space.vakar.weather.domain.model.impl.atmosphere.Atmosphere;
+import space.vakar.weather.domain.model.impl.location.Location;
+import space.vakar.weather.domain.model.impl.temperature.Temperature;
+import space.vakar.weather.domain.model.impl.wind.Wind;
 
 public class WeatherTest extends AbstractJavaBeanTest<Weather> {
 

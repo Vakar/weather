@@ -4,8 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import space.vakar.weather.domain.model.Weather;
+import space.vakar.weather.domain.model.impl.Weather;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
 import space.vakar.weather.provider.openweather.testutils.CurrentWeatherPopulator;
 import space.vakar.weather.provider.openweather.testutils.WeatherPopulator;

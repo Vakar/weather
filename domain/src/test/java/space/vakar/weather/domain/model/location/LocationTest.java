@@ -5,6 +5,10 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import space.vakar.weather.domain.model.AbstractJavaBeanTest;
+import space.vakar.weather.domain.model.impl.location.City;
+import space.vakar.weather.domain.model.impl.location.Coordinates;
+import space.vakar.weather.domain.model.impl.location.Location;
+import space.vakar.weather.domain.model.impl.location.Sun;
 
 public class LocationTest extends AbstractJavaBeanTest<Location> {
 

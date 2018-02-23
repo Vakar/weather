@@ -9,7 +9,7 @@ import java.util.TreeMap;
 import org.junit.Before;
 import org.junit.Test;
 import io.github.benas.randombeans.api.EnhancedRandom;
-import space.vakar.weather.domain.model.Weather;
+import space.vakar.weather.domain.model.impl.Weather;
 
 public class ContainerTest {
 

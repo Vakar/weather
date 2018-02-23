@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import org.junit.Test;
 
 import space.vakar.weather.domain.model.AbstractJavaBeanTest;
+import space.vakar.weather.domain.model.impl.location.Coordinates;
 
 public class CoordinatesTest extends AbstractJavaBeanTest<Coordinates> {
 

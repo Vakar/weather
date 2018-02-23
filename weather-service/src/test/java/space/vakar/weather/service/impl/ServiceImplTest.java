@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import io.github.benas.randombeans.api.EnhancedRandom;
-import space.vakar.weather.domain.model.Weather;
+import space.vakar.weather.domain.model.impl.Weather;
 import space.vakar.weather.service.api.Agent;
 
 @RunWith(MockitoJUnitRunner.class)

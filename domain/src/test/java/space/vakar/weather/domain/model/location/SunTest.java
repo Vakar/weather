@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import org.junit.Test;
 
 import space.vakar.weather.domain.model.AbstractJavaBeanTest;
+import space.vakar.weather.domain.model.impl.location.Sun;
 
 public class SunTest extends AbstractJavaBeanTest<Sun> {
 

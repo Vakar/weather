@@ -1,7 +1,7 @@
 package space.vakar.weather.provider.openweather;
 
-import space.vakar.weather.domain.api.WeatherProvider;
-import space.vakar.weather.domain.model.Weather;
+import space.vakar.weather.domain.model.impl.Weather;
+import space.vakar.weather.provider.openweather.api.WeatherProvider;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
 import space.vakar.weather.provider.openweather.util.mappers.GetWeather;
 

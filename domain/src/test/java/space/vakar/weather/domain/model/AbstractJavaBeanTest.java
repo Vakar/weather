@@ -12,20 +12,20 @@ import org.meanbean.test.BeanTester;
 import org.meanbean.lang.Factory;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
-import space.vakar.weather.domain.model.atmosphere.Atmosphere;
-import space.vakar.weather.domain.model.atmosphere.Clouds;
-import space.vakar.weather.domain.model.atmosphere.Humidity;
-import space.vakar.weather.domain.model.atmosphere.Precipitation;
-import space.vakar.weather.domain.model.atmosphere.Pressure;
-import space.vakar.weather.domain.model.location.City;
-import space.vakar.weather.domain.model.location.Coordinates;
-import space.vakar.weather.domain.model.location.Location;
-import space.vakar.weather.domain.model.location.Sun;
-import space.vakar.weather.domain.model.temperature.Temperature;
-import space.vakar.weather.domain.model.temperature.TemperatureUnit;
-import space.vakar.weather.domain.model.wind.Wind;
-import space.vakar.weather.domain.model.wind.WindDirection;
-import space.vakar.weather.domain.model.wind.WindSpeed;
+import space.vakar.weather.domain.model.impl.atmosphere.Atmosphere;
+import space.vakar.weather.domain.model.impl.atmosphere.Clouds;
+import space.vakar.weather.domain.model.impl.atmosphere.Humidity;
+import space.vakar.weather.domain.model.impl.atmosphere.Precipitation;
+import space.vakar.weather.domain.model.impl.atmosphere.Pressure;
+import space.vakar.weather.domain.model.impl.location.City;
+import space.vakar.weather.domain.model.impl.location.Coordinates;
+import space.vakar.weather.domain.model.impl.location.Location;
+import space.vakar.weather.domain.model.impl.location.Sun;
+import space.vakar.weather.domain.model.impl.temperature.Temperature;
+import space.vakar.weather.domain.model.impl.temperature.TemperatureUnit;
+import space.vakar.weather.domain.model.impl.wind.Wind;
+import space.vakar.weather.domain.model.impl.wind.WindDirection;
+import space.vakar.weather.domain.model.impl.wind.WindSpeed;
 
 public abstract class AbstractJavaBeanTest<T> {
 

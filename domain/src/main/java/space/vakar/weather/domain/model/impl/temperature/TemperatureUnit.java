@@ -1,4 +1,4 @@
-package space.vakar.weather.domain.model.temperature;
+package space.vakar.weather.domain.model.impl.temperature;
 
 public enum TemperatureUnit{	
 	KELVIN, 

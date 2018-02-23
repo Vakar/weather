@@ -1,10 +1,9 @@
-package space.vakar.weather.domain.model.location;
+package space.vakar.weather.domain.model.impl.location;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-
-import space.vakar.weather.domain.api.Defaultable;
-import space.vakar.weather.domain.model.DomainObject;
+import space.vakar.weather.domain.model.api.Defaultable;
+import space.vakar.weather.domain.model.impl.DomainObject;
 
 public class Coordinates  extends DomainObject implements Defaultable<Coordinates>{
 

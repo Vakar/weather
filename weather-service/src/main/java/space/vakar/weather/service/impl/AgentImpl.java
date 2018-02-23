@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import org.apache.log4j.Logger;
 import com.google.gson.Gson;
-import space.vakar.weather.domain.api.WeatherProvider;
-import space.vakar.weather.domain.model.Weather;
+import space.vakar.weather.domain.model.impl.Weather;
 import space.vakar.weather.provider.openweather.Provider;
+import space.vakar.weather.provider.openweather.api.WeatherProvider;
 import space.vakar.weather.service.api.Agent;
 import space.vakar.weather.service.api.WeatherContainer;
 

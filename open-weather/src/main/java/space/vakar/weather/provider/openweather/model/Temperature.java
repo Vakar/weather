@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import space.vakar.weather.domain.model.temperature.TemperatureUnit;
+import space.vakar.weather.domain.model.impl.temperature.TemperatureUnit;
 import space.vakar.weather.provider.openweather.util.adapters.TemperatureUnitAdapter;
 
 public class Temperature {
