@@ -1,16 +1,12 @@
 package space.vakar.weather.provider.openweather;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
-import java.util.Properties;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.log4j.Logger;
 import space.vakar.weather.provider.openweather.api.WeatherRetriever;
 
@@ -18,26 +14,11 @@ class Retriever implements WeatherRetriever {
 
   private final static Logger LOG = Logger.getLogger(Retriever.class);
   
-  private final static String OPEN_WEATHER_PROPERTIES_FILE = "openweather.properties";
-
   private HttpClient httpClient;
   
-  private Properties properties;
-
   private String serviceUrl;
   private String weatherEndPoint;
   private String appId;
-  
-  public Retriever() {
-    httpClient = HttpClientBuilder.create().build();
-    properties = properties(OPEN_WEATHER_PROPERTIES_FILE);
-    serviceUrl = properties.getProperty("open.weather.server.url");
-    weatherEndPoint = properties.getProperty("current.weather.end.point");
-    appId = properties.getProperty("app.id");
-    LOG.debug(serviceUrl);
-    LOG.debug(weatherEndPoint);
-    LOG.debug(appId);
-  }
 
   public InputStream weatherXML(int cityId) {
     HttpResponse response = httpGetRequest(weatherXmlUrl(cityId));
@@ -80,21 +61,13 @@ class Retriever implements WeatherRetriever {
       }
     return in;
   }
-  
-  private Properties properties(String fileName) {
-    File file = file(fileName);
-    Properties properties = new Properties();    
-    try (FileInputStream fileInput = new FileInputStream(file);){
-      properties.load(fileInput);      
-    } catch (IOException e) {
-      throw new OpenWeatherException("Can't read OpenWeather properties file", e);
-    }   
-    return properties;
+
+  public HttpClient getHttpClient() {
+    return httpClient;
   }
-  
-  private File file(String fileName) {
-    ClassLoader classLoader = getClass().getClassLoader();
-    return new File(classLoader.getResource(fileName).getFile());
+
+  public void setHttpClient(HttpClient httpClient) {
+    this.httpClient = httpClient;
   }
 
   public String getServiceUrl() {

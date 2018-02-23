@@ -2,21 +2,18 @@ package space.vakar.weather.provider.openweather;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import java.io.IOException;
 import java.io.InputStream;
-
 import org.apache.commons.io.IOUtils;
 import org.apache.http.localserver.LocalTestServer;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import space.vakar.weather.provider.openweather.testutils.WeatherRequestHandler;
 
 public class RetrieverTest {
-
+  
 	private Retriever weatherRetriever;
 	private static LocalTestServer server;
 	
@@ -25,7 +22,7 @@ public class RetrieverTest {
 	
 	@Before
 	public void setUp() {
-		weatherRetriever = new Retriever();
+		weatherRetriever = RetrieverBuilder.buildRetriever();
 		weatherRetriever.setServiceUrl("http:/" + server.getServiceAddress());
 	}
 

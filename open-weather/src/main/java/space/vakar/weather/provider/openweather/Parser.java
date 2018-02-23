@@ -15,7 +15,7 @@ import space.vakar.weather.provider.openweather.util.handlers.EventHandler;
 
 class Parser implements WeatherParser {
 
-  private WeatherRetriever retriever = new Retriever();
+  private WeatherRetriever retriever = RetrieverBuilder.buildRetriever();
 
   public CurrentWeather weather(int cityId) {    
     CurrentWeather weather;
