@@ -30,6 +30,7 @@
 	</nav>
 
 	<div id="weather" class="container">
+		<p>${errorMessage}</p>
 		<h4>${weather.cityName}</h4>
 		<p>Lon:${weather.cityLon} Lat:${weather.cityLat}</p>
 		<h4>Temperature</h4>
