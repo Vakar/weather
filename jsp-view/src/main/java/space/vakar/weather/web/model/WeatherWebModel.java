@@ -7,11 +7,89 @@ public class WeatherWebModel {
   private String cityName;
   private String cityLon;
   private String cityLat;
+  private String country;
+  private String sunRise;
+  private String sunSet;
   private String temperatureValue;
   private String temperatureUnit;
   private String humidityValue;
   private String humidityUnit;
+  private String pressureValue;
+  private String pressureUnit;
+  private String windSpeed;
+  private String windName;
+  private String windDirection;
+  private String cloudsValue;
+  private String cloudsName;
+  private String lastUpdate;
   
+  
+  public String getCountry() {
+    return country;
+  }
+  public void setCountry(String country) {
+    this.country = country;
+  }
+  public String getSunRise() {
+    return sunRise;
+  }
+  public void setSunRise(String sunRise) {
+    this.sunRise = sunRise;
+  }
+  public String getSunSet() {
+    return sunSet;
+  }
+  public void setSunSet(String sunSet) {
+    this.sunSet = sunSet;
+  }
+  public String getPressureValue() {
+    return pressureValue;
+  }
+  public void setPressureValue(String pressureValue) {
+    this.pressureValue = pressureValue;
+  }
+  public String getPressureUnit() {
+    return pressureUnit;
+  }
+  public void setPressureUnit(String pressureUnit) {
+    this.pressureUnit = pressureUnit;
+  }
+  public String getWindSpeed() {
+    return windSpeed;
+  }
+  public void setWindSpeed(String windSpeed) {
+    this.windSpeed = windSpeed;
+  }
+  public String getWindName() {
+    return windName;
+  }
+  public void setWindName(String windName) {
+    this.windName = windName;
+  }
+  public String getWindDirection() {
+    return windDirection;
+  }
+  public void setWindDirection(String windDirection) {
+    this.windDirection = windDirection;
+  }
+  public String getCloudsValue() {
+    return cloudsValue;
+  }
+  public void setCloudsValue(String cloudsValue) {
+    this.cloudsValue = cloudsValue;
+  }
+  public String getCloudsName() {
+    return cloudsName;
+  }
+  public void setCloudsName(String cloudsName) {
+    this.cloudsName = cloudsName;
+  }
+  public String getLastUpdate() {
+    return lastUpdate;
+  }
+  public void setLastUpdate(String lastUpdate) {
+    this.lastUpdate = lastUpdate;
+  }
   public String getCityName() {
     return cityName;
   }
