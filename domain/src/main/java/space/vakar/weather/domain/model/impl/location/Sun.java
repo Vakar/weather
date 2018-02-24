@@ -2,10 +2,9 @@ package space.vakar.weather.domain.model.impl.location;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
-import space.vakar.weather.domain.model.api.Defaultable;
 import space.vakar.weather.domain.model.impl.DomainObject;
 
-public class Sun  extends DomainObject implements Defaultable<Sun>{
+public class Sun extends DomainObject {
 
 	private LocalDateTime rise;
 	private LocalDateTime set;
@@ -17,13 +16,6 @@ public class Sun  extends DomainObject implements Defaultable<Sun>{
 	public Sun(LocalDateTime rise, LocalDateTime set) {
 		setRise(rise);
 		setSet(set);
-	}
-	
-	public Sun defaultInstance() {
-		setId(0);
-		setRise(LocalDateTime.MIN);
-		setSet(LocalDateTime.MAX);
-		return this;
 	}
 
 	public LocalDateTime getRise() {

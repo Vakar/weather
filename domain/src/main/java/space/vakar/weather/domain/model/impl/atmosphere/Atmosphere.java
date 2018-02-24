@@ -2,10 +2,9 @@ package space.vakar.weather.domain.model.impl.atmosphere;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-import space.vakar.weather.domain.model.api.Defaultable;
 import space.vakar.weather.domain.model.impl.DomainObject;
 
-public class Atmosphere extends DomainObject implements Defaultable<Atmosphere>{
+public class Atmosphere extends DomainObject {
 	
 	private Humidity humidity;
 	
@@ -28,16 +27,6 @@ public class Atmosphere extends DomainObject implements Defaultable<Atmosphere>{
 		setVisibility(visibility);
 		setPrecipitation(precipitation);
 		setClouds(clouds);
-	}
-	
-	public Atmosphere defaultInstance() {
-		setId(0);
-		setHumidity(new Humidity().defaultInstance());
-		setPressure(new Pressure().defaultInstance());
-		setVisibility(new BigDecimal(-1.0));
-		setPrecipitation(new Precipitation().defaultInstance());
-		setClouds(new Clouds().defaultInstance());
-		return this;
 	}
 
 	public Humidity getHumidity() {

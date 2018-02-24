@@ -2,10 +2,9 @@ package space.vakar.weather.domain.model.impl.atmosphere;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-import space.vakar.weather.domain.model.api.Defaultable;
 import space.vakar.weather.domain.model.impl.DomainObject;
 
-public class Humidity  extends DomainObject implements Defaultable<Humidity>{
+public class Humidity extends DomainObject {
 	
 	private BigDecimal value;
 	private String unit;
@@ -17,13 +16,6 @@ public class Humidity  extends DomainObject implements Defaultable<Humidity>{
 	public Humidity(BigDecimal value, String unit) {
 		setValue(value);
 		setUnit(unit);
-	}
-	
-	public Humidity defaultInstance() {
-		setId(0);
-		setValue(new BigDecimal(-1.0));
-		setUnit("default_unit");
-		return this;
 	}
 
 	public BigDecimal getValue() {

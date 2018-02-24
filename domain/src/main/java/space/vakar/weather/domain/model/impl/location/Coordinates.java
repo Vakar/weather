@@ -2,10 +2,9 @@ package space.vakar.weather.domain.model.impl.location;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-import space.vakar.weather.domain.model.api.Defaultable;
 import space.vakar.weather.domain.model.impl.DomainObject;
 
-public class Coordinates  extends DomainObject implements Defaultable<Coordinates>{
+public class Coordinates extends DomainObject {
 
 	private BigDecimal longitude;
 	private BigDecimal latitude;
@@ -17,13 +16,6 @@ public class Coordinates  extends DomainObject implements Defaultable<Coordinate
 	public Coordinates(BigDecimal longitude, BigDecimal latitude) {
 		setLongitude(longitude);
 		setLatitude(latitude);
-	}
-	
-	public Coordinates defaultInstance() {
-		setId(0);
-		setLongitude(new BigDecimal(-1.0));
-		setLatitude(new BigDecimal(-1.0));
-		return this;
 	}
 
 	public int getId() {

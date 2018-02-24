@@ -2,10 +2,9 @@ package space.vakar.weather.domain.model.impl.atmosphere;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-import space.vakar.weather.domain.model.api.Defaultable;
 import space.vakar.weather.domain.model.impl.DomainObject;
 
-public class Clouds extends DomainObject implements Defaultable<Clouds>{
+public class Clouds extends DomainObject {
     
 	private BigDecimal value;
 	private String name;
@@ -17,13 +16,6 @@ public class Clouds extends DomainObject implements Defaultable<Clouds>{
 	public Clouds(BigDecimal value, String name) {
 		setValue(value);
 		setName(name);
-	}
-	
-	public Clouds defaultInstance() {
-		setId(0);
-		setValue(new BigDecimal(-1.0));
-		setName("default_name");
-		return this;
 	}
 
 	public BigDecimal getValue() {

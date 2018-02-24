@@ -2,10 +2,9 @@ package space.vakar.weather.domain.model.impl.wind;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-import space.vakar.weather.domain.model.api.Defaultable;
 import space.vakar.weather.domain.model.impl.DomainObject;
 
-public class WindDirection  extends DomainObject implements Defaultable<WindDirection>{
+public class WindDirection extends DomainObject {
 
 	private BigDecimal value;
 	private String code;
@@ -19,14 +18,6 @@ public class WindDirection  extends DomainObject implements Defaultable<WindDire
 		setValue(value);
 		setCode(code);
 		setName(name);
-	}
-	
-	public WindDirection defaultInstance() {
-		setId(0);
-		setValue(new BigDecimal(-1.0));
-		setCode("default_code");
-		setName("default_name");
-		return this;
 	}
 
 	public BigDecimal getValue() {
