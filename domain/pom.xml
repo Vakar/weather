@@ -27,6 +27,15 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<configLocation>google_checks.xml</configLocation>
+					<linkXRef>true</linkXRef>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>3.9.0</version>
 				<configuration>
@@ -36,7 +45,7 @@
 					<rulesets>
 						<ruleset>/category/java/bestpractices.xml</ruleset>
 						<ruleset>/category/java/documentation.xml</ruleset>
-						<ruleset>/category/java/design.xml</ruleset>						
+						<ruleset>/category/java/design.xml</ruleset>
 						<ruleset>/category/java/errorprone.xml</ruleset>
 						<ruleset>/category/java/performance.xml</ruleset>
 						<ruleset>/category/java/multithreading.xml</ruleset>
