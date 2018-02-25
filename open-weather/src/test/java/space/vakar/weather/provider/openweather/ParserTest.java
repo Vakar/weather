@@ -44,13 +44,13 @@ public class ParserTest {
 
   @Test
   public void shouldReturnCorrectObject() throws JAXBException, IOException, SAXException {
-    when(retriverMock.weatherXML(1)).thenReturn(weatherStream);
+    when(retriverMock.weatherXml(1)).thenReturn(weatherStream);
     assertEquals(expectedWeather, parser.weather(1));
   }
   
   @Test(expected = OpenWeatherException.class)
   public void shouldThrowException_WhenParsingNotValidXML() throws Exception {
-    when(retriverMock.weatherXML(1)).thenReturn(notValidWeatherStream);  
+    when(retriverMock.weatherXml(1)).thenReturn(notValidWeatherStream);  
     parser.weather(1);
   }
 }

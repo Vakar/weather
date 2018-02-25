@@ -42,7 +42,7 @@ public class RetrieverTest {
 	public void shouldReturnInputStream_WhenAllUrlCorrect() throws IOException, OpenWeatherException {
 		InputStream expected = streamFromFile("weather.xml");	
 		weatherRetriever.setAppId("valid_app_id");
-		InputStream weather = weatherRetriever.weatherXML(VALID_CITY_ID);
+		InputStream weather = weatherRetriever.weatherXml(VALID_CITY_ID);
 		assertTrue(IOUtils.contentEquals(expected, weather));
 	}
 
@@ -51,7 +51,7 @@ public class RetrieverTest {
 		String message = null;			
 		try {
 			weatherRetriever.setAppId("valid_app_id");	
-			weatherRetriever.weatherXML(NOT_VALID_CITY_ID);
+			weatherRetriever.weatherXml(NOT_VALID_CITY_ID);
 		} catch (OpenWeatherException e) {
 			message = e.getMessage();
 		}
@@ -63,7 +63,7 @@ public class RetrieverTest {
 		String message = null;				
 		try {
 			weatherRetriever.setAppId("not_valid_app_id");
-			weatherRetriever.weatherXML(VALID_CITY_ID);
+			weatherRetriever.weatherXml(VALID_CITY_ID);
 		} catch (OpenWeatherException e) {
 			message = e.getMessage();
 		}

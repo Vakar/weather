@@ -7,11 +7,11 @@ import space.vakar.weather.provider.openweather.util.mappers.GetWeather;
 
 public class Provider implements WeatherProvider {
 
-	private Parser parser = new Parser();
+  private Parser parser = new Parser();
 
-	@Override
-	public Weather provideWeather(int city) {
-		CurrentWeather currentWeather = parser.weather(city);
-		return GetWeather.from(currentWeather);
-	}
+  @Override
+  public Weather provideWeather(int city) {
+    CurrentWeather currentWeather = parser.weather(city);
+    return GetWeather.from(currentWeather);
+  }
 }

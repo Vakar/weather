@@ -23,7 +23,7 @@ class Parser implements WeatherParser {
       Unmarshaller unmarshaller = unmarshaller(CurrentWeather.class);
       unmarshaller.setSchema(schema("current.xsd"));
       unmarshaller.setEventHandler(new EventHandler());
-      weather = (CurrentWeather) unmarshaller.unmarshal(retriever.weatherXML(cityId));
+      weather = (CurrentWeather) unmarshaller.unmarshal(retriever.weatherXml(cityId));
     } catch (Exception e) {
       throw new OpenWeatherException("Can't not unmarshal weather XML.", e);
     }    
