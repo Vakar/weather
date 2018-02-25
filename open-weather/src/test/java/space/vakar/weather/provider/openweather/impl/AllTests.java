@@ -1,4 +1,4 @@
-package space.vakar.weather.provider.openweather;
+package space.vakar.weather.provider.openweather.impl;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

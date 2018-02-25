@@ -8,6 +8,7 @@ import space.vakar.weather.domain.model.impl.Weather;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
 import space.vakar.weather.provider.openweather.testutils.CurrentWeatherPopulator;
 import space.vakar.weather.provider.openweather.testutils.WeatherPopulator;
+import space.vakar.weather.provider.openweather.util.mappers.GetWeather;
 
 
 public class WeatherMapperTest {

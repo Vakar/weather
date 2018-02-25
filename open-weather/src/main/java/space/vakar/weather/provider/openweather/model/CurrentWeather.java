@@ -1,151 +1,146 @@
 package space.vakar.weather.provider.openweather.model;
 
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Objects;
 
 @XmlRootElement(name = "current")
 public class CurrentWeather {
 
-	private City city;
-	private Temperature temperature;
-	private Humidity humidity;
-	private Pressure pressure;
-	private Wind wind;
-	private Clouds clouds;
-	private Visibility visibility;
-	private Precipitation precipitation;
-	private Weather weather;
-	private LastUpdate lastupdate;
+  private City city;
+  private Temperature temperature;
+  private Humidity humidity;
+  private Pressure pressure;
+  private Wind wind;
+  private Clouds clouds;
+  private Visibility visibility;
+  private Precipitation precipitation;
+  private Weather weather;
+  private LastUpdate lastupdate;
 
-	public CurrentWeather() {
-		
-	}
+  public CurrentWeather() {
 
-	public City getCity() {
-		return city;
-	}
+  }
 
-	@XmlElement
-	public void setCity(City city) {
-		this.city = city;
-	}
+  public City getCity() {
+    return city;
+  }
 
-	public Temperature getTemperature() {
-		return temperature;
-	}
+  @XmlElement
+  public void setCity(City city) {
+    this.city = city;
+  }
 
-	@XmlElement
-	public void setTemperature(Temperature temperature) {
-		this.temperature = temperature;
-	}
+  public Temperature getTemperature() {
+    return temperature;
+  }
 
-	public Humidity getHumidity() {
-		return humidity;
-	}
+  @XmlElement
+  public void setTemperature(Temperature temperature) {
+    this.temperature = temperature;
+  }
 
-	@XmlElement
-	public void setHumidity(Humidity humidity) {
-		this.humidity = humidity;
-	}
+  public Humidity getHumidity() {
+    return humidity;
+  }
 
-	public Pressure getPressure() {
-		return pressure;
-	}
+  @XmlElement
+  public void setHumidity(Humidity humidity) {
+    this.humidity = humidity;
+  }
 
-	@XmlElement
-	public void setPressure(Pressure pressure) {
-		this.pressure = pressure;
-	}
+  public Pressure getPressure() {
+    return pressure;
+  }
 
-	public Wind getWind() {
-		return wind;
-	}
+  @XmlElement
+  public void setPressure(Pressure pressure) {
+    this.pressure = pressure;
+  }
 
-	@XmlElement
-	public void setWind(Wind wind) {
-		this.wind = wind;
-	}
+  public Wind getWind() {
+    return wind;
+  }
 
-	public Clouds getClouds() {
-		return clouds;
-	}
+  @XmlElement
+  public void setWind(Wind wind) {
+    this.wind = wind;
+  }
 
-	@XmlElement
-	public void setClouds(Clouds clouds) {
-		this.clouds = clouds;
-	}
+  public Clouds getClouds() {
+    return clouds;
+  }
 
-	public Visibility getVisibility() {
-		return visibility;
-	}
+  @XmlElement
+  public void setClouds(Clouds clouds) {
+    this.clouds = clouds;
+  }
 
-	@XmlElement
-	public void setVisibility(Visibility visibility) {
-		this.visibility = visibility;
-	}
+  public Visibility getVisibility() {
+    return visibility;
+  }
 
-	public Precipitation getPrecipitation() {
-		return precipitation;
-	}
+  @XmlElement
+  public void setVisibility(Visibility visibility) {
+    this.visibility = visibility;
+  }
 
-	@XmlElement
-	public void setPrecipitation(Precipitation precipitation) {
-		this.precipitation = precipitation;
-	}
+  public Precipitation getPrecipitation() {
+    return precipitation;
+  }
 
-	public Weather getWeather() {
-		return weather;
-	}
+  @XmlElement
+  public void setPrecipitation(Precipitation precipitation) {
+    this.precipitation = precipitation;
+  }
 
-	@XmlElement
-	public void setWeather(Weather weather) {
-		this.weather = weather;
-	}
+  public Weather getWeather() {
+    return weather;
+  }
 
-	public LastUpdate getLastupdate() {
-		return lastupdate;
-	}
+  @XmlElement
+  public void setWeather(Weather weather) {
+    this.weather = weather;
+  }
 
-	@XmlElement
-	public void setLastupdate(LastUpdate lastupdate) {
-		this.lastupdate = lastupdate;
-	}
+  public LastUpdate getLastupdate() {
+    return lastupdate;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(city, temperature, humidity, 
-				pressure, wind, clouds, visibility, 
-				precipitation, weather, lastupdate);
-	}
+  @XmlElement
+  public void setLastupdate(LastUpdate lastupdate) {
+    this.lastupdate = lastupdate;
+  }
 
-	@Override
-	public boolean equals(Object object) {
-		if (object instanceof CurrentWeather) {
-			CurrentWeather that = (CurrentWeather) object;
-			return Objects.equals(this.city, that.city) 
-					&& Objects.equals(this.temperature, that.temperature)
-					&& Objects.equals(this.humidity, that.humidity) 
-					&& Objects.equals(this.pressure, that.pressure)
-					&& Objects.equals(this.wind, that.wind) 
-					&& Objects.equals(this.clouds, that.clouds)
-					&& Objects.equals(this.visibility, that.visibility)
-					&& Objects.equals(this.precipitation, that.precipitation)
-					&& Objects.equals(this.weather, that.weather) 
-					&& Objects.equals(this.lastupdate, that.lastupdate);
-		}
-		return false;
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(city, temperature, humidity, pressure, wind, clouds, visibility,
+        precipitation, weather, lastupdate);
+  }
 
-	@Override
-	public String toString() {
-		String format = "Current [city=%s, temperature=%s, humidity=%s, "
-				+ "pressure=%s, wind=%s, clouds=%s, "
-				+ "visibility=%s, precipitation=%s, weather=%s, "
-				+ "lastupdate=%s]";
-		return String.format(format, city, temperature, humidity, 
-				pressure, wind, clouds, 
-				visibility, precipitation, weather, 
-				lastupdate);
-	}
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof CurrentWeather) {
+      CurrentWeather that = (CurrentWeather) object;
+      return Objects.equals(this.city, that.city)
+          && Objects.equals(this.temperature, that.temperature)
+          && Objects.equals(this.humidity, that.humidity)
+          && Objects.equals(this.pressure, that.pressure) && Objects.equals(this.wind, that.wind)
+          && Objects.equals(this.clouds, that.clouds)
+          && Objects.equals(this.visibility, that.visibility)
+          && Objects.equals(this.precipitation, that.precipitation)
+          && Objects.equals(this.weather, that.weather)
+          && Objects.equals(this.lastupdate, that.lastupdate);
+    }
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    String format =
+        "Current [city=%s, temperature=%s, humidity=%s, " + "pressure=%s, wind=%s, clouds=%s, "
+            + "visibility=%s, precipitation=%s, weather=%s, " + "lastupdate=%s]";
+    return String.format(format, city, temperature, humidity, pressure, wind, clouds, visibility,
+        precipitation, weather, lastupdate);
+  }
 }

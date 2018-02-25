@@ -7,45 +7,45 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Visibility {
-	
-	/** Visibility, meter */
-	private BigDecimal value;
 
-	public Visibility() {
-		
-	}
+  /** Visibility in meters. */
+  private BigDecimal value;
 
-	public Visibility(BigDecimal value) {
-		super();
-		this.value = value;
-	}
+  public Visibility() {
 
-	public BigDecimal getValue() {
-		return value;
-	}
+  }
 
-	@XmlAttribute
-	public void setValue(BigDecimal value) {
-		this.value = value;
-	}
+  public Visibility(BigDecimal value) {
+    super();
+    this.value = value;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hashCode(value);
-	}
+  public BigDecimal getValue() {
+    return value;
+  }
 
-	@Override
-	public boolean equals(Object object) {
-		if (object instanceof Visibility) {
-			Visibility that = (Visibility) object;
-			return Objects.equals(this.value, that.value);
-		}
-		return false;
-	}
+  @XmlAttribute
+  public void setValue(BigDecimal value) {
+    this.value = value;
+  }
 
-	@Override
-	public String toString() {
-		String format = "Visibility [value=%s]";
-		return String.format(format, value);
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(value);
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof Visibility) {
+      Visibility that = (Visibility) object;
+      return Objects.equals(this.value, that.value);
+    }
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    String format = "Visibility [value=%s]";
+    return String.format(format, value);
+  }
 }

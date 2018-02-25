@@ -1,65 +1,64 @@
 package space.vakar.weather.provider.openweather.model;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Humidity {
-	
-	/** Humidity value */
-	private BigDecimal value;
-	
-	/** % */
-	private String unit;
 
-	public Humidity() {
-		
-	}
+  /** Humidity value. */
+  private BigDecimal value;
 
-	public Humidity(BigDecimal value, String unit) {
-		super();
-		this.value = value;
-		this.unit = unit; 
-	}
+  /** OpenWeather represent this parameter in %. */
+  private String unit;
 
-	public BigDecimal getValue() {
-		return value;
-	}
+  public Humidity() {
 
-	@XmlAttribute
-	public void setValue(BigDecimal value) {
-		this.value = value;
-	}
+  }
 
-	public String getUnit() {
-		return unit;
-	}
+  public Humidity(BigDecimal value, String unit) {
+    super();
+    this.value = value;
+    this.unit = unit;
+  }
 
-	@XmlAttribute
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
+  public BigDecimal getValue() {
+    return value;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(value, unit);
-	}
+  @XmlAttribute
+  public void setValue(BigDecimal value) {
+    this.value = value;
+  }
 
-	@Override
-	public boolean equals(Object object) {
-		if (object instanceof Humidity) {
-			Humidity that = (Humidity) object;
-			return Objects.equals(this.value, that.value) 
-					&& Objects.equals(this.unit, that.unit);
-		}
-		return false;
-	}
+  public String getUnit() {
+    return unit;
+  }
 
-	@Override
-	public String toString() {
-		String format = "Humidity [value=%s, unit=%s]";
-		return String.format(format, value, unit);
-	}
+  @XmlAttribute
+  public void setUnit(String unit) {
+    this.unit = unit;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(value, unit);
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof Humidity) {
+      Humidity that = (Humidity) object;
+      return Objects.equals(this.value, that.value) && Objects.equals(this.unit, that.unit);
+    }
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    String format = "Humidity [value=%s, unit=%s]";
+    return String.format(format, value, unit);
+  }
 }

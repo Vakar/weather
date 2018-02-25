@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Gusts {
 
-  /** Wind gusts speed, mps */
+  /** Wind gusts speed, mps. */
   private BigDecimal value;
 
   public Gusts() {

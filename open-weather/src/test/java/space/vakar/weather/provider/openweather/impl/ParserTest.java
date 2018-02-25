@@ -1,22 +1,18 @@
-package space.vakar.weather.provider.openweather;
+package space.vakar.weather.provider.openweather.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
-
 import java.io.IOException;
 import java.io.InputStream;
-
-import javax.xml.bind.JAXBException;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.xml.sax.SAXException;
-
 import space.vakar.weather.provider.openweather.api.WeatherRetriever;
+import space.vakar.weather.provider.openweather.exceptions.OpenWeatherParserException;
+import space.vakar.weather.provider.openweather.exceptions.OpenWeatherRetrieverException;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
 import space.vakar.weather.provider.openweather.testutils.CurrentWeatherPopulator;
 
@@ -34,23 +30,30 @@ public class ParserTest {
   InputStream notValidWeatherStream;
 
   @Before
-  public void setUp() throws IOException {
+  public void setUpWeather() {
     expectedWeather = new CurrentWeather();
     CurrentWeatherPopulator.populateData(expectedWeather);
+
+  }
+
+  @Before
+  public void setUpInputStreams() throws IOException {
     ClassLoader loader = getClass().getClassLoader();
     weatherStream = loader.getResource("weather.xml").openStream();
     notValidWeatherStream = loader.getResource("notValidWeather.xml").openStream();
   }
 
   @Test
-  public void shouldReturnCorrectObject() throws JAXBException, IOException, SAXException {
+  public void shouldReturnCorrectObject()
+      throws OpenWeatherParserException, OpenWeatherRetrieverException {
     when(retriverMock.weatherXml(1)).thenReturn(weatherStream);
     assertEquals(expectedWeather, parser.weather(1));
   }
-  
-  @Test(expected = OpenWeatherException.class)
-  public void shouldThrowException_WhenParsingNotValidXML() throws Exception {
-    when(retriverMock.weatherXml(1)).thenReturn(notValidWeatherStream);  
+
+  @Test(expected = OpenWeatherParserException.class)
+  public void shouldThrowOpenWeatherParserException_WhenParsingNotValidXML()
+      throws OpenWeatherRetrieverException, OpenWeatherParserException {
+    when(retriverMock.weatherXml(1)).thenReturn(notValidWeatherStream);
     parser.weather(1);
   }
 }

@@ -1,64 +1,64 @@
 package space.vakar.weather.provider.openweather.model;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Coordinates {
-	
-	/** Geographical location, longitude */
-	private BigDecimal longitude;
-	
-	/** Geographical location, latitude */
-	private BigDecimal latitude;
 
-	public Coordinates() {
-		
-	}
+  /** Geographical location, longitude. */
+  private BigDecimal longitude;
 
-	public Coordinates(BigDecimal longitude, BigDecimal latitude) {
-		this.longitude = longitude;
-		this.latitude = latitude;
-	}
+  /** Geographical location, latitude. */
+  private BigDecimal latitude;
 
-	public BigDecimal getLongitude() {
-		return longitude;
-	}
+  public Coordinates() {
 
-	@XmlAttribute(name="lon")
-	public void setLongitude(BigDecimal longitude) {
-		this.longitude = longitude;
-	}
+  }
 
-	public BigDecimal getLatitude() {
-		return latitude;
-	}
+  public Coordinates(BigDecimal longitude, BigDecimal latitude) {
+    this.longitude = longitude;
+    this.latitude = latitude;
+  }
 
-	@XmlAttribute(name="lat")
-	public void setLatitude(BigDecimal latitude) {
-		this.latitude = latitude;
-	}
+  public BigDecimal getLongitude() {
+    return longitude;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(longitude, latitude);
-	}
+  @XmlAttribute(name = "lon")
+  public void setLongitude(BigDecimal longitude) {
+    this.longitude = longitude;
+  }
 
-	@Override
-	public boolean equals(Object object) {
-		if (object instanceof Coordinates) {
-			Coordinates that = (Coordinates) object;
-			return Objects.equals(this.longitude, that.longitude)
-					&& Objects.equals(this.latitude, that.latitude);
-		}
-		return false;
-	}
+  public BigDecimal getLatitude() {
+    return latitude;
+  }
 
-	@Override
-	public String toString() {
-		String format = "Coordinates [longitude=%s, latitude=%s]";
-		return String.format(format, longitude, latitude);
-	}
+  @XmlAttribute(name = "lat")
+  public void setLatitude(BigDecimal latitude) {
+    this.latitude = latitude;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(longitude, latitude);
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof Coordinates) {
+      Coordinates that = (Coordinates) object;
+      return Objects.equals(this.longitude, that.longitude)
+          && Objects.equals(this.latitude, that.latitude);
+    }
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    String format = "Coordinates [longitude=%s, latitude=%s]";
+    return String.format(format, longitude, latitude);
+  }
 }

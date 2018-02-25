@@ -1,10 +1,11 @@
-package space.vakar.weather.provider.openweather;
+package space.vakar.weather.provider.openweather.impl;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import org.apache.http.impl.client.HttpClientBuilder;
+import space.vakar.weather.provider.openweather.exceptions.OpenWeatherException;
 
 public class RetrieverBuilder {
 

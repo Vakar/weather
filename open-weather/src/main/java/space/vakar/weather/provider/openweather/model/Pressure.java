@@ -1,64 +1,63 @@
 package space.vakar.weather.provider.openweather.model;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Pressure {
-	
-	/** Pressure value */
-	private BigDecimal value;
-	
-	/** hPa */
-	private String unit;
 
-	public Pressure() {
-		
-	}
+  /** Pressure value. */
+  private BigDecimal value;
 
-	public Pressure(BigDecimal value, String unit) {
-		this.value = value;
-		this.unit = unit;
-	}
+  /** OpenWeather pressure unit is hPa. */
+  private String unit;
 
-	public BigDecimal getValue() {
-		return value;
-	}
+  public Pressure() {
 
-	@XmlAttribute
-	public void setValue(BigDecimal value) {
-		this.value = value;
-	}
+  }
 
-	public String getUnit() {
-		return unit;
-	}
+  public Pressure(BigDecimal value, String unit) {
+    this.value = value;
+    this.unit = unit;
+  }
 
-	@XmlAttribute
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
+  public BigDecimal getValue() {
+    return value;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(value, unit);
-	}
+  @XmlAttribute
+  public void setValue(BigDecimal value) {
+    this.value = value;
+  }
 
-	@Override
-	public boolean equals(Object object) {
-		if (object instanceof Pressure) {
-			Pressure that = (Pressure) object;
-			return Objects.equals(this.value, that.value)
-					&& Objects.equals(this.unit, that.unit);
-		}
-		return false;
-	}
+  public String getUnit() {
+    return unit;
+  }
 
-	@Override
-	public String toString() {
-		String format = "Pressure [value=%s, unit=%s]";
-		return String.format(format, value, unit);
-	}
+  @XmlAttribute
+  public void setUnit(String unit) {
+    this.unit = unit;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(value, unit);
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof Pressure) {
+      Pressure that = (Pressure) object;
+      return Objects.equals(this.value, that.value) && Objects.equals(this.unit, that.unit);
+    }
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    String format = "Pressure [value=%s, unit=%s]";
+    return String.format(format, value, unit);
+  }
 }

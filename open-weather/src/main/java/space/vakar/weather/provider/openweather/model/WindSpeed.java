@@ -7,58 +7,57 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "speed")
 public class WindSpeed {
-	
-	/** Wind speed, mps */
-	private BigDecimal value;
-	
-	/** Type of the wind */
-	private String name;
 
-	public WindSpeed() {
-		
-	}
+  /** Wind speed in mps. */
+  private BigDecimal value;
 
-	public WindSpeed(BigDecimal value, String name) {
-		this.value = value;
-		this.name = name;
-	}
+  /** Type of the wind. */
+  private String name;
 
-	public BigDecimal getValue() {
-		return value;
-	}
+  public WindSpeed() {
 
-	@XmlAttribute
-	public void setValue(BigDecimal value) {
-		this.value = value;
-	}
+  }
 
-	public String getName() {
-		return name;
-	}
+  public WindSpeed(BigDecimal value, String name) {
+    this.value = value;
+    this.name = name;
+  }
 
-	@XmlAttribute
-	public void setName(String name) {
-		this.name = name;
-	}
+  public BigDecimal getValue() {
+    return value;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(value, name);
-	}
+  @XmlAttribute
+  public void setValue(BigDecimal value) {
+    this.value = value;
+  }
 
-	@Override
-	public boolean equals(Object object) {
-		if (object instanceof WindSpeed) {
-			WindSpeed that = (WindSpeed) object;
-			return Objects.equals(this.value, that.value)
-					&& Objects.equals(this.name, that.name);
-		}
-		return false;
-	}
+  public String getName() {
+    return name;
+  }
 
-	@Override
-	public String toString() {
-		String format = "WindSpeed [value=%s, name=%s]";
-		return String.format(format, value, name);
-	}
+  @XmlAttribute
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(value, name);
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof WindSpeed) {
+      WindSpeed that = (WindSpeed) object;
+      return Objects.equals(this.value, that.value) && Objects.equals(this.name, that.name);
+    }
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    String format = "WindSpeed [value=%s, name=%s]";
+    return String.format(format, value, name);
+  }
 }
