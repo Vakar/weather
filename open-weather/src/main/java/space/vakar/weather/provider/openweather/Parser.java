@@ -17,6 +17,7 @@ class Parser implements WeatherParser {
 
   private WeatherRetriever retriever = RetrieverBuilder.buildRetriever();
 
+  @Override
   public CurrentWeather weather(int cityId) {    
     CurrentWeather weather;
     try {

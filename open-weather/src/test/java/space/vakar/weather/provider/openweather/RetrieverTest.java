@@ -1,6 +1,5 @@
 package space.vakar.weather.provider.openweather;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,13 +12,13 @@ import org.junit.Test;
 import space.vakar.weather.provider.openweather.testutils.WeatherRequestHandler;
 
 public class RetrieverTest {
-  
+
 	private Retriever weatherRetriever;
 	private static LocalTestServer server;
-	
+
 	private static final int VALID_CITY_ID = 1;
 	private static final int NOT_VALID_CITY_ID = -1;
-	
+
 	@Before
 	public void setUp() {
 		weatherRetriever = RetrieverBuilder.buildRetriever();
@@ -30,7 +29,7 @@ public class RetrieverTest {
 	public static void setUpBeforeClass() throws Exception {
 		server = new LocalTestServer(null, null);
 		server.start();
-		server.register("/data/2.5/*", new WeatherRequestHandler());		
+		server.register("/data/2.5/*", new WeatherRequestHandler());
 	}
 
 	@AfterClass
@@ -40,36 +39,24 @@ public class RetrieverTest {
 
 	@Test
 	public void shouldReturnInputStream_WhenAllUrlCorrect() throws IOException, OpenWeatherException {
-		InputStream expected = streamFromFile("weather.xml");	
+		InputStream expected = streamFromFile("weather.xml");
 		weatherRetriever.setAppId("valid_app_id");
 		InputStream weather = weatherRetriever.weatherXml(VALID_CITY_ID);
 		assertTrue(IOUtils.contentEquals(expected, weather));
 	}
 
-	@Test
-	public void shouldReturnOpenWeatherExceptionWith404ErrorMessage_WhenCityIdNotValid() throws IOException {
-		String message = null;			
-		try {
-			weatherRetriever.setAppId("valid_app_id");	
+  @Test(expected = OpenWeatherException.class)
+  public void shouldReturnOpenWeatherException_WhenCityIdNotValid() throws IOException {
+			weatherRetriever.setAppId("valid_app_id");
 			weatherRetriever.weatherXml(NOT_VALID_CITY_ID);
-		} catch (OpenWeatherException e) {
-			message = e.getMessage();
-		}
-		assertEquals("OpenWeather server response status code: HTTP/1.1 404 Not Found", message);
 	}
 
-	@Test
-	public void shouldReturnOpenWeatherExceptionWith401ErrorMessage_WhenAppIdNotValid() throws IOException {
-		String message = null;				
-		try {
+  @Test(expected = OpenWeatherException.class)
+	public void shouldReturnOpenWeatherException_WhenAppIdNotValid() throws IOException {
 			weatherRetriever.setAppId("not_valid_app_id");
 			weatherRetriever.weatherXml(VALID_CITY_ID);
-		} catch (OpenWeatherException e) {
-			message = e.getMessage();
-		}
-		assertEquals("OpenWeather server response status code: HTTP/1.1 401 Unauthorized", message);
 	}
-	
+
 	private InputStream streamFromFile(String filePath) {
 		ClassLoader loader = getClass().getClassLoader();
 		InputStream stream;
