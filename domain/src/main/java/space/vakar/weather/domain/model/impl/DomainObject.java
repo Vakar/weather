@@ -6,6 +6,15 @@ public class DomainObject implements Serializable {
 
   protected int id;
 
+  public DomainObject() {
+    super();
+  }
+
+  public DomainObject(int id) {
+    super();
+    this.id = id;
+  }
+
   public int getId() {
     return id;
   }

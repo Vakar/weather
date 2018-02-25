@@ -42,14 +42,6 @@
 					<analysisCache>true</analysisCache>
 					<targetJdk>1.8</targetJdk>
 					<linkXRef>true</linkXRef>
-					<rulesets>
-						<ruleset>/category/java/bestpractices.xml</ruleset>
-						<ruleset>/category/java/documentation.xml</ruleset>
-						<ruleset>/category/java/design.xml</ruleset>
-						<ruleset>/category/java/errorprone.xml</ruleset>
-						<ruleset>/category/java/performance.xml</ruleset>
-						<ruleset>/category/java/multithreading.xml</ruleset>
-					</rulesets>
 				</configuration>
 			</plugin>
 		</plugins>

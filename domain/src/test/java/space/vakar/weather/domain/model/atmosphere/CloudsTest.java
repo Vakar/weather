@@ -5,8 +5,8 @@ import space.vakar.weather.domain.model.impl.atmosphere.Clouds;
 
 public class CloudsTest extends AbstractJavaBeanTest<Clouds> {
 
-	@Override
-	protected Clouds getBeanInstance() {
-		return new Clouds();
-	}	
+  @Override
+  protected Clouds getBeanInstance() {
+    return new Clouds();
+  }
 }

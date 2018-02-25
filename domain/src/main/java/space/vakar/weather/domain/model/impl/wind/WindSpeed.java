@@ -2,6 +2,7 @@ package space.vakar.weather.domain.model.impl.wind;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+
 import space.vakar.weather.domain.model.impl.DomainObject;
 
 public class WindSpeed extends DomainObject {
@@ -13,6 +14,12 @@ public class WindSpeed extends DomainObject {
     super();
   }
 
+  /**
+   * Constructor.
+   * 
+   * @param value speed in mps
+   * @param name wind speed full name
+   */
   public WindSpeed(BigDecimal value, String name) {
     super();
     setValue(value);

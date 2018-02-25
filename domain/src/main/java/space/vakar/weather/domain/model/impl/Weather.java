@@ -2,6 +2,7 @@ package space.vakar.weather.domain.model.impl;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+
 import space.vakar.weather.domain.model.impl.atmosphere.Atmosphere;
 import space.vakar.weather.domain.model.impl.location.Location;
 import space.vakar.weather.domain.model.impl.temperature.Temperature;
@@ -23,6 +24,9 @@ public class Weather extends DomainObject {
     super();
   }
 
+  /**
+   * Constructor.
+   */
   public Weather(Wind wind, Location location, Atmosphere atmosphere, Temperature temperature,
       LocalDateTime lastUpdate) {
     super();
@@ -32,8 +36,6 @@ public class Weather extends DomainObject {
     this.temperature = temperature;
     this.lastUpdate = lastUpdate;
   }
-
-
 
   public Wind getWind() {
     return wind;

@@ -5,8 +5,8 @@ import space.vakar.weather.domain.model.impl.location.Sun;
 
 public class SunTest extends AbstractJavaBeanTest<Sun> {
 
-	@Override
-	protected Sun getBeanInstance() {
-		return new Sun();
-	}	
+  @Override
+  protected Sun getBeanInstance() {
+    return new Sun();
+  }
 }

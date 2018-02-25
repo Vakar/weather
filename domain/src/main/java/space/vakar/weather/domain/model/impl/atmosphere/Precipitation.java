@@ -2,6 +2,7 @@ package space.vakar.weather.domain.model.impl.atmosphere;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+
 import space.vakar.weather.domain.model.impl.DomainObject;
 
 public class Precipitation extends DomainObject {
@@ -10,12 +11,19 @@ public class Precipitation extends DomainObject {
   private String mode;
 
   public Precipitation() {
-
+    super();
   }
 
+  /**
+   * Constructor.
+   * 
+   * @param value millimeters of precipitation
+   * @param mode 'no' or 'rain', 'snow' act...
+   */
   public Precipitation(BigDecimal value, String mode) {
-    setValue(value);
-    setMode(mode);
+    super();
+    this.value = value;
+    this.mode = mode;
   }
 
   public BigDecimal getValue() {

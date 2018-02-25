@@ -2,6 +2,7 @@ package space.vakar.weather.domain.model.impl.atmosphere;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+
 import space.vakar.weather.domain.model.impl.DomainObject;
 
 public class Pressure extends DomainObject {
@@ -10,12 +11,19 @@ public class Pressure extends DomainObject {
   private String unit;
 
   public Pressure() {
-
+    super();
   }
 
+  /**
+   * Constructor.
+   *
+   * @param value atmosphere pressure
+   * @param unit mbar
+   */
   public Pressure(BigDecimal value, String unit) {
-    setValue(value);
-    setUnit(unit);
+    super();
+    this.value = value;
+    this.unit = unit;
   }
 
   public BigDecimal getValue() {
