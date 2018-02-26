@@ -1,19 +1,19 @@
 package space.vakar.weather.service.impl;
 
+import java.util.Objects;
 import space.vakar.weather.domain.model.impl.Weather;
 import space.vakar.weather.service.api.Agent;
-import java.util.Objects;
 
 public class WeatherServiceImpl implements space.vakar.weather.service.api.WeatherService {
 
   private Agent agent = new AgentImpl();
 
   public WeatherServiceImpl() {
-    
+
   }
 
   public WeatherServiceImpl(Agent agent) {
-   setAgent(agent);
+    setAgent(agent);
   }
 
   @Override

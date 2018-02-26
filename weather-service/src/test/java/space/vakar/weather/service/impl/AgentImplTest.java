@@ -6,15 +6,14 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import io.github.benas.randombeans.api.EnhancedRandom;
 import java.time.LocalDateTime;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import io.github.benas.randombeans.api.EnhancedRandom;
 import space.vakar.weather.domain.model.impl.Weather;
 import space.vakar.weather.provider.openweather.api.WeatherProvider;
 import space.vakar.weather.service.api.WeatherContainer;
@@ -24,7 +23,7 @@ public class AgentImplTest {
 
   private Weather freshWeather;
   private Weather notFreshWeather;
-  
+
   private static final int CITY_ID = 1;
 
   @Mock

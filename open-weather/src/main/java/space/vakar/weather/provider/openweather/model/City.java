@@ -27,6 +27,15 @@ public class City {
 
   }
 
+  /**
+   * Constructor.
+   *
+   * @param id OpenWeather city id number
+   * @param name city name
+   * @param country country name
+   * @param sun sunrise & sunset
+   * @param coordinates geo location
+   */
   public City(int id, String name, String country, Sun sun, Coordinates coordinates) {
     this.id = id;
     this.name = name;

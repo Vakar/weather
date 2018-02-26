@@ -15,6 +15,7 @@ import space.vakar.weather.provider.openweather.testutils.WeatherRequestHandler;
 public class RetrieverTest {
 
   private Retriever weatherRetriever;
+
   private static LocalTestServer server;
 
   private static final int VALID_CITY_ID = 1;

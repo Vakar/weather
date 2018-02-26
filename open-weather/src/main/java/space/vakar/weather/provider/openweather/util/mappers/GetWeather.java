@@ -21,8 +21,17 @@ import space.vakar.weather.provider.openweather.model.CurrentWeather;
 
 public class GetWeather {
 
-  public static Weather from(CurrentWeather current) {
+  private GetWeather() {
 
+  }
+
+  /**
+   * Convert {@link CurrentWeather} object to {@link Weather} object.
+   *
+   * @param current {@link CurrentWeather} object
+   * @return {@link Weather} object
+   */
+  public static Weather from(CurrentWeather current) {
     Weather weather = new Weather();
     weather.setWind(getWind(current));
     weather.setAtmosphere(getAtmosphere(current));
@@ -102,7 +111,7 @@ public class GetWeather {
   }
 
   private static Coordinates getCoordinates(CurrentWeather currentWeather) {
-    BigDecimal longitude = currentWeather.getCity().getCoordinates().getLongitude();;
+    BigDecimal longitude = currentWeather.getCity().getCoordinates().getLongitude();
     BigDecimal latitude = currentWeather.getCity().getCoordinates().getLatitude();
     return new Coordinates(longitude, latitude);
   }

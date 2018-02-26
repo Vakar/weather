@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>weather-service</artifactId>
-	<name>Service layer</name>
+	<name>Weather service</name>
 	<url>http://weather.vakar.space</url>
 
 	<dependencies>		

@@ -1,10 +1,10 @@
 package space.vakar.weather.service.impl;
 
+import com.google.gson.Gson;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import org.apache.log4j.Logger;
-import com.google.gson.Gson;
 import space.vakar.weather.domain.model.impl.Weather;
 import space.vakar.weather.provider.openweather.api.WeatherProvider;
 import space.vakar.weather.provider.openweather.impl.Provider;
@@ -12,16 +12,16 @@ import space.vakar.weather.service.api.Agent;
 import space.vakar.weather.service.api.WeatherContainer;
 
 public class AgentImpl implements Agent {
-  
-  private final static Logger LOG = Logger.getLogger(AgentImpl.class);
+
+  private static final Logger LOG = Logger.getLogger(AgentImpl.class);
 
   private WeatherProvider provider = new Provider();
   private WeatherContainer container = new Container();
-  
-  private static final Duration TWO_HOURS = Duration.ofHours(2);  
+
+  private static final Duration TWO_HOURS = Duration.ofHours(2);
 
   public AgentImpl() {
-    
+
   }
 
   public AgentImpl(WeatherProvider provider, WeatherContainer container) {
@@ -32,20 +32,20 @@ public class AgentImpl implements Agent {
   @Override
   public Weather weather(int cityId) {
     Weather weather = container.pull(cityId);
-      return isValide(weather)? weather : askProviderAndCash(cityId);
+    return isValide(weather) ? weather : askProviderAndCash(cityId);
   }
 
   private boolean isValide(Weather weather) {
     return weather != null && isFresh(weather);
   }
-  
+
   @Override
   public boolean isFresh(Weather weather) {
     Duration lastUpdateDelta = Duration.between(weather.getLastUpdate(), LocalDateTime.now());
-    return lastUpdateDelta.compareTo(TWO_HOURS) < 0? true : false;
-}
+    return lastUpdateDelta.compareTo(TWO_HOURS) < 0 ? true : false;
+  }
 
-  private Weather askProviderAndCash(int cityId) {    
+  private Weather askProviderAndCash(int cityId) {
     Weather weather = null;
     try {
       weather = provider.provideWeather(cityId);
@@ -53,7 +53,7 @@ public class AgentImpl implements Agent {
       container.push(weather, cityId);
     } catch (Exception e) {
       throw new WeatherServiceException("Can't get weather from provider", e);
-    }        
+    }
     return weather;
   }
 

@@ -11,7 +11,7 @@
 	<artifactId>domain</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Contains domain objects and interfaces</name>
+	<name>Domain model</name>
 	<url>http://weather.vakar.space</url>
 
 	<properties>

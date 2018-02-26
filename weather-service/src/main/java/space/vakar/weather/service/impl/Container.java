@@ -1,16 +1,16 @@
 package space.vakar.weather.service.impl;
 
+import com.google.gson.Gson;
 import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 import org.apache.log4j.Logger;
-import com.google.gson.Gson;
 import space.vakar.weather.domain.model.impl.Weather;
 import space.vakar.weather.service.api.WeatherContainer;
 
 public class Container implements WeatherContainer {
 
-  private final static Logger LOG = Logger.getLogger(Container.class);
+  private static final Logger LOG = Logger.getLogger(Container.class);
 
   private Map<Integer, Weather> map = Collections.synchronizedMap(new TreeMap<>());
 
@@ -33,13 +33,15 @@ public class Container implements WeatherContainer {
   }
 
   private void validateNotNull(Weather weather) {
-    if (weather == null)
+    if (weather == null) {
       throw new IllegalArgumentException();
+    }
   }
 
   private void cleanMapIfFull() {
-    if (map.size() >= MAX_CAPACITY)
+    if (map.size() >= MAX_CAPACITY) {
       map.clear();
+    }
   }
 
   @Override

@@ -20,25 +20,26 @@ import space.vakar.weather.web.model.WeatherWebModel;
 @WebServlet("/weather.do")
 public class WeatherServlet extends HttpServlet {
 
-  private final static Logger LOG = Logger.getLogger(WeatherServlet.class);
+  private static final Logger LOG = Logger.getLogger(WeatherServlet.class);
 
   private static final long serialVersionUID = 1L;
 
-  WeatherService weatherService = new WeatherServiceImpl();
-  WeatherWebModelMapper mapper = new WeatherWebModelMapper();
+  private WeatherService weatherService = new WeatherServiceImpl();
+  private WeatherWebModelMapper mapper = new WeatherWebModelMapper();
 
 
   /**
    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
    */
+  @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     Weather weather = null;
     try {
       weather = weatherService.weather(6076211);
     } catch (WeatherServiceException e) {
-      LOG.error("Can't get weather from weather service", e);      
-    }    
+      LOG.error("Can't get weather from weather service", e);
+    }
     if(weather == null) {
       request.setAttribute("errorMessage", "Can't get weather");
       request.getRequestDispatcher("/WEB-INF/views/weather.jsp").forward(request, response);
@@ -46,12 +47,13 @@ public class WeatherServlet extends HttpServlet {
       WeatherWebModel weatherModel = mapper.from(weather);
       request.setAttribute("weather", weatherModel);
       request.getRequestDispatcher("/WEB-INF/views/weather.jsp").forward(request, response);
-    }    
+    }
   }
 
   /**
    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
    */
+  @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     // TODO Auto-generated method stub
