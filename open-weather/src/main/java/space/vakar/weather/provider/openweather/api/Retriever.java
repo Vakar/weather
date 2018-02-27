@@ -6,7 +6,7 @@ import space.vakar.weather.provider.openweather.exceptions.OpenWeatherRetrieverE
 /**
  * A set of methods for retrieving weather from OpenWeather server.
  */
-public interface WeatherRetriever {
+public interface Retriever {
 
   /**
    * Ask OpenWeather server for XML data about current weather in city by id.

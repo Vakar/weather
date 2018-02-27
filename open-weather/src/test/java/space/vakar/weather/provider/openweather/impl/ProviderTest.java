@@ -18,10 +18,10 @@ import space.vakar.weather.provider.openweather.testutils.WeatherPopulator;
 public class ProviderTest {
 
   @Mock
-  Parser parserMock;
+  ParserImpl parserMock;
 
   @InjectMocks
-  Provider provider;
+  ProviderImpl provider;
 
   Weather expectedWeather;
   CurrentWeather currentWeather;

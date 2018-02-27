@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import space.vakar.weather.provider.openweather.api.WeatherRetriever;
+import space.vakar.weather.provider.openweather.api.Retriever;
 import space.vakar.weather.provider.openweather.exceptions.OpenWeatherParserException;
 import space.vakar.weather.provider.openweather.exceptions.OpenWeatherRetrieverException;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
@@ -19,9 +19,9 @@ import space.vakar.weather.provider.openweather.testutils.CurrentWeatherPopulato
 public class ParserTest {
 
   @Mock
-  private WeatherRetriever retriverMock;
+  private Retriever retriverMock;
 
-  private Parser parser;
+  private ParserImpl parser;
 
   private CurrentWeather expectedWeather;
 
@@ -30,7 +30,7 @@ public class ParserTest {
 
   @Before
   public void setUpParser() {
-    parser = new Parser(retriverMock);
+    parser = new ParserImpl(retriverMock);
   }
 
   @Before

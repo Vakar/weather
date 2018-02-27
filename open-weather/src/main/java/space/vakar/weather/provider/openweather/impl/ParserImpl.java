@@ -8,21 +8,21 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import org.xml.sax.SAXException;
-import space.vakar.weather.provider.openweather.api.WeatherParser;
-import space.vakar.weather.provider.openweather.api.WeatherRetriever;
+import space.vakar.weather.provider.openweather.api.Parser;
+import space.vakar.weather.provider.openweather.api.Retriever;
 import space.vakar.weather.provider.openweather.exceptions.OpenWeatherParserException;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
 import space.vakar.weather.provider.openweather.util.handlers.EventHandler;
 
-class Parser implements WeatherParser {
+class ParserImpl implements Parser {
 
-  private WeatherRetriever retriever = RetrieverBuilder.buildRetriever();
+  private Retriever retriever = RetrieverImplBuilder.buildRetriever();
 
-  public Parser() {
+  public ParserImpl() {
     super();
   }
 
-  public Parser(WeatherRetriever retriever) {
+  public ParserImpl(Retriever retriever) {
     super();
     this.retriever = retriever;
   }
@@ -55,11 +55,11 @@ class Parser implements WeatherParser {
     return new File(classLoader.getResource(fileName).getFile());
   }
 
-  public WeatherRetriever getRetriever() {
+  public Retriever getRetriever() {
     return retriever;
   }
 
-  public void setRetriever(WeatherRetriever retriever) {
+  public void setRetriever(Retriever retriever) {
     this.retriever = retriever;
   }
 }

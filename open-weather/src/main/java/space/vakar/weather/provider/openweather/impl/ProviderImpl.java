@@ -1,14 +1,14 @@
 package space.vakar.weather.provider.openweather.impl;
 
 import space.vakar.weather.domain.model.impl.Weather;
-import space.vakar.weather.provider.openweather.api.WeatherProvider;
+import space.vakar.weather.provider.openweather.api.Provider;
 import space.vakar.weather.provider.openweather.exceptions.OpenWeatherProviderException;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
 import space.vakar.weather.provider.openweather.util.mappers.GetWeather;
 
-public class Provider implements WeatherProvider {
+public class ProviderImpl implements Provider {
 
-  private Parser parser = new Parser();
+  private ParserImpl parser = new ParserImpl();
 
   @Override
   public Weather provideWeather(int city) throws OpenWeatherProviderException {

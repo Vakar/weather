@@ -15,7 +15,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import space.vakar.weather.domain.model.impl.Weather;
-import space.vakar.weather.provider.openweather.api.WeatherProvider;
+import space.vakar.weather.provider.openweather.api.Provider;
 import space.vakar.weather.service.api.WeatherContainer;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -30,7 +30,7 @@ public class AgentImplTest {
   private WeatherContainer container;
 
   @Mock
-  private WeatherProvider provider;
+  private Provider provider;
 
   private AgentImpl agent;
 

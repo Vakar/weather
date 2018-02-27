@@ -6,7 +6,7 @@ import space.vakar.weather.provider.openweather.model.CurrentWeather;
 /**
  * A set of methods for parsing weather from OpenWeather source to {@link CurrentWeather}.
  */
-public interface WeatherParser {
+public interface Parser {
 
   /**
    * Unmarshal OpenWeather current weather from XML to {@link CurrentWeather} using JAXB with schema

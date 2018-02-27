@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import org.apache.log4j.Logger;
 import space.vakar.weather.domain.model.impl.Weather;
-import space.vakar.weather.provider.openweather.api.WeatherProvider;
-import space.vakar.weather.provider.openweather.impl.Provider;
+import space.vakar.weather.provider.openweather.api.Provider;
+import space.vakar.weather.provider.openweather.impl.ProviderImpl;
 import space.vakar.weather.service.api.Agent;
 import space.vakar.weather.service.api.WeatherContainer;
 
@@ -15,7 +15,7 @@ public class AgentImpl implements Agent {
 
   private static final Logger LOG = Logger.getLogger(AgentImpl.class);
 
-  private WeatherProvider provider = new Provider();
+  private Provider provider = new ProviderImpl();
   private WeatherContainer container = new Container();
 
   private static final Duration TWO_HOURS = Duration.ofHours(2);
@@ -24,7 +24,7 @@ public class AgentImpl implements Agent {
 
   }
 
-  public AgentImpl(WeatherProvider provider, WeatherContainer container) {
+  public AgentImpl(Provider provider, WeatherContainer container) {
     setProvider(provider);
     setContainer(container);
   }
@@ -57,11 +57,11 @@ public class AgentImpl implements Agent {
     return weather;
   }
 
-  public WeatherProvider getProvider() {
+  public Provider getProvider() {
     return provider;
   }
 
-  public void setProvider(WeatherProvider provider) {
+  public void setProvider(Provider provider) {
     this.provider = provider;
   }
 

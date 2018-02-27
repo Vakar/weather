@@ -14,7 +14,7 @@ import space.vakar.weather.provider.openweather.testutils.WeatherRequestHandler;
 
 public class RetrieverTest {
 
-  private Retriever weatherRetriever;
+  private RetrieverImpl weatherRetriever;
 
   private static LocalTestServer server;
 
@@ -23,7 +23,7 @@ public class RetrieverTest {
 
   @Before
   public void setUp() throws OpenWeatherRetrieverException {
-    weatherRetriever = RetrieverBuilder.buildRetriever();
+    weatherRetriever = RetrieverImplBuilder.buildRetriever();
     weatherRetriever.setServiceUrl("http:/" + server.getServiceAddress());
   }
 

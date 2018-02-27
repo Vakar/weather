@@ -7,12 +7,12 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.log4j.Logger;
-import space.vakar.weather.provider.openweather.api.WeatherRetriever;
+import space.vakar.weather.provider.openweather.api.Retriever;
 import space.vakar.weather.provider.openweather.exceptions.OpenWeatherRetrieverException;
 
-class Retriever implements WeatherRetriever {
+class RetrieverImpl implements Retriever {
 
-  private static final Logger LOG = Logger.getLogger(Retriever.class);
+  private static final Logger LOG = Logger.getLogger(RetrieverImpl.class);
 
   private HttpClient httpClient;
 
@@ -101,8 +101,8 @@ class Retriever implements WeatherRetriever {
 
   @Override
   public boolean equals(Object object) {
-    if (object instanceof Retriever) {
-      Retriever that = (Retriever) object;
+    if (object instanceof RetrieverImpl) {
+      RetrieverImpl that = (RetrieverImpl) object;
       return Objects.equals(this.serviceUrl, that.serviceUrl)
           && Objects.equals(this.weatherEndPoint, that.weatherEndPoint);
     }
