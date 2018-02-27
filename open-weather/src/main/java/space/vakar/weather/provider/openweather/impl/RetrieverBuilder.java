@@ -1,16 +1,11 @@
 package space.vakar.weather.provider.openweather.impl;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.log4j.Logger;
 import space.vakar.weather.provider.openweather.exceptions.OpenWeatherException;
 
 public class RetrieverBuilder {
-
-  private static final Logger LOG = Logger.getLogger(Retriever.class);
 
   private static final String OPEN_WEATHER_PROPERTIES_FILE = "/openweather.properties";
 
@@ -32,12 +27,11 @@ public class RetrieverBuilder {
     retriever.setAppId(properties.getProperty("app.id"));
     return retriever;
   }
-
+  
   private static Properties properties(String fileName) {
-    File file = new File(RetrieverBuilder.class.getClass().getResource(fileName).getFile());
     Properties properties = new Properties();
-    try (FileInputStream fileInput = new FileInputStream(file);) {
-      properties.load(fileInput);
+    try {
+      properties.load(RetrieverBuilder.class.getResourceAsStream(fileName));
     } catch (IOException e) {
       throw new OpenWeatherException("Can't read OpenWeather properties file", e);
     }

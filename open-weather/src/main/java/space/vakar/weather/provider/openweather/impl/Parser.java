@@ -16,11 +16,10 @@ import space.vakar.weather.provider.openweather.util.handlers.EventHandler;
 
 class Parser implements WeatherParser {
 
-  private WeatherRetriever retriever;
+  private WeatherRetriever retriever = RetrieverBuilder.buildRetriever();
 
   public Parser() {
     super();
-    retriever = RetrieverBuilder.buildRetriever();
   }
 
   public Parser(WeatherRetriever retriever) {
