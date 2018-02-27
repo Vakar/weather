@@ -16,7 +16,6 @@ public class Visibility {
   }
 
   public Visibility(BigDecimal value) {
-    super();
     this.value = value;
   }
 

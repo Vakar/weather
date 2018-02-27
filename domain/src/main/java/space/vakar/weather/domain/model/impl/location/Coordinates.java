@@ -21,7 +21,6 @@ public class Coordinates extends DomainObject {
    * @param latitude geographic latitude
    */
   public Coordinates(BigDecimal longitude, BigDecimal latitude) {
-    super();
     this.longitude = longitude;
     this.latitude = latitude;
   }

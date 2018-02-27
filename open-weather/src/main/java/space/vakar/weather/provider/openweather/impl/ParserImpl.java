@@ -19,11 +19,9 @@ class ParserImpl implements Parser {
   private Retriever retriever = RetrieverImplBuilder.buildRetriever();
 
   public ParserImpl() {
-    super();
   }
 
   public ParserImpl(Retriever retriever) {
-    super();
     this.retriever = retriever;
   }
 

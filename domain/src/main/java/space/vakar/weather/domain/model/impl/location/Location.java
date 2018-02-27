@@ -23,7 +23,6 @@ public class Location extends DomainObject {
    * 
    */
   public Location(Coordinates coordinates, Sun sun, City city, String country) {
-    super();
     this.coordinates = coordinates;
     this.sun = sun;
     this.city = city;

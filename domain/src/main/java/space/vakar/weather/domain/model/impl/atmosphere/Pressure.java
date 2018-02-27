@@ -11,7 +11,6 @@ public class Pressure extends DomainObject {
   private String unit;
 
   public Pressure() {
-    super();
   }
 
   /**
@@ -21,7 +20,6 @@ public class Pressure extends DomainObject {
    * @param unit mbar
    */
   public Pressure(BigDecimal value, String unit) {
-    super();
     this.value = value;
     this.unit = unit;
   }

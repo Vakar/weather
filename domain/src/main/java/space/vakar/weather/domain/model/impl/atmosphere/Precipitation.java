@@ -11,7 +11,6 @@ public class Precipitation extends DomainObject {
   private String mode;
 
   public Precipitation() {
-    super();
   }
 
   /**
@@ -21,7 +20,6 @@ public class Precipitation extends DomainObject {
    * @param mode 'no' or 'rain', 'snow' act...
    */
   public Precipitation(BigDecimal value, String mode) {
-    super();
     this.value = value;
     this.mode = mode;
   }

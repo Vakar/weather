@@ -17,7 +17,6 @@ public class Wind extends DomainObject {
    * Constructor.
    */
   public Wind(WindSpeed speed, WindDirection direction) {
-    super();
     this.speed = speed;
     this.direction = direction;
   }

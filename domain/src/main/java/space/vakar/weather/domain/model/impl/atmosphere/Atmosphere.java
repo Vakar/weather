@@ -18,7 +18,6 @@ public class Atmosphere extends DomainObject {
   private Clouds clouds;
 
   public Atmosphere() {
-    super();
   }
 
   /**
@@ -26,7 +25,6 @@ public class Atmosphere extends DomainObject {
    */
   public Atmosphere(Humidity humidity, Pressure pressure, BigDecimal visibility,
       Precipitation precipitation, Clouds clouds) {
-    super();
     this.humidity = humidity;
     this.pressure = pressure;
     this.visibility = visibility;

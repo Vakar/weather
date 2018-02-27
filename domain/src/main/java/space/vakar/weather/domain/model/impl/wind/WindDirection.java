@@ -12,7 +12,6 @@ public class WindDirection extends DomainObject {
   private String name;
 
   public WindDirection() {
-    super();
   }
 
   /**
@@ -23,7 +22,6 @@ public class WindDirection extends DomainObject {
    * @param name full direction name
    */
   public WindDirection(BigDecimal value, String code, String name) {
-    super();
     this.value = value;
     this.code = code;
     this.name = name;

@@ -19,7 +19,6 @@ public class Humidity {
   }
 
   public Humidity(BigDecimal value, String unit) {
-    super();
     this.value = value;
     this.unit = unit;
   }

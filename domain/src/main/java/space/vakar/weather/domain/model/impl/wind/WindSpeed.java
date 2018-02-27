@@ -11,7 +11,6 @@ public class WindSpeed extends DomainObject {
   private String name;
 
   public WindSpeed() {
-    super();
   }
 
   /**
@@ -21,7 +20,6 @@ public class WindSpeed extends DomainObject {
    * @param name wind speed full name
    */
   public WindSpeed(BigDecimal value, String name) {
-    super();
     setValue(value);
     setName(name);
   }

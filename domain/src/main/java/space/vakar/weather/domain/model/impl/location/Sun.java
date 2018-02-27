@@ -21,7 +21,6 @@ public class Sun extends DomainObject {
    * @param set time of sunset
    */
   public Sun(LocalDateTime rise, LocalDateTime set) {
-    super();
     this.rise = rise;
     this.set = set;
   }

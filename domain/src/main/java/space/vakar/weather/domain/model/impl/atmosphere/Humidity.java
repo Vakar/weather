@@ -11,7 +11,6 @@ public class Humidity extends DomainObject {
   private String unit;
 
   public Humidity() {
-    super();
   }
 
   /**
@@ -21,7 +20,6 @@ public class Humidity extends DomainObject {
    * @param unit percents %
    */
   public Humidity(BigDecimal value, String unit) {
-    super();
     this.value = value;
     this.unit = unit;
   }

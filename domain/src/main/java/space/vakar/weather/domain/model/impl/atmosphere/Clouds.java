@@ -11,7 +11,6 @@ public class Clouds extends DomainObject {
   private String name;
 
   public Clouds() {
-    super();
   }
 
   /**
@@ -21,7 +20,6 @@ public class Clouds extends DomainObject {
    * @param name the name of clouds condition for example 'clean sky'
    */
   public Clouds(BigDecimal value, String name) {
-    super();
     this.value = value;
     this.name = name;
   }

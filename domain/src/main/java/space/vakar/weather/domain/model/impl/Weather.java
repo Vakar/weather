@@ -21,7 +21,6 @@ public class Weather extends DomainObject {
   private LocalDateTime lastUpdate;
 
   public Weather() {
-    super();
   }
 
   /**
@@ -29,7 +28,6 @@ public class Weather extends DomainObject {
    */
   public Weather(Wind wind, Location location, Atmosphere atmosphere, Temperature temperature,
       LocalDateTime lastUpdate) {
-    super();
     this.wind = wind;
     this.location = location;
     this.atmosphere = atmosphere;

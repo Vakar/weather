@@ -40,11 +40,11 @@ public class AgentImpl implements Agent {
     return weather != null && isFresh(weather);
   }
 
-  // FIXME work not correct
   @Override
   public boolean isFresh(Weather weather) {
-    Duration lastUpdateDelta =
-        Duration.between(weather.getLastUpdate(), LocalDateTime.now(ZoneId.of("UTC")));
+    LocalDateTime lastUpdate = weather.getLastUpdate();
+    LocalDateTime now = LocalDateTime.now(ZoneId.of("UTC"));
+    Duration lastUpdateDelta = Duration.between(lastUpdate, now);
     return lastUpdateDelta.compareTo(TWO_HOURS) < 0 ? true : false;
   }
 
