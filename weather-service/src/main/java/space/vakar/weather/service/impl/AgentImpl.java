@@ -3,6 +3,7 @@ package space.vakar.weather.service.impl;
 import com.google.gson.Gson;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Objects;
 import org.apache.log4j.Logger;
 import space.vakar.weather.domain.model.impl.Weather;
@@ -39,9 +40,11 @@ public class AgentImpl implements Agent {
     return weather != null && isFresh(weather);
   }
 
+  // FIXME work not correct
   @Override
   public boolean isFresh(Weather weather) {
-    Duration lastUpdateDelta = Duration.between(weather.getLastUpdate(), LocalDateTime.now());
+    Duration lastUpdateDelta =
+        Duration.between(weather.getLastUpdate(), LocalDateTime.now(ZoneId.of("UTC")));
     return lastUpdateDelta.compareTo(TWO_HOURS) < 0 ? true : false;
   }
 
