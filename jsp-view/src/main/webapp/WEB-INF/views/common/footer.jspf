@@ -1,0 +1,11 @@
+<footer class="footer">
+	<div class="container">
+		<div class="raw">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<h6 align="center">Copyright &copy; 2018</h6>
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+	</div>
+</footer>

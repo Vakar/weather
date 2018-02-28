@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import space.vakar.weather.domain.model.impl.Weather;
 import space.vakar.weather.service.api.WeatherService;
-import space.vakar.weather.service.impl.WeatherServiceException;
 import space.vakar.weather.service.impl.WeatherServiceImpl;
 import space.vakar.weather.web.mapper.WeatherWebModelMapper;
 import space.vakar.weather.web.model.WeatherWebModel;
@@ -34,20 +33,28 @@ public class WeatherServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    String cityId = request.getParameter("cityId");
     Weather weather = null;
-    try {
-      weather = weatherService.weather(6076211);
-    } catch (WeatherServiceException e) {
-      LOG.error("Can't get weather from weather service", e);
+    if (cityId != null && cityId.matches("\\d+")) {
+      weather = weatherByCityId(cityId);
     }
-    if(weather == null) {
-      request.setAttribute("errorMessage", "Can't get weather");
-      request.getRequestDispatcher("/WEB-INF/views/weather.jsp").forward(request, response);
-    } else {
+    if (weather != null) {
       WeatherWebModel weatherModel = mapper.from(weather);
       request.setAttribute("weather", weatherModel);
       request.getRequestDispatcher("/WEB-INF/views/weather.jsp").forward(request, response);
+    } else {
+      request.getRequestDispatcher("/home.do").forward(request, response);
     }
+  }
+
+  private Weather weatherByCityId(String cityId) {
+    Weather weather = null;
+    try {
+      weather = weatherService.weather(Integer.parseInt(cityId));
+    } catch (Exception e) {
+      LOG.error("Can't get weather from weather service", e);
+    }
+    return weather;
   }
 
   /**
@@ -56,7 +63,6 @@ public class WeatherServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // TODO Auto-generated method stub
     doGet(request, response);
   }
 

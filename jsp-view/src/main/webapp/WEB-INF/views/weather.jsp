@@ -1,107 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Weather</title>
-<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
-<style>
-.footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 60px;
-	background-color: #f5f5f5;
-}
-</style>
+<%@ include file="common/css.jspf"%>
+
 </head>
 <body>
 
+	<%@ include file="common/navigationbar.jspf"%>
+
 	<div class="container" id="main">
-
-		<div class="navbar navbar-default">
-			<div class="container">
-				<a class="navbar-brand" href="/">MyWeather</a>
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="/weather.do">Weather</a></li>
-					</ul>
-				</div>
-				<!-- end nav-collapse -->
-			</div>
-			<!-- end container -->
-		</div>
-		<!-- end navbar -->
-
 
 		<div class="raw" id="cityNameRaw">
 			<div class="col-12">
-				<h2>${weather.cityName}</h2>
+				<h2 align="center">${weather.cityName}</h2>
 			</div>
 		</div>
-		<!-- end cityNameRaw -->
 
-
-		<div class="raw" id="cityLocationRaw">
-			<div class="col-4">
-				<h4>Coordinates</h4>
-				<p>Lon:&nbsp${weather.cityLon}</p>
-				<p>Lat:&nbsp${weather.cityLat}</p>
+		<div class="raw" id="weatherData">
+			<div class="col-sm-4">
+				<div class="panel">
+					<div class="panel-heading">
+						<h3 class="panel-title" align="center">Location</h3>
+					</div>
+					<p>longitude&nbsp;${weather.cityLon}</p>
+					<p>latitude&nbsp;${weather.cityLat}</p>
+					<p>sunrise&nbsp;${weather.sunRise}</p>
+					<p>sunset&nbsp;${weather.sunSet }</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="panel">
+					<div class="panel-heading">
+						<h3 class="panel-title" align="center">Conditions</h3>
+					</div>
+					<p>temperature&nbsp;${weather.temperatureValue}&nbsp;${weather.temperatureUnit }</p>
+					<p>humidity&nbsp;${weather.humidityValue}&nbsp;${weather.humidityUnit}</p>
+					<p>pressure&nbsp;${weather.pressureValue}&nbsp;${weather.pressureUnit}</p>
+					<p>clouds&nbsp;${weather.cloudsName}</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="panel">
+					<div class="panel-heading">
+						<h3 class="panel-title" align="center">Wind</h3>
+					</div>
+					<p>wind&nbsp;speed&nbsp;${weather.windSpeed}</p>
+					<p>wind&nbsp;direction&nbsp;${weather.windDirection}</p>
+					<p>wind&nbsp;name&nbsp;${weather.windName}</p>
+					<p>&nbsp;</p>
+				</div>
 			</div>
 		</div>
-		<!-- end cityLocationRaw -->
-
-
-		<div class="raw" id="citySunriseSunsetRaw"></div>
-		<!-- end citySunriseSunsetRaw -->
-
-
-		<div class="raw" id="cityTemperatureRaw"></div>
-		<!-- end cityTemperatureRaw -->
-
-
-		<div class="raw" id="cityPressureRaw"></div>
-		<!-- end cityPressureRaw -->
-
-
-		<div class="raw" id="cityCloudsRaw"></div>
-		<!-- end cityCloudsRaw -->
-
-
-		<div class="raw" id="lastUpdateRaw"></div>
-		<!-- end lastUpdateRaw -->
-
-	</div>
-	<!-- end container -->
-
-	<footer> </footer>
-	<div id="weather" class="container">
-		<p>${errorMessage}</p>
-		<h4>${weather.cityName}</h4>
-		<p>Lon:${weather.cityLon} Lat:${weather.cityLat}</p>
-		<h4>Temperature</h4>
-		<p>${weather.temperatureValue}${weather.temperatureUnit }</p>
-		<h4>Sunrise and Sunset</h4>
-		<p>${weather.sunRise}${weather.sunSet }</p>
-		<h4>Humidity</h4>
-		<p>${weather.humidityValue}${weather.humidityUnit}</p>
-		<h4>Pressure</h4>
-		<p>${weather.pressureValue}${weather.pressureUnit}</p>
-		<h4>Wind</h4>
-		<p>${weather.windSpeed}${weather.windName}${weather.windDirection}</p>
-		<h4>Clouds</h4>
-		<p>${weather.cloudsValue}${weather.cloudsName}</p>
-		<p>${weather.lastUpdate}</p>
 	</div>
 
-	<footer class="footer">
-	<div class="container">
-		<p class="text-muted"></p>
+	<div class="raw">
+		<div class="col-12">
+			<h5 align="center">last&nbsp;update&nbsp;${weather.lastUpdate}</h5>
+		</div>
 	</div>
-	</footer>
 
-	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-	<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<%@ include file="common/footer.jspf"%>
+	<%@ include file="common/js.jspf"%>
+
 </body>
 </html>
