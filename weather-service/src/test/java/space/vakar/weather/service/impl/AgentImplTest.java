@@ -26,7 +26,6 @@ public class AgentImplTest {
   private Weather notFreshWeather;
 
   private static final int CITY_ID = 1;
-  private static final ZoneId UTC = ZoneId.of("UTC");
 
   @Mock
   private WeatherContainer container;
@@ -38,10 +37,11 @@ public class AgentImplTest {
 
   @Before
   public void setUpWeather() {
+    ZoneId utc = ZoneId.of("UTC");
     freshWeather = EnhancedRandom.random(Weather.class);
-    freshWeather.setLastUpdate(LocalDateTime.now(UTC).minusMinutes(30));
+    freshWeather.setLastUpdate(LocalDateTime.now(utc).minusMinutes(30));
     notFreshWeather = EnhancedRandom.random(Weather.class);
-    notFreshWeather.setLastUpdate(LocalDateTime.now(UTC).minusHours(2));
+    notFreshWeather.setLastUpdate(LocalDateTime.now(utc).minusHours(2));
     agent = new AgentImpl(provider, container);
   }
 
