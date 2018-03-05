@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import space.vakar.weather.domain.model.impl.Weather;
+import space.vakar.weather.domain.model.weather.Weather;
 import space.vakar.weather.service.api.Agent;
 
 @RunWith(MockitoJUnitRunner.class)

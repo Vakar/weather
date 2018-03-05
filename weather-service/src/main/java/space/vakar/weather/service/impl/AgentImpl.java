@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Objects;
 import org.apache.log4j.Logger;
-import space.vakar.weather.domain.model.impl.Weather;
+import space.vakar.weather.domain.model.weather.Weather;
 import space.vakar.weather.provider.openweather.api.Provider;
 import space.vakar.weather.provider.openweather.impl.ProviderImpl;
 import space.vakar.weather.service.api.Agent;

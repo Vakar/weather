@@ -2,7 +2,7 @@ package space.vakar.weather.provider.openweather.testutils;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import space.vakar.weather.domain.model.impl.temperature.TemperatureUnit;
+import space.vakar.weather.domain.model.weather.temperature.TemperatureUnit;
 import space.vakar.weather.provider.openweather.model.City;
 import space.vakar.weather.provider.openweather.model.Clouds;
 import space.vakar.weather.provider.openweather.model.Coordinates;

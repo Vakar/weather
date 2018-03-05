@@ -1,6 +1,6 @@
 package space.vakar.weather.provider.openweather.impl;
 
-import space.vakar.weather.domain.model.impl.Weather;
+import space.vakar.weather.domain.model.weather.Weather;
 import space.vakar.weather.provider.openweather.api.Provider;
 import space.vakar.weather.provider.openweather.exceptions.WeatherProviderException;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;

@@ -1,7 +1,7 @@
 package space.vakar.weather.service.impl;
 
 import java.util.Objects;
-import space.vakar.weather.domain.model.impl.Weather;
+import space.vakar.weather.domain.model.weather.Weather;
 import space.vakar.weather.service.api.Agent;
 
 public class WeatherServiceImpl implements space.vakar.weather.service.api.WeatherService {

@@ -1,12 +1,11 @@
-package space.vakar.weather.domain.model.impl;
+package space.vakar.weather.domain.model.weather;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
-
-import space.vakar.weather.domain.model.impl.atmosphere.Atmosphere;
-import space.vakar.weather.domain.model.impl.location.Location;
-import space.vakar.weather.domain.model.impl.temperature.Temperature;
-import space.vakar.weather.domain.model.impl.wind.Wind;
+import space.vakar.weather.domain.model.weather.atmosphere.Atmosphere;
+import space.vakar.weather.domain.model.weather.location.Location;
+import space.vakar.weather.domain.model.weather.temperature.Temperature;
+import space.vakar.weather.domain.model.weather.wind.Wind;
 
 public class Weather extends DomainObject {
 

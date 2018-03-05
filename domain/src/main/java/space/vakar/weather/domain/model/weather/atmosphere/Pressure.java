@@ -1,25 +1,24 @@
-package space.vakar.weather.domain.model.impl.atmosphere;
+package space.vakar.weather.domain.model.weather.atmosphere;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import space.vakar.weather.domain.model.weather.DomainObject;
 
-import space.vakar.weather.domain.model.impl.DomainObject;
-
-public class Humidity extends DomainObject {
+public class Pressure extends DomainObject {
 
   private BigDecimal value;
   private String unit;
 
-  public Humidity() {
+  public Pressure() {
   }
 
   /**
    * Constructor.
-   * 
-   * @param value from 0 to 100
-   * @param unit percents %
+   *
+   * @param value atmosphere pressure
+   * @param unit mbar
    */
-  public Humidity(BigDecimal value, String unit) {
+  public Pressure(BigDecimal value, String unit) {
     this.value = value;
     this.unit = unit;
   }
@@ -47,8 +46,8 @@ public class Humidity extends DomainObject {
 
   @Override
   public boolean equals(Object object) {
-    if (object instanceof Humidity) {
-      Humidity that = (Humidity) object;
+    if (object instanceof Pressure) {
+      Pressure that = (Pressure) object;
       return this.id == that.id && Objects.equals(this.value, that.value)
           && Objects.equals(this.unit, that.unit);
     }
@@ -57,7 +56,7 @@ public class Humidity extends DomainObject {
 
   @Override
   public String toString() {
-    String format = "Humidity [id=%s, value=%s, unit=%s]";
+    String format = "Pressure [id=%s, value=%s, unit=%s]";
     return String.format(format, id, value, unit);
   }
 }

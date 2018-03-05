@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
-import space.vakar.weather.domain.model.impl.Weather;
+import space.vakar.weather.domain.model.weather.Weather;
 import space.vakar.weather.service.api.WeatherService;
 import space.vakar.weather.service.impl.WeatherServiceImpl;
 import space.vakar.weather.web.mapper.WeatherWebModelMapper;

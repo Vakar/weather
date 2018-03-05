@@ -1,6 +1,6 @@
 package space.vakar.weather.domain.model;
 
-import space.vakar.weather.domain.model.impl.Weather;
+import space.vakar.weather.domain.model.weather.Weather;
 
 public class WeatherTest extends AbstractJavaBeanTest<Weather> {
 

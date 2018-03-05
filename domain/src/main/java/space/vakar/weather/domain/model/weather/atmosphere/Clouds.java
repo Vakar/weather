@@ -1,9 +1,8 @@
-package space.vakar.weather.domain.model.impl.atmosphere;
+package space.vakar.weather.domain.model.weather.atmosphere;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-
-import space.vakar.weather.domain.model.impl.DomainObject;
+import space.vakar.weather.domain.model.weather.DomainObject;
 
 public class Clouds extends DomainObject {
 

@@ -10,20 +10,20 @@ import org.meanbean.test.BeanTester;
 import org.meanbean.lang.Factory;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
-import space.vakar.weather.domain.model.impl.atmosphere.Atmosphere;
-import space.vakar.weather.domain.model.impl.atmosphere.Clouds;
-import space.vakar.weather.domain.model.impl.atmosphere.Humidity;
-import space.vakar.weather.domain.model.impl.atmosphere.Precipitation;
-import space.vakar.weather.domain.model.impl.atmosphere.Pressure;
-import space.vakar.weather.domain.model.impl.location.City;
-import space.vakar.weather.domain.model.impl.location.Coordinates;
-import space.vakar.weather.domain.model.impl.location.Location;
-import space.vakar.weather.domain.model.impl.location.Sun;
-import space.vakar.weather.domain.model.impl.temperature.Temperature;
-import space.vakar.weather.domain.model.impl.temperature.TemperatureUnit;
-import space.vakar.weather.domain.model.impl.wind.Wind;
-import space.vakar.weather.domain.model.impl.wind.WindDirection;
-import space.vakar.weather.domain.model.impl.wind.WindSpeed;
+import space.vakar.weather.domain.model.weather.atmosphere.Atmosphere;
+import space.vakar.weather.domain.model.weather.atmosphere.Clouds;
+import space.vakar.weather.domain.model.weather.atmosphere.Humidity;
+import space.vakar.weather.domain.model.weather.atmosphere.Precipitation;
+import space.vakar.weather.domain.model.weather.atmosphere.Pressure;
+import space.vakar.weather.domain.model.weather.location.City;
+import space.vakar.weather.domain.model.weather.location.Coordinates;
+import space.vakar.weather.domain.model.weather.location.Location;
+import space.vakar.weather.domain.model.weather.location.Sun;
+import space.vakar.weather.domain.model.weather.temperature.Temperature;
+import space.vakar.weather.domain.model.weather.temperature.TemperatureUnit;
+import space.vakar.weather.domain.model.weather.wind.Wind;
+import space.vakar.weather.domain.model.weather.wind.WindDirection;
+import space.vakar.weather.domain.model.weather.wind.WindSpeed;
 
 public abstract class AbstractJavaBeanTest<T> {
 

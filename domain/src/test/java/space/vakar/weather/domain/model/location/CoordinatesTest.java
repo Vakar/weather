@@ -1,7 +1,7 @@
 package space.vakar.weather.domain.model.location;
 
 import space.vakar.weather.domain.model.AbstractJavaBeanTest;
-import space.vakar.weather.domain.model.impl.location.Coordinates;
+import space.vakar.weather.domain.model.weather.location.Coordinates;
 
 public class CoordinatesTest extends AbstractJavaBeanTest<Coordinates> {
 

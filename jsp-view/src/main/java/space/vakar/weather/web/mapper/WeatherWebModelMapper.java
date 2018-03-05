@@ -1,6 +1,6 @@
 package space.vakar.weather.web.mapper;
 
-import space.vakar.weather.domain.model.impl.Weather;
+import space.vakar.weather.domain.model.weather.Weather;
 import space.vakar.weather.web.model.WeatherWebModel;
 
 public class WeatherWebModelMapper {

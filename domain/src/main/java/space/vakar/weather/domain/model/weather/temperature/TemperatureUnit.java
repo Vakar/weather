@@ -1,4 +1,4 @@
-package space.vakar.weather.domain.model.impl.temperature;
+package space.vakar.weather.domain.model.weather.temperature;
 
 /**
  * Set of temperature units.

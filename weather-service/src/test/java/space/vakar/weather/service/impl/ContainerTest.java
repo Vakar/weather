@@ -6,11 +6,11 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
 import io.github.benas.randombeans.api.EnhancedRandom;
+import space.vakar.weather.domain.model.weather.Weather;
 import java.util.Map;
 import java.util.TreeMap;
 import org.junit.Before;
 import org.junit.Test;
-import space.vakar.weather.domain.model.impl.Weather;
 
 public class ContainerTest {
 

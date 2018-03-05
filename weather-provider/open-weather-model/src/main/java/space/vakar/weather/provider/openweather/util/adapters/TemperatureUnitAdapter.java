@@ -1,7 +1,7 @@
 package space.vakar.weather.provider.openweather.util.adapters;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
-import space.vakar.weather.domain.model.impl.temperature.TemperatureUnit;
+import space.vakar.weather.domain.model.weather.temperature.TemperatureUnit;
 
 public class TemperatureUnitAdapter extends XmlAdapter<String, TemperatureUnit> {
 

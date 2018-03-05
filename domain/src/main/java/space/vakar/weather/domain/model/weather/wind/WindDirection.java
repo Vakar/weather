@@ -1,9 +1,8 @@
-package space.vakar.weather.domain.model.impl.wind;
+package space.vakar.weather.domain.model.weather.wind;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-
-import space.vakar.weather.domain.model.impl.DomainObject;
+import space.vakar.weather.domain.model.weather.DomainObject;
 
 public class WindDirection extends DomainObject {
 

@@ -1,7 +1,7 @@
 package space.vakar.weather.service.api;
 
 import java.io.Serializable;
-import space.vakar.weather.domain.model.impl.Weather;
+import space.vakar.weather.domain.model.weather.Weather;
 
 public interface WeatherContainer extends Serializable {
 

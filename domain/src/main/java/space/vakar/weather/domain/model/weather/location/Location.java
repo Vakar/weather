@@ -1,8 +1,7 @@
-package space.vakar.weather.domain.model.impl.location;
+package space.vakar.weather.domain.model.weather.location;
 
 import java.util.Objects;
-
-import space.vakar.weather.domain.model.impl.DomainObject;
+import space.vakar.weather.domain.model.weather.DomainObject;
 
 public class Location extends DomainObject {
 
