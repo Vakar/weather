@@ -9,7 +9,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import space.vakar.weather.provider.openweather.exceptions.OpenWeatherRetrieverException;
+import space.vakar.weather.provider.openweather.exceptions.WeatherRetrieverException;
 import space.vakar.weather.provider.openweather.testutils.WeatherRequestHandler;
 
 public class RetrieverTest {
@@ -22,7 +22,7 @@ public class RetrieverTest {
   private static final int NOT_VALID_CITY_ID = -1;
 
   @Before
-  public void setUp() throws OpenWeatherRetrieverException {
+  public void setUp() throws WeatherRetrieverException {
     weatherRetriever = RetrieverImplBuilder.buildRetriever();
     weatherRetriever.setServiceUrl("http:/" + server.getServiceAddress());
   }
@@ -41,23 +41,23 @@ public class RetrieverTest {
 
   @Test
   public void shouldReturnInputStream_WhenAllUrlCorrect()
-      throws OpenWeatherRetrieverException, IOException {
+      throws WeatherRetrieverException, IOException {
     InputStream expected = streamFromFile("weather.xml");
     weatherRetriever.setAppId("valid_app_id");
     InputStream weather = weatherRetriever.weatherXml(VALID_CITY_ID);
     assertTrue(IOUtils.contentEquals(expected, weather));
   }
 
-  @Test(expected = OpenWeatherRetrieverException.class)
+  @Test(expected = WeatherRetrieverException.class)
   public void shouldReturnOpenWeatherRetrieverException_WhenCityIdNotValid()
-      throws OpenWeatherRetrieverException {
+      throws WeatherRetrieverException {
     weatherRetriever.setAppId("valid_app_id");
     weatherRetriever.weatherXml(NOT_VALID_CITY_ID);
   }
 
-  @Test(expected = OpenWeatherRetrieverException.class)
+  @Test(expected = WeatherRetrieverException.class)
   public void shouldReturnOpenWeatherRetrieverException_WhenAppIdNotValid()
-      throws OpenWeatherRetrieverException {
+      throws WeatherRetrieverException {
     weatherRetriever.setAppId("not_valid_app_id");
     weatherRetriever.weatherXml(VALID_CITY_ID);
   }

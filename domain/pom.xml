@@ -14,39 +14,6 @@
 	<name>Domain model</name>
 	<url>http://weather.vakar.space</url>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-				<version>2.3</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.0.0</version>
-				<configuration>
-					<configLocation>google_checks.xml</configLocation>
-					<linkXRef>true</linkXRef>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.9.0</version>
-				<configuration>
-					<analysisCache>true</analysisCache>
-					<targetJdk>1.8</targetJdk>
-					<linkXRef>true</linkXRef>
-				</configuration>
-			</plugin>
-		</plugins>
-	</reporting>
-
 	<dependencies>
 		<dependency>
 			<groupId>nl.jqno.equalsverifier</groupId>

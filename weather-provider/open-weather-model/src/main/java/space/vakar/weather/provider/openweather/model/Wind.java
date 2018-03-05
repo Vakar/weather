@@ -16,7 +16,7 @@ public class Wind {
   }
 
   public Wind(WindSpeed speed, WindDirection direction) {
-    setSpeed(speed);;
+    setSpeed(speed);
     setDirection(direction);
   }
 

@@ -11,4 +11,19 @@
 	
 	<artifactId>weather-provider-api</artifactId>
 	<name>weather-provider-api</name>
+	
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${checkstyle.plugin.version}</version>
+				<configuration>
+					<configLocation>../../google_checks.xml</configLocation>
+					<linkXRef>true</linkXRef>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+	
 </project>

@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import space.vakar.weather.provider.openweather.api.Retriever;
-import space.vakar.weather.provider.openweather.exceptions.OpenWeatherParserException;
-import space.vakar.weather.provider.openweather.exceptions.OpenWeatherRetrieverException;
+import space.vakar.weather.provider.openweather.exceptions.WeatherParserException;
+import space.vakar.weather.provider.openweather.exceptions.WeatherRetrieverException;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
 import space.vakar.weather.provider.openweather.testutils.CurrentWeatherPopulator;
 
@@ -49,14 +49,14 @@ public class ParserTest {
 
   @Test
   public void shouldReturnCorrectObject()
-      throws OpenWeatherParserException, OpenWeatherRetrieverException {
+      throws WeatherParserException, WeatherRetrieverException {
     when(retriverMock.weatherXml(1)).thenReturn(weatherStream);
     assertEquals(expectedWeather, parser.weather(1));
   }
 
-  @Test(expected = OpenWeatherParserException.class)
+  @Test(expected = WeatherParserException.class)
   public void shouldThrowOpenWeatherParserException_WhenParsingNotValidXml()
-      throws OpenWeatherRetrieverException, OpenWeatherParserException {
+      throws WeatherRetrieverException, WeatherParserException {
     when(retriverMock.weatherXml(1)).thenReturn(notValidWeatherStream);
     parser.weather(1);
   }

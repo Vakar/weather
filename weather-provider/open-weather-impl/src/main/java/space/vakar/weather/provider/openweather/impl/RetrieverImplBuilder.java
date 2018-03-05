@@ -3,7 +3,7 @@ package space.vakar.weather.provider.openweather.impl;
 import java.io.IOException;
 import java.util.Properties;
 import org.apache.http.impl.client.HttpClientBuilder;
-import space.vakar.weather.provider.openweather.exceptions.OpenWeatherException;
+import space.vakar.weather.provider.openweather.exceptions.WeatherException;
 
 public class RetrieverImplBuilder {
 
@@ -33,7 +33,7 @@ public class RetrieverImplBuilder {
     try {
       properties.load(RetrieverImplBuilder.class.getResourceAsStream(fileName));
     } catch (IOException e) {
-      throw new OpenWeatherException("Can't read OpenWeather properties file", e);
+      throw new WeatherException("Can't read OpenWeather properties file", e);
     }
     return properties;
   }

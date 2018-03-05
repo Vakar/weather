@@ -10,7 +10,7 @@ import javax.xml.validation.SchemaFactory;
 import org.xml.sax.SAXException;
 import space.vakar.weather.provider.openweather.api.Parser;
 import space.vakar.weather.provider.openweather.api.Retriever;
-import space.vakar.weather.provider.openweather.exceptions.OpenWeatherParserException;
+import space.vakar.weather.provider.openweather.exceptions.WeatherParserException;
 import space.vakar.weather.provider.openweather.model.CurrentWeather;
 import space.vakar.weather.provider.openweather.util.handlers.EventHandler;
 
@@ -26,7 +26,7 @@ class ParserImpl implements Parser<CurrentWeather> {
   }
 
   @Override
-  public CurrentWeather weather(int cityId) throws OpenWeatherParserException {
+  public CurrentWeather weather(int cityId) throws WeatherParserException {
     CurrentWeather weather;
     try {
       Unmarshaller unmarshaller = unmarshaller(CurrentWeather.class);
@@ -34,7 +34,7 @@ class ParserImpl implements Parser<CurrentWeather> {
       unmarshaller.setEventHandler(new EventHandler());
       weather = (CurrentWeather) unmarshaller.unmarshal(retriever.weatherXml(cityId));
     } catch (Exception e) {
-      throw new OpenWeatherParserException("Can't not unmarshal weather XML.", e);
+      throw new WeatherParserException("Can't not unmarshal weather XML.", e);
     }
     return weather;
   }
