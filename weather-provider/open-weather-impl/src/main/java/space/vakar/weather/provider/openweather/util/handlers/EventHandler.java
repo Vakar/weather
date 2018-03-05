@@ -2,6 +2,7 @@ package space.vakar.weather.provider.openweather.util.handlers;
 
 import javax.xml.bind.ValidationEvent;
 import javax.xml.bind.ValidationEventHandler;
+
 import org.apache.log4j.Logger;
 
 public class EventHandler implements ValidationEventHandler {

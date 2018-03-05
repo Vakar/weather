@@ -2,6 +2,7 @@ package space.vakar.weather.provider.openweather.util.mappers;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
 import space.vakar.weather.domain.model.impl.Weather;
 import space.vakar.weather.domain.model.impl.atmosphere.Atmosphere;
 import space.vakar.weather.domain.model.impl.atmosphere.Clouds;

@@ -16,8 +16,8 @@ public class ProviderImpl implements Provider {
     try {
       CurrentWeather currentWeather = parser.weather(city);
       weather = GetWeather.from(currentWeather);
-    } catch (Exception e) {
-      throw new WeatherProviderException("Can't provide weather.", e);
+    } catch (Exception ex) {
+      throw new WeatherProviderException("Can't provide weather.", ex);
     }
     return weather;
   }

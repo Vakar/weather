@@ -3,6 +3,7 @@ package space.vakar.weather.provider.openweather.impl;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -32,8 +33,8 @@ class RetrieverImpl implements Retriever {
     LOG.debug("TRY: to make GET request to OpenWeather server: " + url);
     try {
       response = httpClient.execute(new HttpGet(url));
-    } catch (IOException e) {
-      throw new WeatherRetrieverException("Can't get response from server", e);
+    } catch (IOException requestException) {
+      throw new WeatherRetrieverException("Can't get response from server", requestException);
     }
     LOG.debug("SUCCESS: get response from OpenWeather server");
     return response;
@@ -56,8 +57,8 @@ class RetrieverImpl implements Retriever {
     InputStream in = null;
     try {
       in = res.getEntity().getContent();
-    } catch (IOException e) {
-      throw new WeatherRetrieverException("Can't open InputStream from HttpResponse", e);
+    } catch (IOException responseContentException) {
+      throw new WeatherRetrieverException("Can't open InputStream from HttpResponse", responseContentException);
     }
     return in;
   }
