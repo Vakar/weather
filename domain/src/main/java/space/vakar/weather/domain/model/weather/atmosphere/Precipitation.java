@@ -1,10 +1,12 @@
 package space.vakar.weather.domain.model.weather.atmosphere;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
-import space.vakar.weather.domain.model.weather.DomainObject;
 
-public class Precipitation extends DomainObject {
+public class Precipitation implements Serializable {
+
+  private static final long serialVersionUID = 7236263868458046925L;
 
   private BigDecimal value;
   private String mode;
@@ -14,7 +16,7 @@ public class Precipitation extends DomainObject {
 
   /**
    * Constructor.
-   * 
+   *
    * @param value millimeters of precipitation
    * @param mode 'no' or 'rain', 'snow' act...
    */
@@ -41,14 +43,14 @@ public class Precipitation extends DomainObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, value, mode);
+    return Objects.hash(value, mode);
   }
 
   @Override
   public boolean equals(Object object) {
     if (object instanceof Precipitation) {
       Precipitation that = (Precipitation) object;
-      return this.id == that.id && Objects.equals(this.value, that.value)
+      return Objects.equals(this.value, that.value)
           && Objects.equals(this.mode, that.mode);
     }
     return false;
@@ -56,7 +58,7 @@ public class Precipitation extends DomainObject {
 
   @Override
   public String toString() {
-    String format = "Precipitation [id=%s, value=%s, mode=%s]";
-    return String.format(format, id, value, mode);
+    String format = "Precipitation [value=%s, mode=%s]";
+    return String.format(format, value, mode);
   }
 }

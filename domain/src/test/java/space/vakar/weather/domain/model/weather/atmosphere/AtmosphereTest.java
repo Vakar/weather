@@ -1,6 +1,6 @@
-package space.vakar.weather.domain.model.atmosphere;
+package space.vakar.weather.domain.model.weather.atmosphere;
 
-import space.vakar.weather.domain.model.AbstractJavaBeanTest;
+import space.vakar.weather.domain.model.weather.AbstractJavaBeanTest;
 import space.vakar.weather.domain.model.weather.atmosphere.Atmosphere;
 
 public class AtmosphereTest extends AbstractJavaBeanTest<Atmosphere> {

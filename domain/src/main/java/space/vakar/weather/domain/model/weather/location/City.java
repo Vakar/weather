@@ -1,10 +1,13 @@
 package space.vakar.weather.domain.model.weather.location;
 
+import java.io.Serializable;
 import java.util.Objects;
-import space.vakar.weather.domain.model.weather.DomainObject;
 
-public class City extends DomainObject {
+public class City implements Serializable {
 
+  private static final long serialVersionUID = 885590064444808255L;
+
+  private int id;
   private String name;
 
   public City() {
@@ -15,8 +18,16 @@ public class City extends DomainObject {
   }
 
   public City(int id, String name) {
-    super(id);
+    this.id = id;
     this.name = name;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getName() {

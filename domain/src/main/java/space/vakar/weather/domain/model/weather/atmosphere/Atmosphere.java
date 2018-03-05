@@ -1,10 +1,12 @@
 package space.vakar.weather.domain.model.weather.atmosphere;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
-import space.vakar.weather.domain.model.weather.DomainObject;
 
-public class Atmosphere extends DomainObject {
+public class Atmosphere implements Serializable {
+
+  private static final long serialVersionUID = 2780230800724985007L;
 
   private Humidity humidity;
 
@@ -73,14 +75,14 @@ public class Atmosphere extends DomainObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, humidity, pressure, visibility, precipitation, clouds);
+    return Objects.hash(humidity, pressure, visibility, precipitation, clouds);
   }
 
   @Override
   public boolean equals(Object object) {
     if (object instanceof Atmosphere) {
       Atmosphere that = (Atmosphere) object;
-      return this.id == that.id && Objects.equals(this.humidity, that.humidity)
+      return Objects.equals(this.humidity, that.humidity)
           && Objects.equals(this.pressure, that.pressure)
           && Objects.equals(this.visibility, that.visibility)
           && Objects.equals(this.precipitation, that.precipitation)
@@ -91,8 +93,8 @@ public class Atmosphere extends DomainObject {
 
   @Override
   public String toString() {
-    String format = "Atmosphere [id=%s, humidity=%s, pressure=%s, "
+    String format = "Atmosphere [humidity=%s, pressure=%s, "
         + "visibility=%s, precipitation=%s, clouds=%s]";
-    return String.format(format, id, humidity, pressure, visibility, precipitation, clouds);
+    return String.format(format, humidity, pressure, visibility, precipitation, clouds);
   }
 }

@@ -1,10 +1,12 @@
 package space.vakar.weather.domain.model.weather.temperature;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
-import space.vakar.weather.domain.model.weather.DomainObject;
 
-public class Temperature extends DomainObject {
+public class Temperature implements Serializable {
+
+  private static final long serialVersionUID = -7591975165304837396L;
 
   private BigDecimal value;
   private TemperatureUnit unit;
@@ -36,14 +38,14 @@ public class Temperature extends DomainObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, value, unit);
+    return Objects.hash(value, unit);
   }
 
   @Override
   public boolean equals(Object object) {
     if (object instanceof Temperature) {
       Temperature that = (Temperature) object;
-      return this.id == that.id && Objects.equals(this.value, that.value)
+      return Objects.equals(this.value, that.value)
           && Objects.equals(this.unit, that.unit);
     }
     return false;
@@ -51,8 +53,8 @@ public class Temperature extends DomainObject {
 
   @Override
   public String toString() {
-    String format = "Temperature [id=%s, value=%s, unit=%s]";
-    return String.format(format, id, value, unit);
+    String format = "Temperature [value=%s, unit=%s]";
+    return String.format(format, value, unit);
   }
 
 }

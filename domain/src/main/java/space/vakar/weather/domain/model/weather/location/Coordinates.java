@@ -1,10 +1,12 @@
 package space.vakar.weather.domain.model.weather.location;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
-import space.vakar.weather.domain.model.weather.DomainObject;
 
-public class Coordinates extends DomainObject {
+public class Coordinates implements Serializable {
+
+  private static final long serialVersionUID = -8819069034329335118L;
 
   private BigDecimal longitude;
   private BigDecimal latitude;
@@ -15,23 +17,13 @@ public class Coordinates extends DomainObject {
 
   /**
    * Constructor.
-   * 
+   *
    * @param longitude geographic longitude
    * @param latitude geographic latitude
    */
   public Coordinates(BigDecimal longitude, BigDecimal latitude) {
     this.longitude = longitude;
     this.latitude = latitude;
-  }
-
-  @Override
-  public int getId() {
-    return id;
-  }
-
-  @Override
-  public void setId(int id) {
-    this.id = id;
   }
 
   public BigDecimal getLongitude() {
@@ -52,14 +44,14 @@ public class Coordinates extends DomainObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, longitude, latitude);
+    return Objects.hash(longitude, latitude);
   }
 
   @Override
   public boolean equals(Object object) {
     if (object instanceof Coordinates) {
       Coordinates that = (Coordinates) object;
-      return this.id == that.id && Objects.equals(this.longitude, that.longitude)
+      return Objects.equals(this.longitude, that.longitude)
           && Objects.equals(this.latitude, that.latitude);
     }
     return false;
@@ -67,7 +59,7 @@ public class Coordinates extends DomainObject {
 
   @Override
   public String toString() {
-    String format = "Coordinates [id=%s, longitude=%s, latitude=%s]";
-    return String.format(format, id, longitude, latitude);
+    String format = "Coordinates [longitude=%s, latitude=%s]";
+    return String.format(format, longitude, latitude);
   }
 }

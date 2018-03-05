@@ -1,10 +1,12 @@
 package space.vakar.weather.domain.model.weather.wind;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
-import space.vakar.weather.domain.model.weather.DomainObject;
 
-public class WindDirection extends DomainObject {
+public class WindDirection implements Serializable {
+
+  private static final long serialVersionUID = 7262433679740179828L;
 
   private BigDecimal value;
   private String code;
@@ -53,14 +55,14 @@ public class WindDirection extends DomainObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, value, code, name);
+    return Objects.hash(value, code, name);
   }
 
   @Override
   public boolean equals(Object object) {
     if (object instanceof WindDirection) {
       WindDirection that = (WindDirection) object;
-      return this.id == that.id && Objects.equals(this.value, that.value)
+      return Objects.equals(this.value, that.value)
           && Objects.equals(this.code, that.code) && Objects.equals(this.name, that.name);
     }
     return false;
@@ -68,7 +70,7 @@ public class WindDirection extends DomainObject {
 
   @Override
   public String toString() {
-    String format = "WindDirection [id=%s, value=%s, code=%s, name=%s]";
-    return String.format(format, id, value, code, name);
+    String format = "WindDirection [value=%s, code=%s, name=%s]";
+    return String.format(format, value, code, name);
   }
 }

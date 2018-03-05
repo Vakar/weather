@@ -1,5 +1,6 @@
 package space.vakar.weather.domain.model.weather;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import space.vakar.weather.domain.model.weather.atmosphere.Atmosphere;
@@ -7,7 +8,9 @@ import space.vakar.weather.domain.model.weather.location.Location;
 import space.vakar.weather.domain.model.weather.temperature.Temperature;
 import space.vakar.weather.domain.model.weather.wind.Wind;
 
-public class Weather extends DomainObject {
+public class Weather implements Serializable {
+
+  private static final long serialVersionUID = -5844838912038162239L;
 
   private Wind wind;
 
@@ -76,14 +79,14 @@ public class Weather extends DomainObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, wind, location, atmosphere, temperature, lastUpdate);
+    return Objects.hash(wind, location, atmosphere, temperature, lastUpdate);
   }
 
   @Override
   public boolean equals(Object object) {
     if (object instanceof Weather) {
       Weather that = (Weather) object;
-      return this.id == that.id && Objects.equals(this.wind, that.wind)
+      return Objects.equals(this.wind, that.wind)
           && Objects.equals(this.location, that.location)
           && Objects.equals(this.atmosphere, that.atmosphere)
           && Objects.equals(this.temperature, that.temperature)
@@ -95,7 +98,7 @@ public class Weather extends DomainObject {
   @Override
   public String toString() {
     String format =
-        "Weather [id=%s, wind=%s, location=%s, atmosphere=%s, " + "temperature=%s, lastUpdate=%s]";
-    return String.format(format, id, wind, location, atmosphere, temperature, lastUpdate);
+        "Weather [wind=%s, location=%s, atmosphere=%s, " + "temperature=%s, lastUpdate=%s]";
+    return String.format(format, wind, location, atmosphere, temperature, lastUpdate);
   }
 }

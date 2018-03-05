@@ -1,10 +1,12 @@
 package space.vakar.weather.domain.model.weather.atmosphere;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
-import space.vakar.weather.domain.model.weather.DomainObject;
 
-public class Humidity extends DomainObject {
+public class Humidity implements Serializable {
+
+  private static final long serialVersionUID = 94070687448884334L;
 
   private BigDecimal value;
   private String unit;
@@ -14,7 +16,7 @@ public class Humidity extends DomainObject {
 
   /**
    * Constructor.
-   * 
+   *
    * @param value from 0 to 100
    * @param unit percents %
    */
@@ -41,14 +43,14 @@ public class Humidity extends DomainObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, value, unit);
+    return Objects.hash(value, unit);
   }
 
   @Override
   public boolean equals(Object object) {
     if (object instanceof Humidity) {
       Humidity that = (Humidity) object;
-      return this.id == that.id && Objects.equals(this.value, that.value)
+      return Objects.equals(this.value, that.value)
           && Objects.equals(this.unit, that.unit);
     }
     return false;
@@ -56,7 +58,7 @@ public class Humidity extends DomainObject {
 
   @Override
   public String toString() {
-    String format = "Humidity [id=%s, value=%s, unit=%s]";
-    return String.format(format, id, value, unit);
+    String format = "Humidity [value=%s, unit=%s]";
+    return String.format(format, value, unit);
   }
 }

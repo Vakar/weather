@@ -1,4 +1,4 @@
-package space.vakar.weather.domain.model;
+package space.vakar.weather.domain.model.weather;
 
 import static org.junit.Assert.assertEquals;
 import java.io.Serializable;

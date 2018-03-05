@@ -1,10 +1,12 @@
 package space.vakar.weather.domain.model.weather.atmosphere;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
-import space.vakar.weather.domain.model.weather.DomainObject;
 
-public class Clouds extends DomainObject {
+public class Clouds implements Serializable {
+
+  private static final long serialVersionUID = -3772304563756023481L;
 
   private BigDecimal value;
   private String name;
@@ -14,7 +16,7 @@ public class Clouds extends DomainObject {
 
   /**
    * Constructor.
-   * 
+   *
    * @param value percent of sky in clouds
    * @param name the name of clouds condition for example 'clean sky'
    */
@@ -41,14 +43,14 @@ public class Clouds extends DomainObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, value, name);
+    return Objects.hash(value, name);
   }
 
   @Override
   public boolean equals(Object object) {
     if (object instanceof Clouds) {
       Clouds that = (Clouds) object;
-      return this.id == that.id && Objects.equals(this.value, that.value)
+      return Objects.equals(this.value, that.value)
           && Objects.equals(this.name, that.name);
     }
     return false;
@@ -56,7 +58,7 @@ public class Clouds extends DomainObject {
 
   @Override
   public String toString() {
-    String format = "Clouds [id=%s, value=%s, name=%s]";
-    return String.format(format, id, value, name);
+    String format = "Clouds [value=%s, name=%s]";
+    return String.format(format, value, name);
   }
 }

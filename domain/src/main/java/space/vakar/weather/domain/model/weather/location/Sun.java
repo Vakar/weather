@@ -1,10 +1,12 @@
 package space.vakar.weather.domain.model.weather.location;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
-import space.vakar.weather.domain.model.weather.DomainObject;
 
-public class Sun extends DomainObject {
+public class Sun implements Serializable {
+
+  private static final long serialVersionUID = 4691313924623685852L;
 
   private LocalDateTime rise;
   private LocalDateTime set;
@@ -42,14 +44,14 @@ public class Sun extends DomainObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, rise, set);
+    return Objects.hash(rise, set);
   }
 
   @Override
   public boolean equals(Object object) {
     if (object instanceof Sun) {
       Sun that = (Sun) object;
-      return this.id == that.id && Objects.equals(this.rise, that.rise)
+      return Objects.equals(this.rise, that.rise)
           && Objects.equals(this.set, that.set);
     }
     return false;
@@ -57,7 +59,7 @@ public class Sun extends DomainObject {
 
   @Override
   public String toString() {
-    String format = "Sun [id=%s, rise=%s, set=%s]";
-    return String.format(format, id, rise, set);
+    String format = "Sun [rise=%s, set=%s]";
+    return String.format(format, rise, set);
   }
 }

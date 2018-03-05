@@ -1,4 +1,4 @@
-package space.vakar.weather.domain.model.atmosphere;
+package space.vakar.weather.domain.model.weather.atmosphere;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

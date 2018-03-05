@@ -1,10 +1,12 @@
 package space.vakar.weather.domain.model.weather.atmosphere;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
-import space.vakar.weather.domain.model.weather.DomainObject;
 
-public class Pressure extends DomainObject {
+public class Pressure implements Serializable {
+
+  private static final long serialVersionUID = 4973909444937579375L;
 
   private BigDecimal value;
   private String unit;
@@ -41,14 +43,14 @@ public class Pressure extends DomainObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, value, unit);
+    return Objects.hash(value, unit);
   }
 
   @Override
   public boolean equals(Object object) {
     if (object instanceof Pressure) {
       Pressure that = (Pressure) object;
-      return this.id == that.id && Objects.equals(this.value, that.value)
+      return Objects.equals(this.value, that.value)
           && Objects.equals(this.unit, that.unit);
     }
     return false;
@@ -56,7 +58,7 @@ public class Pressure extends DomainObject {
 
   @Override
   public String toString() {
-    String format = "Pressure [id=%s, value=%s, unit=%s]";
-    return String.format(format, id, value, unit);
+    String format = "Pressure [value=%s, unit=%s]";
+    return String.format(format, value, unit);
   }
 }
