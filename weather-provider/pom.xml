@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>weather-provider</artifactId>
-	<name>OpenWeather provider module</name>
+	<name>Weather provider</name>
 	<url>http://weather.vakar.space</url>
 
 	<packaging>pom</packaging>
