@@ -12,7 +12,7 @@ public class Atmosphere implements Serializable {
 
   private Pressure pressure;
 
-  private BigDecimal visibility;
+  private BigDecimal visibility; // TODO make a class Visibility and enum VisibilityUnit
 
   private Precipitation precipitation;
 

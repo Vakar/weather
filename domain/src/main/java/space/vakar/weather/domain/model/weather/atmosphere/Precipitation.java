@@ -9,7 +9,7 @@ public class Precipitation implements Serializable {
   private static final long serialVersionUID = 7236263868458046925L;
 
   private BigDecimal value;
-  private String mode;
+  private String mode; // TODO remove this field
 
   public Precipitation() {
   }
