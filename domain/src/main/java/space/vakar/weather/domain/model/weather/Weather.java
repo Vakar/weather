@@ -12,6 +12,8 @@ public class Weather implements Serializable {
 
   private static final long serialVersionUID = -5844838912038162239L;
 
+  private int id;
+
   private Wind wind;
 
   private Location location;
@@ -35,6 +37,14 @@ public class Weather implements Serializable {
     this.atmosphere = atmosphere;
     this.temperature = temperature;
     this.lastUpdate = lastUpdate;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public Wind getWind() {
