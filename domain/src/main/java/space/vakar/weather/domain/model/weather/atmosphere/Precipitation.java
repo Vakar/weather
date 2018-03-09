@@ -9,20 +9,16 @@ public class Precipitation implements Serializable {
   private static final long serialVersionUID = 7236263868458046925L;
 
   private BigDecimal value;
-  private String mode; // TODO remove this field
+  private PrecipitationUnit unit;
+  private String name;
 
   public Precipitation() {
   }
 
-  /**
-   * Constructor.
-   *
-   * @param value millimeters of precipitation
-   * @param mode 'no' or 'rain', 'snow' act...
-   */
-  public Precipitation(BigDecimal value, String mode) {
+  public Precipitation(BigDecimal value, PrecipitationUnit unit, String name) {
     this.value = value;
-    this.mode = mode;
+    this.unit = unit;
+    this.name = name;
   }
 
   public BigDecimal getValue() {
@@ -33,17 +29,25 @@ public class Precipitation implements Serializable {
     this.value = value;
   }
 
-  public String getMode() {
-    return mode;
+  public PrecipitationUnit getUnit() {
+    return unit;
   }
 
-  public void setMode(String mode) {
-    this.mode = mode;
+  public void setUnit(PrecipitationUnit unit) {
+    this.unit = unit;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, mode);
+    return Objects.hash(value, unit, name);
   }
 
   @Override
@@ -51,14 +55,14 @@ public class Precipitation implements Serializable {
     if (object instanceof Precipitation) {
       Precipitation that = (Precipitation) object;
       return Objects.equals(this.value, that.value)
-          && Objects.equals(this.mode, that.mode);
+          && Objects.equals(this.unit, that.unit) && Objects.equals(this.name, that.name);
     }
     return false;
   }
 
   @Override
   public String toString() {
-    String format = "Precipitation [value=%s, mode=%s]";
-    return String.format(format, value, mode);
+    String format = "Precipitation [value=%s, unit=%s, name=%s]";
+    return String.format(format, value, unit, name);
   }
 }

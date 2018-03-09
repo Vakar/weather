@@ -16,9 +16,9 @@ public class WeatherWebModelMapper {
     weather.setTemperatureValue(w.getTemperature().getValue().toPlainString());
     weather.setTemperatureUnit(w.getTemperature().getUnit().name());
     weather.setHumidityValue(w.getAtmosphere().getHumidity().getValue().toPlainString());
-    weather.setHumidityUnit(w.getAtmosphere().getHumidity().getUnit());
+    weather.setHumidityUnit(w.getAtmosphere().getHumidity().getUnit().name());
     weather.setPressureValue(w.getAtmosphere().getPressure().getValue().toPlainString());
-    weather.setPressureUnit(w.getAtmosphere().getPressure().getUnit());
+    weather.setPressureUnit(w.getAtmosphere().getPressure().getUnit().name());
     weather.setWindSpeed(w.getWind().getSpeed().getValue().toPlainString());
     weather.setWindName(w.getWind().getSpeed().getName());
     weather.setWindDirection(w.getWind().getDirection().getName());

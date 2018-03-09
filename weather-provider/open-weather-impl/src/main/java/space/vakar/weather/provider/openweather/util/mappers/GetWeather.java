@@ -6,14 +6,18 @@ import space.vakar.weather.domain.model.weather.Weather;
 import space.vakar.weather.domain.model.weather.atmosphere.Atmosphere;
 import space.vakar.weather.domain.model.weather.atmosphere.Clouds;
 import space.vakar.weather.domain.model.weather.atmosphere.Humidity;
+import space.vakar.weather.domain.model.weather.atmosphere.HumidityUnit;
 import space.vakar.weather.domain.model.weather.atmosphere.Precipitation;
+import space.vakar.weather.domain.model.weather.atmosphere.PrecipitationUnit;
 import space.vakar.weather.domain.model.weather.atmosphere.Pressure;
+import space.vakar.weather.domain.model.weather.atmosphere.PressureUnit;
 import space.vakar.weather.domain.model.weather.location.City;
 import space.vakar.weather.domain.model.weather.location.Coordinates;
 import space.vakar.weather.domain.model.weather.location.Location;
 import space.vakar.weather.domain.model.weather.location.Sun;
 import space.vakar.weather.domain.model.weather.temperature.Temperature;
 import space.vakar.weather.domain.model.weather.temperature.TemperatureUnit;
+import space.vakar.weather.domain.model.weather.wind.SpeedUnit;
 import space.vakar.weather.domain.model.weather.wind.Wind;
 import space.vakar.weather.domain.model.weather.wind.WindDirection;
 import space.vakar.weather.domain.model.weather.wind.WindSpeed;
@@ -50,8 +54,7 @@ public class GetWeather {
   private static WindSpeed getWindSpeed(CurrentWeather currentWeather) {
     BigDecimal value = currentWeather.getWind().getSpeed().getValue();
     String name = currentWeather.getWind().getSpeed().getName();
-
-    return new WindSpeed(value, name);
+    return new WindSpeed(value, SpeedUnit.MILES_PER_HOUR, name);
   }
 
   private static WindDirection getWindDirection(
@@ -75,14 +78,12 @@ public class GetWeather {
 
   private static Humidity getHumidity(CurrentWeather currentWeather) {
     BigDecimal value = currentWeather.getHumidity().getValue();
-    String unit = currentWeather.getHumidity().getUnit();
-    return new Humidity(value, unit);
+    return new Humidity(value, HumidityUnit.RELATIVE_HUMIDITY);
   }
 
   private static Pressure getPressure(CurrentWeather currentWeather) {
     BigDecimal value = currentWeather.getPressure().getValue();
-    String unit = currentWeather.getPressure().getUnit();
-    return new Pressure(value, unit);
+    return new Pressure(value, PressureUnit.MILLIMETER_OF_MERCURY);
   }
 
   private static BigDecimal getVisibility(CurrentWeather currentWeather) {
@@ -92,7 +93,7 @@ public class GetWeather {
   private static Precipitation getPrecipitation(CurrentWeather currentWeather) {
     BigDecimal value = currentWeather.getPrecipitation().getValue();
     String mode = currentWeather.getPrecipitation().getMode();
-    return new Precipitation(value, mode);
+    return new Precipitation(value, PrecipitationUnit.MILLIMETRE, mode);
   }
 
   private static Clouds getClouds(CurrentWeather currentWeather) {

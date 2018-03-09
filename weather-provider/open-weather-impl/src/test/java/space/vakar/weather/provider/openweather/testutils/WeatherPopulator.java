@@ -6,14 +6,18 @@ import space.vakar.weather.domain.model.weather.Weather;
 import space.vakar.weather.domain.model.weather.atmosphere.Atmosphere;
 import space.vakar.weather.domain.model.weather.atmosphere.Clouds;
 import space.vakar.weather.domain.model.weather.atmosphere.Humidity;
+import space.vakar.weather.domain.model.weather.atmosphere.HumidityUnit;
 import space.vakar.weather.domain.model.weather.atmosphere.Precipitation;
+import space.vakar.weather.domain.model.weather.atmosphere.PrecipitationUnit;
 import space.vakar.weather.domain.model.weather.atmosphere.Pressure;
+import space.vakar.weather.domain.model.weather.atmosphere.PressureUnit;
 import space.vakar.weather.domain.model.weather.location.City;
 import space.vakar.weather.domain.model.weather.location.Coordinates;
 import space.vakar.weather.domain.model.weather.location.Location;
 import space.vakar.weather.domain.model.weather.location.Sun;
 import space.vakar.weather.domain.model.weather.temperature.Temperature;
 import space.vakar.weather.domain.model.weather.temperature.TemperatureUnit;
+import space.vakar.weather.domain.model.weather.wind.SpeedUnit;
 import space.vakar.weather.domain.model.weather.wind.Wind;
 import space.vakar.weather.domain.model.weather.wind.WindDirection;
 import space.vakar.weather.domain.model.weather.wind.WindSpeed;
@@ -36,16 +40,18 @@ public class WeatherPopulator {
   }
 
   private static Wind getWind() {
-    WindSpeed speed = new WindSpeed(new BigDecimal("7.7"), "Moderate breeze");
+    WindSpeed speed =
+        new WindSpeed(new BigDecimal("7.7"), SpeedUnit.MILES_PER_HOUR, "Moderate breeze");
     WindDirection direction = new WindDirection(new BigDecimal("290"), "WNW", "West-northwest");
     return new Wind(speed, direction);
   }
 
   private static Atmosphere getAtmosphere() {
-    Humidity humidity = new Humidity(new BigDecimal("85"), "%");
-    Pressure pressure = new Pressure(new BigDecimal("1002"), "hPa");
+    Humidity humidity = new Humidity(new BigDecimal("85"), HumidityUnit.RELATIVE_HUMIDITY);
+    Pressure pressure = new Pressure(new BigDecimal("1002"), PressureUnit.MILLIMETER_OF_MERCURY);
     BigDecimal visibility = new BigDecimal("4828");
-    Precipitation precipitation = new Precipitation(new BigDecimal("13.4"), "snow");
+    Precipitation precipitation =
+        new Precipitation(new BigDecimal("13.4"), PrecipitationUnit.MILLIMETRE, "snow");
     Clouds clouds = new Clouds(new BigDecimal("90"), "overcast clouds");
     return new Atmosphere(humidity, pressure, visibility, precipitation, clouds);
   }

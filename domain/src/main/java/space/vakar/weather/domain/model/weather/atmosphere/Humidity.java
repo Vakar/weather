@@ -9,7 +9,7 @@ public class Humidity implements Serializable {
   private static final long serialVersionUID = 94070687448884334L;
 
   private BigDecimal value;
-  private String unit;
+  private HumidityUnit unit;
 
   public Humidity() {
   }
@@ -20,7 +20,7 @@ public class Humidity implements Serializable {
    * @param value from 0 to 100
    * @param unit percents %
    */
-  public Humidity(BigDecimal value, String unit) {
+  public Humidity(BigDecimal value, HumidityUnit unit) {
     this.value = value;
     this.unit = unit;
   }
@@ -33,11 +33,11 @@ public class Humidity implements Serializable {
     this.value = value;
   }
 
-  public String getUnit() {
+  public HumidityUnit getUnit() {
     return unit;
   }
 
-  public void setUnit(String unit) {
+  public void setUnit(HumidityUnit unit) {
     this.unit = unit;
   }
 

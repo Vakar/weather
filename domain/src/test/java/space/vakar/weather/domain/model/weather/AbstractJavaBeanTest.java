@@ -6,21 +6,25 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import org.apache.commons.lang.SerializationUtils;
 import org.junit.Test;
-import org.meanbean.test.BeanTester;
 import org.meanbean.lang.Factory;
+import org.meanbean.test.BeanTester;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 import space.vakar.weather.domain.model.weather.atmosphere.Atmosphere;
 import space.vakar.weather.domain.model.weather.atmosphere.Clouds;
 import space.vakar.weather.domain.model.weather.atmosphere.Humidity;
+import space.vakar.weather.domain.model.weather.atmosphere.HumidityUnit;
 import space.vakar.weather.domain.model.weather.atmosphere.Precipitation;
+import space.vakar.weather.domain.model.weather.atmosphere.PrecipitationUnit;
 import space.vakar.weather.domain.model.weather.atmosphere.Pressure;
+import space.vakar.weather.domain.model.weather.atmosphere.PressureUnit;
 import space.vakar.weather.domain.model.weather.location.City;
 import space.vakar.weather.domain.model.weather.location.Coordinates;
 import space.vakar.weather.domain.model.weather.location.Location;
 import space.vakar.weather.domain.model.weather.location.Sun;
 import space.vakar.weather.domain.model.weather.temperature.Temperature;
 import space.vakar.weather.domain.model.weather.temperature.TemperatureUnit;
+import space.vakar.weather.domain.model.weather.wind.SpeedUnit;
 import space.vakar.weather.domain.model.weather.wind.Wind;
 import space.vakar.weather.domain.model.weather.wind.WindDirection;
 import space.vakar.weather.domain.model.weather.wind.WindSpeed;
@@ -76,7 +80,7 @@ public abstract class AbstractJavaBeanTest<T> {
   class WindSpeedFactory implements Factory<WindSpeed> {
     @Override
     public WindSpeed create() {
-      return new WindSpeed(new BigDecimal(20), "wind");
+      return new WindSpeed(new BigDecimal(20), SpeedUnit.MILES_PER_HOUR, "wind");
     }
   }
 
@@ -120,21 +124,21 @@ public abstract class AbstractJavaBeanTest<T> {
   class HumidityFactory implements Factory<Humidity> {
     @Override
     public Humidity create() {
-      return new Humidity(new BigDecimal(85), "%");
+      return new Humidity(new BigDecimal(85), HumidityUnit.RELATIVE_HUMIDITY);
     }
   }
 
   class PrecipitationFactory implements Factory<Precipitation> {
     @Override
     public Precipitation create() {
-      return new Precipitation(new BigDecimal(12.3), "snow");
+      return new Precipitation(new BigDecimal(12.3), PrecipitationUnit.MILLIMETRE, "snow");
     }
   }
 
   class PressureFactory implements Factory<Pressure> {
     @Override
     public Pressure create() {
-      return new Pressure(new BigDecimal(1010), "hPa");
+      return new Pressure(new BigDecimal(1010), PressureUnit.MILLIMETER_OF_MERCURY);
     }
   }
 

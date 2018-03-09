@@ -9,7 +9,7 @@ public class Pressure implements Serializable {
   private static final long serialVersionUID = 4973909444937579375L;
 
   private BigDecimal value;
-  private String unit;
+  private PressureUnit unit;
 
   public Pressure() {
   }
@@ -18,9 +18,9 @@ public class Pressure implements Serializable {
    * Constructor.
    *
    * @param value atmosphere pressure
-   * @param unit mbar
+   * @param unit pressure unit
    */
-  public Pressure(BigDecimal value, String unit) {
+  public Pressure(BigDecimal value, PressureUnit unit) {
     this.value = value;
     this.unit = unit;
   }
@@ -33,11 +33,11 @@ public class Pressure implements Serializable {
     this.value = value;
   }
 
-  public String getUnit() {
+  public PressureUnit getUnit() {
     return unit;
   }
 
-  public void setUnit(String unit) {
+  public void setUnit(PressureUnit unit) {
     this.unit = unit;
   }
 
