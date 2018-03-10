@@ -3,26 +3,39 @@ package space.vakar.weather.domain.model.weather;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import space.vakar.weather.domain.model.weather.atmosphere.Atmosphere;
 import space.vakar.weather.domain.model.weather.location.Location;
 import space.vakar.weather.domain.model.weather.temperature.Temperature;
 import space.vakar.weather.domain.model.weather.wind.Wind;
 
+@Entity
+@Table(name = "WEATHER")
 public class Weather implements Serializable {
 
   private static final long serialVersionUID = -5844838912038162239L;
 
+  @Id
+  @GeneratedValue
   private int id;
 
+  @Embedded
   private Wind wind;
 
+  @Embedded
   private Location location;
 
+  @Embedded
   private Atmosphere atmosphere;
 
+  @Embedded
   private Temperature temperature;
 
-  private LocalDateTime lastUpdate;
+  private LocalDateTime lastUpdate; // TODO temporal
 
   public Weather() {
   }
