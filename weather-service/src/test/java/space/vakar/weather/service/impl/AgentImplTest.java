@@ -38,9 +38,9 @@ public class AgentImplTest {
   public void setUpWeather() {
     ZoneId utc = ZoneId.of("UTC");
     freshWeather = EnhancedRandom.random(Weather.class);
-    freshWeather.setLastUpdate(LocalDateTime.now(utc).minusMinutes(30));
+    freshWeather.setMeasuringTime(LocalDateTime.now(utc).minusMinutes(30));
     notFreshWeather = EnhancedRandom.random(Weather.class);
-    notFreshWeather.setLastUpdate(LocalDateTime.now(utc).minusHours(2));
+    notFreshWeather.setMeasuringTime(LocalDateTime.now(utc).minusHours(2));
     agent = new AgentImpl(provider, container);
   }
 

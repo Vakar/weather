@@ -41,7 +41,7 @@ public class GetWeather {
     weather.setAtmosphere(getAtmosphere(current));
     weather.setLocation(location(current));
     weather.setTemperature(getTemperature(current));
-    weather.setLastUpdate(current.getLastupdate().getValue());
+    weather.setMeasuringTime(current.getLastupdate().getValue());
     return weather;
   }
 

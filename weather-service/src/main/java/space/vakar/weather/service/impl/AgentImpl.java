@@ -42,7 +42,7 @@ public class AgentImpl implements Agent {
 
   @Override
   public boolean isFresh(Weather weather) {
-    LocalDateTime lastUpdate = weather.getLastUpdate();
+    LocalDateTime lastUpdate = weather.getMeasuringTime();
     LocalDateTime now = LocalDateTime.now(ZoneId.of("UTC"));
     Duration lastUpdateDelta = Duration.between(lastUpdate, now);
     return lastUpdateDelta.compareTo(TWO_HOURS) < 0 ? true : false;

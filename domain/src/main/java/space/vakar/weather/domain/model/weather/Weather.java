@@ -3,6 +3,7 @@ package space.vakar.weather.domain.model.weather;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +22,7 @@ public class Weather implements Serializable {
 
   @Id
   @GeneratedValue
+  @Column(name = "ID")
   private int id;
 
   @Embedded
@@ -35,7 +37,8 @@ public class Weather implements Serializable {
   @Embedded
   private Temperature temperature;
 
-  private LocalDateTime lastUpdate; // TODO temporal
+  @Column(name = "MEASURING_TIME")
+  private LocalDateTime measuringTime;
 
   public Weather() {
   }
@@ -49,7 +52,7 @@ public class Weather implements Serializable {
     this.location = location;
     this.atmosphere = atmosphere;
     this.temperature = temperature;
-    this.lastUpdate = lastUpdate;
+    this.measuringTime = lastUpdate;
   }
 
   public int getId() {
@@ -84,12 +87,12 @@ public class Weather implements Serializable {
     this.temperature = temperature;
   }
 
-  public LocalDateTime getLastUpdate() {
-    return lastUpdate;
+  public LocalDateTime getMeasuringTime() {
+    return measuringTime;
   }
 
-  public void setLastUpdate(LocalDateTime lastUpdate) {
-    this.lastUpdate = lastUpdate;
+  public void setMeasuringTime(LocalDateTime lastUpdate) {
+    this.measuringTime = lastUpdate;
   }
 
   public Location getLocation() {
@@ -102,7 +105,7 @@ public class Weather implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(wind, location, atmosphere, temperature, lastUpdate);
+    return Objects.hash(wind, location, atmosphere, temperature, measuringTime);
   }
 
   @Override
@@ -113,7 +116,7 @@ public class Weather implements Serializable {
           && Objects.equals(this.location, that.location)
           && Objects.equals(this.atmosphere, that.atmosphere)
           && Objects.equals(this.temperature, that.temperature)
-          && Objects.equals(this.lastUpdate, that.lastUpdate);
+          && Objects.equals(this.measuringTime, that.measuringTime);
     }
     return false;
   }
@@ -122,6 +125,6 @@ public class Weather implements Serializable {
   public String toString() {
     String format =
         "Weather [wind=%s, location=%s, atmosphere=%s, " + "temperature=%s, lastUpdate=%s]";
-    return String.format(format, wind, location, atmosphere, temperature, lastUpdate);
+    return String.format(format, wind, location, atmosphere, temperature, measuringTime);
   }
 }

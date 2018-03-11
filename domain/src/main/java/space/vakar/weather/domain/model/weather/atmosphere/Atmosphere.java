@@ -4,20 +4,25 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 
 @Embeddable
 public class Atmosphere implements Serializable {
 
   private static final long serialVersionUID = 2780230800724985007L;
 
+  @Embedded
   private Humidity humidity;
 
+  @Embedded
   private Pressure pressure;
 
   private BigDecimal visibility; // TODO make a class Visibility and enum VisibilityUnit
 
+  @Embedded
   private Precipitation precipitation;
 
+  @Embedded
   private Clouds clouds;
 
   public Atmosphere() {

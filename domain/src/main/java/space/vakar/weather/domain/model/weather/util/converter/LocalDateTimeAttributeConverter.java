@@ -9,16 +9,13 @@ import javax.persistence.Converter;
 public class LocalDateTimeAttributeConverter implements AttributeConverter<LocalDateTime, Timestamp> {
 
   @Override
-  public Timestamp convertToDatabaseColumn(LocalDateTime arg0) {
-    // TODO Auto-generated method stub
-    return null;
+  public Timestamp convertToDatabaseColumn(LocalDateTime localDateTime) {
+      return (localDateTime == null ? null : Timestamp.valueOf(localDateTime));
   }
 
   @Override
-  public LocalDateTime convertToEntityAttribute(Timestamp arg0) {
-    // TODO Auto-generated method stub
-    return null;
+  public LocalDateTime convertToEntityAttribute(Timestamp sqlTimestamp) {
+      return (sqlTimestamp == null ? null : sqlTimestamp.toLocalDateTime());
   }
-
 
 }

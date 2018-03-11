@@ -35,7 +35,7 @@ public class WeatherPopulator {
     weather.setAtmosphere(getAtmosphere());
     weather.setLocation(getLocation());
     weather.setTemperature(getTemperature());
-    weather.setLastUpdate(LocalDateTime.parse("2018-01-31T08:27:00"));
+    weather.setMeasuringTime(LocalDateTime.parse("2018-01-31T08:27:00"));
     return weather;
   }
 
