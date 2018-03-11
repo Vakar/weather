@@ -23,7 +23,7 @@ public class WeatherWebModelMapper {
     weather.setWindName(w.getWind().getSpeed().getName());
     weather.setWindDirection(w.getWind().getDirection().getName());
     weather.setCloudsValue(w.getAtmosphere().getClouds().getValue().toPlainString());
-    weather.setCloudsName(w.getAtmosphere().getClouds().getName());
+    weather.setCloudsName(w.getAtmosphere().getClouds().getUnit().name());
     weather.setLastUpdate(w.getMeasuringTime().toString());
     return weather;
   }

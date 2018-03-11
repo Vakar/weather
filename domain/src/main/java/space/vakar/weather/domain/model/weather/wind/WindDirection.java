@@ -3,13 +3,21 @@ package space.vakar.weather.domain.model.weather.wind;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
+@Embeddable
 public class WindDirection implements Serializable {
 
   private static final long serialVersionUID = 7262433679740179828L;
 
+  @Column(name = "WIND_DIRECTION_IN_DEGREES")
   private BigDecimal value;
+
+  @Column(name = "WIND_DIRECTION_SHORT_NAME")
   private String code;
+
+  @Column(name = "WIND_DIRECTION_FULL_NAME")
   private String name;
 
   public WindDirection() {

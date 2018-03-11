@@ -3,12 +3,21 @@ package space.vakar.weather.domain.model.weather.temperature;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
+@Embeddable
 public class Temperature implements Serializable {
 
   private static final long serialVersionUID = -7591975165304837396L;
 
+  @Column(name = "TEMPERATURE")
   private BigDecimal value;
+
+  @Enumerated(EnumType.STRING)
+  @Column(name = "TEMPERATURE_UNIT")
   private TemperatureUnit unit;
 
   public Temperature() {

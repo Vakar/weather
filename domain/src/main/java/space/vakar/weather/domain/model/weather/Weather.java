@@ -105,14 +105,14 @@ public class Weather implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(wind, location, atmosphere, temperature, measuringTime);
+    return Objects.hash(id, wind, location, atmosphere, temperature, measuringTime);
   }
 
   @Override
   public boolean equals(Object object) {
     if (object instanceof Weather) {
       Weather that = (Weather) object;
-      return Objects.equals(this.wind, that.wind)
+      return this.id == that.id && Objects.equals(this.wind, that.wind)
           && Objects.equals(this.location, that.location)
           && Objects.equals(this.atmosphere, that.atmosphere)
           && Objects.equals(this.temperature, that.temperature)
@@ -124,7 +124,7 @@ public class Weather implements Serializable {
   @Override
   public String toString() {
     String format =
-        "Weather [wind=%s, location=%s, atmosphere=%s, " + "temperature=%s, lastUpdate=%s]";
-    return String.format(format, wind, location, atmosphere, temperature, measuringTime);
+        "Weather [id=%s, wind=%s, location=%s, atmosphere=%s, " + "temperature=%s, lastUpdate=%s]";
+    return String.format(format, id, wind, location, atmosphere, temperature, measuringTime);
   }
 }

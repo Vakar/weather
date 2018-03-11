@@ -1,14 +1,16 @@
 package space.vakar.weather.service.impl;
 
-import com.google.gson.Gson;
 import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 import org.apache.log4j.Logger;
+import com.google.gson.Gson;
 import space.vakar.weather.domain.model.weather.Weather;
 import space.vakar.weather.service.api.WeatherContainer;
 
 public class Container implements WeatherContainer {
+
+  private static final long serialVersionUID = -5406341995470471507L;
 
   private static final Logger LOG = Logger.getLogger(Container.class);
 

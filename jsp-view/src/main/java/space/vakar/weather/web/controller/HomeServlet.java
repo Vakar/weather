@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/home.do")
 public class HomeServlet extends HttpServlet {
 
+  private static final long serialVersionUID = 479372719844821411L;
+
   /**
    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
    */

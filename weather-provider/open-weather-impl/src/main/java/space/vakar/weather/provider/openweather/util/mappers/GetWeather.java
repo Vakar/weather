@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import space.vakar.weather.domain.model.weather.Weather;
 import space.vakar.weather.domain.model.weather.atmosphere.Atmosphere;
+import space.vakar.weather.domain.model.weather.atmosphere.CloudinessUnit;
 import space.vakar.weather.domain.model.weather.atmosphere.Clouds;
 import space.vakar.weather.domain.model.weather.atmosphere.Humidity;
 import space.vakar.weather.domain.model.weather.atmosphere.HumidityUnit;
@@ -98,9 +99,7 @@ public class GetWeather {
 
   private static Clouds getClouds(CurrentWeather currentWeather) {
     BigDecimal value = currentWeather.getClouds().getValue();
-    String name = currentWeather.getClouds().getName();
-
-    return new Clouds(value, name);
+    return new Clouds(value, CloudinessUnit.PERCENTAGE_OF_SKY_AREA);
   }
 
   private static Location location(CurrentWeather current) {

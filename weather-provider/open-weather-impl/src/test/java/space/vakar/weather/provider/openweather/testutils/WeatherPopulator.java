@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import space.vakar.weather.domain.model.weather.Weather;
 import space.vakar.weather.domain.model.weather.atmosphere.Atmosphere;
+import space.vakar.weather.domain.model.weather.atmosphere.CloudinessUnit;
 import space.vakar.weather.domain.model.weather.atmosphere.Clouds;
 import space.vakar.weather.domain.model.weather.atmosphere.Humidity;
 import space.vakar.weather.domain.model.weather.atmosphere.HumidityUnit;
@@ -52,7 +53,7 @@ public class WeatherPopulator {
     BigDecimal visibility = new BigDecimal("4828");
     Precipitation precipitation =
         new Precipitation(new BigDecimal("13.4"), PrecipitationUnit.MILLIMETRE, "snow");
-    Clouds clouds = new Clouds(new BigDecimal("90"), "overcast clouds");
+    Clouds clouds = new Clouds(new BigDecimal("90"), CloudinessUnit.PERCENTAGE_OF_SKY_AREA);
     return new Atmosphere(humidity, pressure, visibility, precipitation, clouds);
   }
 

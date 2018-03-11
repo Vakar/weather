@@ -11,6 +11,7 @@ import org.meanbean.test.BeanTester;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 import space.vakar.weather.domain.model.weather.atmosphere.Atmosphere;
+import space.vakar.weather.domain.model.weather.atmosphere.CloudinessUnit;
 import space.vakar.weather.domain.model.weather.atmosphere.Clouds;
 import space.vakar.weather.domain.model.weather.atmosphere.Humidity;
 import space.vakar.weather.domain.model.weather.atmosphere.HumidityUnit;
@@ -117,7 +118,7 @@ public abstract class AbstractJavaBeanTest<T> {
   class CloudsFactory implements Factory<Clouds> {
     @Override
     public Clouds create() {
-      return new Clouds(new BigDecimal(90), "overcast clouds");
+      return new Clouds(new BigDecimal(90), CloudinessUnit.PERCENTAGE_OF_SKY_AREA);
     }
   }
 
