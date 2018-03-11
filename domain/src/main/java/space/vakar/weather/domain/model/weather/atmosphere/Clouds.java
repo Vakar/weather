@@ -3,7 +3,10 @@ package space.vakar.weather.domain.model.weather.atmosphere;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
+import javax.persistence.Access;
+import javax.persistence.Embeddable;
 
+@Embeddable
 public class Clouds implements Serializable {
 
   private static final long serialVersionUID = -3772304563756023481L;
