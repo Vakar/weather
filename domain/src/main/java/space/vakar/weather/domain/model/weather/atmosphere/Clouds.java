@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 import javax.persistence.Access;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
@@ -11,22 +12,13 @@ public class Clouds implements Serializable {
 
   private static final long serialVersionUID = -3772304563756023481L;
 
+  @Column(name = "CLOUDINESS")
   private BigDecimal value;
-  private String name;
+  private CloudinessUnit unit;
 
   public Clouds() {
   }
 
-  /**
-   * Constructor.
-   *
-   * @param value percent of sky in clouds
-   * @param name the name of clouds condition for example 'clean sky'
-   */
-  public Clouds(BigDecimal value, String name) {
-    this.value = value;
-    this.name = name;
-  }
 
   public BigDecimal getValue() {
     return value;
@@ -36,17 +28,18 @@ public class Clouds implements Serializable {
     this.value = value;
   }
 
-  public String getName() {
-    return name;
+  public CloudinessUnit getUnit() {
+    return unit;
   }
 
-  public void setName(String name) {
-    this.name = name;
+
+  public void setUnit(CloudinessUnit unit) {
+    this.unit = unit;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, name);
+    return Objects.hash(value, unit);
   }
 
   @Override
@@ -54,14 +47,14 @@ public class Clouds implements Serializable {
     if (object instanceof Clouds) {
       Clouds that = (Clouds) object;
       return Objects.equals(this.value, that.value)
-          && Objects.equals(this.name, that.name);
+          && Objects.equals(this.unit, that.unit);
     }
     return false;
   }
 
   @Override
   public String toString() {
-    String format = "Clouds [value=%s, name=%s]";
-    return String.format(format, value, name);
+    String format = "Clouds [value=%s, unit=%s]";
+    return String.format(format, value, unit);
   }
 }
