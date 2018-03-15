@@ -19,6 +19,8 @@ import space.vakar.weather.domain.model.weather.atmosphere.Precipitation;
 import space.vakar.weather.domain.model.weather.atmosphere.PrecipitationUnit;
 import space.vakar.weather.domain.model.weather.atmosphere.Pressure;
 import space.vakar.weather.domain.model.weather.atmosphere.PressureUnit;
+import space.vakar.weather.domain.model.weather.atmosphere.Visibility;
+import space.vakar.weather.domain.model.weather.atmosphere.VisibilityUnit;
 import space.vakar.weather.domain.model.weather.location.City;
 import space.vakar.weather.domain.model.weather.location.Coordinates;
 import space.vakar.weather.domain.model.weather.location.Location;
@@ -61,6 +63,7 @@ public abstract class AbstractJavaBeanTest<T> {
     beanTester.getFactoryCollection().addFactory(Humidity.class, new HumidityFactory());
     beanTester.getFactoryCollection().addFactory(Precipitation.class, new PrecipitationFactory());
     beanTester.getFactoryCollection().addFactory(Pressure.class, new PressureFactory());
+    beanTester.getFactoryCollection().addFactory(Visibility.class, new VisibilityFactory());
     beanTester.getFactoryCollection().addFactory(Atmosphere.class, new AtmosphereFactory());
     beanTester.getFactoryCollection().addFactory(Location.class, new LocationFactory());
     beanTester.getFactoryCollection().addFactory(Temperature.class, new TemperatureFactory());
@@ -140,6 +143,13 @@ public abstract class AbstractJavaBeanTest<T> {
     @Override
     public Pressure create() {
       return new Pressure(new BigDecimal(1010), PressureUnit.MILLIMETER_OF_MERCURY);
+    }
+  }
+
+  class VisibilityFactory implements Factory<Visibility> {
+    @Override
+    public Visibility create() {
+      return new Visibility(new BigDecimal(1), VisibilityUnit.METER);
     }
   }
 

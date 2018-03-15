@@ -1,7 +1,6 @@
 package space.vakar.weather.domain.model.weather.atmosphere;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Objects;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
@@ -17,7 +16,8 @@ public class Atmosphere implements Serializable {
   @Embedded
   private Pressure pressure;
 
-  private BigDecimal visibility; // TODO make a class Visibility and enum VisibilityUnit
+  @Embedded
+  private Visibility visibility;
 
   @Embedded
   private Precipitation precipitation;
@@ -31,7 +31,7 @@ public class Atmosphere implements Serializable {
   /**
    * Constructor.
    */
-  public Atmosphere(Humidity humidity, Pressure pressure, BigDecimal visibility,
+  public Atmosphere(Humidity humidity, Pressure pressure, Visibility visibility,
       Precipitation precipitation, Clouds clouds) {
     this.humidity = humidity;
     this.pressure = pressure;
@@ -56,11 +56,11 @@ public class Atmosphere implements Serializable {
     this.pressure = pressure;
   }
 
-  public BigDecimal getVisibility() {
+  public Visibility getVisibility() {
     return visibility;
   }
 
-  public void setVisibility(BigDecimal visibility) {
+  public void setVisibility(Visibility visibility) {
     this.visibility = visibility;
   }
 

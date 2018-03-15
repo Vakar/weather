@@ -12,6 +12,8 @@ import space.vakar.weather.domain.model.weather.atmosphere.Precipitation;
 import space.vakar.weather.domain.model.weather.atmosphere.PrecipitationUnit;
 import space.vakar.weather.domain.model.weather.atmosphere.Pressure;
 import space.vakar.weather.domain.model.weather.atmosphere.PressureUnit;
+import space.vakar.weather.domain.model.weather.atmosphere.Visibility;
+import space.vakar.weather.domain.model.weather.atmosphere.VisibilityUnit;
 import space.vakar.weather.domain.model.weather.location.City;
 import space.vakar.weather.domain.model.weather.location.Coordinates;
 import space.vakar.weather.domain.model.weather.location.Location;
@@ -50,10 +52,10 @@ public class WeatherPopulator {
   private static Atmosphere getAtmosphere() {
     Humidity humidity = new Humidity(new BigDecimal("85"), HumidityUnit.RELATIVE_HUMIDITY);
     Pressure pressure = new Pressure(new BigDecimal("1002"), PressureUnit.MILLIMETER_OF_MERCURY);
-    BigDecimal visibility = new BigDecimal("4828");
     Precipitation precipitation =
         new Precipitation(new BigDecimal("13.4"), PrecipitationUnit.MILLIMETRE, "snow");
     Clouds clouds = new Clouds(new BigDecimal("90"), CloudinessUnit.PERCENTAGE_OF_SKY_AREA);
+    Visibility visibility = new Visibility(new BigDecimal("4828"), VisibilityUnit.METER);
     return new Atmosphere(humidity, pressure, visibility, precipitation, clouds);
   }
 

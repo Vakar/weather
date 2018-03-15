@@ -12,6 +12,8 @@ import space.vakar.weather.domain.model.weather.atmosphere.Precipitation;
 import space.vakar.weather.domain.model.weather.atmosphere.PrecipitationUnit;
 import space.vakar.weather.domain.model.weather.atmosphere.Pressure;
 import space.vakar.weather.domain.model.weather.atmosphere.PressureUnit;
+import space.vakar.weather.domain.model.weather.atmosphere.Visibility;
+import space.vakar.weather.domain.model.weather.atmosphere.VisibilityUnit;
 import space.vakar.weather.domain.model.weather.location.City;
 import space.vakar.weather.domain.model.weather.location.Coordinates;
 import space.vakar.weather.domain.model.weather.location.Location;
@@ -70,7 +72,7 @@ public class GetWeather {
   private static Atmosphere getAtmosphere(CurrentWeather currentWeather) {
     Humidity humidity = getHumidity(currentWeather);
     Pressure pressure = getPressure(currentWeather);
-    BigDecimal visibility = getVisibility(currentWeather);
+    Visibility visibility = new Visibility(getVisibility(currentWeather), VisibilityUnit.METER);
     Precipitation precipitation = getPrecipitation(currentWeather);
     Clouds clouds = getClouds(currentWeather);
 
