@@ -14,16 +14,16 @@ public class WeatherWebModelMapper {
     weather.setSunRise(w.getLocation().getSun().getRise().toString());
     weather.setSunSet(w.getLocation().getSun().getSet().toString());
     weather.setTemperatureValue(w.getTemperature().getValue().toPlainString());
-    weather.setTemperatureUnit(w.getTemperature().getUnit().name());
+    weather.setTemperatureUnit(w.getTemperature().getUnit().getShortName());
     weather.setHumidityValue(w.getAtmosphere().getHumidity().getValue().toPlainString());
-    weather.setHumidityUnit(w.getAtmosphere().getHumidity().getUnit().name());
+    weather.setHumidityUnit(w.getAtmosphere().getHumidity().getUnit().getShortName());
     weather.setPressureValue(w.getAtmosphere().getPressure().getValue().toPlainString());
-    weather.setPressureUnit(w.getAtmosphere().getPressure().getUnit().name());
+    weather.setPressureUnit(w.getAtmosphere().getPressure().getUnit().getShortName());
     weather.setWindSpeed(w.getWind().getSpeed().getValue().toPlainString());
     weather.setWindName(w.getWind().getSpeed().getName());
     weather.setWindDirection(w.getWind().getDirection().getName());
     weather.setCloudsValue(w.getAtmosphere().getClouds().getValue().toPlainString());
-    weather.setCloudsName(w.getAtmosphere().getClouds().getUnit().name());
+    weather.setCloudsName(w.getAtmosphere().getClouds().getUnit().getShortName());
     weather.setLastUpdate(w.getMeasuringTime().toString());
     return weather;
   }
