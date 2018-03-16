@@ -20,12 +20,21 @@ public class Clouds implements Serializable {
   @Column(name = "CLOUDINESS_UNIT")
   private CloudinessUnit unit;
 
+  @Column(name = "CLOUDINESS_NAME")
+  private String cloudinessName;
+
   public Clouds() {
   }
 
   public Clouds(BigDecimal value, CloudinessUnit unit) {
     this.value = value;
     this.unit = unit;
+  }
+
+  public Clouds(BigDecimal value, CloudinessUnit unit, String cloudinessName) {
+    this.value = value;
+    this.unit = unit;
+    this.cloudinessName = cloudinessName;
   }
 
   public BigDecimal getValue() {
@@ -45,24 +54,32 @@ public class Clouds implements Serializable {
     this.unit = unit;
   }
 
+  public String getCloudinessName() {
+    return cloudinessName;
+  }
+
+  public void setCloudinessName(String cloudinessName) {
+    this.cloudinessName = cloudinessName;
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(value, unit);
+    return Objects.hash(value, unit, cloudinessName);
   }
 
   @Override
   public boolean equals(Object object) {
     if (object instanceof Clouds) {
       Clouds that = (Clouds) object;
-      return Objects.equals(this.value, that.value)
-          && Objects.equals(this.unit, that.unit);
+      return Objects.equals(this.value, that.value) && Objects.equals(this.unit, that.unit)
+          && Objects.equals(this.cloudinessName, that.cloudinessName);
     }
     return false;
   }
 
   @Override
   public String toString() {
-    String format = "Clouds [value=%s, unit=%s]";
-    return String.format(format, value, unit);
+    String format = "Clouds [value=%s, unit=%s, cloudiness_name=%s]";
+    return String.format(format, value, unit, cloudinessName);
   }
 }

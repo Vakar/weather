@@ -54,7 +54,8 @@ public class WeatherPopulator {
     Pressure pressure = new Pressure(new BigDecimal("1002"), PressureUnit.MILLIMETER_OF_MERCURY);
     Precipitation precipitation =
         new Precipitation(new BigDecimal("13.4"), PrecipitationUnit.MILLIMETRE, "snow");
-    Clouds clouds = new Clouds(new BigDecimal("90"), CloudinessUnit.PERCENTAGE_OF_SKY_AREA);
+    Clouds clouds =
+        new Clouds(new BigDecimal("90"), CloudinessUnit.PERCENTAGE_OF_SKY_AREA, "overcast clouds");
     Visibility visibility = new Visibility(new BigDecimal("4828"), VisibilityUnit.METER);
     return new Atmosphere(humidity, pressure, visibility, precipitation, clouds);
   }

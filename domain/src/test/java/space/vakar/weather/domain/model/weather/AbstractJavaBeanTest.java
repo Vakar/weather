@@ -121,7 +121,7 @@ public abstract class AbstractJavaBeanTest<T> {
   class CloudsFactory implements Factory<Clouds> {
     @Override
     public Clouds create() {
-      return new Clouds(new BigDecimal(90), CloudinessUnit.PERCENTAGE_OF_SKY_AREA);
+      return new Clouds(new BigDecimal(1), CloudinessUnit.PERCENTAGE_OF_SKY_AREA, "Clean Sky");
     }
   }
 

@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="raw" id="weatherData">
-			<div class="col-sm-4">
+			<div class="col-sm-4" id="Location">
 				<div class="panel">
 					<div class="panel-heading">
 						<h3 class="panel-title" align="center">Location</h3>
@@ -33,7 +33,7 @@
 					<p>sunset&nbsp;${weather.sunSet }</p>
 				</div>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-4" id="Conditions">
 				<div class="panel">
 					<div class="panel-heading">
 						<h3 class="panel-title" align="center">Conditions</h3>
@@ -44,7 +44,7 @@
 					<p>clouds&nbsp;${weather.cloudsName}</p>
 				</div>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-4" id="Wind">
 				<div class="panel">
 					<div class="panel-heading">
 						<h3 class="panel-title" align="center">Wind</h3>

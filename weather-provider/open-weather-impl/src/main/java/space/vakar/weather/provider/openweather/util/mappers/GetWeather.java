@@ -101,7 +101,8 @@ public class GetWeather {
 
   private static Clouds getClouds(CurrentWeather currentWeather) {
     BigDecimal value = currentWeather.getClouds().getValue();
-    return new Clouds(value, CloudinessUnit.PERCENTAGE_OF_SKY_AREA);
+    String name = currentWeather.getClouds().getName();
+    return new Clouds(value, CloudinessUnit.PERCENTAGE_OF_SKY_AREA, name);
   }
 
   private static Location location(CurrentWeather current) {
