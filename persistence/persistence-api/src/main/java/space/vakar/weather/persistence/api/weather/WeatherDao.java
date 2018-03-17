@@ -1,4 +1,4 @@
-package space.vakar.weather.persistence.weather.api;
+package space.vakar.weather.persistence.api.weather;
 
 import space.vakar.weather.domain.model.weather.Weather;
 
