@@ -2,18 +2,13 @@ package space.vakar.weather.domain.model.weather.wind;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
 
-@Embeddable
 public class Wind implements Serializable {
 
   private static final long serialVersionUID = 506747802178514431L;
 
-  @Embedded
   private WindSpeed speed;
 
-  @Embedded
   private WindDirection direction;
 
   public Wind() {

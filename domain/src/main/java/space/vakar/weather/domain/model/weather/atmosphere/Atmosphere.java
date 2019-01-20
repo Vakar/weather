@@ -2,27 +2,19 @@ package space.vakar.weather.domain.model.weather.atmosphere;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
 
-@Embeddable
 public class Atmosphere implements Serializable {
 
   private static final long serialVersionUID = 2780230800724985007L;
 
-  @Embedded
   private Humidity humidity;
 
-  @Embedded
   private Pressure pressure;
 
-  @Embedded
   private Visibility visibility;
 
-  @Embedded
   private Precipitation precipitation;
 
-  @Embedded
   private Clouds clouds;
 
   public Atmosphere() {

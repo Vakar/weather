@@ -2,18 +2,13 @@ package space.vakar.weather.domain.model.weather.location;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 
-@Embeddable
 public class City implements Serializable {
 
   private static final long serialVersionUID = 885590064444808255L;
 
-  @Column(name = "CITY_ID")
   private int id;
 
-  @Column(name = "CITY_NAME")
   private String name;
 
   public City() {
