@@ -1,15 +1,19 @@
 package space.vakar.weather.persistence.api.weather;
 
-import space.vakar.weather.domain.model.weather.Weather;
+import java.util.List;
 
-public interface WeatherDao {
+public interface WeatherDao<T> {
 
-  void create(Weather weather);
+  T findOne(long id);
 
-  Weather read(int id);
+  List<T> findAll();
 
-  void update(Weather weather);
+  void create(T entity);
 
-  void delete(int id);
+  T update(T entity);
+
+  void delete(T entity);
+
+  void deleteById(long entityId);
 
 }
