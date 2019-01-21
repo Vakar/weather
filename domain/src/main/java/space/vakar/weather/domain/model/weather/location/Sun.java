@@ -3,18 +3,13 @@ package space.vakar.weather.domain.model.weather.location;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 
-@Embeddable
 public class Sun implements Serializable {
 
   private static final long serialVersionUID = 4691313924623685852L;
 
-  @Column(name = "SUN_RISE")
   private LocalDateTime rise;
 
-  @Column(name = "SUN_SET")
   private LocalDateTime set;
 
   public Sun() {

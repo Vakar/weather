@@ -3,18 +3,13 @@ package space.vakar.weather.domain.model.weather.location;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 
-@Embeddable
 public class Coordinates implements Serializable {
 
   private static final long serialVersionUID = -8819069034329335118L;
 
-  @Column(name = "LONGITUDE")
   private BigDecimal longitude;
 
-  @Column(name = "LATITUDE")
   private BigDecimal latitude;
 
   public Coordinates() {

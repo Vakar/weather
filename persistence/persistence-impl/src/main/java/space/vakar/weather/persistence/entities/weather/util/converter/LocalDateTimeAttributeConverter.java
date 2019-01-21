@@ -1,4 +1,4 @@
-package space.vakar.weather.domain.model.weather.util.converter;
+package space.vakar.weather.persistence.entities.weather.util.converter;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;

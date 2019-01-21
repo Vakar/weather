@@ -3,21 +3,15 @@ package space.vakar.weather.domain.model.weather.wind;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 
-@Embeddable
 public class WindSpeed implements Serializable {
 
   private static final long serialVersionUID = 5373165754036858665L;
 
-  @Column(name = "WIND_SPEED")
   private BigDecimal value;
 
-  @Column(name = "WIND_SPEED_UNIT")
   private SpeedUnit speedUnit;
 
-  @Column(name = "WIND_NAME")
   private String name;
 
   public WindSpeed() {}

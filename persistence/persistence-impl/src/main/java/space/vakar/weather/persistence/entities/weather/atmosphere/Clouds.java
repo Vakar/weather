@@ -1,0 +1,86 @@
+package space.vakar.weather.persistence.entities.weather.atmosphere;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import space.vakar.weather.domain.model.weather.atmosphere.CloudinessUnit;
+
+@Embeddable
+public class Clouds implements Serializable {
+
+  private static final long serialVersionUID = -3772304563756023481L;
+
+  @Column(name = "CLOUDINESS")
+  private BigDecimal value;
+
+  @Enumerated(EnumType.STRING)
+  @Column(name = "CLOUDINESS_UNIT")
+  private CloudinessUnit unit;
+
+  @Column(name = "CLOUDINESS_NAME")
+  private String cloudinessName;
+
+  public Clouds() {
+  }
+
+  public Clouds(BigDecimal value, CloudinessUnit unit) {
+    this.value = value;
+    this.unit = unit;
+  }
+
+  public Clouds(BigDecimal value, CloudinessUnit unit, String cloudinessName) {
+    this.value = value;
+    this.unit = unit;
+    this.cloudinessName = cloudinessName;
+  }
+
+  public BigDecimal getValue() {
+    return value;
+  }
+
+  public void setValue(BigDecimal value) {
+    this.value = value;
+  }
+
+  public CloudinessUnit getUnit() {
+    return unit;
+  }
+
+
+  public void setUnit(CloudinessUnit unit) {
+    this.unit = unit;
+  }
+
+  public String getCloudinessName() {
+    return cloudinessName;
+  }
+
+  public void setCloudinessName(String cloudinessName) {
+    this.cloudinessName = cloudinessName;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(value, unit, cloudinessName);
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof Clouds) {
+      Clouds that = (Clouds) object;
+      return Objects.equals(this.value, that.value) && Objects.equals(this.unit, that.unit)
+          && Objects.equals(this.cloudinessName, that.cloudinessName);
+    }
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    String format = "Clouds [value=%s, unit=%s, cloudiness_name=%s]";
+    return String.format(format, value, unit, cloudinessName);
+  }
+}

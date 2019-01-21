@@ -2,19 +2,11 @@ package space.vakar.weather.domain.model.weather.atmosphere;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 
-@Embeddable
 public class Visibility {
 
-  @Column(name = "VISIBILITY")
   private BigDecimal value;
 
-  @Enumerated(EnumType.STRING)
-  @Column(name = "VISIBILITY_UNIT")
   private VisibilityUnit unit;
 
   public Visibility() {
