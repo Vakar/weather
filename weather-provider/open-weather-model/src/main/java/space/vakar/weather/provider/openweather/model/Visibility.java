@@ -11,9 +11,7 @@ public class Visibility {
   /** Visibility in meters. */
   private BigDecimal value;
 
-  public Visibility() {
-
-  }
+  public Visibility() {}
 
   public Visibility(BigDecimal value) {
     this.value = value;

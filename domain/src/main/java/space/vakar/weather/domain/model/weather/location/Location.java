@@ -15,14 +15,9 @@ public class Location implements Serializable {
 
   private String country;
 
-  public Location() {
+  public Location() {}
 
-  }
-
-  /**
-   * Constructor.
-   *
-   */
+  /** Constructor. */
   public Location(Coordinates coordinates, Sun sun, City city, String country) {
     this.coordinates = coordinates;
     this.sun = sun;
@@ -72,7 +67,8 @@ public class Location implements Serializable {
     if (object instanceof Location) {
       Location that = (Location) object;
       return Objects.equals(this.coordinates, that.coordinates)
-          && Objects.equals(this.sun, that.sun) && Objects.equals(this.city, that.city)
+          && Objects.equals(this.sun, that.sun)
+          && Objects.equals(this.city, that.city)
           && Objects.equals(this.country, that.country);
     }
     return false;

@@ -17,14 +17,15 @@ public class Atmosphere implements Serializable {
 
   private Clouds clouds;
 
-  public Atmosphere() {
-  }
+  public Atmosphere() {}
 
-  /**
-   * Constructor.
-   */
-  public Atmosphere(Humidity humidity, Pressure pressure, Visibility visibility,
-      Precipitation precipitation, Clouds clouds) {
+  /** Constructor. */
+  public Atmosphere(
+      Humidity humidity,
+      Pressure pressure,
+      Visibility visibility,
+      Precipitation precipitation,
+      Clouds clouds) {
     this.humidity = humidity;
     this.pressure = pressure;
     this.visibility = visibility;
@@ -92,8 +93,8 @@ public class Atmosphere implements Serializable {
 
   @Override
   public String toString() {
-    String format = "Atmosphere [humidity=%s, pressure=%s, "
-        + "visibility=%s, precipitation=%s, clouds=%s]";
+    String format =
+        "Atmosphere [humidity=%s, pressure=%s, " + "visibility=%s, precipitation=%s, clouds=%s]";
     return String.format(format, humidity, pressure, visibility, precipitation, clouds);
   }
 }

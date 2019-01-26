@@ -7,5 +7,4 @@ public interface Agent {
   public Weather weather(int cityId);
 
   public boolean isFresh(Weather weather);
-
 }

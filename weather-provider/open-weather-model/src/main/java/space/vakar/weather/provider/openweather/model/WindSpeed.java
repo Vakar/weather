@@ -14,9 +14,7 @@ public class WindSpeed {
   /** Type of the wind. */
   private String name;
 
-  public WindSpeed() {
-
-  }
+  public WindSpeed() {}
 
   public WindSpeed(BigDecimal value, String name) {
     this.value = value;

@@ -8,9 +8,7 @@ public class WeatherServiceImpl implements space.vakar.weather.service.api.Weath
 
   private Agent agent = new AgentImpl();
 
-  public WeatherServiceImpl() {
-
-  }
+  public WeatherServiceImpl() {}
 
   public WeatherServiceImpl(Agent agent) {
     setAgent(agent);
@@ -48,5 +46,4 @@ public class WeatherServiceImpl implements space.vakar.weather.service.api.Weath
     String format = "ServiceImpl [agent=%s]";
     return String.format(format, agent);
   }
-
 }

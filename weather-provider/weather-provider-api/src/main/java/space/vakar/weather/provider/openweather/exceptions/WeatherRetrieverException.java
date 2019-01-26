@@ -9,5 +9,4 @@ public class WeatherRetrieverException extends Exception {
   public WeatherRetrieverException(String message, Throwable exception) {
     super(message, exception);
   }
-
 }

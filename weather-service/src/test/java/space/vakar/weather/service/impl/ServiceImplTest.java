@@ -17,8 +17,7 @@ public class ServiceImplTest {
 
   private Weather weather;
 
-  @Mock
-  private Agent agent;
+  @Mock private Agent agent;
 
   private WeatherServiceImpl service;
 
@@ -33,5 +32,4 @@ public class ServiceImplTest {
     when(agent.weather(1)).thenReturn(weather);
     assertEquals(weather, service.weather(1));
   }
-
 }

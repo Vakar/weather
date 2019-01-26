@@ -2,9 +2,7 @@ package space.vakar.weather.provider.openweather.api;
 
 import space.vakar.weather.provider.openweather.exceptions.WeatherParserException;
 
-/**
- * A set of methods for parsing weather from OpenWeather source to {@link CurrentWeather}.
- */
+/** A set of methods for parsing weather from OpenWeather source to {@link CurrentWeather}. */
 public interface Parser<T> {
 
   /**
@@ -16,5 +14,4 @@ public interface Parser<T> {
    * @throws WeatherParserException if can't parse xml file from server
    */
   T weather(int cityId) throws WeatherParserException;
-
 }

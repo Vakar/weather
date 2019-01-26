@@ -18,9 +18,7 @@ public class CurrentWeather {
   private Weather weather;
   private LastUpdate lastupdate;
 
-  public CurrentWeather() {
-
-  }
+  public CurrentWeather() {}
 
   public City getCity() {
     return city;
@@ -114,8 +112,17 @@ public class CurrentWeather {
 
   @Override
   public int hashCode() {
-    return Objects.hash(city, temperature, humidity, pressure, wind, clouds, visibility,
-        precipitation, weather, lastupdate);
+    return Objects.hash(
+        city,
+        temperature,
+        humidity,
+        pressure,
+        wind,
+        clouds,
+        visibility,
+        precipitation,
+        weather,
+        lastupdate);
   }
 
   @Override
@@ -125,7 +132,8 @@ public class CurrentWeather {
       return Objects.equals(this.city, that.city)
           && Objects.equals(this.temperature, that.temperature)
           && Objects.equals(this.humidity, that.humidity)
-          && Objects.equals(this.pressure, that.pressure) && Objects.equals(this.wind, that.wind)
+          && Objects.equals(this.pressure, that.pressure)
+          && Objects.equals(this.wind, that.wind)
           && Objects.equals(this.clouds, that.clouds)
           && Objects.equals(this.visibility, that.visibility)
           && Objects.equals(this.precipitation, that.precipitation)
@@ -138,9 +146,21 @@ public class CurrentWeather {
   @Override
   public String toString() {
     String format =
-        "Current [city=%s, temperature=%s, humidity=%s, " + "pressure=%s, wind=%s, clouds=%s, "
-            + "visibility=%s, precipitation=%s, weather=%s, " + "lastupdate=%s]";
-    return String.format(format, city, temperature, humidity, pressure, wind, clouds, visibility,
-        precipitation, weather, lastupdate);
+        "Current [city=%s, temperature=%s, humidity=%s, "
+            + "pressure=%s, wind=%s, clouds=%s, "
+            + "visibility=%s, precipitation=%s, weather=%s, "
+            + "lastupdate=%s]";
+    return String.format(
+        format,
+        city,
+        temperature,
+        humidity,
+        pressure,
+        wind,
+        clouds,
+        visibility,
+        precipitation,
+        weather,
+        lastupdate);
   }
 }

@@ -26,11 +26,9 @@ public class AgentImplTest {
 
   private static final int CITY_ID = 1;
 
-  @Mock
-  private WeatherContainer container;
+  @Mock private WeatherContainer container;
 
-  @Mock
-  private Provider provider;
+  @Mock private Provider provider;
 
   private AgentImpl agent;
 

@@ -12,9 +12,7 @@ public class Coordinates implements Serializable {
 
   private BigDecimal latitude;
 
-  public Coordinates() {
-
-  }
+  public Coordinates() {}
 
   /**
    * Constructor.

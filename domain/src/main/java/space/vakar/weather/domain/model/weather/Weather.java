@@ -24,13 +24,14 @@ public class Weather implements Serializable {
 
   private LocalDateTime measuringTime;
 
-  public Weather() {
-  }
+  public Weather() {}
 
-  /**
-   * Constructor.
-   */
-  public Weather(Wind wind, Location location, Atmosphere atmosphere, Temperature temperature,
+  /** Constructor. */
+  public Weather(
+      Wind wind,
+      Location location,
+      Atmosphere atmosphere,
+      Temperature temperature,
       LocalDateTime lastUpdate) {
     this.wind = wind;
     this.location = location;
@@ -96,7 +97,8 @@ public class Weather implements Serializable {
   public boolean equals(Object object) {
     if (object instanceof Weather) {
       Weather that = (Weather) object;
-      return this.id == that.id && Objects.equals(this.wind, that.wind)
+      return this.id == that.id
+          && Objects.equals(this.wind, that.wind)
           && Objects.equals(this.location, that.location)
           && Objects.equals(this.atmosphere, that.atmosphere)
           && Objects.equals(this.temperature, that.temperature)

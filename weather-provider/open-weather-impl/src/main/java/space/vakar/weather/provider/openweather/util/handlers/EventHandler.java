@@ -14,5 +14,4 @@ public class EventHandler implements ValidationEventHandler {
     LOG.debug(event.getMessage());
     return false;
   }
-
 }

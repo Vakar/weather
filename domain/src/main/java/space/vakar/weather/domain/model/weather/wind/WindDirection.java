@@ -14,8 +14,7 @@ public class WindDirection implements Serializable {
 
   private String name;
 
-  public WindDirection() {
-  }
+  public WindDirection() {}
 
   /**
    * Constructor.
@@ -54,7 +53,6 @@ public class WindDirection implements Serializable {
     this.name = name;
   }
 
-
   @Override
   public int hashCode() {
     return Objects.hash(value, code, name);
@@ -65,7 +63,8 @@ public class WindDirection implements Serializable {
     if (object instanceof WindDirection) {
       WindDirection that = (WindDirection) object;
       return Objects.equals(this.value, that.value)
-          && Objects.equals(this.code, that.code) && Objects.equals(this.name, that.name);
+          && Objects.equals(this.code, that.code)
+          && Objects.equals(this.name, that.name);
     }
     return false;
   }

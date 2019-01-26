@@ -14,9 +14,7 @@ public class Humidity {
   /** OpenWeather represent this parameter in %. */
   private String unit;
 
-  public Humidity() {
-
-  }
+  public Humidity() {}
 
   public Humidity(BigDecimal value, String unit) {
     this.value = value;

@@ -29,9 +29,7 @@ public class Temperature {
   /** Unit of measurements. Possible value is Celsius, Kelvin, Fahrenheit. */
   private TemperatureUnit unit;
 
-  public Temperature() {
-
-  }
+  public Temperature() {}
 
   public Temperature(BigDecimal value, BigDecimal min, BigDecimal max, TemperatureUnit unit) {
     this.value = value;
@@ -86,8 +84,10 @@ public class Temperature {
   public boolean equals(Object object) {
     if (object instanceof Temperature) {
       Temperature that = (Temperature) object;
-      return Objects.equals(this.value, that.value) && Objects.equals(this.min, that.min)
-          && Objects.equals(this.max, that.max) && Objects.equals(this.unit, that.unit);
+      return Objects.equals(this.value, that.value)
+          && Objects.equals(this.min, that.min)
+          && Objects.equals(this.max, that.max)
+          && Objects.equals(this.unit, that.unit);
     }
     return false;
   }

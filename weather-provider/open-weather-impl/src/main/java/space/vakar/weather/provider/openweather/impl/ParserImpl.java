@@ -19,8 +19,7 @@ class ParserImpl implements Parser<CurrentWeather> {
 
   private Retriever retriever = RetrieverImplBuilder.buildRetriever();
 
-  public ParserImpl() {
-  }
+  public ParserImpl() {}
 
   public ParserImpl(Retriever retriever) {
     this.retriever = retriever;

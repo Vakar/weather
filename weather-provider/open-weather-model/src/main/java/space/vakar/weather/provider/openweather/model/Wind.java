@@ -11,9 +11,7 @@ public class Wind {
   private Gusts gusts;
   private WindDirection direction;
 
-  public Wind() {
-
-  }
+  public Wind() {}
 
   public Wind(WindSpeed speed, WindDirection direction) {
     setSpeed(speed);
@@ -62,7 +60,8 @@ public class Wind {
   public boolean equals(Object object) {
     if (object instanceof Wind) {
       Wind that = (Wind) object;
-      return Objects.equals(this.speed, that.speed) && Objects.equals(this.gusts, that.gusts)
+      return Objects.equals(this.speed, that.speed)
+          && Objects.equals(this.gusts, that.gusts)
           && Objects.equals(this.direction, that.direction);
     }
     return false;

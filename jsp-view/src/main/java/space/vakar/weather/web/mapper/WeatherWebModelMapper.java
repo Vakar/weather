@@ -5,7 +5,7 @@ import space.vakar.weather.domain.model.weather.Weather;
 import space.vakar.weather.web.model.WeatherWebModel;
 
 public class WeatherWebModelMapper {
-  
+
   public WeatherWebModel from(Weather w) {
     WeatherWebModel weather = new WeatherWebModel();
     weather.setCityName(w.getLocation().getCity().getName());
@@ -32,5 +32,4 @@ public class WeatherWebModelMapper {
   private String getTime(LocalDateTime localTime) {
     return localTime.getHour() + ":" + localTime.getMinute();
   }
-
 }

@@ -14,8 +14,7 @@ public class Clouds implements Serializable {
 
   private String cloudinessName;
 
-  public Clouds() {
-  }
+  public Clouds() {}
 
   public Clouds(BigDecimal value, CloudinessUnit unit) {
     this.value = value;
@@ -40,7 +39,6 @@ public class Clouds implements Serializable {
     return unit;
   }
 
-
   public void setUnit(CloudinessUnit unit) {
     this.unit = unit;
   }
@@ -62,7 +60,8 @@ public class Clouds implements Serializable {
   public boolean equals(Object object) {
     if (object instanceof Clouds) {
       Clouds that = (Clouds) object;
-      return Objects.equals(this.value, that.value) && Objects.equals(this.unit, that.unit)
+      return Objects.equals(this.value, that.value)
+          && Objects.equals(this.unit, that.unit)
           && Objects.equals(this.cloudinessName, that.cloudinessName);
     }
     return false;

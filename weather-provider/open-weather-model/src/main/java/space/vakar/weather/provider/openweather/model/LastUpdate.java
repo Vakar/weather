@@ -13,9 +13,7 @@ public class LastUpdate {
   /** Last time when data was updated. */
   private LocalDateTime value;
 
-  public LastUpdate() {
-
-  }
+  public LastUpdate() {}
 
   public LastUpdate(LocalDateTime value) {
     this.value = value;

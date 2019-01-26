@@ -12,9 +12,7 @@ public class Temperature implements Serializable {
 
   private TemperatureUnit unit;
 
-  public Temperature() {
-
-  }
+  public Temperature() {}
 
   public Temperature(BigDecimal value, TemperatureUnit unit) {
     this.value = value;
@@ -46,8 +44,7 @@ public class Temperature implements Serializable {
   public boolean equals(Object object) {
     if (object instanceof Temperature) {
       Temperature that = (Temperature) object;
-      return Objects.equals(this.value, that.value)
-          && Objects.equals(this.unit, that.unit);
+      return Objects.equals(this.value, that.value) && Objects.equals(this.unit, that.unit);
     }
     return false;
   }
@@ -57,5 +54,4 @@ public class Temperature implements Serializable {
     String format = "Temperature [value=%s, unit=%s]";
     return String.format(format, value, unit);
   }
-
 }

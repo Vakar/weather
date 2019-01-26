@@ -12,9 +12,7 @@ public class Sun implements Serializable {
 
   private LocalDateTime set;
 
-  public Sun() {
-
-  }
+  public Sun() {}
 
   /**
    * Constructor.
@@ -52,8 +50,7 @@ public class Sun implements Serializable {
   public boolean equals(Object object) {
     if (object instanceof Sun) {
       Sun that = (Sun) object;
-      return Objects.equals(this.rise, that.rise)
-          && Objects.equals(this.set, that.set);
+      return Objects.equals(this.rise, that.rise) && Objects.equals(this.set, that.set);
     }
     return false;
   }

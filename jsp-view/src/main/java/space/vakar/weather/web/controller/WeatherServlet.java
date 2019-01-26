@@ -13,9 +13,7 @@ import space.vakar.weather.service.impl.WeatherServiceImpl;
 import space.vakar.weather.web.mapper.WeatherWebModelMapper;
 import space.vakar.weather.web.model.WeatherWebModel;
 
-/**
- * Servlet implementation class WeatherServlet
- */
+/** Servlet implementation class WeatherServlet */
 @WebServlet("/weather.do")
 public class WeatherServlet extends HttpServlet {
 
@@ -26,10 +24,7 @@ public class WeatherServlet extends HttpServlet {
   private WeatherService weatherService = new WeatherServiceImpl();
   private WeatherWebModelMapper mapper = new WeatherWebModelMapper();
 
-
-  /**
-   * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-   */
+  /** @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) */
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
@@ -57,13 +52,10 @@ public class WeatherServlet extends HttpServlet {
     return weather;
   }
 
-  /**
-   * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-   */
+  /** @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response) */
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doGet(request, response);
   }
-
 }

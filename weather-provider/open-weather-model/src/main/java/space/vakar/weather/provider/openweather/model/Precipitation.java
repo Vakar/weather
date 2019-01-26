@@ -16,9 +16,7 @@ public class Precipitation {
 
   private String unit;
 
-  public Precipitation() {
-
-  }
+  public Precipitation() {}
 
   public Precipitation(BigDecimal value, String mode) {
     this.value = value;
@@ -61,7 +59,8 @@ public class Precipitation {
   public boolean equals(Object object) {
     if (object instanceof Precipitation) {
       Precipitation that = (Precipitation) object;
-      return Objects.equals(this.value, that.value) && Objects.equals(this.mode, that.mode)
+      return Objects.equals(this.value, that.value)
+          && Objects.equals(this.mode, that.mode)
           && Objects.equals(this.unit, that.unit);
     }
     return false;

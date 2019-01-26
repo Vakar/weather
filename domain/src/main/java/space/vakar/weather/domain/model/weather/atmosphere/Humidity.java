@@ -12,8 +12,7 @@ public class Humidity implements Serializable {
 
   private HumidityUnit unit;
 
-  public Humidity() {
-  }
+  public Humidity() {}
 
   /**
    * Constructor.
@@ -51,8 +50,7 @@ public class Humidity implements Serializable {
   public boolean equals(Object object) {
     if (object instanceof Humidity) {
       Humidity that = (Humidity) object;
-      return Objects.equals(this.value, that.value)
-          && Objects.equals(this.unit, that.unit);
+      return Objects.equals(this.value, that.value) && Objects.equals(this.unit, that.unit);
     }
     return false;
   }

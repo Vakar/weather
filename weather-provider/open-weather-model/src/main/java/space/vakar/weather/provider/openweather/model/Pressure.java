@@ -14,9 +14,7 @@ public class Pressure {
   /** OpenWeather pressure unit is hPa. */
   private String unit;
 
-  public Pressure() {
-
-  }
+  public Pressure() {}
 
   public Pressure(BigDecimal value, String unit) {
     this.value = value;

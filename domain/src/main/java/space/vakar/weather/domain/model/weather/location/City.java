@@ -11,8 +11,7 @@ public class City implements Serializable {
 
   private String name;
 
-  public City() {
-  }
+  public City() {}
 
   public City(String name) {
     this.name = name;

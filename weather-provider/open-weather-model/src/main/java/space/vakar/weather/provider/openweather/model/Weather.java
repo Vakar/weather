@@ -16,9 +16,7 @@ public class Weather {
   /** Weather icon id. */
   private String icon;
 
-  public Weather() {
-
-  }
+  public Weather() {}
 
   public Weather(int number, String value, String icon) {
     this.number = number;
@@ -62,7 +60,8 @@ public class Weather {
   public boolean equals(Object object) {
     if (object instanceof Weather) {
       Weather that = (Weather) object;
-      return this.number == that.number && Objects.equals(this.value, that.value)
+      return this.number == that.number
+          && Objects.equals(this.value, that.value)
           && Objects.equals(this.icon, that.icon);
     }
     return false;

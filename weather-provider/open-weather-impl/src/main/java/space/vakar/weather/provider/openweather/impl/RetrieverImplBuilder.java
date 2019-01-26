@@ -10,9 +10,7 @@ public class RetrieverImplBuilder {
 
   private static final String OPEN_WEATHER_PROPERTIES_FILE = "/openweather.properties";
 
-  private RetrieverImplBuilder() {
-
-  }
+  private RetrieverImplBuilder() {}
 
   /**
    * Build {@link RetrieverImpl} object using openweather.properties file.
@@ -38,5 +36,4 @@ public class RetrieverImplBuilder {
     }
     return properties;
   }
-
 }

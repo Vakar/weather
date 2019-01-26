@@ -56,7 +56,8 @@ public class WindSpeed implements Serializable {
     if (object instanceof WindSpeed) {
       WindSpeed that = (WindSpeed) object;
       return Objects.equals(this.value, that.value)
-          && Objects.equals(this.speedUnit, that.speedUnit) && Objects.equals(this.name, that.name);
+          && Objects.equals(this.speedUnit, that.speedUnit)
+          && Objects.equals(this.name, that.name);
     }
     return false;
   }
@@ -66,5 +67,4 @@ public class WindSpeed implements Serializable {
     String format = "WindSpeed [value=%s, speedUnit=%s, name=%s]";
     return String.format(format, value, speedUnit, name);
   }
-
 }

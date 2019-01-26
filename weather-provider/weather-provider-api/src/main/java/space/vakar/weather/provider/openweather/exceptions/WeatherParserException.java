@@ -9,5 +9,4 @@ public class WeatherParserException extends Exception {
   public WeatherParserException(String message, Throwable exception) {
     super(message, exception);
   }
-
 }

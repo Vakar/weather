@@ -58,7 +58,8 @@ class RetrieverImpl implements Retriever {
     try {
       in = res.getEntity().getContent();
     } catch (IOException responseContentException) {
-      throw new WeatherRetrieverException("Can't open InputStream from HttpResponse", responseContentException);
+      throw new WeatherRetrieverException(
+          "Can't open InputStream from HttpResponse", responseContentException);
     }
     return in;
   }

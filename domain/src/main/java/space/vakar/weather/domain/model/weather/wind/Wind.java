@@ -11,13 +11,9 @@ public class Wind implements Serializable {
 
   private WindDirection direction;
 
-  public Wind() {
+  public Wind() {}
 
-  }
-
-  /**
-   * Constructor.
-   */
+  /** Constructor. */
   public Wind(WindSpeed speed, WindDirection direction) {
     this.speed = speed;
     this.direction = direction;

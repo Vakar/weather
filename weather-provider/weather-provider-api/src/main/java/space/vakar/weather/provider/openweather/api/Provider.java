@@ -6,5 +6,4 @@ import space.vakar.weather.provider.openweather.exceptions.WeatherProviderExcept
 public interface Provider {
 
   Weather provideWeather(int cityId) throws WeatherProviderException;
-
 }

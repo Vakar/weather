@@ -9,8 +9,7 @@ public class Visibility {
 
   private VisibilityUnit unit;
 
-  public Visibility() {
-  }
+  public Visibility() {}
 
   public Visibility(BigDecimal value, VisibilityUnit unit) {
     this.value = value;
@@ -20,7 +19,7 @@ public class Visibility {
   public BigDecimal getValue() {
     return value;
   }
-  
+
   public void setValue(BigDecimal value) {
     this.value = value;
   }
@@ -52,5 +51,4 @@ public class Visibility {
     String format = "Visibility [value=%s, unit=%s]";
     return String.format(format, value, unit);
   }
-
 }

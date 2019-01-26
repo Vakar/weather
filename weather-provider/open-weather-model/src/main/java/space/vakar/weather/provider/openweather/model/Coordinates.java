@@ -14,9 +14,7 @@ public class Coordinates {
   /** Geographical location, latitude. */
   private BigDecimal latitude;
 
-  public Coordinates() {
-
-  }
+  public Coordinates() {}
 
   public Coordinates(BigDecimal longitude, BigDecimal latitude) {
     this.longitude = longitude;

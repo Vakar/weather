@@ -14,8 +14,7 @@ public class Precipitation implements Serializable {
 
   private String name;
 
-  public Precipitation() {
-  }
+  public Precipitation() {}
 
   public Precipitation(BigDecimal value, PrecipitationUnit unit, String name) {
     this.value = value;
@@ -57,7 +56,8 @@ public class Precipitation implements Serializable {
     if (object instanceof Precipitation) {
       Precipitation that = (Precipitation) object;
       return Objects.equals(this.value, that.value)
-          && Objects.equals(this.unit, that.unit) && Objects.equals(this.name, that.name);
+          && Objects.equals(this.unit, that.unit)
+          && Objects.equals(this.name, that.name);
     }
     return false;
   }

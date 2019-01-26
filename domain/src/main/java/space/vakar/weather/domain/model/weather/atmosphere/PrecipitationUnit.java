@@ -1,7 +1,9 @@
 package space.vakar.weather.domain.model.weather.atmosphere;
 
 public enum PrecipitationUnit {
-  MILLIMETRE("mm"), CENTIMETRE("cm"), INCH("in");
+  MILLIMETRE("mm"),
+  CENTIMETRE("cm"),
+  INCH("in");
 
   private final String shortName;
 

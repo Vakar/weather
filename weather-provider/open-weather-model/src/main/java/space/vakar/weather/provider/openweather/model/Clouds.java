@@ -14,9 +14,7 @@ public class Clouds {
   /** Name of the cloudiness. */
   private String name;
 
-  public Clouds() {
-
-  }
+  public Clouds() {}
 
   public Clouds(BigDecimal value, String name) {
     this.value = value;

@@ -28,9 +28,7 @@ import space.vakar.weather.provider.openweather.model.CurrentWeather;
 
 public class GetWeather {
 
-  private GetWeather() {
-
-  }
+  private GetWeather() {}
 
   /**
    * Convert {@link CurrentWeather} object to {@link Weather} object.
@@ -60,9 +58,8 @@ public class GetWeather {
     return new WindSpeed(value, SpeedUnit.MILES_PER_HOUR, name);
   }
 
-  private static WindDirection getWindDirection(
+  private static WindDirection getWindDirection(CurrentWeather currentWeather) {
 
-      CurrentWeather currentWeather) {
     BigDecimal value = currentWeather.getWind().getDirection().getValue();
     String code = currentWeather.getWind().getDirection().getCode();
     String name = currentWeather.getWind().getDirection().getName();

@@ -16,9 +16,7 @@ public class Sun {
   /** Sunset time. */
   private LocalDateTime set;
 
-  public Sun() {
-
-  }
+  public Sun() {}
 
   public Sun(LocalDateTime rise, LocalDateTime set) {
     this.rise = rise;

@@ -12,8 +12,7 @@ public class Pressure implements Serializable {
 
   private PressureUnit unit;
 
-  public Pressure() {
-  }
+  public Pressure() {}
 
   /**
    * Constructor.
@@ -51,8 +50,7 @@ public class Pressure implements Serializable {
   public boolean equals(Object object) {
     if (object instanceof Pressure) {
       Pressure that = (Pressure) object;
-      return Objects.equals(this.value, that.value)
-          && Objects.equals(this.unit, that.unit);
+      return Objects.equals(this.value, that.value) && Objects.equals(this.unit, that.unit);
     }
     return false;
   }

@@ -17,9 +17,7 @@ public class WindDirection {
   /** Full name of the wind direction. */
   private String name;
 
-  public WindDirection() {
-
-  }
+  public WindDirection() {}
 
   public WindDirection(BigDecimal value, String code, String name) {
     this.value = value;
@@ -63,7 +61,8 @@ public class WindDirection {
   public boolean equals(Object object) {
     if (object instanceof WindDirection) {
       WindDirection that = (WindDirection) object;
-      return Objects.equals(this.value, that.value) && Objects.equals(this.code, that.code)
+      return Objects.equals(this.value, that.value)
+          && Objects.equals(this.code, that.code)
           && Objects.equals(this.name, that.name);
     }
     return false;

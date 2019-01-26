@@ -23,9 +23,7 @@ public class City {
   /** City geo location. */
   private Coordinates coordinates;
 
-  public City() {
-
-  }
+  public City() {}
 
   /**
    * Constructor.
@@ -98,8 +96,10 @@ public class City {
   public boolean equals(Object object) {
     if (object instanceof City) {
       City that = (City) object;
-      return this.id == that.id && Objects.equals(this.name, that.name)
-          && Objects.equals(this.country, that.country) && Objects.equals(this.sun, that.sun)
+      return this.id == that.id
+          && Objects.equals(this.name, that.name)
+          && Objects.equals(this.country, that.country)
+          && Objects.equals(this.sun, that.sun)
           && Objects.equals(this.coordinates, that.coordinates);
     }
     return false;

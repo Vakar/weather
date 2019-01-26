@@ -11,9 +11,7 @@ public class Gusts {
   /** Wind gusts speed, mps. */
   private BigDecimal value;
 
-  public Gusts() {
-
-  }
+  public Gusts() {}
 
   public Gusts(BigDecimal value) {
     setValue(value);

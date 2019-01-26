@@ -21,9 +21,7 @@ public class AgentImpl implements Agent {
 
   private static final Duration TWO_HOURS = Duration.ofHours(2);
 
-  public AgentImpl() {
-
-  }
+  public AgentImpl() {}
 
   public AgentImpl(Provider provider, WeatherContainer container) {
     setProvider(provider);
