@@ -1,9 +1,10 @@
 package space.vakar.weather.domain.model.weather.atmosphere;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class Visibility {
+public class Visibility implements Serializable {
 
   private BigDecimal value;
 
