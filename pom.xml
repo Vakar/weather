@@ -19,7 +19,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <checkstyle.file.path>google_checks.xml</checkstyle.file.path>
+        <checkstyle.file.path>development/checkstyle/google_checks.xml</checkstyle.file.path>
         <app.version>0.1</app.version>
     </properties>
 
