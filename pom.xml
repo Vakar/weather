@@ -19,6 +19,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <checkstyle.file.path>google_checks.xml</checkstyle.file.path>
         <app.version>0.1</app.version>
     </properties>
 
@@ -47,7 +48,7 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <configLocation>google_checks.xml</configLocation>
+                    <configLocation>${checkstyle.file.path}</configLocation>
                     <linkXRef>true</linkXRef>
                 </configuration>
             </plugin>
