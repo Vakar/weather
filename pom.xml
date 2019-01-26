@@ -15,7 +15,6 @@
         <module>weather-service</module>
         <module>weather-provider</module>
         <module>jsp-view</module>
-        <module>persistence</module>
     </modules>
 
     <properties>
