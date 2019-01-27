@@ -46,7 +46,8 @@ public abstract class AbstractJavaBeanTest<T> {
   @Test
   public void equalsAndHashCodeShouldFollowContract() {
     EqualsVerifier.forClass(getBeanInstance().getClass())
-        .suppress(Warning.STRICT_INHERITANCE, Warning.NONFINAL_FIELDS).withRedefinedSuperclass()
+        .suppress(Warning.STRICT_INHERITANCE, Warning.NONFINAL_FIELDS)
+        .withRedefinedSuperclass()
         .verify();
   }
 
@@ -68,6 +69,7 @@ public abstract class AbstractJavaBeanTest<T> {
     beanTester.getFactoryCollection().addFactory(Location.class, new LocationFactory());
     beanTester.getFactoryCollection().addFactory(Temperature.class, new TemperatureFactory());
     beanTester.getFactoryCollection().addFactory(Wind.class, new WindFactory());
+    beanTester.getFactoryCollection().addFactory(CityLocation.class, new CityLocationFactory());
     beanTester.testBean(getBeanInstance().getClass());
   }
 
@@ -178,6 +180,13 @@ public abstract class AbstractJavaBeanTest<T> {
     @Override
     public Wind create() {
       return new Wind();
+    }
+  }
+
+  class CityLocationFactory implements Factory<CityLocation> {
+    @Override
+    public CityLocation create() {
+      return new CityLocation();
     }
   }
 }
