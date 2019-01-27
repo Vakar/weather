@@ -21,8 +21,8 @@ public class WeatherServlet extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
 
-  private WeatherService weatherService = new WeatherServiceImpl();
-  private WeatherWebModelMapper mapper = new WeatherWebModelMapper();
+  private static WeatherService weatherService = new WeatherServiceImpl();
+  private static WeatherWebModelMapper mapper = new WeatherWebModelMapper();
 
   /** @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) */
   @Override

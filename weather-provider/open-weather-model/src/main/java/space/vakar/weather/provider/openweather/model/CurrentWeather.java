@@ -18,8 +18,6 @@ public class CurrentWeather {
   private Weather weather;
   private LastUpdate lastupdate;
 
-  public CurrentWeather() {}
-
   public City getCity() {
     return city;
   }

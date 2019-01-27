@@ -43,7 +43,7 @@ public class AgentImpl implements Agent {
     LocalDateTime lastUpdate = weather.getMeasuringTime();
     LocalDateTime now = LocalDateTime.now(ZoneId.of("UTC"));
     Duration lastUpdateDelta = Duration.between(lastUpdate, now);
-    return lastUpdateDelta.compareTo(TWO_HOURS) < 0 ? true : false;
+    return lastUpdateDelta.compareTo(TWO_HOURS) < 0;
   }
 
   private Weather askProviderAndCash(int cityId) {
