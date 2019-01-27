@@ -2,6 +2,8 @@ package space.vakar.weather.open.weather.impl;
 
 import org.junit.Before;
 import org.junit.Test;
+import space.vakar.weather.open.weather.model.CityLocationModel;
+import space.vakar.weather.open.weather.model.Coord;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

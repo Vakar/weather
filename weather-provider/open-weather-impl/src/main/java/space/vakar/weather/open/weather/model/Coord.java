@@ -1,4 +1,4 @@
-package space.vakar.weather.open.weather.impl;
+package space.vakar.weather.open.weather.model;
 
 import java.util.Objects;
 

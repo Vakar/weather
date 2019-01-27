@@ -3,6 +3,7 @@ package space.vakar.weather.open.weather.impl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import space.vakar.weather.open.weather.model.CityLocationModel;
 
 import java.io.File;
 import java.io.FileNotFoundException;
