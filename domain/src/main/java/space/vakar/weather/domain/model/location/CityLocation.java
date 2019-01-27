@@ -1,4 +1,4 @@
-package space.vakar.weather.domain.model.weather;
+package space.vakar.weather.domain.model.location;
 
 import space.vakar.weather.domain.model.weather.location.Coordinates;
 

@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import space.vakar.weather.domain.model.weather.Weather;
-import space.vakar.weather.provider.openweather.api.Provider;
+import space.vakar.weather.api.Provider;
 import space.vakar.weather.service.api.WeatherContainer;
 
 @RunWith(MockitoJUnitRunner.class)
