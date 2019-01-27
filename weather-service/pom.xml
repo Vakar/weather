@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>weather-service</artifactId>
-	<name>Weather service</name>
+	<name>Weather Service</name>
 	<url>http://weather.vakar.space</url>
 
 	<dependencies>
@@ -21,7 +21,7 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>domain</artifactId>
+			<artifactId>domain-model</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>

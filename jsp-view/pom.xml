@@ -10,7 +10,7 @@
 	<artifactId>jsp-view</artifactId>
 	<packaging>war</packaging>
 	
-	<name>JSP view</name>
+	<name>JSP View</name>
 	<url>http://weather.vakar.space</url>
 
 	<dependencies>

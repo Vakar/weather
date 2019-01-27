@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>weather-provider</artifactId>
-	<name>Weather provider</name>
+	<name>Weather Provider</name>
 	<url>http://weather.vakar.space</url>
 
 	<packaging>pom</packaging>
@@ -28,7 +28,7 @@
 		</dependency>
 		<dependency>
 			<groupId>space.vakar.weather</groupId>
-			<artifactId>domain</artifactId>
+			<artifactId>domain-model</artifactId>
 			<version>0.1</version>
 		</dependency>
 	</dependencies>

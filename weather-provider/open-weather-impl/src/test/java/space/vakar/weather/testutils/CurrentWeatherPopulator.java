@@ -3,22 +3,22 @@ package space.vakar.weather.testutils;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import space.vakar.weather.domain.model.weather.temperature.TemperatureUnit;
-import space.vakar.weather.model.City;
-import space.vakar.weather.model.Clouds;
-import space.vakar.weather.model.Coordinates;
-import space.vakar.weather.model.CurrentWeather;
-import space.vakar.weather.model.Gusts;
-import space.vakar.weather.model.Humidity;
-import space.vakar.weather.model.LastUpdate;
-import space.vakar.weather.model.Precipitation;
-import space.vakar.weather.model.Pressure;
-import space.vakar.weather.model.Sun;
-import space.vakar.weather.model.Temperature;
-import space.vakar.weather.model.Visibility;
-import space.vakar.weather.model.Weather;
-import space.vakar.weather.model.Wind;
-import space.vakar.weather.model.WindDirection;
-import space.vakar.weather.model.WindSpeed;
+import space.vakar.weather.open.weather.model.City;
+import space.vakar.weather.open.weather.model.Clouds;
+import space.vakar.weather.open.weather.model.Coordinates;
+import space.vakar.weather.open.weather.model.CurrentWeather;
+import space.vakar.weather.open.weather.model.Gusts;
+import space.vakar.weather.open.weather.model.Humidity;
+import space.vakar.weather.open.weather.model.LastUpdate;
+import space.vakar.weather.open.weather.model.Precipitation;
+import space.vakar.weather.open.weather.model.Pressure;
+import space.vakar.weather.open.weather.model.Sun;
+import space.vakar.weather.open.weather.model.Temperature;
+import space.vakar.weather.open.weather.model.Visibility;
+import space.vakar.weather.open.weather.model.Weather;
+import space.vakar.weather.open.weather.model.Wind;
+import space.vakar.weather.open.weather.model.WindDirection;
+import space.vakar.weather.open.weather.model.WindSpeed;
 
 public class CurrentWeatherPopulator {
 
