@@ -1,11 +1,12 @@
 package space.vakar.weather.model;
 
-import java.math.BigDecimal;
-import java.util.Objects;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import space.vakar.weather.domain.model.weather.temperature.TemperatureUnit;
 import space.vakar.weather.util.adapters.TemperatureUnitAdapter;
+
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Temperature {
 

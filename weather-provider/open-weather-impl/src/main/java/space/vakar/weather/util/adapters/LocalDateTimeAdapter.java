@@ -1,7 +1,7 @@
 package space.vakar.weather.util.adapters;
 
-import java.time.LocalDateTime;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+import java.time.LocalDateTime;
 
 public class LocalDateTimeAdapter extends XmlAdapter<String, LocalDateTime> {
 

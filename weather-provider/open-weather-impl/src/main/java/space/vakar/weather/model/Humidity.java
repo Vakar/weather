@@ -1,22 +1,22 @@
 package space.vakar.weather.model;
 
-import java.math.BigDecimal;
-import java.util.Objects;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
+import java.util.Objects;
 
 @XmlRootElement
-public class Pressure {
+public class Humidity {
 
-  /** Pressure value. */
+  /** Humidity value. */
   private BigDecimal value;
 
-  /** OpenWeather pressure unit is hPa. */
+  /** OpenWeather represent this parameter in %. */
   private String unit;
 
-  public Pressure() {}
+  public Humidity() {}
 
-  public Pressure(BigDecimal value, String unit) {
+  public Humidity(BigDecimal value, String unit) {
     this.value = value;
     this.unit = unit;
   }
@@ -46,8 +46,8 @@ public class Pressure {
 
   @Override
   public boolean equals(Object object) {
-    if (object instanceof Pressure) {
-      Pressure that = (Pressure) object;
+    if (object instanceof Humidity) {
+      Humidity that = (Humidity) object;
       return Objects.equals(this.value, that.value) && Objects.equals(this.unit, that.unit);
     }
     return false;
@@ -55,7 +55,7 @@ public class Pressure {
 
   @Override
   public String toString() {
-    String format = "Pressure [value=%s, unit=%s]";
+    String format = "Humidity [value=%s, unit=%s]";
     return String.format(format, value, unit);
   }
 }

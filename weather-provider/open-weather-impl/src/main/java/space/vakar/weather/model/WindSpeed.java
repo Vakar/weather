@@ -1,22 +1,22 @@
 package space.vakar.weather.model;
 
-import java.math.BigDecimal;
-import java.util.Objects;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
+import java.util.Objects;
 
-@XmlRootElement
-public class Clouds {
+@XmlRootElement(name = "speed")
+public class WindSpeed {
 
-  /** Cloudiness. */
+  /** Wind speed in mps. */
   private BigDecimal value;
 
-  /** Name of the cloudiness. */
+  /** Type of the wind. */
   private String name;
 
-  public Clouds() {}
+  public WindSpeed() {}
 
-  public Clouds(BigDecimal value, String name) {
+  public WindSpeed(BigDecimal value, String name) {
     this.value = value;
     this.name = name;
   }
@@ -46,8 +46,8 @@ public class Clouds {
 
   @Override
   public boolean equals(Object object) {
-    if (object instanceof Clouds) {
-      Clouds that = (Clouds) object;
+    if (object instanceof WindSpeed) {
+      WindSpeed that = (WindSpeed) object;
       return Objects.equals(this.value, that.value) && Objects.equals(this.name, that.name);
     }
     return false;
@@ -55,7 +55,7 @@ public class Clouds {
 
   @Override
   public String toString() {
-    String format = "Clouds [value=%s, name=%s]";
+    String format = "WindSpeed [value=%s, name=%s]";
     return String.format(format, value, name);
   }
 }

@@ -1,11 +1,12 @@
 package space.vakar.weather.model;
 
-import java.time.LocalDateTime;
-import java.util.Objects;
+import space.vakar.weather.util.adapters.LocalDateTimeAdapter;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import space.vakar.weather.util.adapters.LocalDateTimeAdapter;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 @XmlRootElement
 public class Sun {

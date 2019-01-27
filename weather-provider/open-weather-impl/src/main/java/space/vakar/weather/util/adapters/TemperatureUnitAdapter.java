@@ -1,7 +1,8 @@
 package space.vakar.weather.util.adapters;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
 import space.vakar.weather.domain.model.weather.temperature.TemperatureUnit;
+
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class TemperatureUnitAdapter extends XmlAdapter<String, TemperatureUnit> {
 

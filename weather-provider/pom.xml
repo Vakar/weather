@@ -16,7 +16,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>open-weather-model</module>
 		<module>open-weather-impl</module>
 		<module>weather-provider-api</module>
 	</modules>
