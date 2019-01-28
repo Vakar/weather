@@ -25,6 +25,11 @@ public class Coordinates implements Serializable {
     this.latitude = latitude;
   }
 
+  public Coordinates(String longitude, String latitude){
+    this.longitude = new BigDecimal(longitude);
+    this.latitude = new BigDecimal(latitude);
+  }
+
   public BigDecimal getLongitude() {
     return longitude;
   }

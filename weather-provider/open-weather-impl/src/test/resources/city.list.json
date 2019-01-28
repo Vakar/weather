@@ -1,9 +1,20 @@
-[{
-  "id": 1283240,
-  "name": "Kathmandu",
-  "country": "NP",
-  "coord": {
-    "lon": 85.316666,
-    "lat": 27.716667
+[
+  {
+    "id": 1283240,
+    "name": "Kathmandu",
+    "country": "NP",
+    "coord": {
+      "lon": 85.316666,
+      "lat": 27.716667
+    }
+  },
+  {
+    "id": 703363,
+    "name": "Laspi",
+    "country": "UA",
+    "coord": {
+      "lon": 33.733334,
+      "lat": 44.416668
+    }
   }
-}]
+]

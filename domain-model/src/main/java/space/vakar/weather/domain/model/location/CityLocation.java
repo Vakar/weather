@@ -1,7 +1,5 @@
 package space.vakar.weather.domain.model.location;
 
-import space.vakar.weather.domain.model.weather.location.Coordinates;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,9 +8,14 @@ public class CityLocation implements Serializable {
   private int id;
   private String name;
   private String country;
-  private Coordinates coordinates;
 
   public CityLocation() {}
+
+  public CityLocation(int id, String name, String country) {
+    this.id = id;
+    this.name = name;
+    this.country = country;
+  }
 
   public int getId() {
     return id;
@@ -38,43 +41,27 @@ public class CityLocation implements Serializable {
     this.country = country;
   }
 
-  public Coordinates getCoordinates() {
-    return coordinates;
-  }
-
-  public void setCoordinates(Coordinates coordinates) {
-    this.coordinates = coordinates;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (!(o instanceof CityLocation)) return false;
     CityLocation that = (CityLocation) o;
-    return id == that.id
-        && Objects.equals(name, that.name)
-        && Objects.equals(country, that.country)
-        && Objects.equals(coordinates, that.coordinates);
+    return id == that.id &&
+            Objects.equals(name, that.name) &&
+            Objects.equals(country, that.country);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, country, coordinates);
+    return Objects.hash(id, name, country);
   }
 
   @Override
   public String toString() {
-    return "CityLocation{"
-        + "id="
-        + id
-        + ", name='"
-        + name
-        + '\''
-        + ", country='"
-        + country
-        + '\''
-        + ", coordinates="
-        + coordinates
-        + '}';
+    return "CityLocation{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", country='" + country + '\'' +
+            '}';
   }
 }

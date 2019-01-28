@@ -2,35 +2,46 @@ package space.vakar.weather.open.weather.impl;
 
 import org.junit.Before;
 import org.junit.Test;
-import space.vakar.weather.open.weather.model.CityLocationModel;
-import space.vakar.weather.open.weather.model.Coord;
+import space.vakar.weather.api.Locations;
+import space.vakar.weather.domain.model.location.CityLocation;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class CityLocationTest {
 
-  private JsonCityReader reader = new JsonCityReader();
+  private Locations locations = new LocationsImpl();
 
-  private List<CityLocationModel> expectedModels;
+  private List<CityLocation> expectedCities;
+
+  private CityLocation city1;
+  private CityLocation city2;
+
+  private String cityName = "Kathmandu";
 
   @Before
   public void setUp() {
-    CityLocationModel model = new CityLocationModel();
-    model.setId(1283240);
-    model.setName("Kathmandu");
-    model.setCountry("NP");
-    model.setCoord(new Coord("85.316666", "27.716667"));
-    expectedModels = new ArrayList<>();
-    expectedModels.add(model);
+    expectedCities = new ArrayList<>();
+    city1 = new CityLocation(1283240, cityName, "NP");
+    city2 = new CityLocation(703363, "Laspi", "UA");
+    expectedCities.add(city1);
+    expectedCities.add(city2);
   }
 
   @Test
-  public void readCityLocationFromJsonTest() throws FileNotFoundException {
-    List<CityLocationModel> actualModel = reader.readCityLocations();
-    assertEquals(expectedModels, actualModel);
+  public void getCitiesByNameTest() {
+    List<CityLocation> expectedCitiesByName = new ArrayList<>();
+    expectedCitiesByName.add(city1);
+    List<CityLocation> actualCities = locations.getCitiesByName(cityName);
+    assertEquals(expectedCitiesByName, actualCities);
+  }
+
+  @Test
+  public void readCityLocationFromJsonTest() {
+    LocationsImpl locationsImpl = (LocationsImpl) this.locations;
+    List<CityLocation> actualCities = locationsImpl.readCityLocations();
+    assertEquals(expectedCities, actualCities);
   }
 }
