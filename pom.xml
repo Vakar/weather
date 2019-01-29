@@ -11,16 +11,15 @@
     <url>http://weather.vakar.space</url>
 
     <modules>
-        <module>domain-model</module>
-        <module>weather-service</module>
+        <module>weather-domain</module>
         <module>weather-provider</module>
-        <module>jsp-view</module>
+        <module>weather-ui</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <checkstyle.file.path>development/checkstyle/google_checks.xml</checkstyle.file.path>
-        <app.version>0.1</app.version>
+        <java.version>1.8</java.version>
     </properties>
 
     <reporting>
@@ -58,7 +57,7 @@
                 <version>3.9.0</version>
                 <configuration>
                     <analysisCache>true</analysisCache>
-                    <targetJdk>1.8</targetJdk>
+                    <targetJdk>${java.version}</targetJdk>
                     <linkXRef>true</linkXRef>
                 </configuration>
             </plugin>
@@ -68,13 +67,12 @@
     <build>
         <pluginManagement>
             <plugins>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
                     </configuration>
                 </plugin>
             </plugins>

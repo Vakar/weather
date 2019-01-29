@@ -9,15 +9,23 @@
 		<version>0.1</version>
 	</parent>
 
-	<artifactId>weather-provider</artifactId>
-	<name>weather-provider</name>
+	<artifactId>weather-domain</artifactId>
+	<name>weather-domain</name>
+	<url>http://weather.vakar.space</url>
 
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>open-weather-api</module>
-		<module>open-weather-impl</module>
-		<module>open-weather-model</module>
+		<module>weather-domain-api</module>
+		<module>weather-domain-impl</module>
+		<module>weather-domain-model</module>
 	</modules>
 
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+	</dependencies>
 </project>
