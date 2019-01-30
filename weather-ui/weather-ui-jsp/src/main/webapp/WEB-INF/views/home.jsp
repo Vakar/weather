@@ -11,7 +11,7 @@
 
 	<div class="raw">
 		<div class="col-12">
-			<h2 align="center">Please select city</h2>
+			<h2 align="center">${status}</h2>
 		</div>
 	</div>
 

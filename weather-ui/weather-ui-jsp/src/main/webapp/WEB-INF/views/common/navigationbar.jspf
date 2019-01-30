@@ -6,12 +6,7 @@
 				<li class="active"><a href="/weather.do">Weather</a></li>
 			</ul>
 			<form class="navbar-form pull-right" method="POST" action="/weather.do">
-				<select name="cityId" id="cityId">
-					<option value="6167865">Toronto</option>
-					<option value="6076211">Moncton</option>
-					<option value="706483">Kharkiv</option>
-					<option value="5969423">Halifax</option>
-				</select>
+				<input type="text" name="cityName" id="cityName">
 				<button type="submit">Go</button>
 			</form>
 		</div>
