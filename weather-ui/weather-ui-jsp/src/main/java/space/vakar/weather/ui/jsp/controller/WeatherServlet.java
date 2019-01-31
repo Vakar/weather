@@ -34,7 +34,7 @@ public class WeatherServlet extends HttpServlet {
       throws ServletException, IOException {
     String cityName = request.getParameter("cityName").trim();
     int cityId = cities.getCityIdByName(cityName);
-    Weather weather = weatherByCityId(String.valueOf(cityId));
+    Weather weather = weatherByCityId(cityId);
     if(cityId < 0){
       request.setAttribute("status", "Can't find city with name :" + "\"" + cityName + "\"");
       request.getRequestDispatcher("/home.do").forward(request, response);
@@ -48,10 +48,10 @@ public class WeatherServlet extends HttpServlet {
     }
   }
 
-  private Weather weatherByCityId(String cityId) {
+  private Weather weatherByCityId(int cityId) {
     Weather weather = null;
     try {
-      weather = weatherService.weather(Integer.parseInt(cityId));
+      weather = weatherService.weather(cityId);
     } catch (Exception e) {
       LOG.error("Can't get weather from weather service", e);
     }

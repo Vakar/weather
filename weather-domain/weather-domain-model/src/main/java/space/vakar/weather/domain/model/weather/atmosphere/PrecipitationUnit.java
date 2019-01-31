@@ -7,7 +7,7 @@ public enum PrecipitationUnit {
 
   private final String shortName;
 
-  private PrecipitationUnit(String shortName) {
+  PrecipitationUnit(String shortName) {
     this.shortName = shortName;
   }
 

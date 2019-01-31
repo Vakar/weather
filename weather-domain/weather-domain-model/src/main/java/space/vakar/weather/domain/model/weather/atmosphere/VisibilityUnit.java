@@ -7,7 +7,7 @@ public enum VisibilityUnit {
   /** International System of Units symbol */
   private final String shortName;
 
-  private VisibilityUnit(String shortName) {
+  VisibilityUnit(String shortName) {
     this.shortName = shortName;
   }
 

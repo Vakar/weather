@@ -6,12 +6,12 @@ import java.time.LocalDateTime;
 public class LocalDateTimeAdapter extends XmlAdapter<String, LocalDateTime> {
 
   @Override
-  public String marshal(LocalDateTime dateTime) throws Exception {
+  public String marshal(LocalDateTime dateTime) {
     return dateTime.toString();
   }
 
   @Override
-  public LocalDateTime unmarshal(String dateTime) throws Exception {
+  public LocalDateTime unmarshal(String dateTime) {
     return LocalDateTime.parse(dateTime);
   }
 }

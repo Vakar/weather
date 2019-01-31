@@ -28,7 +28,7 @@ class ParserImpl implements Parser<CurrentWeather> {
   public CurrentWeather weather(int cityId) {
     CurrentWeather weather;
     try {
-      Unmarshaller unmarshaller = unmarshaller(CurrentWeather.class);
+      Unmarshaller unmarshaller = unmarshaller();
       unmarshaller.setSchema(schema("current.xsd"));
       unmarshaller.setEventHandler(new EventHandler());
       weather = (CurrentWeather) unmarshaller.unmarshal(retriever.weatherXml(cityId));
@@ -38,8 +38,8 @@ class ParserImpl implements Parser<CurrentWeather> {
     return weather;
   }
 
-  private Unmarshaller unmarshaller(Class<?> clazz) throws JAXBException {
-    return JAXBContext.newInstance(clazz).createUnmarshaller();
+  private Unmarshaller unmarshaller() throws JAXBException {
+    return JAXBContext.newInstance((Class<?>) CurrentWeather.class).createUnmarshaller();
   }
 
   private Schema schema(String fileName) throws SAXException {

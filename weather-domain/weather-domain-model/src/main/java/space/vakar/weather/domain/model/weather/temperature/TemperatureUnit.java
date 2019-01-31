@@ -8,7 +8,7 @@ public enum TemperatureUnit {
   UNIT_UNKNOWN("unknown");
   private final String shortName;
 
-  private TemperatureUnit(String shortName) {
+  TemperatureUnit(String shortName) {
     this.shortName = shortName;
   }
 

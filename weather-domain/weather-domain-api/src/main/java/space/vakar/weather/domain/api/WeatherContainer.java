@@ -11,7 +11,7 @@ public interface WeatherContainer extends Serializable {
    * @param weather on the city
    * @param cityId is a unique number of city that used to represent weather for given city
    */
-  public void push(Weather weather, int cityId);
+  void push(Weather weather, int cityId);
 
-  public Weather pull(int cityId);
+  Weather pull(int cityId);
 }

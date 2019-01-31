@@ -4,7 +4,7 @@ public enum CloudinessUnit {
   PERCENTAGE_OF_SKY_AREA("%");
   private final String shortName;
 
-  private CloudinessUnit(String shortName) {
+  CloudinessUnit(String shortName) {
     this.shortName = shortName;
   }
 

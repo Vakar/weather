@@ -6,7 +6,7 @@ public enum SpeedUnit {
   MILES_PER_HOUR("mph");
   private final String shortName;
 
-  private SpeedUnit(String shortName) {
+  SpeedUnit(String shortName) {
     this.shortName = shortName;
   }
 

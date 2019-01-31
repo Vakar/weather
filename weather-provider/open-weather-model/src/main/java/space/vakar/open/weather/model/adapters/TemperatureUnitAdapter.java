@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 public class TemperatureUnitAdapter extends XmlAdapter<String, TemperatureUnit> {
 
   @Override
-  public String marshal(TemperatureUnit unit) throws Exception {
+  public String marshal(TemperatureUnit unit) {
     return unit.name().toLowerCase();
   }
 
   @Override
-  public TemperatureUnit unmarshal(String unit) throws Exception {
+  public TemperatureUnit unmarshal(String unit) {
     return TemperatureUnit.valueOf(unit.toUpperCase());
   }
 }

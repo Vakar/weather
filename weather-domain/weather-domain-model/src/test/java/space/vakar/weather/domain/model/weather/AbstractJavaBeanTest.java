@@ -35,7 +35,7 @@ import space.vakar.weather.domain.model.weather.wind.WindSpeed;
 public abstract class AbstractJavaBeanTest<T> {
 
   @Test
-  public void beanShouldBeSerializable() throws Exception {
+  public void beanShouldBeSerializable() {
     final T bean = getBeanInstance();
     final byte[] serBean = SerializationUtils.serialize((Serializable) bean);
     @SuppressWarnings("unchecked")
@@ -52,7 +52,7 @@ public abstract class AbstractJavaBeanTest<T> {
   }
 
   @Test
-  public void gettersAndSettersShouldFunctionCorrectly() throws Exception {
+  public void gettersAndSettersShouldFunctionCorrectly() {
     final BeanTester beanTester = new BeanTester();
     beanTester.getFactoryCollection().addFactory(LocalDateTime.class, new LocalDateTimeFactory());
     beanTester.getFactoryCollection().addFactory(WindSpeed.class, new WindSpeedFactory());

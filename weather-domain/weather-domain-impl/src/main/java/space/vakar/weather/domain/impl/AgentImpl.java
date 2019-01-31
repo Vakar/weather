@@ -31,10 +31,10 @@ public class AgentImpl implements Agent {
   @Override
   public Weather weather(int cityId) {
     Weather weather = container.pull(cityId);
-    return isValide(weather) ? weather : askProviderAndCash(cityId);
+    return isValid(weather) ? weather : askProviderAndCash(cityId);
   }
 
-  private boolean isValide(Weather weather) {
+  private boolean isValid(Weather weather) {
     return weather != null && isFresh(weather);
   }
 

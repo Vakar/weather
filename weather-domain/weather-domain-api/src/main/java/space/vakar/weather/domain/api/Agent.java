@@ -4,7 +4,7 @@ import space.vakar.weather.domain.model.weather.Weather;
 
 public interface Agent {
 
-  public Weather weather(int cityId);
+  Weather weather(int cityId);
 
-  public boolean isFresh(Weather weather);
+  boolean isFresh(Weather weather);
 }

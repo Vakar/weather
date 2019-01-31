@@ -24,7 +24,7 @@ public class WeatherMapperTest {
   }
 
   @Test
-  public void souldConvertProperly() {
+  public void shouldConvertProperly() {
     assertEquals(expectedWeather, GetWeather.from(currentWeather));
   }
 }

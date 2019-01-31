@@ -68,7 +68,7 @@ public class AgentImplTest {
   }
 
   @Test
-  public void shouldPushWeatherIntoContainer_WhenWeatherInContaineAndIsNotFresh() {
+  public void shouldPushWeatherIntoContainer_WhenWeatherInContainerAndIsNotFresh() {
     when(container.pull(CITY_ID)).thenReturn(notFreshWeather);
     when(provider.provideWeather(CITY_ID)).thenReturn(freshWeather);
     agent.weather(CITY_ID);
@@ -82,12 +82,12 @@ public class AgentImplTest {
   }
 
   @Test
-  public void shoulReturnTrue_WhenWeatherFresh() {
+  public void shouldReturnTrue_WhenWeatherFresh() {
     assertTrue(agent.isFresh(freshWeather));
   }
 
   @Test
-  public void shoulReturnFalse_WhenWeatherNotFresh() {
+  public void shouldReturnFalse_WhenWeatherNotFresh() {
     assertFalse(agent.isFresh(notFreshWeather));
   }
 }

@@ -28,7 +28,7 @@ class RetrieverImpl implements Retriever {
   }
 
   private HttpResponse httpGetRequest(String url) {
-    HttpResponse response = null;
+    HttpResponse response;
     LOG.debug("TRY: to make GET request to OpenWeather server: " + url);
     try {
       response = httpClient.execute(new HttpGet(url));
@@ -53,7 +53,7 @@ class RetrieverImpl implements Retriever {
   }
 
   private InputStream streamFrom(HttpResponse res) {
-    InputStream in = null;
+    InputStream in;
     try {
       in = res.getEntity().getContent();
     } catch (IOException responseContentException) {

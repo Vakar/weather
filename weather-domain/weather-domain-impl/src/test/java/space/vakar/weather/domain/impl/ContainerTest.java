@@ -48,7 +48,7 @@ public class ContainerTest {
   }
 
   @Test
-  public void shoulReplaceOldObjectFromContainer_WhenObjectWithTheSameCityIdExist() {
+  public void shouldReplaceOldObjectFromContainer_WhenObjectWithTheSameCityIdExist() {
     Weather newWeatherA = EnhancedRandom.random(Weather.class);
     container.push(newWeatherA, WEATHER_A_CITY_ID);
     assertEquals(newWeatherA, container.getMap().get(WEATHER_A_CITY_ID));

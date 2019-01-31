@@ -5,7 +5,7 @@ public enum HumidityUnit {
   RELATIVE_HUMIDITY("%");
   private final String shortName;
 
-  private HumidityUnit(String shortName) {
+  HumidityUnit(String shortName) {
     this.shortName = shortName;
   }
 

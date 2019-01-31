@@ -18,8 +18,7 @@ public class WeatherRequestHandler implements HttpRequestHandler {
       "/data/2.5/weather?id=1&APPID=not_valid_app_id&mode=xml";
 
   @Override
-  public void handle(HttpRequest req, HttpResponse res, HttpContext context)
-      throws HttpException, IOException {
+  public void handle(HttpRequest req, HttpResponse res, HttpContext context) {
     String url = req.getRequestLine().getUri();
     if (VALID_URL.equals(url)) {
       InputStream stream = streamFromFile("weather.xml");

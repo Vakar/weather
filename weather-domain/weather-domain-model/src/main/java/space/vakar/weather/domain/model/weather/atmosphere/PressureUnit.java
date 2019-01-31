@@ -6,7 +6,7 @@ public enum PressureUnit {
 
   private final String shortName;
 
-  private PressureUnit(String shortName) {
+  PressureUnit(String shortName) {
     this.shortName = shortName;
   }
 
