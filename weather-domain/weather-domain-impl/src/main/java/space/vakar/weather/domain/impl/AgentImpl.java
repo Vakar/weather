@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Objects;
 import org.apache.log4j.Logger;
-import space.vakar.weather.domain.api.Provider;
+import space.vakar.open.weather.api.Provider;
 import space.vakar.weather.domain.model.weather.Weather;
 import space.vakar.open.weather.impl.ProviderImpl;
 import space.vakar.weather.domain.api.Agent;
@@ -47,11 +47,11 @@ public class AgentImpl implements Agent {
   }
 
   private Weather askProviderAndCash(int cityId) {
-    Weather weather = null;
+    Weather weather;
     try {
       weather = provider.provideWeather(cityId);
       LOG.debug("Get weather from provider: " + new Gson().toJson(weather));
-      container.push(weather, cityId);
+      if (weather != null) container.push(weather, cityId);
     } catch (Exception e) {
       throw new WeatherServiceException("Can't get weather from provider", e);
     }

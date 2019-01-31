@@ -1,15 +1,14 @@
 package space.vakar.open.weather.impl;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Objects;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.log4j.Logger;
-import space.vakar.weather.domain.api.Retriever;
-import space.vakar.weather.domain.exceptions.WeatherRetrieverException;
+import space.vakar.open.weather.api.Retriever;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Objects;
 
 class RetrieverImpl implements Retriever {
 
@@ -22,19 +21,19 @@ class RetrieverImpl implements Retriever {
   private String appId;
 
   @Override
-  public InputStream weatherXml(int cityId) throws WeatherRetrieverException {
+  public InputStream weatherXml(int cityId) {
     HttpResponse response = httpGetRequest(weatherXmlUrl(cityId));
     validateResponce(response);
     return streamFrom(response);
   }
 
-  private HttpResponse httpGetRequest(String url) throws WeatherRetrieverException {
+  private HttpResponse httpGetRequest(String url) {
     HttpResponse response = null;
     LOG.debug("TRY: to make GET request to OpenWeather server: " + url);
     try {
       response = httpClient.execute(new HttpGet(url));
     } catch (IOException requestException) {
-      throw new WeatherRetrieverException("Can't get response from server", requestException);
+      throw new OpenWeatherException("Can't get response from server", requestException);
     }
     LOG.debug("SUCCESS: get response from OpenWeather server");
     return response;
@@ -45,20 +44,20 @@ class RetrieverImpl implements Retriever {
     return String.format(urlFormat, serviceUrl, weatherEndPoint, cityId, appId);
   }
 
-  private void validateResponce(HttpResponse response) throws WeatherRetrieverException {
+  private void validateResponce(HttpResponse response) {
     int statusCode = response.getStatusLine().getStatusCode();
     if (statusCode != 200) {
-      throw new WeatherRetrieverException(
+      throw new OpenWeatherException(
           "Server response status code: " + response.getStatusLine().toString());
     }
   }
 
-  private InputStream streamFrom(HttpResponse res) throws WeatherRetrieverException {
+  private InputStream streamFrom(HttpResponse res) {
     InputStream in = null;
     try {
       in = res.getEntity().getContent();
     } catch (IOException responseContentException) {
-      throw new WeatherRetrieverException(
+      throw new OpenWeatherException(
           "Can't open InputStream from HttpResponse", responseContentException);
     }
     return in;

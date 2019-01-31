@@ -3,15 +3,14 @@ package space.vakar.open.weather.impl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import space.vakar.weather.domain.api.Locations;
-import space.vakar.weather.domain.model.location.CityLocation;
-import space.vakar.open.weather.exception.OpenWeatherException;
+import space.vakar.open.weather.api.Locations;
+import space.vakar.weather.domain.model.weather.CityLocation;
 
 import java.io.File;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 public class LocationsImpl implements Locations {
 
@@ -24,10 +23,10 @@ public class LocationsImpl implements Locations {
   }
 
   @Override
-  public List<CityLocation> getCitiesByName(String cityName) {
+  public Optional<CityLocation> getCityByName(String cityName) {
     return cities.stream()
         .filter(cityLocation -> cityName.equals(cityLocation.getName()))
-        .collect(Collectors.toList());
+            .findFirst();
   }
 
   List<CityLocation> readCityLocations() {

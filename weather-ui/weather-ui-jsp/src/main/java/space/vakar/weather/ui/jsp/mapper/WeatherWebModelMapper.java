@@ -1,8 +1,8 @@
-package space.vakar.weather.ui.mapper;
+package space.vakar.weather.ui.jsp.mapper;
 
 import java.time.LocalDateTime;
 import space.vakar.weather.domain.model.weather.Weather;
-import space.vakar.weather.ui.model.WeatherWebModel;
+import space.vakar.weather.ui.jsp.model.WeatherWebModel;
 
 public class WeatherWebModelMapper {
 

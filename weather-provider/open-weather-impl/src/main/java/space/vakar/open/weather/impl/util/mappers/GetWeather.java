@@ -1,4 +1,4 @@
-package space.vakar.open.weather.util.mappers;
+package space.vakar.open.weather.impl.util.mappers;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

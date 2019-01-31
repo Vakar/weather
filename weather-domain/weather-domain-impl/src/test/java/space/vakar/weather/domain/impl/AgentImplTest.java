@@ -1,10 +1,7 @@
 package space.vakar.weather.domain.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import io.github.benas.randombeans.api.EnhancedRandom;
 import java.time.LocalDateTime;
@@ -14,8 +11,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import space.vakar.open.weather.api.Provider;
 import space.vakar.weather.domain.model.weather.Weather;
-import space.vakar.weather.domain.api.Provider;
 import space.vakar.weather.domain.api.WeatherContainer;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -49,14 +46,14 @@ public class AgentImplTest {
   }
 
   @Test
-  public void shouldGetWeatherFromProvider_WhenWeatherNotInContainer() throws Exception {
+  public void shouldGetWeatherFromProvider_WhenWeatherNotInContainer() {
     when(container.pull(CITY_ID)).thenReturn(null);
     when(provider.provideWeather(CITY_ID)).thenReturn(freshWeather);
     assertEquals(freshWeather, agent.weather(CITY_ID));
   }
 
   @Test
-  public void shouldPushWeatherIntoContainer_WhenWeatherNotInContainer() throws Exception {
+  public void shouldPushWeatherIntoContainer_WhenWeatherNotInContainer() {
     when(container.pull(CITY_ID)).thenReturn(null);
     when(provider.provideWeather(CITY_ID)).thenReturn(freshWeather);
     agent.weather(CITY_ID);
@@ -64,18 +61,24 @@ public class AgentImplTest {
   }
 
   @Test
-  public void shouldGetWeatherFromProvider_WhenWeatherInContainerAndIsNotFresh() throws Exception {
+  public void shouldGetWeatherFromProvider_WhenWeatherInContainerAndIsNotFresh() {
     when(container.pull(CITY_ID)).thenReturn(notFreshWeather);
     when(provider.provideWeather(CITY_ID)).thenReturn(freshWeather);
     assertEquals(freshWeather, agent.weather(CITY_ID));
   }
 
   @Test
-  public void shouldPushWeatherIntoContainer_WhenWeatherInContaineAndIsNotFresh() throws Exception {
+  public void shouldPushWeatherIntoContainer_WhenWeatherInContaineAndIsNotFresh() {
     when(container.pull(CITY_ID)).thenReturn(notFreshWeather);
     when(provider.provideWeather(CITY_ID)).thenReturn(freshWeather);
     agent.weather(CITY_ID);
     verify(container).push(freshWeather, CITY_ID);
+  }
+
+  @Test
+  public void shouldReturnNull_WhenProviderReturnNull(){
+    when(provider.provideWeather(CITY_ID)).thenReturn(null);
+    assertNull(agent.weather(CITY_ID));
   }
 
   @Test

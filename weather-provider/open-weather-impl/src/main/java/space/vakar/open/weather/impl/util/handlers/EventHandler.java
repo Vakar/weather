@@ -1,4 +1,4 @@
-package space.vakar.open.weather.util.handlers;
+package space.vakar.open.weather.impl.util.handlers;
 
 import javax.xml.bind.ValidationEvent;
 import javax.xml.bind.ValidationEventHandler;

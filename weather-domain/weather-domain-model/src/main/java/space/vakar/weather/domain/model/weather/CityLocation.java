@@ -1,4 +1,4 @@
-package space.vakar.weather.domain.model.location;
+package space.vakar.weather.domain.model.weather;
 
 import java.io.Serializable;
 import java.util.Objects;

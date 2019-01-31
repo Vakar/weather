@@ -1,27 +1,24 @@
 package space.vakar.open.weather.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import space.vakar.weather.domain.api.Retriever;
-import space.vakar.weather.domain.exceptions.WeatherParserException;
-import space.vakar.weather.domain.exceptions.WeatherRetrieverException;
+import space.vakar.open.weather.api.Retriever;
 import space.vakar.open.weather.model.CurrentWeather;
 import space.vakar.open.weather.testutils.CurrentWeatherPopulator;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ParserTest {
 
-  @Mock
-  private Retriever retriverMock;
+  @Mock private Retriever retriverMock;
 
   private ParserImpl parser;
 
@@ -39,7 +36,6 @@ public class ParserTest {
   public void setUpWeather() {
     expectedWeather = new CurrentWeather();
     CurrentWeatherPopulator.populateData(expectedWeather);
-
   }
 
   @Before
@@ -50,15 +46,13 @@ public class ParserTest {
   }
 
   @Test
-  public void shouldReturnCorrectObject()
-      throws WeatherParserException, WeatherRetrieverException {
+  public void shouldReturnCorrectObject() {
     when(retriverMock.weatherXml(1)).thenReturn(weatherStream);
     Assert.assertEquals(expectedWeather, parser.weather(1));
   }
 
-  @Test(expected = WeatherParserException.class)
-  public void shouldThrowOpenWeatherParserException_WhenParsingNotValidXml()
-      throws WeatherRetrieverException, WeatherParserException {
+  @Test(expected = OpenWeatherException.class)
+  public void shouldThrowOpenWeatherException_WhenParsingNotValidXml() {
     when(retriverMock.weatherXml(1)).thenReturn(notValidWeatherStream);
     parser.weather(1);
   }

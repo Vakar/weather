@@ -2,15 +2,16 @@ package space.vakar.open.weather.impl;
 
 import org.junit.Before;
 import org.junit.Test;
-import space.vakar.weather.domain.api.Locations;
-import space.vakar.weather.domain.model.location.CityLocation;
+import space.vakar.open.weather.api.Locations;
+import space.vakar.weather.domain.model.weather.CityLocation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
-public class CityLocationTest {
+public class LocationsTest {
 
   private Locations locations = new LocationsImpl();
 
@@ -19,23 +20,24 @@ public class CityLocationTest {
   private CityLocation city1;
   private CityLocation city2;
 
-  private String cityName = "Kathmandu";
+  private String nameOfExistingCity = "Kathmandu";
+  private String nameOfNotExistingCity = "Dnipro";
 
   @Before
   public void setUp() {
     expectedCities = new ArrayList<>();
-    city1 = new CityLocation(1283240, cityName, "NP");
+    city1 = new CityLocation(1283240, nameOfExistingCity, "NP");
     city2 = new CityLocation(703363, "Laspi", "UA");
     expectedCities.add(city1);
     expectedCities.add(city2);
   }
 
   @Test
-  public void getCitiesByNameTest() {
-    List<CityLocation> expectedCitiesByName = new ArrayList<>();
-    expectedCitiesByName.add(city1);
-    List<CityLocation> actualCities = locations.getCitiesByName(cityName);
-    assertEquals(expectedCitiesByName, actualCities);
+  public void getCityIdByName() {
+    Optional<CityLocation> actualCity = locations.getCityByName(nameOfExistingCity);
+    assertEquals(Optional.of(city1), actualCity);
+    Optional<CityLocation> cityIsNotExist = locations.getCityByName(nameOfNotExistingCity);
+    assertFalse(cityIsNotExist.isPresent());
   }
 
   @Test

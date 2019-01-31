@@ -10,7 +10,6 @@ import org.meanbean.lang.Factory;
 import org.meanbean.test.BeanTester;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
-import space.vakar.weather.domain.model.location.CityLocation;
 import space.vakar.weather.domain.model.weather.atmosphere.Atmosphere;
 import space.vakar.weather.domain.model.weather.atmosphere.CloudinessUnit;
 import space.vakar.weather.domain.model.weather.atmosphere.Clouds;

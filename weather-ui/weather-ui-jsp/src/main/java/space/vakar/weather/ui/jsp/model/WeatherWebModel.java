@@ -1,4 +1,4 @@
-package space.vakar.weather.ui.model;
+package space.vakar.weather.ui.jsp.model;
 
 import java.util.Objects;
 

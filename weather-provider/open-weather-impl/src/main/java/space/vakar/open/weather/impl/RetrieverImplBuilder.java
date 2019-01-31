@@ -1,10 +1,9 @@
 package space.vakar.open.weather.impl;
 
+import org.apache.http.impl.client.HttpClientBuilder;
+
 import java.io.IOException;
 import java.util.Properties;
-
-import org.apache.http.impl.client.HttpClientBuilder;
-import space.vakar.weather.domain.exceptions.WeatherException;
 
 public class RetrieverImplBuilder {
 
@@ -32,7 +31,7 @@ public class RetrieverImplBuilder {
     try {
       properties.load(RetrieverImplBuilder.class.getResourceAsStream(fileName));
     } catch (IOException resourceException) {
-      throw new WeatherException("Can't read OpenWeather properties file", resourceException);
+      throw new OpenWeatherException("Can't read OpenWeather properties file", resourceException);
     }
     return properties;
   }

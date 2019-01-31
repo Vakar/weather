@@ -1,4 +1,4 @@
-package space.vakar.weather.ui.controller;
+package space.vakar.weather.ui.jsp.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

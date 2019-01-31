@@ -1,16 +1,17 @@
 package space.vakar.open.weather.impl;
 
-import static org.junit.Assert.assertTrue;
-import java.io.IOException;
-import java.io.InputStream;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.localserver.LocalTestServer;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import space.vakar.weather.domain.exceptions.WeatherRetrieverException;
 import space.vakar.open.weather.testutils.WeatherRequestHandler;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import static org.junit.Assert.assertTrue;
 
 public class RetrieverTest {
 
@@ -22,7 +23,7 @@ public class RetrieverTest {
   private static final int NOT_VALID_CITY_ID = -1;
 
   @Before
-  public void setUp() throws WeatherRetrieverException {
+  public void setUp() {
     weatherRetriever = RetrieverImplBuilder.buildRetriever();
     weatherRetriever.setServiceUrl("http:/" + server.getServiceAddress());
   }
@@ -40,24 +41,21 @@ public class RetrieverTest {
   }
 
   @Test
-  public void shouldReturnInputStream_WhenAllUrlCorrect()
-      throws WeatherRetrieverException, IOException {
+  public void shouldReturnInputStream_WhenAllUrlCorrect() throws IOException {
     InputStream expected = streamFromFile("weather.xml");
     weatherRetriever.setAppId("valid_app_id");
     InputStream weather = weatherRetriever.weatherXml(VALID_CITY_ID);
     assertTrue(IOUtils.contentEquals(expected, weather));
   }
 
-  @Test(expected = WeatherRetrieverException.class)
-  public void shouldReturnOpenWeatherRetrieverException_WhenCityIdNotValid()
-      throws WeatherRetrieverException {
+  @Test(expected = OpenWeatherException.class)
+  public void shouldReturnOpenWeatherException_WhenCityIdNotValid() {
     weatherRetriever.setAppId("valid_app_id");
     weatherRetriever.weatherXml(NOT_VALID_CITY_ID);
   }
 
-  @Test(expected = WeatherRetrieverException.class)
-  public void shouldReturnOpenWeatherRetrieverException_WhenAppIdNotValid()
-      throws WeatherRetrieverException {
+  @Test(expected = OpenWeatherException.class)
+  public void shouldReturnOpenWeatherException_WhenAppIdNotValid() {
     weatherRetriever.setAppId("not_valid_app_id");
     weatherRetriever.weatherXml(VALID_CITY_ID);
   }

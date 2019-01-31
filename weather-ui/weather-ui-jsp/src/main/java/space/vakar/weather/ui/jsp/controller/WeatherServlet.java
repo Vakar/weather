@@ -1,25 +1,24 @@
-package space.vakar.weather.ui.controller;
+package space.vakar.weather.ui.jsp.controller;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import org.apache.log4j.Logger;
+import space.vakar.weather.domain.api.Cities;
+import space.vakar.weather.domain.api.WeatherService;
+import space.vakar.weather.domain.impl.CitiesImpl;
+import space.vakar.weather.domain.impl.WeatherServiceImpl;
+import space.vakar.weather.domain.model.weather.Weather;
+import space.vakar.weather.ui.jsp.mapper.WeatherWebModelMapper;
+import space.vakar.weather.ui.jsp.model.WeatherWebModel;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.log4j.Logger;
-import space.vakar.weather.domain.model.weather.Weather;
-import space.vakar.weather.domain.api.WeatherService;
-import space.vakar.weather.domain.impl.WeatherServiceImpl;
-import space.vakar.weather.ui.mapper.WeatherWebModelMapper;
-import space.vakar.weather.ui.model.WeatherWebModel;
+import java.io.IOException;
 
 /** Servlet implementation class WeatherServlet */
 @WebServlet("/weather.do")
 public class WeatherServlet extends HttpServlet {
-
-  Map<String, String> map;
 
   private static final Logger LOG = Logger.getLogger(WeatherServlet.class);
 
@@ -27,45 +26,26 @@ public class WeatherServlet extends HttpServlet {
 
   private static WeatherService weatherService = new WeatherServiceImpl();
   private static WeatherWebModelMapper mapper = new WeatherWebModelMapper();
-
-  public WeatherServlet(){
-    map = new HashMap<>();
-    map.put("Toronto", "6167865");
-    map.put("Moncton", "6076211");
-    map.put("Kharkiv", "706483");
-    map.put("Halifax", "5969423");
-  }
+  private static Cities cities = new CitiesImpl();
 
   /** @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) */
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     String cityName = request.getParameter("cityName").trim();
-    if(cityName.isEmpty()){
-      request.setAttribute("status", "You didn't input city name. Pleas input city and try again.");
+    int cityId = cities.getCityIdByName(cityName);
+    Weather weather = weatherByCityId(String.valueOf(cityId));
+    if(cityId < 0){
+      request.setAttribute("status", "Can't find city with name :" + "\"" + cityName + "\"");
       request.getRequestDispatcher("/home.do").forward(request, response);
-    } else if(isCityExist(cityName)){
-      Weather  weather = weatherByCityId(getCityIdByName(cityName));
-      if (weather != null) {
-        WeatherWebModel weatherModel = mapper.from(weather);
-        request.setAttribute("weather", weatherModel);
-        request.getRequestDispatcher("/WEB-INF/views/weather.jsp").forward(request, response);
-      } else {
-        request.setAttribute("status", "Weather not found.");
-        request.getRequestDispatcher("/home.do").forward(request, response);
-      }
+    } else if( weather == null) {
+      request.setAttribute("status", "Can't find weather for city :" + "\"" + cityName + "\"");
+      request.getRequestDispatcher("/home.do").forward(request, response);
     } else {
-      request.setAttribute("status", "City doesn't exist.");
-      request.getRequestDispatcher("/home.do").forward(request, response);
+      WeatherWebModel weatherModel = mapper.from(weather);
+      request.setAttribute("weather", weatherModel);
+      request.getRequestDispatcher("/WEB-INF/views/weather.jsp").forward(request, response);
     }
-  }
-
-  private boolean isCityExist(String cityName){
-    return map.containsKey(cityName);
-  }
-
-  private String getCityIdByName(String cityName){
-    return map.get(cityName);
   }
 
   private Weather weatherByCityId(String cityId) {
