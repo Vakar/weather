@@ -5,5 +5,6 @@
 domain/target/
 target/
 openweather.properties
+connection.properties
 *.iml
 .idea/
