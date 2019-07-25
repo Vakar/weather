@@ -20,14 +20,6 @@ class WeatherContainerImpl implements WeatherContainer {
 
 	private static final int MAX_CAPACITY = 1000;
 
-	public Map<Integer, WeatherDTO> getMap() {
-		return map;
-	}
-
-	public void setMap(Map<Integer, WeatherDTO> map) {
-		this.map = map;
-	}
-
 	@Override
 	public void push(WeatherDTO weather, int cityId) {
 		validateNotNull(weather);
@@ -53,5 +45,13 @@ class WeatherContainerImpl implements WeatherContainer {
 		WeatherDTO weather = map.get(cityId);
 		LOG.debug("Pull weather from container: " + new Gson().toJson(weather));
 		return weather;
+	}
+
+	public Map<Integer, WeatherDTO> getMap() {
+		return map;
+	}
+
+	public void setMap(Map<Integer, WeatherDTO> map) {
+		this.map = map;
 	}
 }
