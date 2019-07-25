@@ -12,8 +12,8 @@
 		<version>0.1</version>
 	</parent>
 
-	<artifactId>weather-domain-impl</artifactId>
-	<name>weather-domain-impl</name>
+	<artifactId>weather-domain-core</artifactId>
+	<name>weather-domain-core</name>
 
 	<dependencies>
 		<dependency>
