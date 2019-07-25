@@ -1,4 +1,4 @@
-package space.vakar.weather.domain.impl;
+package space.vakar.weather.domain.core;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
