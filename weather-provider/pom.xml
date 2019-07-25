@@ -16,11 +16,8 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>open-weather-api</module>
-		<module>open-weather-impl</module>
-		<module>open-weather-model</module>
-		<module>open-weather-json-impl</module>
-		<module>open-weather-json-model</module>
+		<module>open-weather-provider</module>
+		<module>open-weather-persistence</module>
 	</modules>
 
 </project>

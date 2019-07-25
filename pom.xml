@@ -13,7 +13,6 @@
     <modules>
         <module>weather-domain</module>
         <module>weather-provider</module>
-        <module>weather-ui</module>
     </modules>
 
     <properties>
