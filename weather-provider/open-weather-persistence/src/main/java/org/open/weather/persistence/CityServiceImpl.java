@@ -1,6 +1,6 @@
 package org.open.weather.persistence;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import space.vakar.weather.domain.api.CityService;
@@ -14,7 +14,7 @@ public class CityServiceImpl implements CityService {
 
 	@Override
 	public List<City> getCitiesByName(String cityName) {
-		List<City> cities = Collections.emptyList();
+		List<City> cities = new ArrayList<>();
 		try {
 			List<DtoCity> dtos = dao.search(COLUMN_NAME, cityName);
 			for (DtoCity dtoCity : dtos) {
