@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="normalize.css" />
+    <title>Weather</title>
+  </head>
+  <body>
+    <header>
+      <!-- Search View -->
+      <div class="search lighter">
+        <form autocomplete="off" id="citySearch">
+          <div class="autocomplete" style="width:300px;">
+            <input
+              class="autocomplete"
+              type="text"
+              id="searchInput"
+              placeholder="Please input city name"
+              autofocus
+            />
+            <div id="autocomplete-list" class="autocomplete-items"></div>
+          </div>
+          <!-- <input type="submit" /> -->
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <div id="message"></div>
+      </div>
+    </header>
+
+    <!-- Weather View -->
+    <main class="container">
+      <section class="weather">
+        <div id="cityName"></div>
+        <div id="humidity"></div>
+        <div id="temperature"></div>
+        <div id="wind"></div>
+        <div id="icon"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="copyright">Leonid Vakar &copy; 2019</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="https://kit.fontawesome.com/51b726d648.js"></script>
+  </body>
+</html>
