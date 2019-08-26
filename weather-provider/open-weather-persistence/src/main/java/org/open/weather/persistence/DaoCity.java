@@ -7,14 +7,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-class DaoCity implements Dao<DtoCity> {
+class DaoCity implements Dao<EntityCity> {
 
-  private ConnectionPool pool = ConnectionPoolImpl.getConnectionPool();
+  private static final String FIELD_ID = "ID";
+  private static final String FIELD_NAME = "NAME";
+  private static final String FIELD_COUNTRY = "COUNTRY";
+
+  private ConnectionPool connectionPool = ConnectionPoolImpl.getConnectionPool();
 
   @Override
-  public void create(DtoCity cityDto) throws SQLException {
+  public void create(EntityCity cityDto) throws SQLException {
     String sql = "INSERT INTO CITIES (ID, NAME, COUNTRY) VALUES (?, ?, ?);";
-    try (Connection conn = pool.getConnection();
+    try (Connection conn = connectionPool.getConnection();
         PreparedStatement stmn = conn.prepareStatement(sql);) {
       stmn.setInt(1, cityDto.getId());
       stmn.setString(2, cityDto.getName());
@@ -24,18 +28,19 @@ class DaoCity implements Dao<DtoCity> {
   }
 
   @Override
-  public DtoCity read(int id) throws SQLException {
-    DtoCity city = null;
-    String sql = "SELECT * FROM CITIES WHERE ID = ?";
+  public EntityCity read(int id) throws SQLException {
+    EntityCity city = new EntityCity();
+    String sql = "SELECT * FROM CITIES WHERE ID = ?;";
     ResultSet rs = null;
-    try (Connection conn = pool.getConnection();
+    try (Connection conn = connectionPool.getConnection();
         PreparedStatement stmn = conn.prepareStatement(sql);) {
       stmn.setInt(1, id);
       rs = stmn.executeQuery();
-      rs.next();
-      String name = rs.getString("NAME");
-      String country = rs.getString("COUNTRY");
-      city = new DtoCity(id, name, country);
+      if (rs.first()) {
+        String name = rs.getString(FIELD_NAME);
+        String country = rs.getString(FIELD_COUNTRY);
+        city = new EntityCity(id, name, country);
+      }
     } finally {
       if (rs != null) {
         rs.close();
@@ -45,9 +50,9 @@ class DaoCity implements Dao<DtoCity> {
   }
 
   @Override
-  public void update(DtoCity cityDto) throws SQLException {
-    String sql = "UPDATE CITIES SET NAME=?, COUNTRY=? WHERE ID=?";
-    try (Connection conn = pool.getConnection();
+  public void update(EntityCity cityDto) throws SQLException {
+    String sql = "UPDATE CITIES SET NAME=?, COUNTRY=? WHERE ID=?;";
+    try (Connection conn = connectionPool.getConnection();
         PreparedStatement stmn = conn.prepareStatement(sql);) {
       stmn.setString(1, cityDto.getName());
       stmn.setString(2, cityDto.getCountry());
@@ -58,8 +63,8 @@ class DaoCity implements Dao<DtoCity> {
 
   @Override
   public void delete(int id) throws SQLException {
-    String sql = "DELETE FROM CITIES WHERE ID=?";
-    try (Connection conn = pool.getConnection();
+    String sql = "DELETE FROM CITIES WHERE ID=?;";
+    try (Connection conn = connectionPool.getConnection();
         PreparedStatement stmn = conn.prepareStatement(sql);) {
       stmn.setInt(1, id);
       stmn.executeUpdate();
@@ -67,19 +72,19 @@ class DaoCity implements Dao<DtoCity> {
   }
 
   @Override
-  public List<DtoCity> search(String columnName, String substring) throws SQLException {
-    List<DtoCity> cities = new ArrayList<>();
-    String sql = String.format("SELECT * FROM CITIES WHERE " + columnName + " REGEXP %s;",
-        "'.*" + substring + ".*'");
+  public List<EntityCity> search(String columnName, String substring) throws SQLException {
+    List<EntityCity> cities = new ArrayList<>();
+    String sql =
+        String.format("SELECT * FROM CITIES WHERE %s REGEXP '.*%s.*';", columnName, substring);
     ResultSet rs = null;
-    try (Connection conn = pool.getConnection();
+    try (Connection conn = connectionPool.getConnection();
         PreparedStatement stmn = conn.prepareStatement(sql);) {
       rs = stmn.executeQuery();
       while (rs.next()) {
-        int id = rs.getInt("ID");
-        String name = rs.getString("NAME");
-        String country = rs.getString("COUNTRY");
-        cities.add(new DtoCity(id, name, country));
+        int id = rs.getInt(FIELD_ID);
+        String name = rs.getString(FIELD_NAME);
+        String country = rs.getString(FIELD_COUNTRY);
+        cities.add(new EntityCity(id, name, country));
       }
     } finally {
       if (rs != null) {

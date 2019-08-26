@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Properties;
 import org.dbunit.Assertion;
 import org.dbunit.dataset.DataSetException;
 import org.dbunit.dataset.IDataSet;
@@ -16,7 +15,7 @@ import org.h2.tools.RunScript;
 
 public class DaoCitiesTest extends DatabaseTestConfig {
 
-  private Dao<DtoCity> cityDao = new DaoCity();
+  private Dao<EntityCity> cityDao = new DaoCity();
 
   private DataFileLoader loader = new FlatXmlDataFileLoader();
 
@@ -30,8 +29,8 @@ public class DaoCitiesTest extends DatabaseTestConfig {
   private static final String CITIES_DELETE_DATASET = CITIES_DATASET_FOLDER + "/delete.xml";
   private static final String SCHEMA_FILE = "classpath:schema.sql";
 
-  private DtoCity berlin = new DtoCity(2950159, "Berlin", "DE");
-  private DtoCity monaco = new DtoCity(2993458, "Monaco", "FR");
+  private EntityCity berlin = new EntityCity(2950159, "Berlin", "DE");
+  private EntityCity monaco = new EntityCity(2993458, "Monaco", "FR");
 
   public DaoCitiesTest(String name) {
     super(name);
@@ -39,12 +38,11 @@ public class DaoCitiesTest extends DatabaseTestConfig {
 
   @Override
   protected void setUp() throws Exception {
-    Properties properties =
-        PropertiesUtil.readPropertiesFromFile(PropertiesUtil.CONNECTION_PROPERTIES_FILE);
-    String dbUrl = properties.getProperty(PropertiesUtil.CONNECTION_URL_PROPERTY_NAME);
-    String user = properties.getProperty(PropertiesUtil.CONNECTION_USER_PROPERTY_NAME);
-    String pass = properties.getProperty(PropertiesUtil.CONNECTION_PASS_PROPERTY_NAME);
-    RunScript.execute(dbUrl, user, pass, SCHEMA_FILE, StandardCharsets.UTF_8, false);
+    ConnectionProperties connProp = ConnectionProperties.getInstance();
+    String url = connProp.getUrl();
+    String user = connProp.getUser();
+    String pswd = connProp.getPswd();
+    RunScript.execute(url, user, pswd, SCHEMA_FILE, StandardCharsets.UTF_8, false);
     super.setUp();
   }
 
@@ -59,7 +57,7 @@ public class DaoCitiesTest extends DatabaseTestConfig {
   }
 
   public void testRead() throws SQLException {
-    DtoCity actualCity = cityDao.read(monaco.getId());
+    EntityCity actualCity = cityDao.read(monaco.getId());
     assertEquals(monaco, actualCity);
   }
 
@@ -76,15 +74,15 @@ public class DaoCitiesTest extends DatabaseTestConfig {
 
   public void testSearchCitiesBySubstring_WhenExist() throws SQLException {
     String substring = "ona";
-    List<DtoCity> actualCities = cityDao.search(COLUMN_NAME, substring);
-    List<DtoCity> expectedCities = Arrays.asList(monaco);
+    List<EntityCity> actualCities = cityDao.search(COLUMN_NAME, substring);
+    List<EntityCity> expectedCities = Arrays.asList(monaco);
     assertEquals(expectedCities, actualCities);
   }
 
   public void testSearchCitiesBySubstring_WhenDoesNotExist() throws SQLException {
     String substring = "ina";
-    List<DtoCity> actualCities = cityDao.search(COLUMN_NAME, substring);
-    List<DtoCity> expectedCities = Collections.emptyList();
+    List<EntityCity> actualCities = cityDao.search(COLUMN_NAME, substring);
+    List<EntityCity> expectedCities = Collections.emptyList();
     assertEquals(expectedCities, actualCities);
   }
 

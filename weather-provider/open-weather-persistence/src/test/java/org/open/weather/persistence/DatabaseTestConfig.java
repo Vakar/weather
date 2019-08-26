@@ -1,26 +1,20 @@
 package org.open.weather.persistence;
 
-import java.util.Properties;
 import org.dbunit.DBTestCase;
 import org.dbunit.PropertiesBasedJdbcDatabaseTester;
 import org.dbunit.database.DatabaseConfig;
 import org.dbunit.ext.h2.H2DataTypeFactory;
-import org.open.weather.persistence.PropertiesUtil;
+import org.open.weather.persistence.ConnectionProperties;
 
 abstract class DatabaseTestConfig extends DBTestCase {
 
   DatabaseTestConfig(String name) {
     super(name);
-    Properties properties =
-        PropertiesUtil.readPropertiesFromFile(PropertiesUtil.CONNECTION_PROPERTIES_FILE);
-    System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_DRIVER_CLASS,
-        properties.getProperty(PropertiesUtil.CONNECTION_DRIVER_PROPERTY_NAME));
-    System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_CONNECTION_URL,
-        properties.getProperty(PropertiesUtil.CONNECTION_URL_PROPERTY_NAME));
-    System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_USERNAME,
-        properties.getProperty(PropertiesUtil.CONNECTION_USER_PROPERTY_NAME));
-    System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_PASSWORD,
-        properties.getProperty(PropertiesUtil.CONNECTION_PASS_PROPERTY_NAME));
+    ConnectionProperties connProp = ConnectionProperties.getInstance();
+    System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_DRIVER_CLASS, connProp.getDriver());
+    System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_CONNECTION_URL, connProp.getUrl());
+    System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_USERNAME, connProp.getUser());
+    System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_PASSWORD, connProp.getPswd());
   }
 
   @Override

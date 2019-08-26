@@ -7,7 +7,7 @@ import space.vakar.weather.domain.model.City;
 
 public class CityServiceImpl implements CityService {
 
-  private Dao<DtoCity> dao = new DaoCity();
+  private Dao<EntityCity> daoCity = new DaoCity();
 
   private static final String COLUMN_NAME = "NAME";
 
@@ -15,9 +15,9 @@ public class CityServiceImpl implements CityService {
   public List<City> getCitiesByName(String cityName) {
     List<City> cities = new ArrayList<>();
     try {
-      List<DtoCity> dtos = dao.search(COLUMN_NAME, cityName);
-      for (DtoCity dtoCity : dtos) {
-        cities.add(CityConverter.convert(dtoCity));
+      List<EntityCity> entities = daoCity.search(COLUMN_NAME, cityName);
+      for (EntityCity enitity : entities) {
+        cities.add(ModelConverter.getFrom(enitity));
       }
     } catch (Exception e) {
       throw new OpenWeatherPersistenceException(e.getMessage(), e);

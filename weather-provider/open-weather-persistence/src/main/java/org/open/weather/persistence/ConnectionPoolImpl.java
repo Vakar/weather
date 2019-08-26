@@ -2,22 +2,20 @@ package org.open.weather.persistence;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Properties;
 import org.h2.jdbcx.JdbcConnectionPool;
 
 class ConnectionPoolImpl implements ConnectionPool {
 
   private static ConnectionPool instance;
 
-  private JdbcConnectionPool cp;
+  private JdbcConnectionPool connectionPool;
 
   private ConnectionPoolImpl() {
-    Properties properties =
-        PropertiesUtil.readPropertiesFromFile(PropertiesUtil.CONNECTION_PROPERTIES_FILE);
-    String dbUrl = properties.getProperty(PropertiesUtil.CONNECTION_URL_PROPERTY_NAME);
-    String user = properties.getProperty(PropertiesUtil.CONNECTION_USER_PROPERTY_NAME);
-    String pass = properties.getProperty(PropertiesUtil.CONNECTION_PASS_PROPERTY_NAME);
-    cp = JdbcConnectionPool.create(dbUrl, user, pass);
+    ConnectionProperties connProp = ConnectionProperties.getInstance();
+    String url = connProp.getUrl();
+    String user = connProp.getUser();
+    String pswd = connProp.getPswd();
+    connectionPool = JdbcConnectionPool.create(url, user, pswd);
   }
 
   static ConnectionPool getConnectionPool() {
@@ -29,7 +27,7 @@ class ConnectionPoolImpl implements ConnectionPool {
 
   @Override
   public Connection getConnection() throws SQLException {
-    return cp.getConnection();
+    return connectionPool.getConnection();
   }
 
 }

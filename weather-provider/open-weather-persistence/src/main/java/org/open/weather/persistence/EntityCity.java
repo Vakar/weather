@@ -2,15 +2,18 @@ package org.open.weather.persistence;
 
 import java.util.Objects;
 
-class DtoCity implements Dto {
+class EntityCity implements Entity {
 
   private int id;
   private String name;
   private String country;
 
-  public DtoCity() {}
+  public EntityCity() {
+    this.name = "";
+    this.country = "";
+  }
 
-  public DtoCity(int id, String name, String country) {
+  public EntityCity(int id, String name, String country) {
     this.id = id;
     this.name = name;
     this.country = country;
@@ -45,10 +48,10 @@ class DtoCity implements Dto {
     if (this == o) {
       return true;
     }
-    if (!(o instanceof DtoCity)) {
+    if (!(o instanceof EntityCity)) {
       return false;
     }
-    DtoCity that = (DtoCity) o;
+    EntityCity that = (EntityCity) o;
     return id == that.id && Objects.equals(name, that.name)
         && Objects.equals(country, that.country);
   }
