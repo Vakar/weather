@@ -1,120 +1,183 @@
 
 package space.vakar.weather.domain.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class Main implements Serializable {
 
-	private final static long serialVersionUID = 6029719905243037484L;
+  private static final long serialVersionUID = 6029719905243037484L;
 
-	@SerializedName("temp")
-	@Expose
-	private BigDecimal temp;
-	@SerializedName("pressure")
-	@Expose
-	private int pressure;
-	@SerializedName("humidity")
-	@Expose
-	private int humidity;
-	@SerializedName("temp_min")
-	@Expose
-	private BigDecimal tempMin;
-	@SerializedName("temp_max")
-	@Expose
-	private BigDecimal tempMax;
+  @SerializedName("temp")
+  @Expose
+  private BigDecimal temp;
+  @SerializedName("pressure")
+  @Expose
+  private int pressure;
+  @SerializedName("humidity")
+  @Expose
+  private int humidity;
+  @SerializedName("temp_min")
+  @Expose
+  private BigDecimal tempMin;
+  @SerializedName("temp_max")
+  @Expose
+  private BigDecimal tempMax;
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Main other = (Main) obj;
-		return humidity == other.humidity && pressure == other.pressure && Objects.equals(temp, other.temp)
-				&& Objects.equals(tempMax, other.tempMax) && Objects.equals(tempMin, other.tempMin);
-	}
+  /**
+   * Get humidity, %.
+   * @return humidity, %
+   */
+  public int getHumidity() {
+    return humidity;
+  }
 
-	public int getHumidity() {
-		return humidity;
-	}
+  /**
+   * Set humidity, %.
+   * @param humidity humidity, %
+   */
+  public void setHumidity(int humidity) {
+    this.humidity = humidity;
+  }
 
-	public int getPressure() {
-		return pressure;
-	}
+  /**
+   * Get atmospheric pressure, hPa.
+   * @return atmospheric pressure, hPa
+   */
+  public int getPressure() {
+    return pressure;
+  }
 
-	public BigDecimal getTemp() {
-		return temp;
-	}
+  /**
+   * Set atmospheric pressure, hPa.
+   * @param pressure atmospheric pressure, hPa
+   */
+  public void setPressure(int pressure) {
+    this.pressure = pressure;
+  }
 
-	public BigDecimal getTempMax() {
-		return tempMax;
-	}
+  /**
+   * Get temperature. Unit: Kelvin.
+   * @return temperature. Unit: Kelvin.
+   */
+  public BigDecimal getTemp() {
+    return temp;
+  }
 
-	public BigDecimal getTempMin() {
-		return tempMin;
-	}
+  /**
+   * Set temperature. Unit: Kelvin.
+   * @param temp temperature. Unit: Kelvin.
+   */
+  public void setTemp(BigDecimal temp) {
+    this.temp = temp;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(humidity, pressure, temp, tempMax, tempMin);
-	}
+  /**
+   * Get maximum temperature at the moment. Unit: Kelvin.
+   * @return maximum temperature at the moment. Unit: Kelvin.
+   */
+  public BigDecimal getTempMax() {
+    return tempMax;
+  }
 
-	public void setHumidity(int humidity) {
-		this.humidity = humidity;
-	}
+  /**
+   * Set maximum temperature at the moment. Unit: Kelvin.
+   * @param tempMax maximum temperature at the moment. Unit: Kelvin.
+   */
+  public void setTempMax(BigDecimal tempMax) {
+    this.tempMax = tempMax;
+  }
 
-	public void setPressure(int pressure) {
-		this.pressure = pressure;
-	}
+  /**
+   * Get minimum temperature at the moment. Unit: Kelvin.
+   * @return minimum temperature at the moment. Unit: Kelvin.
+   */
+  public BigDecimal getTempMin() {
+    return tempMin;
+  }
 
-	public void setTemp(BigDecimal temp) {
-		this.temp = temp;
-	}
+  /**
+   * Set minimum temperature at the moment. Unit: Kelvin.
+   * @param tempMin minimum temperature at the moment. Unit: Kelvin.
+   */
+  public void setTempMin(BigDecimal tempMin) {
+    this.tempMin = tempMin;
+  }
 
-	public void setTempMax(BigDecimal tempMax) {
-		this.tempMax = tempMax;
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(humidity, pressure, temp, tempMax, tempMin);
+  }
 
-	public void setTempMin(BigDecimal tempMin) {
-		this.tempMin = tempMin;
-	}
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    Main other = (Main) obj;
+    return humidity == other.humidity && pressure == other.pressure
+        && Objects.equals(temp, other.temp) && Objects.equals(tempMax, other.tempMax)
+        && Objects.equals(tempMin, other.tempMin);
+  }
 
-	@Override
-	public String toString() {
-		return String.format("Main [temp=%s, pressure=%s, humidity=%s, tempMin=%s, tempMax=%s]", temp, pressure,
-				humidity, tempMin, tempMax);
-	}
+  @Override
+  public String toString() {
+    return String.format("Main [temp=%s, pressure=%s, humidity=%s, tempMin=%s, tempMax=%s]", temp,
+        pressure, humidity, tempMin, tempMax);
+  }
 
-	public Main withHumidity(int humidity) {
-		this.humidity = humidity;
-		return this;
-	}
+  /**
+   * Set humidity, %.
+   * @param humidity humidity, %
+   */
+  public Main withHumidity(int humidity) {
+    this.humidity = humidity;
+    return this;
+  }
 
-	public Main withPressure(int pressure) {
-		this.pressure = pressure;
-		return this;
-	}
+  /**
+   * Set atmospheric pressure, hPa.
+   * @param pressure atmospheric pressure, hPa
+   */
+  public Main withPressure(int pressure) {
+    this.pressure = pressure;
+    return this;
+  }
 
-	public Main withTemp(BigDecimal temp) {
-		this.temp = temp;
-		return this;
-	}
+  /**
+   * Set temperature. Unit: Kelvin.
+   * @param temp temperature. Unit: Kelvin.
+   */
+  public Main withTemp(BigDecimal temp) {
+    this.temp = temp;
+    return this;
+  }
 
-	public Main withTempMax(BigDecimal tempMax) {
-		this.tempMax = tempMax;
-		return this;
-	}
+  /**
+   * Set maximum temperature at the moment. Unit: Kelvin.
+   * @param tempMax maximum temperature at the moment. Unit: Kelvin.
+   */
+  public Main withTempMax(BigDecimal tempMax) {
+    this.tempMax = tempMax;
+    return this;
+  }
 
-	public Main withTempMin(BigDecimal tempMin) {
-		this.tempMin = tempMin;
-		return this;
-	}
+  /**
+   * Set minimum temperature at the moment. Unit: Kelvin.
+   * @param tempMin minimum temperature at the moment. Unit: Kelvin.
+   */
+  public Main withTempMin(BigDecimal tempMin) {
+    this.tempMin = tempMin;
+    return this;
+  }
 
 }

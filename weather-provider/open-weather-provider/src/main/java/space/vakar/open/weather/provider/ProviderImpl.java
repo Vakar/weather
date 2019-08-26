@@ -1,16 +1,16 @@
 package space.vakar.open.weather.provider;
 
 import space.vakar.weather.domain.api.Provider;
-import space.vakar.weather.domain.model.WeatherDTO;
+import space.vakar.weather.domain.model.WeatherDto;
 
 public class ProviderImpl implements Provider {
 
   private ApiClient apiClient = ApiClientBuilder.getDejaultJsonApiConnector();
 
   @Override
-  public WeatherDTO provideWeather(int cityId) {
+  public WeatherDto provideWeather(int cityId) {
     String json = apiClient.getCityWeatherJsonByCityId(cityId);
-    return JsonDeserializer.convertJsonToWeatherDTO(json);
+    return JsonDeserializer.convertJsonToWeatherDto(json);
   }
 
 }

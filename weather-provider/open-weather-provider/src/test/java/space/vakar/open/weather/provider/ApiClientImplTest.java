@@ -1,6 +1,7 @@
 package space.vakar.open.weather.provider;
 
 import static org.junit.Assert.assertEquals;
+
 import org.apache.http.localserver.LocalTestServer;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -5,6 +5,6 @@ import java.sql.SQLException;
 
 interface ConnectionPool {
 
-	Connection getConnection() throws SQLException;
+  Connection getConnection() throws SQLException;
 
 }

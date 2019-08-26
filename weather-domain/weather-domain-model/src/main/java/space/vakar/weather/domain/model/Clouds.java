@@ -1,53 +1,75 @@
 
 package space.vakar.weather.domain.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+
 
 public class Clouds implements Serializable {
 
-	private final static long serialVersionUID = 5626784545040934884L;
+  private static final long serialVersionUID = 5626784545040934884L;
 
-	@SerializedName("all")
-	@Expose
-	private int all;
+  @SerializedName("all")
+  @Expose
+  private int all;
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Clouds other = (Clouds) obj;
-		return all == other.all;
-	}
+  /**
+   * Default constructor.
+   */
+  public Clouds() {}
 
-	public int getAll() {
-		return all;
-	}
+  /**
+   * Create {Clouds} object with given cloudiness in %.
+   * @param all cloudiness, %
+   */
+  public Clouds(int all) {
+    this.all = all;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(all);
-	}
+  /**
+   * Get cloudiness, %.
+   * 
+   * @return cloudiness in %
+   */
+  public int getAll() {
+    return all;
+  }
 
-	public void setAll(int all) {
-		this.all = all;
-	}
+  /**
+   * Set cloudiness, %.
+   * 
+   * @param all cloudiness in %
+   */
+  public void setAll(int all) {
+    this.all = all;
+  }
 
-	@Override
-	public String toString() {
-		return String.format("Clouds [all=%s]", all);
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(all);
+  }
 
-	public Clouds withAll(int all) {
-		this.all = all;
-		return this;
-	}
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    Clouds other = (Clouds) obj;
+    return all == other.all;
+  }
+
+  @Override
+  public String toString() {
+    return String.format("Clouds [all=%s]", all);
+  }
 
 }

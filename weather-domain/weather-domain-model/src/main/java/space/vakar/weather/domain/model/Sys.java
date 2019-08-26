@@ -1,136 +1,221 @@
 
 package space.vakar.weather.domain.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class Sys implements Serializable {
 
-	private final static long serialVersionUID = -6633630464954791315L;
+  private static final long serialVersionUID = -6633630464954791315L;
 
-	@SerializedName("type")
-	@Expose
-	private int type;
-	@SerializedName("id")
-	@Expose
-	private int id;
-	@SerializedName("message")
-	@Expose
-	private BigDecimal message;
-	@SerializedName("country")
-	@Expose
-	private String country;
-	@SerializedName("sunrise")
-	@Expose
-	private int sunrise;
-	@SerializedName("sunset")
-	@Expose
-	private int sunset;
+  @SerializedName("type")
+  @Expose
+  private int type;
+  @SerializedName("id")
+  @Expose
+  private int id;
+  @SerializedName("message")
+  @Expose
+  private BigDecimal message;
+  @SerializedName("country")
+  @Expose
+  private String country;
+  @SerializedName("sunrise")
+  @Expose
+  private int sunrise;
+  @SerializedName("sunset")
+  @Expose
+  private int sunset;
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Sys other = (Sys) obj;
-		return Objects.equals(country, other.country) && id == other.id && Objects.equals(message, other.message)
-				&& sunrise == other.sunrise && sunset == other.sunset && type == other.type;
-	}
+  /**
+   * Get country code (GB, JP etc.).
+   * @return country code (GB, JP etc.)
+   */
+  public String getCountry() {
+    return country;
+  }
 
-	public String getCountry() {
-		return country;
-	}
+  /**
+   * Set country code (GB, JP etc.).
+   * @param country country code (GB, JP etc.)
+   */
+  public void setCountry(String country) {
+    this.country = country;
+  }
 
-	public int getId() {
-		return id;
-	}
+  /**
+   * Get internal openweather parameter.
+   * More details: https://openweathermap.org/current#current_JSON.
+   * @return internal parameter
+   */
+  public int getId() {
+    return id;
+  }
 
-	public BigDecimal getMessage() {
-		return message;
-	}
+  /**
+   * Set internal openweather parameter.
+   * More details: https://openweathermap.org/current#current_JSON.
+   * @param id internal parameter
+   */
+  public void setId(int id) {
+    this.id = id;
+  }
 
-	public int getSunrise() {
-		return sunrise;
-	}
+  /**
+   * Get internal openweather parameter.
+   * More details: https://openweathermap.org/current#current_JSON.
+   * @return internal parameter
+   */
+  public BigDecimal getMessage() {
+    return message;
+  }
 
-	public int getSunset() {
-		return sunset;
-	}
+  /**
+   * Set internal openweather parameter.
+   * More details: https://openweathermap.org/current#current_JSON.
+   * @param message internal parameter
+   */
+  public void setMessage(BigDecimal message) {
+    this.message = message;
+  }
 
-	public int getType() {
-		return type;
-	}
+  /**
+   * Get sunrise time, unix, UTC.
+   * @return sunrise time, unix, UTC
+   */
+  public int getSunrise() {
+    return sunrise;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(country, id, message, sunrise, sunset, type);
-	}
+  /**
+   * Set sunrise time, unix, UTC.
+   * @param sunrise sunrise time, unix, UTC
+   */
+  public void setSunrise(int sunrise) {
+    this.sunrise = sunrise;
+  }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+  /**
+   * Get sunset time, unix, UTC.
+   * @return sunset time, unix, UTC
+   */
+  public int getSunset() {
+    return sunset;
+  }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  /**
+   * Set sunset time, unix, UTC.
+   * @param sunset sunset time, unix, UTC
+   */
+  public void setSunset(int sunset) {
+    this.sunset = sunset;
+  }
 
-	public void setMessage(BigDecimal message) {
-		this.message = message;
-	}
+  /**
+   * Get internal openweather parameter.
+   * More details: https://openweathermap.org/current#current_JSON.
+   * @return internal parameter
+   */
+  public int getType() {
+    return type;
+  }
 
-	public void setSunrise(int sunrise) {
-		this.sunrise = sunrise;
-	}
+  /**
+   * Set internal openweather parameter.
+   * More details: https://openweathermap.org/current#current_JSON.
+   * @param type internal parameter
+   */
+  public void setType(int type) {
+    this.type = type;
+  }
 
-	public void setSunset(int sunset) {
-		this.sunset = sunset;
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(country, id, message, sunrise, sunset, type);
+  }
 
-	public void setType(int type) {
-		this.type = type;
-	}
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    Sys other = (Sys) obj;
+    return Objects.equals(country, other.country) && id == other.id
+        && Objects.equals(message, other.message) && sunrise == other.sunrise
+        && sunset == other.sunset && type == other.type;
+  }
 
-	@Override
-	public String toString() {
-		return String.format("Sys [type=%s, id=%s, message=%s, country=%s, sunrise=%s, sunset=%s]", type, id, message,
-				country, sunrise, sunset);
-	}
+  @Override
+  public String toString() {
+    return String.format("Sys [type=%s, id=%s, message=%s, country=%s, sunrise=%s, sunset=%s]",
+        type, id, message, country, sunrise, sunset);
+  }
 
-	public Sys withCountry(String country) {
-		this.country = country;
-		return this;
-	}
+  /**
+   * Set country code (GB, JP etc.).
+   * @param country country code (GB, JP etc.)
+   */
+  public Sys withCountry(String country) {
+    this.country = country;
+    return this;
+  }
 
-	public Sys withId(int id) {
-		this.id = id;
-		return this;
-	}
+  /**
+   * Set internal openweather parameter.
+   * More details: https://openweathermap.org/current#current_JSON.
+   * @param id internal parameter
+   */
+  public Sys withId(int id) {
+    this.id = id;
+    return this;
+  }
 
-	public Sys withMessage(BigDecimal message) {
-		this.message = message;
-		return this;
-	}
+  /**
+   * Set internal openweather parameter.
+   * More details: https://openweathermap.org/current#current_JSON.
+   * @param message internal parameter
+   */
+  public Sys withMessage(BigDecimal message) {
+    this.message = message;
+    return this;
+  }
 
-	public Sys withSunrise(int sunrise) {
-		this.sunrise = sunrise;
-		return this;
-	}
+  /**
+   * Set sunrise time, unix, UTC.
+   * @param sunrise sunrise time, unix, UTC
+   */
+  public Sys withSunrise(int sunrise) {
+    this.sunrise = sunrise;
+    return this;
+  }
 
-	public Sys withSunset(int sunset) {
-		this.sunset = sunset;
-		return this;
-	}
+  /**
+   * Set sunset time, unix, UTC.
+   * @param sunset sunset time, unix, UTC
+   */
+  public Sys withSunset(int sunset) {
+    this.sunset = sunset;
+    return this;
+  }
 
-	public Sys withType(int type) {
-		this.type = type;
-		return this;
-	}
+  /**
+   * Set internal openweather parameter.
+   * More details: https://openweathermap.org/current#current_JSON.
+   * @param type internal parameter
+   */
+  public Sys withType(int type) {
+    this.type = type;
+    return this;
+  }
 
 }

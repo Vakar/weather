@@ -1,5 +1,6 @@
 package space.vakar.open.weather.provider;
 
+import java.io.InputStream;
 import java.util.Properties;
 
 class ApiClientBuilder {
@@ -10,14 +11,13 @@ class ApiClientBuilder {
   static final String END_POINT_PROPERTY_NAME = "current.weather.end.point";
   static final String APP_ID_PROPERTY_NAME = "app.id";
 
-  static final String PROPERTY_ERROR_MESSAGE = "Can't read OpenWeather properties file.";
+  private static final String PROPERTY_ERROR_MESSAGE = "Can't read OpenWeather properties file.";
 
   private ApiClientBuilder() {
     throw new IllegalStateException("Utility class");
   }
 
-  static ApiClientImpl getCustomJsonApiConnector(String serverName, String endPoint,
-      String appId) {
+  static ApiClientImpl getCustomJsonApiConnector(String serverName, String endPoint, String appId) {
     return new ApiClientImpl(serverName, endPoint, appId);
   }
 
@@ -33,10 +33,13 @@ class ApiClientBuilder {
     return new ApiClientImpl(url, endPoint, appId);
   }
 
+  // TODO: move to separate util class | use abstraction for this class & other util properties
+  // class
   static Properties readPropertiesFromFile(String fileName) {
     Properties properties = new Properties();
-    try {
-      properties.load(ApiClientBuilder.class.getResourceAsStream(fileName));
+    try (InputStream propertiesFileInputStream =
+        ApiClientBuilder.class.getResourceAsStream(fileName)) {
+      properties.load(propertiesFileInputStream);
     } catch (Exception e) {
       throw new OpenWeatherException(PROPERTY_ERROR_MESSAGE, e);
     }

@@ -5,82 +5,83 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
+import io.github.benas.randombeans.api.EnhancedRandom;
+
 import java.util.Map;
 import java.util.TreeMap;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import io.github.benas.randombeans.api.EnhancedRandom;
 import space.vakar.weather.domain.core.WeatherContainerImpl;
-import space.vakar.weather.domain.model.WeatherDTO;
+import space.vakar.weather.domain.model.WeatherDto;
 
 public class ContainerTest {
 
-	private WeatherContainerImpl container;
+  private WeatherContainerImpl container;
 
-	private WeatherDTO weatherA;
-	private WeatherDTO weatherB;
-	private WeatherDTO weatherC;
+  private WeatherDto weatherA;
+  private WeatherDto weatherB;
+  private WeatherDto weatherC;
 
-	private static final int WEATHER_A_CITY_ID = 1;
-	private static final int WEATHER_B_CITY_ID = 2;
-	private static final int WEATHER_C_CITY_ID = 3;
-	private static final int MAX_CONTAINER_SIZE = 1000;
+  private static final int WEATHER_A_CITY_ID = 1;
+  private static final int WEATHER_B_CITY_ID = 2;
+  private static final int WEATHER_C_CITY_ID = 3;
+  private static final int MAX_CONTAINER_SIZE = 1000;
 
-	@Before
-	public void setUpContainer() {
-		container = new WeatherContainerImpl();
-		Map<Integer, WeatherDTO> map = new TreeMap<>();
-		map.put(WEATHER_A_CITY_ID, weatherA);
-		map.put(WEATHER_B_CITY_ID, weatherB);
-		container.setMap(map);
-	}
+  @Before
+  public void setUpContainer() {
+    container = new WeatherContainerImpl();
+    Map<Integer, WeatherDto> map = new TreeMap<>();
+    map.put(WEATHER_A_CITY_ID, weatherA);
+    map.put(WEATHER_B_CITY_ID, weatherB);
+    container.setMap(map);
+  }
 
-	@Before
-	public void setUpWeather() {
-		weatherA = EnhancedRandom.random(WeatherDTO.class);
-		weatherB = EnhancedRandom.random(WeatherDTO.class);
-		weatherC = EnhancedRandom.random(WeatherDTO.class);
-	}
+  @Before
+  public void setUpWeather() {
+    weatherA = EnhancedRandom.random(WeatherDto.class);
+    weatherB = EnhancedRandom.random(WeatherDto.class);
+    weatherC = EnhancedRandom.random(WeatherDto.class);
+  }
 
-	@Test
-	public void shouldPutObjectToContainer_WhenPushObjectNotNullValid() {
-		container.push(weatherC, WEATHER_C_CITY_ID);
-		assertEquals(weatherC, container.getMap().get(WEATHER_C_CITY_ID));
-	}
+  @Test
+  public void shouldPutObjectToContainer_WhenPushObjectNotNullValid() {
+    container.push(weatherC, WEATHER_C_CITY_ID);
+    assertEquals(weatherC, container.getMap().get(WEATHER_C_CITY_ID));
+  }
 
-	@Test
-	public void shouldReplaceOldObjectFromContainer_WhenObjectWithTheSameCityIdExist() {
-		WeatherDTO newWeatherA = EnhancedRandom.random(WeatherDTO.class);
-		container.push(newWeatherA, WEATHER_A_CITY_ID);
-		assertEquals(newWeatherA, container.getMap().get(WEATHER_A_CITY_ID));
-	}
+  @Test
+  public void shouldReplaceOldObjectFromContainer_WhenObjectWithTheSameCityIdExist() {
+    WeatherDto newWeatherA = EnhancedRandom.random(WeatherDto.class);
+    container.push(newWeatherA, WEATHER_A_CITY_ID);
+    assertEquals(newWeatherA, container.getMap().get(WEATHER_A_CITY_ID));
+  }
 
-	@Test
-	public void containerCapacityShouldNotBeBigger_Than1000() {
-		Map<Integer, WeatherDTO> map = new TreeMap<>();
-		for (int i = 0; i < MAX_CONTAINER_SIZE; i++) {
-			map.put(i, weatherA);
-		}
-		container.setMap(map);
-		assumeTrue(container.getMap().size() == MAX_CONTAINER_SIZE);
-		container.push(weatherB, 1 + MAX_CONTAINER_SIZE);
-		assertTrue(container.getMap().size() <= MAX_CONTAINER_SIZE);
-	}
+  @Test
+  public void containerCapacityShouldNotBeBigger_Than1000() {
+    Map<Integer, WeatherDto> map = new TreeMap<>();
+    for (int i = 0; i < MAX_CONTAINER_SIZE; i++) {
+      map.put(i, weatherA);
+    }
+    container.setMap(map);
+    assumeTrue(container.getMap().size() == MAX_CONTAINER_SIZE);
+    container.push(weatherB, 1 + MAX_CONTAINER_SIZE);
+    assertTrue(container.getMap().size() <= MAX_CONTAINER_SIZE);
+  }
 
-	@Test(expected = IllegalArgumentException.class)
-	public void shouldThrowException_WhenObjectIsNull() {
-		container.push(null, 23);
-	}
+  @Test(expected = IllegalArgumentException.class)
+  public void shouldThrowException_WhenObjectIsNull() {
+    container.push(null, 23);
+  }
 
-	@Test
-	public void shouldReturnWeatherByCityId_WhenExists() {
-		assertEquals(weatherB, container.pull(WEATHER_B_CITY_ID));
-	}
+  @Test
+  public void shouldReturnWeatherByCityId_WhenExists() {
+    assertEquals(weatherB, container.pull(WEATHER_B_CITY_ID));
+  }
 
-	@Test
-	public void shouldReturnNull_WhenNotExist() {
-		assertNull(container.pull(WEATHER_C_CITY_ID));
-	}
+  @Test
+  public void shouldReturnNull_WhenNotExist() {
+    assertNull(container.pull(WEATHER_C_CITY_ID));
+  }
 }

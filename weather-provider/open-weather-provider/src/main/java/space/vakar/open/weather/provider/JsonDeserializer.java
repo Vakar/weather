@@ -1,7 +1,7 @@
 package space.vakar.open.weather.provider;
 
 import com.google.gson.Gson;
-import space.vakar.weather.domain.model.WeatherDTO;
+import space.vakar.weather.domain.model.WeatherDto;
 
 class JsonDeserializer {
 
@@ -13,12 +13,14 @@ class JsonDeserializer {
     throw new IllegalStateException("Utility class");
   }
 
-  static WeatherDTO convertJsonToWeatherDTO(String weatherJson) {
-    if (weatherJson == null)
+  static WeatherDto convertJsonToWeatherDto(String weatherJson) {
+    if (weatherJson == null) {
       throw new IllegalArgumentException(SHOULD_NOT_BE_NULL_MESSAGE);
+    }
     weatherJson = weatherJson.trim();
-    if (weatherJson.equals(""))
+    if (weatherJson.equals("")) {
       throw new IllegalArgumentException(SHOULD_NOT_BE_BLANK_MESSAGE);
-    return new Gson().fromJson(weatherJson, WeatherDTO.class);
+    }
+    return new Gson().fromJson(weatherJson, WeatherDto.class);
   }
 }

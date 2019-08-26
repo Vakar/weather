@@ -13,7 +13,14 @@
 	<artifactId>open-weather-persistence</artifactId>
 	<name>open-weather-persistence</name>
 
+	<properties>
+		<!-- Test dependencies -->
+		<dbunit.version>2.5.4</dbunit.version>
+		<junit.version>4.12</junit.version>
+	</properties>
+
 	<dependencies>
+		<!-- Project dependencies -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>weather-domain-api</artifactId>
@@ -24,27 +31,23 @@
 			<artifactId>weather-domain-model</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<!-- Database dependencies -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.199</version>
 		</dependency>
+		<!-- Test dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.dbunit</groupId>
 			<artifactId>dbunit</artifactId>
-			<version>2.5.4</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.26</version>
+			<version>${dbunit.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

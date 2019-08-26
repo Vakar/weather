@@ -1,6 +1,7 @@
 package space.vakar.open.weather.provider;
 
 import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -10,41 +11,41 @@ import org.junit.Before;
 import org.junit.Test;
 import space.vakar.open.weather.provider.ApiClientBuilder;
 import space.vakar.open.weather.provider.JsonDeserializer;
-import space.vakar.weather.domain.model.WeatherDTO;
+import space.vakar.weather.domain.model.WeatherDto;
 
 public class JsonDeserializerTest {
 
   private static final String WEATHER_JSON_FILE_PATH = "/weather.json";
   private static final String NEW_LINE = System.lineSeparator();
 
-  private WeatherDTO expectedWeatherTDO;
+  private WeatherDto expectedWeatherTto;
 
   @Before
   public void setUp() {
-    expectedWeatherTDO = new WeatherDTO();
-    WeatherDtoPopulator.populate(expectedWeatherTDO);
+    expectedWeatherTto = new WeatherDto();
+    WeatherDtoPopulator.populate(expectedWeatherTto);
   }
 
   @Test
-  public void shouldConvertJsonToWeatherDTO_WhenJsonValid() {
+  public void shouldConvertJsonToWeatherDto_WhenJsonValid() {
     String weatherJson = readFile(WEATHER_JSON_FILE_PATH);
-    WeatherDTO actualWeatherDTO = JsonDeserializer.convertJsonToWeatherDTO(weatherJson);
-    assertEquals(expectedWeatherTDO, actualWeatherDTO);
+    WeatherDto actualWeatherDto = JsonDeserializer.convertJsonToWeatherDto(weatherJson);
+    assertEquals(expectedWeatherTto, actualWeatherDto);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void shouldThrowIlligalArgumentException_WhenInputNull() {
-    JsonDeserializer.convertJsonToWeatherDTO(null);
+    JsonDeserializer.convertJsonToWeatherDto(null);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void shouldThrowIlligalArgumentException_WhenInputEmptyString() {
-    JsonDeserializer.convertJsonToWeatherDTO("");
+    JsonDeserializer.convertJsonToWeatherDto("");
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void shouldThrowIlligalArgumentException_WhenInputBlankString() {
-    JsonDeserializer.convertJsonToWeatherDTO(" ");
+    JsonDeserializer.convertJsonToWeatherDto(" ");
   }
 
   private static String readFile(String filePath) {

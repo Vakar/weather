@@ -1,10 +1,19 @@
+# Eclipse Project Files
 .classpath
-.gitignore
 .project
 .settings
-domain/target/
-target/
-openweather.properties
-connection.properties
+
+# IntelliJ IDEA Project Files
 *.iml
 .idea/
+
+# VS Code Project Files
+.vscode
+
+# Property Files
+openweather.properties
+connection.properties
+
+# Project Folders
+domain/target/
+target/

@@ -1,6 +1,7 @@
 package space.vakar.open.weather.provider;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Properties;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,7 +35,7 @@ public class ApiClientBuilderTest {
   }
 
   @Test(expected = OpenWeatherException.class)
-  public void shouldThrowIOException_WhenCanNotReadPropertiesFile() {
+  public void shouldThrowIoException_WhenCanNotReadPropertiesFile() {
     ApiClientBuilder.readPropertiesFromFile(INVALID_PROPERTIES_FILE);
   }
 

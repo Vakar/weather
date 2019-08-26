@@ -1,10 +1,10 @@
 package space.vakar.weather.domain.core;
 
-import space.vakar.weather.domain.model.WeatherDTO;
+import space.vakar.weather.domain.model.WeatherDto;
 
 interface Agent {
 
-	WeatherDTO weather(int cityId);
+  WeatherDto weather(int cityId);
 
-	boolean isFresh(WeatherDTO weather);
+  boolean isFresh(WeatherDto weather);
 }

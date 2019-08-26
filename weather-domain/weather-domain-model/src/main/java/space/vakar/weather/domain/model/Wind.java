@@ -1,70 +1,99 @@
 
 package space.vakar.weather.domain.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class Wind implements Serializable {
 
-	private final static long serialVersionUID = 2769601011851779264L;
+  private static final long serialVersionUID = 2769601011851779264L;
 
-	@SerializedName("speed")
-	@Expose
-	private BigDecimal speed;
-	@SerializedName("gust")
-	@Expose
-	private BigDecimal gust;
+  @SerializedName("speed")
+  @Expose
+  private BigDecimal speed;
+  
+  @SerializedName("deg")
+  @Expose
+  private BigDecimal deg;
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Wind other = (Wind) obj;
-		return Objects.equals(gust, other.gust) && Objects.equals(speed, other.speed);
-	}
+  /**
+   * Get wind direction, degrees (from 0 to 360).
+   * @return wind direction, degrees (from 0 to 360)
+   */
+  public BigDecimal getDeg() {
+    return deg;
+  }
 
-	public BigDecimal getGust() {
-		return gust;
-	}
+  /**
+   * Get wind direction, degrees (from 0 to 360).
+   * @param deg wind direction, degrees (from 0 to 360)
+   */
+  public void setDeg(BigDecimal deg) {
+    this.deg = deg;
+  }
 
-	public BigDecimal getSpeed() {
-		return speed;
-	}
+  /**
+   * Get wind speed. Unit: meter/sec.
+   * @return wind speed meter/sec
+   */
+  public BigDecimal getSpeed() {
+    return speed;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(gust, speed);
-	}
+  /**
+   * Set wind speed. Unit: meter/sec.
+   * @param speed wind speed meter/sec
+   */
+  public void setSpeed(BigDecimal speed) {
+    this.speed = speed;
+  }
 
-	public void setGust(BigDecimal gust) {
-		this.gust = gust;
-	}
+  @Override
+  public int hashCode() {
+    return Objects.hash(deg, speed);
+  }
 
-	public void setSpeed(BigDecimal speed) {
-		this.speed = speed;
-	}
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    Wind other = (Wind) obj;
+    return Objects.equals(deg, other.deg) && Objects.equals(speed, other.speed);
+  }
 
-	@Override
-	public String toString() {
-		return String.format("Wind [speed=%s, gust=%s]", speed, gust);
-	}
+  @Override
+  public String toString() {
+    return String.format("Wind [speed=%s, deg=%s]", speed, deg);
+  }
 
-	public Wind withGust(BigDecimal gust) {
-		this.gust = gust;
-		return this;
-	}
+  /**
+   * Get wind direction, degrees (from 0 to 360).
+   * @param deg wind direction, degrees (from 0 to 360)
+   * @return this {Wind} object
+   */
+  public Wind withDeg(BigDecimal deg) {
+    this.deg = deg;
+    return this;
+  }
 
-	public Wind withSpeed(BigDecimal speed) {
-		this.speed = speed;
-		return this;
-	}
+  /**
+   * Set wind speed. Unit: meter/sec.
+   * @param speed wind speed meter/sec
+   * @return this {Wind} object
+   */
+  public Wind withSpeed(BigDecimal speed) {
+    this.speed = speed;
+    return this;
+  }
 
 }

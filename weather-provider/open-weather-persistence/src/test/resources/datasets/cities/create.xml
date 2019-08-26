@@ -1,5 +1,5 @@
 <!DOCTYPE dataset SYSTEM "cities.dtd">
 <dataset>
-	<CITIES ID="2950159" NAME="Berlin" COUNTRY="DE" />
-	<CITIES ID="2993458" NAME="Monaco" COUNTRY="FR"/>
+<CITIES ID="2950159" NAME="Berlin" COUNTRY="DE" />
+<CITIES ID="2993458" NAME="Monaco" COUNTRY="FR" />
 </dataset>

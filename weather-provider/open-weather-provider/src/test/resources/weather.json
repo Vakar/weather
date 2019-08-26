@@ -22,7 +22,7 @@
     "visibility": 10000,
     "wind": {
         "speed": 3.1,
-        "gust": 8.7
+        "deg": 350
     },
     "clouds": {
         "all": 0

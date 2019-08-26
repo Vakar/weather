@@ -4,12 +4,12 @@ import space.vakar.weather.domain.model.City;
 
 class CityConverter {
 
-	private CityConverter() {
+  private CityConverter() {
 
-	}
+  }
 
-	static City convert(DtoCity dto) {
-		return new City(dto.getId(), dto.getName(), dto.getCountry());
-	}
+  static City convert(DtoCity dto) {
+    return new City(dto.getId(), dto.getName(), dto.getCountry());
+  }
 
 }

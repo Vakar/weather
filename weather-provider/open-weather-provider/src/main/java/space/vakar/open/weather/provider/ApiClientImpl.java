@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -59,7 +60,8 @@ class ApiClientImpl implements ApiClient {
   }
 
   private String readResponseBody(InputStream in) throws IOException {
-    BufferedReader bufReader = new BufferedReader(new InputStreamReader(in));
+    BufferedReader bufReader =
+        new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
     String inputLine;
     StringBuilder response = new StringBuilder();
     while ((inputLine = bufReader.readLine()) != null) {
@@ -76,12 +78,15 @@ class ApiClientImpl implements ApiClient {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj)
+    if (this == obj) {
       return true;
-    if (obj == null)
+    }
+    if (obj == null) {
       return false;
-    if (getClass() != obj.getClass())
+    }
+    if (getClass() != obj.getClass()) {
       return false;
+    }
     ApiClientImpl other = (ApiClientImpl) obj;
     return Objects.equals(appId, other.appId) && Objects.equals(serviceUrl, other.serviceUrl)
         && Objects.equals(weatherEndPoint, other.weatherEndPoint);
