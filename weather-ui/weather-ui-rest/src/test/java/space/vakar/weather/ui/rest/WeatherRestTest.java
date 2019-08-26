@@ -22,11 +22,11 @@ public class WeatherRestTest extends JerseyTest {
   private WeatherService service;
 
   @InjectMocks
-  private WeatherRest rest;
+  private WeatherRestWs rest;
 
   private WeatherDto weather = WeatherDtoPopulator.populate(new WeatherDto());
 
-  private static final String PATH = "/weather/";
+  private static final String GET_WEATHER_BY_CITY_PATH = "/weather/getWeatherByCityId/";
   private static final int CITY_ID = 1;
 
   @Override
@@ -38,14 +38,14 @@ public class WeatherRestTest extends JerseyTest {
   @Test
   public void returnHttpStatusOk_whenCorrectRequest() {
     Mockito.when(service.weather(CITY_ID)).thenReturn(weather);
-    Response response = target(PATH + CITY_ID).request().get();
+    Response response = target(GET_WEATHER_BY_CITY_PATH + CITY_ID).request().get();
     assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
   }
 
   @Test
   public void returnApplicationJson_whenCorrectRequest() {
     Mockito.when(service.weather(CITY_ID)).thenReturn(weather);
-    Response response = target(PATH + CITY_ID).request().get();
+    Response response = target(GET_WEATHER_BY_CITY_PATH + CITY_ID).request().get();
     assertEquals("Content type should be application/json: ",
         ContentType.APPLICATION_JSON.getMimeType(), response.getHeaderString("Content-Type"));
   }
@@ -53,7 +53,8 @@ public class WeatherRestTest extends JerseyTest {
   @Test
   public void returnCorrectEntity_whenCorrectRequest() {
     Mockito.when(service.weather(CITY_ID)).thenReturn(weather);
-    WeatherDto actualWeather = target(PATH + CITY_ID).request().get(WeatherDto.class);
+    WeatherDto actualWeather =
+        target(GET_WEATHER_BY_CITY_PATH + CITY_ID).request().get(WeatherDto.class);
     assertEquals("Should return entity with the same fields: ", weather, actualWeather);
   }
 

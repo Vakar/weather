@@ -11,19 +11,20 @@ import space.vakar.weather.domain.api.CityService;
 import space.vakar.weather.domain.model.City;
 
 @Path("/city")
-public class CityRest {
+public class CityRestWs {
 
   private CityService cityService = new CityServiceImpl();
 
   /**
-   * Find cities by name.
-   * @param cityName city
-   * @return city list with cities like input city name
+   * Find cities by input substring. Result contains city names witch contains input substring.
+   * 
+   * @param inputSubstring substring that represent supposed city name
+   * @return city names witch contains input substring
    */
   @GET
-  @Path("/{cityName}")
+  @Path("/getCitiesByName/{inputSubstring}")
   @Produces(MediaType.APPLICATION_JSON)
-  public List<City> getTestService(@PathParam("cityName") String cityName) {
-    return cityService.getCitiesByName(cityName);
+  public List<City> getCitiesByName(@PathParam("inputSubstring") String inputSubstring) {
+    return cityService.getCitiesByName(inputSubstring);
   }
 }

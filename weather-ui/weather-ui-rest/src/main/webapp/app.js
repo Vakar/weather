@@ -1,8 +1,9 @@
-// CONFIGURATION
-const restWs = "rest/";
-const cityRestWs = restWs + "city/";
-const weatherRestWs = restWs + "weather/";
+// CONFIGURATION -> Web Service End Points
+const rootWebServiceEndPoint = "rest/";
+const webServiceGetCitiesByName = rootWebServiceEndPoint + "city/getCitiesByName/";
+const webServiceGetWeatherByCityId = rootWebServiceEndPoint + "weather/getWeatherByCityId/";
 
+//CONFIGURATION -> OpenWeather icons
 const iconLink = "http://openweathermap.org/img/wn/";
 const iconLinkEnd = "@2x.png";
 const iconSize = 100;
@@ -54,7 +55,7 @@ function isEmpty(str) {
 
 function findCities(inputString) {
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", cityRestWs + inputString, true);
+  xhr.open("GET", webServiceGetCitiesByName + inputString, true);
   xhr.onload = function() {
     if (this.status == 200) {
       cityList = JSON.parse(xhr.responseText);
@@ -69,7 +70,7 @@ function findCities(inputString) {
 function getWeather(cityId) {
   console.log(cityId);
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", weatherRestWs + cityId, true);
+  xhr.open("GET", webServiceGetWeatherByCityId + cityId, true);
   xhr.onload = function() {
     if (this.status == 200) var weather = JSON.parse(xhr.responseText);
     showCity(weather.name, weather.sys.country);

@@ -10,19 +10,20 @@ import space.vakar.weather.domain.core.WeatherServiceImpl;
 import space.vakar.weather.domain.model.WeatherDto;
 
 @Path("/weather")
-public class WeatherRest {
+public class WeatherRestWs {
 
   private WeatherService weatherService = new WeatherServiceImpl();
 
   /**
    * Get weather by city id.
+   * 
    * @param cityId city id
    * @return current weather for city by city id
    */
   @GET
-  @Path("/{cityId}")
+  @Path("/getWeatherByCityId/{cityId}")
   @Produces(MediaType.APPLICATION_JSON)
-  public WeatherDto getWeather(@PathParam("cityId") int cityId) {
+  public WeatherDto getWeatherByCityId(@PathParam("cityId") int cityId) {
     return weatherService.weather(cityId);
   }
 
