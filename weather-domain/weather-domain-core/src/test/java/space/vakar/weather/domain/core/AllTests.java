@@ -5,5 +5,5 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({AgentImplTest.class, ContainerTest.class, ServiceImplTest.class})
+@SuiteClasses({WeatherAgentImplTest.class, WeatherContainerTest.class, WeatherServiceImplTest.class})
 public class AllTests {}

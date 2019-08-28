@@ -31,6 +31,11 @@
 			<artifactId>weather-domain-model</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>weather-domain-util</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<!-- Database dependencies -->
 		<dependency>
 			<groupId>com.h2database</groupId>

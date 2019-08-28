@@ -76,8 +76,8 @@ public class WeatherDto implements Serializable {
   }
 
   /**
-   * Set clouds.
-   * @param clouds clouds
+   * Set clouds in % from 0 to 100.
+   * @param clouds clouds in %
    */
   public void setClouds(Clouds clouds) {
     this.clouds = clouds;

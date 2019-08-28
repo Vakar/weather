@@ -5,8 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ApiClientBuilderTest.class, ApiClientImplTest.class,
-    JsonDeserializerTest.class})
+@SuiteClasses({OpenWeatherClientImpTest.class})
 public class AllTests {
 
 }

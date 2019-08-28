@@ -13,7 +13,7 @@ import space.vakar.weather.domain.model.Wind;
 
 public class WeatherDtoPopulator {
 
-  static void populate(WeatherDto weatherDto) {
+  static WeatherDto populate(WeatherDto weatherDto) {
     Coord coord = new Coord(new BigDecimal("-0.13"), new BigDecimal("51.51"));
     Weather weather =
         new Weather().withId(800).withMain("Clear").withDescription("clear sky").withIcon("01d");
@@ -24,9 +24,10 @@ public class WeatherDtoPopulator {
     Sys sys = new Sys().withType(1).withId(1414).withMessage(new BigDecimal("0.0107"))
         .withCountry("GB").withSunrise(1563249691).withSunset(1563307869);
 
-    weatherDto.withCoord(coord).withWeather(Collections.singletonList(weather)).withBase("stations")
-        .withMain(main).withVisibility(10000).withWind(wind).withClouds(clouds).withDt(1563300768)
-        .withSys(sys).withTimezone(3600).withId(2643743).withName("London").withCod(200);
+    return weatherDto.withCoord(coord).withWeather(Collections.singletonList(weather))
+        .withBase("stations").withMain(main).withVisibility(10000).withWind(wind).withClouds(clouds)
+        .withDt(1563300768).withSys(sys).withTimezone(3600).withId(2643743).withName("London")
+        .withCod(200);
   }
 
 }

@@ -1,11 +1,12 @@
 package space.vakar.weather.domain.core;
 
 import java.util.Objects;
+import java.util.Optional;
 import space.vakar.weather.domain.model.WeatherDto;
 
 public class WeatherServiceImpl implements WeatherService {
 
-  private Agent agent = new AgentImpl();
+  private WeatherAgent agent = new WeatherAgentImp();
 
   /**
    * Default constructor.
@@ -13,23 +14,23 @@ public class WeatherServiceImpl implements WeatherService {
   public WeatherServiceImpl() {}
 
   /**
-   * Create {WeatherServiceImpl} with given {Agent}.
+   * Create {WeatherServiceImpl} with given {WeatherAgent}.
    * @param agent weather agent
    */
-  public WeatherServiceImpl(Agent agent) {
+  public WeatherServiceImpl(WeatherAgent agent) {
     setAgent(agent);
   }
 
   @Override
-  public WeatherDto weather(int cityId) {
-    return agent.weather(cityId);
+  public Optional<WeatherDto> weather(int cityId) {
+    return agent.getWeatherByCityId(cityId);
   }
 
   /**
    * Get weather agent.
    * @return weather agent
    */
-  public Agent getAgent() {
+  public WeatherAgent getAgent() {
     return agent;
   }
 
@@ -37,7 +38,7 @@ public class WeatherServiceImpl implements WeatherService {
    * Set weather agent.
    * @param agent weather agent
    */
-  public void setAgent(Agent agent) {
+  public void setAgent(WeatherAgent agent) {
     this.agent = agent;
   }
 

@@ -24,7 +24,7 @@ public class WeatherRestWs {
   @Path("/getWeatherByCityId/{cityId}")
   @Produces(MediaType.APPLICATION_JSON)
   public WeatherDto getWeatherByCityId(@PathParam("cityId") int cityId) {
-    return weatherService.weather(cityId);
+    return weatherService.weather(cityId).get();
   }
 
 }
