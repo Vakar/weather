@@ -1,5 +1,6 @@
 package space.vakar.weather.domain.core;
 
+import java.util.Optional;
 import space.vakar.weather.domain.model.WeatherDto;
 
 public interface WeatherService {
@@ -10,5 +11,5 @@ public interface WeatherService {
    * @param cityId city id
    * @return weather data transfer object
    */
-  WeatherDto weather(int cityId);
+  Optional<WeatherDto> weather(int cityId);
 }

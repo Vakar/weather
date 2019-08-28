@@ -2,6 +2,8 @@ package space.vakar.weather.ui.rest;
 
 import static org.junit.Assert.assertEquals;
 
+import io.github.benas.randombeans.api.EnhancedRandom;
+import java.util.Optional;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -24,7 +26,7 @@ public class WeatherRestTest extends JerseyTest {
   @InjectMocks
   private WeatherRestWs rest;
 
-  private WeatherDto weather = WeatherDtoPopulator.populate(new WeatherDto());
+  private WeatherDto weather = EnhancedRandom.random(WeatherDto.class);
 
   private static final String GET_WEATHER_BY_CITY_PATH = "/weather/getWeatherByCityId/";
   private static final int CITY_ID = 1;
@@ -37,14 +39,14 @@ public class WeatherRestTest extends JerseyTest {
 
   @Test
   public void returnHttpStatusOk_whenCorrectRequest() {
-    Mockito.when(service.weather(CITY_ID)).thenReturn(weather);
+    Mockito.when(service.weather(CITY_ID)).thenReturn(Optional.ofNullable(weather));
     Response response = target(GET_WEATHER_BY_CITY_PATH + CITY_ID).request().get();
     assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
   }
 
   @Test
   public void returnApplicationJson_whenCorrectRequest() {
-    Mockito.when(service.weather(CITY_ID)).thenReturn(weather);
+    Mockito.when(service.weather(CITY_ID)).thenReturn(Optional.ofNullable(weather));
     Response response = target(GET_WEATHER_BY_CITY_PATH + CITY_ID).request().get();
     assertEquals("Content type should be application/json: ",
         ContentType.APPLICATION_JSON.getMimeType(), response.getHeaderString("Content-Type"));
@@ -52,7 +54,7 @@ public class WeatherRestTest extends JerseyTest {
 
   @Test
   public void returnCorrectEntity_whenCorrectRequest() {
-    Mockito.when(service.weather(CITY_ID)).thenReturn(weather);
+    Mockito.when(service.weather(CITY_ID)).thenReturn(Optional.ofNullable(weather));
     WeatherDto actualWeather =
         target(GET_WEATHER_BY_CITY_PATH + CITY_ID).request().get(WeatherDto.class);
     assertEquals("Should return entity with the same fields: ", weather, actualWeather);

@@ -1,18 +1,12 @@
 package space.vakar.weather.domain.core;
 
 import java.io.Serializable;
-import space.vakar.weather.domain.model.Weather;
+import java.util.Optional;
 import space.vakar.weather.domain.model.WeatherDto;
 
 interface WeatherContainer extends Serializable {
+  
+  WeatherDto push(WeatherDto weather);
 
-  /**
-   * Contain {@link Weather} objects and provide access to them.
-   *
-   * @param weather on the city
-   * @param cityId is a unique number of city that used to represent weather for given city
-   */
-  void push(WeatherDto weather, int cityId);
-
-  WeatherDto pull(int cityId);
+  Optional<WeatherDto> pull(int cityId);
 }
