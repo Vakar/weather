@@ -12,6 +12,8 @@
 
 # NPM
 package.json
+node_modules
+.eslintrc.js
 
 # Property Files
 openweather.properties
