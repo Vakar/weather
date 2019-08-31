@@ -10,6 +10,9 @@
 # VS Code Project Files
 .vscode
 
+# NPM
+package.json
+
 # Property Files
 openweather.properties
 connection.properties
