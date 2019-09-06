@@ -4,7 +4,6 @@ export default class CityClient {
   }
   findCities(inputString) {
     let xhr = new XMLHttpRequest();
-    console.log(this.webServiceGetCitiesByName + inputString);
     xhr.open("GET", this.webServiceGetCitiesByName + inputString, true);
     let promise = new Promise(function(resolve, reject) {
       xhr.onload = function() {

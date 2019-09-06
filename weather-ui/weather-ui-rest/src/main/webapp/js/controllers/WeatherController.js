@@ -50,6 +50,15 @@ export default class WeatherController {
     this.iconView.appendChild(img);
   }
 
+  cleanWeather() {
+    let empty = "";
+    this.cityNameView.innerHTML = empty;
+    this.humidityView.innerHTML = empty;
+    this.temperatureView.innerHTML = empty;
+    this.windView.innerHTML = empty;
+    this.cleanIcon();
+  }
+
   cleanIcon() {
     while (this.iconView.firstChild) {
       this.iconView.removeChild(this.iconView.firstChild);
