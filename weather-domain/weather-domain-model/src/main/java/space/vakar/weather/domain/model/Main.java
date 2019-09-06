@@ -16,10 +16,10 @@ public class Main implements Serializable {
   private BigDecimal temp;
   @SerializedName("pressure")
   @Expose
-  private int pressure;
+  private BigDecimal pressure;
   @SerializedName("humidity")
   @Expose
-  private int humidity;
+  private BigDecimal humidity;
   @SerializedName("temp_min")
   @Expose
   private BigDecimal tempMin;
@@ -29,38 +29,43 @@ public class Main implements Serializable {
 
   /**
    * Get humidity, %.
+   * 
    * @return humidity, %
    */
-  public int getHumidity() {
+  public BigDecimal getHumidity() {
     return humidity;
   }
 
   /**
    * Set humidity, %.
+   * 
    * @param humidity humidity, %
    */
-  public void setHumidity(int humidity) {
+  public void setHumidity(BigDecimal humidity) {
     this.humidity = humidity;
   }
 
   /**
    * Get atmospheric pressure, hPa.
+   * 
    * @return atmospheric pressure, hPa
    */
-  public int getPressure() {
+  public BigDecimal getPressure() {
     return pressure;
   }
 
   /**
    * Set atmospheric pressure, hPa.
+   * 
    * @param pressure atmospheric pressure, hPa
    */
-  public void setPressure(int pressure) {
+  public void setPressure(BigDecimal pressure) {
     this.pressure = pressure;
   }
 
   /**
    * Get temperature. Unit: Kelvin.
+   * 
    * @return temperature. Unit: Kelvin.
    */
   public BigDecimal getTemp() {
@@ -69,6 +74,7 @@ public class Main implements Serializable {
 
   /**
    * Set temperature. Unit: Kelvin.
+   * 
    * @param temp temperature. Unit: Kelvin.
    */
   public void setTemp(BigDecimal temp) {
@@ -77,6 +83,7 @@ public class Main implements Serializable {
 
   /**
    * Get maximum temperature at the moment. Unit: Kelvin.
+   * 
    * @return maximum temperature at the moment. Unit: Kelvin.
    */
   public BigDecimal getTempMax() {
@@ -85,6 +92,7 @@ public class Main implements Serializable {
 
   /**
    * Set maximum temperature at the moment. Unit: Kelvin.
+   * 
    * @param tempMax maximum temperature at the moment. Unit: Kelvin.
    */
   public void setTempMax(BigDecimal tempMax) {
@@ -93,6 +101,7 @@ public class Main implements Serializable {
 
   /**
    * Get minimum temperature at the moment. Unit: Kelvin.
+   * 
    * @return minimum temperature at the moment. Unit: Kelvin.
    */
   public BigDecimal getTempMin() {
@@ -101,11 +110,14 @@ public class Main implements Serializable {
 
   /**
    * Set minimum temperature at the moment. Unit: Kelvin.
+   * 
    * @param tempMin minimum temperature at the moment. Unit: Kelvin.
    */
   public void setTempMin(BigDecimal tempMin) {
     this.tempMin = tempMin;
   }
+
+
 
   @Override
   public int hashCode() {
@@ -124,37 +136,43 @@ public class Main implements Serializable {
       return false;
     }
     Main other = (Main) obj;
-    return humidity == other.humidity && pressure == other.pressure
+    return Objects.equals(humidity, other.humidity) && Objects.equals(pressure, other.pressure)
         && Objects.equals(temp, other.temp) && Objects.equals(tempMax, other.tempMax)
         && Objects.equals(tempMin, other.tempMin);
   }
 
   @Override
   public String toString() {
-    return String.format("Main [temp=%s, pressure=%s, humidity=%s, tempMin=%s, tempMax=%s]", temp,
-        pressure, humidity, tempMin, tempMax);
+    StringBuilder builder = new StringBuilder();
+    builder.append("Main [temp=").append(temp).append(", pressure=").append(pressure)
+        .append(", humidity=").append(humidity).append(", tempMin=").append(tempMin)
+        .append(", tempMax=").append(tempMax).append("]");
+    return builder.toString();
   }
 
   /**
    * Set humidity, %.
+   * 
    * @param humidity humidity, %
    */
-  public Main withHumidity(int humidity) {
+  public Main withHumidity(BigDecimal humidity) {
     this.humidity = humidity;
     return this;
   }
 
   /**
    * Set atmospheric pressure, hPa.
+   * 
    * @param pressure atmospheric pressure, hPa
    */
-  public Main withPressure(int pressure) {
+  public Main withPressure(BigDecimal pressure) {
     this.pressure = pressure;
     return this;
   }
 
   /**
    * Set temperature. Unit: Kelvin.
+   * 
    * @param temp temperature. Unit: Kelvin.
    */
   public Main withTemp(BigDecimal temp) {
@@ -164,6 +182,7 @@ public class Main implements Serializable {
 
   /**
    * Set maximum temperature at the moment. Unit: Kelvin.
+   * 
    * @param tempMax maximum temperature at the moment. Unit: Kelvin.
    */
   public Main withTempMax(BigDecimal tempMax) {
@@ -173,6 +192,7 @@ public class Main implements Serializable {
 
   /**
    * Set minimum temperature at the moment. Unit: Kelvin.
+   * 
    * @param tempMin minimum temperature at the moment. Unit: Kelvin.
    */
   public Main withTempMin(BigDecimal tempMin) {
