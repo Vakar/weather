@@ -13,6 +13,7 @@
       <!-- Search View -->
       <div class="search lighter">
         <form autocomplete="off" id="citySearch">
+          <!-- Search Input -->
           <div class="autocomplete" style="width:300px;">
             <input
               class="autocomplete"
@@ -23,15 +24,19 @@
             />
             <div id="autocomplete-list" class="autocomplete-items"></div>
           </div>
-          <!-- <input type="submit" /> -->
+          <!-- Search Button -->
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
-        <div id="message"></div>
       </div>
     </header>
 
-    <!-- Weather View -->
+    <!-- Display -->
     <div class="container">
+      <!-- Message View -->
+      <section class="message">
+        <div id="message"></div>
+      </section>
+      <!-- Weather View -->
       <section class="weather">
         <div id="cityName"></div>
         <div id="humidity"></div>
@@ -45,7 +50,7 @@
       <p class="copyright">Leonid Vakar &copy; 2019</p>
     </footer>
 
-    <script src="js/app.js"></script>
+    <script type="module" src="js/app.js"></script>
     <script src="https://kit.fontawesome.com/51b726d648.js"></script>
   </body>
 </html>
