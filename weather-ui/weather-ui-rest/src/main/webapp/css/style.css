@@ -66,6 +66,7 @@ footer {
 .autocomplete {
   position: relative;
   display: inline-block;
+  width: 30rem;
 }
 
 input {
@@ -73,7 +74,6 @@ input {
   background-color: #d4d4d4;
   padding: 0.7rem;
   color: #505050;
-
 }
 
 input[type="text"] {
