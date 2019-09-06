@@ -4,6 +4,7 @@ package space.vakar.weather.domain.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,7 +26,7 @@ public class WeatherDto implements Serializable {
   private Main main;
   @SerializedName("visibility")
   @Expose
-  private int visibility;
+  private BigDecimal visibility;
   @SerializedName("wind")
   @Expose
   private Wind wind;
@@ -53,6 +54,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Get base internal parameter.
+   * 
    * @return base internal parameter
    */
   public String getBase() {
@@ -61,6 +63,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set base internal parameter.
+   * 
    * @param base base internal parameter
    */
   public void setBase(String base) {
@@ -69,6 +72,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Get clouds.
+   * 
    * @return clouds
    */
   public Clouds getClouds() {
@@ -77,6 +81,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set clouds in % from 0 to 100.
+   * 
    * @param clouds clouds in %
    */
   public void setClouds(Clouds clouds) {
@@ -85,6 +90,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Get HTTP response code.
+   * 
    * @return HTTP response code
    */
   public int getCod() {
@@ -93,6 +99,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set HTTP response code.
+   * 
    * @param cod HTTP response code
    */
   public void setCod(int cod) {
@@ -101,6 +108,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Get coordinates.
+   * 
    * @return coordinates
    */
   public Coord getCoord() {
@@ -109,6 +117,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set coordinates.
+   * 
    * @param coord coordinates
    */
   public void setCoord(Coord coord) {
@@ -117,6 +126,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Get time of data calculation, unix, UTC.
+   * 
    * @return time of data calculation, unix, UTC
    */
   public long getDt() {
@@ -125,6 +135,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set time of data calculation, unix, UTC.
+   * 
    * @param dt time of data calculation, unix, UTC
    */
   public void setDt(long dt) {
@@ -133,6 +144,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Get city ID.
+   * 
    * @return city ID
    */
   public int getId() {
@@ -141,6 +153,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set city ID.
+   * 
    * @param id city ID
    */
   public void setId(int id) {
@@ -149,6 +162,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Get main weather data.
+   * 
    * @return main weather data
    */
   public Main getMain() {
@@ -157,6 +171,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set main weather data.
+   * 
    * @param main main weather data
    */
   public void setMain(Main main) {
@@ -165,6 +180,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Get city name.
+   * 
    * @return city name
    */
   public String getName() {
@@ -173,6 +189,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set city name.
+   * 
    * @param name city name
    */
   public void setName(String name) {
@@ -181,6 +198,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Get system data.
+   * 
    * @return system data
    */
   public Sys getSys() {
@@ -189,6 +207,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set system data.
+   * 
    * @param sys system data
    */
   public void setSys(Sys sys) {
@@ -197,6 +216,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Get shift in seconds from UTC.
+   * 
    * @return shift in seconds from UTC
    */
   public int getTimezone() {
@@ -205,6 +225,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set shift in seconds from UTC.
+   * 
    * @param timezone shift in seconds from UTC
    */
   public void setTimezone(int timezone) {
@@ -213,22 +234,25 @@ public class WeatherDto implements Serializable {
 
   /**
    * Get visibility.
+   * 
    * @return visibility in meters
    */
-  public int getVisibility() {
+  public BigDecimal getVisibility() {
     return visibility;
   }
 
   /**
    * Set visibility.
+   * 
    * @param visibility visibility in meters
    */
-  public void setVisibility(int visibility) {
+  public void setVisibility(BigDecimal visibility) {
     this.visibility = visibility;
   }
 
   /**
    * Get weather list.
+   * 
    * @return weather list
    */
   public List<Weather> getWeather() {
@@ -237,6 +261,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set weather list.
+   * 
    * @param weather weather list
    */
   public void setWeather(List<Weather> weather) {
@@ -245,6 +270,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Get wind.
+   * 
    * @return wind
    */
   public Wind getWind() {
@@ -253,11 +279,14 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set wind.
+   * 
    * @param wind wind
    */
   public void setWind(Wind wind) {
     this.wind = wind;
   }
+
+
 
   @Override
   public int hashCode() {
@@ -281,20 +310,27 @@ public class WeatherDto implements Serializable {
         && cod == other.cod && Objects.equals(coord, other.coord) && dt == other.dt
         && id == other.id && Objects.equals(main, other.main) && Objects.equals(name, other.name)
         && Objects.equals(sys, other.sys) && timezone == other.timezone
-        && visibility == other.visibility && Objects.equals(weather, other.weather)
+        && Objects.equals(visibility, other.visibility) && Objects.equals(weather, other.weather)
         && Objects.equals(wind, other.wind);
   }
 
+
+
   @Override
   public String toString() {
-    return String.format(
-        "WeatherDTO [coord=%s, weather=%s, base=%s, main=%s, visibility=%s, "
-            + "wind=%s, clouds=%s, dt=%s, sys=%s, timezone=%s, id=%s, name=%s, cod=%s]",
-        coord, weather, base, main, visibility, wind, clouds, dt, sys, timezone, id, name, cod);
+    StringBuilder builder = new StringBuilder();
+    builder.append("WeatherDto [coord=").append(coord).append(", weather=").append(weather)
+        .append(", base=").append(base).append(", main=").append(main).append(", visibility=")
+        .append(visibility).append(", wind=").append(wind).append(", clouds=").append(clouds)
+        .append(", dt=").append(dt).append(", sys=").append(sys).append(", timezone=")
+        .append(timezone).append(", id=").append(id).append(", name=").append(name).append(", cod=")
+        .append(cod).append("]");
+    return builder.toString();
   }
 
   /**
    * Set base internal parameter.
+   * 
    * @param base base internal parameter
    */
   public WeatherDto withBase(String base) {
@@ -304,6 +340,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set clouds.
+   * 
    * @param clouds clouds
    */
   public WeatherDto withClouds(Clouds clouds) {
@@ -313,6 +350,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set HTTP response code.
+   * 
    * @param cod HTTP response code
    */
   public WeatherDto withCod(int cod) {
@@ -322,6 +360,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set coordinates.
+   * 
    * @param coord coordinates
    */
   public WeatherDto withCoord(Coord coord) {
@@ -331,6 +370,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set time of data calculation, unix, UTC.
+   * 
    * @param dt time of data calculation, unix, UTC
    */
   public WeatherDto withDt(int dt) {
@@ -340,6 +380,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set city ID.
+   * 
    * @param id city ID
    */
   public WeatherDto withId(int id) {
@@ -349,6 +390,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set main weather data.
+   * 
    * @param main main weather data
    */
   public WeatherDto withMain(Main main) {
@@ -358,6 +400,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set city name.
+   * 
    * @param name city name
    */
   public WeatherDto withName(String name) {
@@ -367,6 +410,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set system data.
+   * 
    * @param sys system data
    */
   public WeatherDto withSys(Sys sys) {
@@ -376,6 +420,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set shift in seconds from UTC.
+   * 
    * @param timezone shift in seconds from UTC
    */
   public WeatherDto withTimezone(int timezone) {
@@ -385,15 +430,17 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set visibility.
+   * 
    * @param visibility visibility in meters
    */
-  public WeatherDto withVisibility(int visibility) {
+  public WeatherDto withVisibility(BigDecimal visibility) {
     this.visibility = visibility;
     return this;
   }
 
   /**
    * Set weather list.
+   * 
    * @param weather weather list
    */
   public WeatherDto withWeather(List<Weather> weather) {
@@ -403,6 +450,7 @@ public class WeatherDto implements Serializable {
 
   /**
    * Set wind.
+   * 
    * @param wind wind
    */
   public WeatherDto withWind(Wind wind) {
