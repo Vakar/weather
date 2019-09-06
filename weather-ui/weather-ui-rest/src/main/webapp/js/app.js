@@ -1,6 +1,7 @@
 // IMPORT CONTROLLERS
 import CityListController from "./controllers/CityListController.js";
 import MessageController from "./controllers/MessageController.js";
+import WeatherController from "./controllers/WeatherController.js";
 // IMPORT CLIENTS
 import CityClient from "./clients/CityClient.js";
 
@@ -9,6 +10,7 @@ import CityClient from "./clients/CityClient.js";
 // Controller objects
 const cityListController = new CityListController();
 const messageController = new MessageController();
+const weatherController = new WeatherController();
 // Client objects
 const cityClient = new CityClient();
 
@@ -30,6 +32,7 @@ function searchButtonListener(event) {
       .then(
         function(result) {
           if (result.length == 0) {
+            weatherController.cleanWeather();
             messageController.showMessage(
               `Can't find any city with name ${inputString}!`
             );
