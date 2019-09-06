@@ -2,6 +2,7 @@ import WeatherClient from "../clients/WeatherClient.js";
 import WeatherController from "../controllers/WeatherController.js";
 export default class CityListController {
   showAutocompleteList(cityList) {
+    cityList = cityList.slice(1, 7);
     let elements = document.getElementsByClassName("listItem");
     while (elements.length > 0) {
       elements[0].parentNode.removeChild(elements[0]);
