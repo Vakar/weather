@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.dbcp.BasicDataSource;
 
 class DaoCity implements Dao<EntityCity> {
 
@@ -13,12 +14,12 @@ class DaoCity implements Dao<EntityCity> {
   private static final String FIELD_NAME = "NAME";
   private static final String FIELD_COUNTRY = "COUNTRY";
 
-  private ConnectionPool connectionPool = ConnectionPoolImpl.getConnectionPool();
+  private BasicDataSource dataSource = DbcpDataSource.getDataSource();
 
   @Override
   public void create(EntityCity cityDto) throws SQLException {
     String sql = "INSERT INTO CITIES (ID, NAME, COUNTRY) VALUES (?, ?, ?);";
-    try (Connection conn = connectionPool.getConnection();
+    try (Connection conn = dataSource.getConnection();
         PreparedStatement stmn = conn.prepareStatement(sql);) {
       stmn.setInt(1, cityDto.getId());
       stmn.setString(2, cityDto.getName());
@@ -32,7 +33,7 @@ class DaoCity implements Dao<EntityCity> {
     EntityCity city = new EntityCity();
     String sql = "SELECT * FROM CITIES WHERE ID = ?;";
     ResultSet rs = null;
-    try (Connection conn = connectionPool.getConnection();
+    try (Connection conn = dataSource.getConnection();
         PreparedStatement stmn = conn.prepareStatement(sql);) {
       stmn.setInt(1, id);
       rs = stmn.executeQuery();
@@ -52,7 +53,7 @@ class DaoCity implements Dao<EntityCity> {
   @Override
   public void update(EntityCity cityDto) throws SQLException {
     String sql = "UPDATE CITIES SET NAME=?, COUNTRY=? WHERE ID=?;";
-    try (Connection conn = connectionPool.getConnection();
+    try (Connection conn = dataSource.getConnection();
         PreparedStatement stmn = conn.prepareStatement(sql);) {
       stmn.setString(1, cityDto.getName());
       stmn.setString(2, cityDto.getCountry());
@@ -64,7 +65,7 @@ class DaoCity implements Dao<EntityCity> {
   @Override
   public void delete(int id) throws SQLException {
     String sql = "DELETE FROM CITIES WHERE ID=?;";
-    try (Connection conn = connectionPool.getConnection();
+    try (Connection conn = dataSource.getConnection();
         PreparedStatement stmn = conn.prepareStatement(sql);) {
       stmn.setInt(1, id);
       stmn.executeUpdate();
@@ -74,10 +75,9 @@ class DaoCity implements Dao<EntityCity> {
   @Override
   public List<EntityCity> search(String columnName, String substring) throws SQLException {
     List<EntityCity> cities = new ArrayList<>();
-    String sql =
-        String.format("SELECT * FROM CITIES WHERE %s REGEXP '.*%s.*';", columnName, substring);
+    String sql = "SELECT * FROM CITIES WHERE " + columnName + " ILIKE '%" + substring + "%';";
     ResultSet rs = null;
-    try (Connection conn = connectionPool.getConnection();
+    try (Connection conn = dataSource.getConnection();
         PreparedStatement stmn = conn.prepareStatement(sql);) {
       rs = stmn.executeQuery();
       while (rs.next()) {
