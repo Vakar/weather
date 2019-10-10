@@ -75,7 +75,7 @@ class DaoCity implements Dao<EntityCity> {
   @Override
   public List<EntityCity> search(String columnName, String substring) throws SQLException {
     List<EntityCity> cities = new ArrayList<>();
-    String sql = "SELECT * FROM CITIES WHERE " + columnName + " ILIKE '%" + substring + "%';";
+    String sql = "SELECT * FROM CITIES WHERE " + columnName + " LIKE '%" + substring + "%';";
     ResultSet rs = null;
     try (Connection conn = dataSource.getConnection();
         PreparedStatement stmn = conn.prepareStatement(sql);) {
