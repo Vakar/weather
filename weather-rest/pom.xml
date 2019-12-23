@@ -11,9 +11,9 @@
 		<version>0.1</version>
 	</parent>
 
-	<artifactId>weather-ui-rest</artifactId>
+	<artifactId>weather-rest</artifactId>
 	<packaging>war</packaging>
-	<name>weather-ui-rest Maven Webapp</name>
+	<name>weather-rest</name>
 
 	<properties>
 		<!-- Apache HTTP Components properties -->
