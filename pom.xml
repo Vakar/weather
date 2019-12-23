@@ -14,7 +14,7 @@
 	<modules>
 		<module>weather-domain</module>
 		<module>weather-provider</module>
-		<module>weather-ui</module>
+		<module>weather-ui-rest</module>
 	</modules>
 
 	<properties>
