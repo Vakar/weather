@@ -4,18 +4,21 @@ import org.apache.commons.dbcp.BasicDataSource;
 
 public class DbcpDataSource {
 
-  private static BasicDataSource ds = new BasicDataSource();
+  private static final long TWENTY_MIN = 20L * 60L * 1000L;
+
+  private static BasicDataSource dataSource = new BasicDataSource();
 
   static {
     JdbcConnectionProperties connProp = JdbcConnectionProperties.getInstance();
-    ds.setDriverClassName(connProp.getDriver());
-    ds.setUrl(connProp.getUrl());
-    ds.setUsername(connProp.getUser());
-    ds.setPassword(connProp.getPswd());
+    dataSource.setDriverClassName(connProp.getDriver());
+    dataSource.setUrl(connProp.getUrl());
+    dataSource.setUsername(connProp.getUser());
+    dataSource.setPassword(connProp.getPswd());
+    dataSource.setMaxWait(TWENTY_MIN);
   }
 
   public static BasicDataSource getDataSource() {
-    return ds;
+    return dataSource;
   }
 
   private DbcpDataSource() {}
