@@ -12,4 +12,12 @@ public interface WeatherService {
    * @return weather data transfer object
    */
   Optional<WeatherDto> weather(int cityId);
+
+  /**
+   * This method calculates and returns the time remaining before the weather expiration in seconds.
+   *
+   * @param weather weather object
+   * @return weather expire time in seconds
+   */
+  int getWeatherExpireTime(WeatherDto weather);
 }

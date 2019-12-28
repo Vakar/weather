@@ -26,6 +26,14 @@ public class WeatherServiceImpl implements WeatherService {
     return agent.getWeatherByCityId(cityId);
   }
 
+  @Override
+  public int getWeatherExpireTime(WeatherDto weather) {
+    long weatherTimestampMillis = weather.getDt() * 1000;
+    long now = System.currentTimeMillis();
+    long weatherAge = now - weatherTimestampMillis;
+    return (int)(WeatherAgentImp.MAX_ACTUAL_TIME - weatherAge) / 1000;
+  }
+
   /**
    * Get weather agent.
    * @return weather agent
