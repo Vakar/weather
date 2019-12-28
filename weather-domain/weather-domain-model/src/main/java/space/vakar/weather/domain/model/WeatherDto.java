@@ -125,7 +125,7 @@ public class WeatherDto implements Serializable {
   }
 
   /**
-   * Get time of data calculation, unix, UTC.
+   * Get time of data calculation in seconds, unix, UTC.
    * 
    * @return time of data calculation, unix, UTC
    */
