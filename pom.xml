@@ -22,11 +22,22 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
+		<!-- Dependencies -->
+		<lombok.version>1.18.10</lombok.version>
 		<!-- Reports properties -->
 		<spotbugs.version>3.1.8</spotbugs.version>
 		<!-- Report Files properties -->
 		<checkstyle.file.path>development/checkstyle/google_checks.xml</checkstyle.file.path>
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 
 	<reporting>
 		<plugins>

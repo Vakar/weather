@@ -1,11 +1,16 @@
 package space.vakar.weather.domain.core;
 
+import lombok.Getter;
+import lombok.Setter;
+import space.vakar.weather.domain.model.WeatherDto;
+
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
-import space.vakar.weather.domain.model.WeatherDto;
 
+@Getter
+@Setter
 class WeatherContainerImp implements WeatherContainer {
 
   private Map<Integer, WeatherDto> map = Collections.synchronizedMap(new TreeMap<>());
@@ -29,13 +34,4 @@ class WeatherContainerImp implements WeatherContainer {
     WeatherDto weather = map.get(cityId);
     return Optional.ofNullable(weather);
   }
-
-  public Map<Integer, WeatherDto> getMap() {
-    return map;
-  }
-
-  public void setMap(Map<Integer, WeatherDto> map) {
-    this.map = map;
-  }
-
 }

@@ -22,7 +22,7 @@ public class WeatherProviderImpTest {
   private static final int CITY_ID = 1;
   private static final String WEATHER_JSON_FILE = "weather.json";
     
-  private WeatherDto weather = WeatherDtoPopulator.populate(new WeatherDto());
+  private WeatherDto weather = Populator.populate(new WeatherDto());
 
   @Mock
   private OpenWeatherClient apiClient;

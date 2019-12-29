@@ -1,8 +1,11 @@
 package space.vakar.open.weather.provider;
 
 import java.util.Properties;
+
+import lombok.Getter;
 import space.vakar.weather.domain.util.PropertiesUtil;
 
+@Getter
 public class OpenWeatherProperties extends PropertiesUtil {
 
   private static OpenWeatherProperties instance;  
@@ -43,30 +46,4 @@ public class OpenWeatherProperties extends PropertiesUtil {
   static OpenWeatherProperties getInstanceWithProperties(String propertiesFile) {
     return new OpenWeatherProperties(propertiesFile);
   }
-
-  String getUrl() {
-    return url;
-  }
-
-  void setUrl(String url) {
-    this.url = url;
-  }
-
-  String getEndPoint() {
-    return endPoint;
-  }
-
-  void setEndPoint(String endPoint) {
-    this.endPoint = endPoint;
-  }
-
-  String getKey() {
-    return key;
-  }
-
-  void setKey(String key) {
-    this.key = key;
-  }
-
-
 }
