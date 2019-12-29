@@ -6,11 +6,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
+@Getter
+@EqualsAndHashCode
+@ToString
 class OpenWeatherClientImp implements OpenWeatherClient {
 
   private HttpClient httpClient = HttpClientBuilder.create().build();
@@ -78,56 +85,4 @@ class OpenWeatherClientImp implements OpenWeatherClient {
     in.close();
     return response.toString();
   }
-  
-  public String getServiceUrl() {
-    return serviceUrl;
-  }
-
-  public void setServiceUrl(String serviceUrl) {
-    this.serviceUrl = serviceUrl;
-  }
-
-  public String getWeatherEndPoint() {
-    return weatherEndPoint;
-  }
-
-  public void setWeatherEndPoint(String weatherEndPoint) {
-    this.weatherEndPoint = weatherEndPoint;
-  }
-
-  public String getAppId() {
-    return appId;
-  }
-
-  public void setAppId(String appId) {
-    this.appId = appId;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(appId, serviceUrl, weatherEndPoint);
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    OpenWeatherClientImp other = (OpenWeatherClientImp) obj;
-    return Objects.equals(appId, other.appId) && Objects.equals(serviceUrl, other.serviceUrl)
-        && Objects.equals(weatherEndPoint, other.weatherEndPoint);
-  }
-
-  @Override
-  public String toString() {
-    return String.format("JsonApiConnector [serviceUrl=%s, weatherEndPoint=%s, appId=%s]",
-        serviceUrl, weatherEndPoint, appId);
-  }
-
 }
