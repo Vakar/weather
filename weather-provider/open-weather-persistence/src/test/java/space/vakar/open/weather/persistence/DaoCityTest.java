@@ -2,7 +2,6 @@ package space.vakar.open.weather.persistence;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import org.dbunit.Assertion;
@@ -42,17 +41,17 @@ public class DaoCityTest extends DatabaseTestConfig {
     JdbcConnectionProperties connProp = JdbcConnectionProperties.getInstance();
     String url = connProp.getUrl();
     String user = connProp.getUser();
-    String pswd = connProp.getPswd();
-    RunScript.execute(url, user, pswd, SCHEMA_FILE, StandardCharsets.UTF_8, false);
+    String psw = connProp.getPsw();
+    RunScript.execute(url, user, psw, SCHEMA_FILE, StandardCharsets.UTF_8, false);
     super.setUp();
   }
 
   @Override
-  protected IDataSet getDataSet() throws Exception {
+  protected IDataSet getDataSet() {
     return loader.load(CITIES_START_DATASET);
   }
 
-  public void testCreate() throws SQLException, Exception {
+  public void testCreate() throws Exception {
     cityDao.create(berlin);
     Assertion.assertEquals(getExpectedTable(CITIES_CREATE_DATASET), getActualTable());
   }
@@ -62,13 +61,13 @@ public class DaoCityTest extends DatabaseTestConfig {
     assertEquals(monaco, actualCity);
   }
 
-  public void testUpdate() throws SQLException, Exception {
+  public void testUpdate() throws Exception {
     monaco.setCountry("US");
     cityDao.update(monaco);
     Assertion.assertEquals(getExpectedTable(CITIES_UPDATE_DATASET), getActualTable());
   }
 
-  public void testDelete() throws SQLException, Exception {
+  public void testDelete() throws Exception {
     cityDao.delete(monaco.getId());
     Assertion.assertEquals(getExpectedTable(CITIES_DELETE_DATASET), getActualTable());
   }
@@ -76,7 +75,7 @@ public class DaoCityTest extends DatabaseTestConfig {
   public void testSearchCitiesBySubstring_WhenExist() throws SQLException {
     String substring = "ona";
     List<City> actualCities = cityDao.search(COLUMN_NAME, substring);
-    List<City> expectedCities = Arrays.asList(monaco);
+    List<City> expectedCities = Collections.singletonList(monaco);
     assertEquals(expectedCities, actualCities);
   }
 
@@ -87,7 +86,7 @@ public class DaoCityTest extends DatabaseTestConfig {
     assertEquals(expectedCities, actualCities);
   }
 
-  private ITable getActualTable() throws SQLException, Exception {
+  private ITable getActualTable() throws Exception {
     IDataSet databaseDataSet = getConnection().createDataSet();
     return databaseDataSet.getTable(TABLE_NAME);
   }
@@ -96,5 +95,4 @@ public class DaoCityTest extends DatabaseTestConfig {
     IDataSet expectedDataSet = loader.load(datasetPath);
     return expectedDataSet.getTable(TABLE_NAME);
   }
-
 }

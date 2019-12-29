@@ -13,7 +13,7 @@ abstract class DatabaseTestConfig extends DBTestCase {
     System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_DRIVER_CLASS, connProp.getDriver());
     System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_CONNECTION_URL, connProp.getUrl());
     System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_USERNAME, connProp.getUser());
-    System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_PASSWORD, connProp.getPswd());
+    System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_PASSWORD, connProp.getPsw());
   }
 
   @Override
