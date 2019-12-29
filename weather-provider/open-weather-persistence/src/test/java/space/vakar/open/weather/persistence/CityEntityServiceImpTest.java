@@ -10,7 +10,7 @@ import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-public class CityServiceImpTest {
+public class CityEntityServiceImpTest {
 
   private CityServiceImp service = new CityServiceImp();
 

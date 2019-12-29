@@ -4,7 +4,6 @@ import org.dbunit.DBTestCase;
 import org.dbunit.PropertiesBasedJdbcDatabaseTester;
 import org.dbunit.database.DatabaseConfig;
 import org.dbunit.ext.h2.H2DataTypeFactory;
-import space.vakar.open.weather.persistence.JdbcConnectionProperties;
 
 abstract class DatabaseTestConfig extends DBTestCase {
 

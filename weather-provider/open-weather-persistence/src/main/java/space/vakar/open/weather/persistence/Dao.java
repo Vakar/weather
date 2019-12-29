@@ -3,7 +3,7 @@ package space.vakar.open.weather.persistence;
 import java.sql.SQLException;
 import java.util.List;
 
-interface Dao<T extends Entity> {
+interface Dao<T> {
 
   void create(T entity) throws SQLException;
 
