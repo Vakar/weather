@@ -12,6 +12,7 @@
 	<url>http://weather.vakar.space</url>
 
 	<modules>
+		<module>weather-datasource</module>
 		<module>weather-domain</module>
 		<module>weather-provider</module>
 		<module>weather-rest</module>

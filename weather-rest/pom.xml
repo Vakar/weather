@@ -46,7 +46,7 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>open-weather-persistence</artifactId>
+			<artifactId>weather-datasource</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<!-- Apache HTTP Components dependencies -->

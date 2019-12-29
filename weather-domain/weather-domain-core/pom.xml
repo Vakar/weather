@@ -41,7 +41,7 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>open-weather-provider</artifactId>
+			<artifactId>weather-provider</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<!-- JSON Serialization dependencies -->
