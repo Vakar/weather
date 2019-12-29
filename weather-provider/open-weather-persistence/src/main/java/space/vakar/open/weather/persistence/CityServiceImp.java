@@ -12,18 +12,17 @@ import java.util.stream.Collectors;
 
 public class CityServiceImp implements CityService {
 
-  private Dao<EntityCity> daoCity = new DaoCity();
+  private Dao<City> daoCity = new DaoCity();
 
   private static final String COLUMN_NAME = "NAME";
 
   private static final int MAX_NUMBER_OF_CITIES = 5;
 
   @Override
-  public List<City> getCitiesByName(String cityName) {
-    List<City> cities;
+  public List<space.vakar.weather.domain.model.City> getCitiesByName(String cityName) {
+    List<space.vakar.weather.domain.model.City> cities;
     try {
-      List<EntityCity> entities = daoCity.search(COLUMN_NAME, cityName);
-      cities = entities.stream().map(ModelConverter::getFrom).collect(Collectors.toList());
+      cities = daoCity.search(COLUMN_NAME, cityName);
     } catch (Exception e) {
       throw new OpenWeatherPersistenceException(e.getMessage(), e);
     }
@@ -32,20 +31,20 @@ public class CityServiceImp implements CityService {
         .collect(Collectors.toList());
   }
 
-  List<City> sortCities(String inputString, List<City> cityList) {
-    List<City> sortedList = new ArrayList<>();
-    SortedMap<Integer, List<City>> citiesByRange = getCitiesByRange(inputString, cityList);
+  List<space.vakar.weather.domain.model.City> sortCities(String inputString, List<space.vakar.weather.domain.model.City> cityList) {
+    List<space.vakar.weather.domain.model.City> sortedList = new ArrayList<>();
+    SortedMap<Integer, List<space.vakar.weather.domain.model.City>> citiesByRange = getCitiesByRange(inputString, cityList);
     citiesByRange.forEach(
         (range, cities) -> {
-          cities.sort(Comparator.comparing(City::getName));
+          cities.sort(Comparator.comparing(space.vakar.weather.domain.model.City::getName));
           sortedList.addAll(cities);
         });
     return sortedList;
   }
 
-  SortedMap<Integer, List<City>> getCitiesByRange(String inputString, List<City> cityList) {
-    SortedMap<Integer, List<City>> citiesByRange = new TreeMap<>();
-    for (City city : cityList) {
+  SortedMap<Integer, List<space.vakar.weather.domain.model.City>> getCitiesByRange(String inputString, List<space.vakar.weather.domain.model.City> cityList) {
+    SortedMap<Integer, List<space.vakar.weather.domain.model.City>> citiesByRange = new TreeMap<>();
+    for (space.vakar.weather.domain.model.City city : cityList) {
       int cityRange = rankCity(inputString, city);
       if (!citiesByRange.containsKey(cityRange)) {
         citiesByRange.put(cityRange, new ArrayList<>());
@@ -55,7 +54,7 @@ public class CityServiceImp implements CityService {
     return citiesByRange;
   }
 
-  int rankCity(String inputString, City city) {
+  int rankCity(String inputString, space.vakar.weather.domain.model.City city) {
     String normalizedInputString = inputString.toUpperCase();
     String normalizedCityName = city.getName().toUpperCase();
     int range = normalizedCityName.indexOf(normalizedInputString) + 1;

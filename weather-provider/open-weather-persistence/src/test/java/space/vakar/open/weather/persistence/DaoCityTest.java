@@ -12,14 +12,11 @@ import org.dbunit.dataset.ITable;
 import org.dbunit.util.fileloader.DataFileLoader;
 import org.dbunit.util.fileloader.FlatXmlDataFileLoader;
 import org.h2.tools.RunScript;
-import space.vakar.open.weather.persistence.Dao;
-import space.vakar.open.weather.persistence.DaoCity;
-import space.vakar.open.weather.persistence.EntityCity;
-import space.vakar.open.weather.persistence.JdbcConnectionProperties;
+import space.vakar.weather.domain.model.City;
 
 public class DaoCityTest extends DatabaseTestConfig {
 
-  private Dao<EntityCity> cityDao = new DaoCity();
+  private Dao<City> cityDao = new DaoCity();
 
   private DataFileLoader loader = new FlatXmlDataFileLoader();
 
@@ -33,8 +30,8 @@ public class DaoCityTest extends DatabaseTestConfig {
   private static final String CITIES_DELETE_DATASET = CITIES_DATASET_FOLDER + "/delete.xml";
   private static final String SCHEMA_FILE = "classpath:schema.sql";
 
-  private EntityCity berlin = new EntityCity(2950159, "Berlin", "DE");
-  private EntityCity monaco = new EntityCity(2993458, "Monaco", "FR");
+  private City berlin = new City(2950159, "Berlin", "DE");
+  private City monaco = new City(2993458, "Monaco", "FR");
 
   public DaoCityTest(String name) {
     super(name);
@@ -61,7 +58,7 @@ public class DaoCityTest extends DatabaseTestConfig {
   }
 
   public void testRead() throws SQLException {
-    EntityCity actualCity = cityDao.read(monaco.getId());
+    City actualCity = cityDao.read(monaco.getId());
     assertEquals(monaco, actualCity);
   }
 
@@ -78,15 +75,15 @@ public class DaoCityTest extends DatabaseTestConfig {
 
   public void testSearchCitiesBySubstring_WhenExist() throws SQLException {
     String substring = "ona";
-    List<EntityCity> actualCities = cityDao.search(COLUMN_NAME, substring);
-    List<EntityCity> expectedCities = Arrays.asList(monaco);
+    List<City> actualCities = cityDao.search(COLUMN_NAME, substring);
+    List<City> expectedCities = Arrays.asList(monaco);
     assertEquals(expectedCities, actualCities);
   }
 
   public void testSearchCitiesBySubstring_WhenDoesNotExist() throws SQLException {
     String substring = "ina";
-    List<EntityCity> actualCities = cityDao.search(COLUMN_NAME, substring);
-    List<EntityCity> expectedCities = Collections.emptyList();
+    List<City> actualCities = cityDao.search(COLUMN_NAME, substring);
+    List<City> expectedCities = Collections.emptyList();
     assertEquals(expectedCities, actualCities);
   }
 

@@ -7,8 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.dbcp.BasicDataSource;
+import space.vakar.weather.domain.model.City;
 
-class DaoCity implements Dao<EntityCity> {
+class DaoCity implements Dao<City> {
 
   private static final String FIELD_ID = "ID";
   private static final String FIELD_NAME = "NAME";
@@ -17,20 +18,20 @@ class DaoCity implements Dao<EntityCity> {
   private BasicDataSource dataSource = DbcpDataSource.getDataSource();
 
   @Override
-  public void create(EntityCity cityDto) throws SQLException {
+  public void create(City city) throws SQLException {
     String sql = "INSERT INTO CITIES (ID, NAME, COUNTRY) VALUES (?, ?, ?);";
     try (Connection conn = dataSource.getConnection();
         PreparedStatement stmn = conn.prepareStatement(sql);) {
-      stmn.setInt(1, cityDto.getId());
-      stmn.setString(2, cityDto.getName());
-      stmn.setString(3, cityDto.getCountry());
+      stmn.setInt(1, city.getId());
+      stmn.setString(2, city.getName());
+      stmn.setString(3, city.getCountry());
       stmn.executeUpdate();
     }
   }
 
   @Override
-  public EntityCity read(int id) throws SQLException {
-    EntityCity city = new EntityCity();
+  public City read(int id) throws SQLException {
+    City city = new City();
     String sql = "SELECT * FROM CITIES WHERE ID = ?;";
     ResultSet rs = null;
     try (Connection conn = dataSource.getConnection();
@@ -40,7 +41,7 @@ class DaoCity implements Dao<EntityCity> {
       if (rs.first()) {
         String name = rs.getString(FIELD_NAME);
         String country = rs.getString(FIELD_COUNTRY);
-        city = new EntityCity(id, name, country);
+        city = new City(id, name, country);
       }
     } finally {
       if (rs != null) {
@@ -51,13 +52,13 @@ class DaoCity implements Dao<EntityCity> {
   }
 
   @Override
-  public void update(EntityCity cityDto) throws SQLException {
+  public void update(City city) throws SQLException {
     String sql = "UPDATE CITIES SET NAME=?, COUNTRY=? WHERE ID=?;";
     try (Connection conn = dataSource.getConnection();
         PreparedStatement stmn = conn.prepareStatement(sql);) {
-      stmn.setString(1, cityDto.getName());
-      stmn.setString(2, cityDto.getCountry());
-      stmn.setInt(3, cityDto.getId());
+      stmn.setString(1, city.getName());
+      stmn.setString(2, city.getCountry());
+      stmn.setInt(3, city.getId());
       stmn.executeUpdate();
     }
   }
@@ -73,8 +74,8 @@ class DaoCity implements Dao<EntityCity> {
   }
 
   @Override
-  public List<EntityCity> search(String columnName, String substring) throws SQLException {
-    List<EntityCity> cities = new ArrayList<>();
+  public List<City> search(String columnName, String substring) throws SQLException {
+    List<City> cities = new ArrayList<>();
     String sql = "SELECT * FROM CITIES WHERE " + columnName + " LIKE '%" + substring + "%';";
     ResultSet rs = null;
     try (Connection conn = dataSource.getConnection();
@@ -84,7 +85,7 @@ class DaoCity implements Dao<EntityCity> {
         int id = rs.getInt(FIELD_ID);
         String name = rs.getString(FIELD_NAME);
         String country = rs.getString(FIELD_COUNTRY);
-        cities.add(new EntityCity(id, name, country));
+        cities.add(new City(id, name, country));
       }
     } finally {
       if (rs != null) {
