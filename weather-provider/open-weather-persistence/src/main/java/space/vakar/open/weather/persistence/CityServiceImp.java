@@ -24,7 +24,7 @@ public class CityServiceImp implements CityService {
     try {
       cities = daoCity.search(COLUMN_NAME, cityName);
     } catch (Exception e) {
-      throw new OpenWeatherPersistenceException(e.getMessage(), e);
+      throw new DatasourceException(e.getMessage(), e);
     }
     return sortCities(cityName, cities).stream()
         .limit(MAX_NUMBER_OF_CITIES)

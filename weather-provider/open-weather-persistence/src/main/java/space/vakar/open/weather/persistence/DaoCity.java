@@ -21,11 +21,11 @@ class DaoCity implements Dao<City> {
   public void create(City city) throws SQLException {
     String sql = "INSERT INTO CITIES (ID, NAME, COUNTRY) VALUES (?, ?, ?);";
     try (Connection conn = dataSource.getConnection();
-        PreparedStatement stmn = conn.prepareStatement(sql);) {
-      stmn.setInt(1, city.getId());
-      stmn.setString(2, city.getName());
-      stmn.setString(3, city.getCountry());
-      stmn.executeUpdate();
+        PreparedStatement stm = conn.prepareStatement(sql)) {
+      stm.setInt(1, city.getId());
+      stm.setString(2, city.getName());
+      stm.setString(3, city.getCountry());
+      stm.executeUpdate();
     }
   }
 
@@ -35,9 +35,9 @@ class DaoCity implements Dao<City> {
     String sql = "SELECT * FROM CITIES WHERE ID = ?;";
     ResultSet rs = null;
     try (Connection conn = dataSource.getConnection();
-        PreparedStatement stmn = conn.prepareStatement(sql);) {
-      stmn.setInt(1, id);
-      rs = stmn.executeQuery();
+        PreparedStatement stm = conn.prepareStatement(sql)) {
+      stm.setInt(1, id);
+      rs = stm.executeQuery();
       if (rs.first()) {
         String name = rs.getString(FIELD_NAME);
         String country = rs.getString(FIELD_COUNTRY);
@@ -55,11 +55,11 @@ class DaoCity implements Dao<City> {
   public void update(City city) throws SQLException {
     String sql = "UPDATE CITIES SET NAME=?, COUNTRY=? WHERE ID=?;";
     try (Connection conn = dataSource.getConnection();
-        PreparedStatement stmn = conn.prepareStatement(sql);) {
-      stmn.setString(1, city.getName());
-      stmn.setString(2, city.getCountry());
-      stmn.setInt(3, city.getId());
-      stmn.executeUpdate();
+        PreparedStatement stm = conn.prepareStatement(sql)) {
+      stm.setString(1, city.getName());
+      stm.setString(2, city.getCountry());
+      stm.setInt(3, city.getId());
+      stm.executeUpdate();
     }
   }
 
@@ -67,9 +67,9 @@ class DaoCity implements Dao<City> {
   public void delete(int id) throws SQLException {
     String sql = "DELETE FROM CITIES WHERE ID=?;";
     try (Connection conn = dataSource.getConnection();
-        PreparedStatement stmn = conn.prepareStatement(sql);) {
-      stmn.setInt(1, id);
-      stmn.executeUpdate();
+        PreparedStatement stm = conn.prepareStatement(sql)) {
+      stm.setInt(1, id);
+      stm.executeUpdate();
     }
   }
 
@@ -77,22 +77,16 @@ class DaoCity implements Dao<City> {
   public List<City> search(String columnName, String substring) throws SQLException {
     List<City> cities = new ArrayList<>();
     String sql = "SELECT * FROM CITIES WHERE " + columnName + " LIKE '%" + substring + "%';";
-    ResultSet rs = null;
     try (Connection conn = dataSource.getConnection();
-        PreparedStatement stmn = conn.prepareStatement(sql);) {
-      rs = stmn.executeQuery();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        ResultSet rs = stm.executeQuery()) {
       while (rs.next()) {
         int id = rs.getInt(FIELD_ID);
         String name = rs.getString(FIELD_NAME);
         String country = rs.getString(FIELD_COUNTRY);
         cities.add(new City(id, name, country));
       }
-    } finally {
-      if (rs != null) {
-        rs.close();
-      }
     }
     return cities;
   }
-
 }

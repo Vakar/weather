@@ -13,7 +13,7 @@ public class DbcpDataSource {
     dataSource.setDriverClassName(connProp.getDriver());
     dataSource.setUrl(connProp.getUrl());
     dataSource.setUsername(connProp.getUser());
-    dataSource.setPassword(connProp.getPswd());
+    dataSource.setPassword(connProp.getPsw());
     dataSource.setMaxWait(TWENTY_MIN);
   }
 
