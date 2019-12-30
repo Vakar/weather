@@ -13,25 +13,25 @@ import java.util.TreeMap;
 @Setter
 class WeatherContainerImp implements WeatherContainer {
 
-  private Map<Integer, WeatherDto> map = Collections.synchronizedMap(new TreeMap<>());
+  private Map<Integer, WeatherDto> container = Collections.synchronizedMap(new TreeMap<>());
 
   private static final int MAX_CAPACITY = 1000;
 
   @Override
-  public WeatherDto push(WeatherDto weather) {
-    cleanMapIfFull();
-    return map.put(weather.getId(), weather);
+  public void push(WeatherDto weather) {
+    cleanContainerIfItFull();
+    container.put(weather.getId(), weather);
   }
 
-  private void cleanMapIfFull() {
-    if (map.size() >= MAX_CAPACITY) {
-      map.clear();
+  private void cleanContainerIfItFull() {
+    if (container.size() >= MAX_CAPACITY) {
+      container.clear();
     }
   }
 
   @Override
   public Optional<WeatherDto> pull(int cityId) {
-    WeatherDto weather = map.get(cityId);
+    WeatherDto weather = container.get(cityId);
     return Optional.ofNullable(weather);
   }
 }

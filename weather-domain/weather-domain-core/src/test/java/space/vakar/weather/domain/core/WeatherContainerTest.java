@@ -1,16 +1,14 @@
 package space.vakar.weather.domain.core;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import io.github.benas.randombeans.api.EnhancedRandom;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
 import org.junit.Before;
 import org.junit.Test;
-import space.vakar.weather.domain.core.WeatherContainerImp;
 import space.vakar.weather.domain.model.WeatherDto;
+
+import static org.junit.Assert.*;
 
 public class WeatherContainerTest {
 
@@ -34,13 +32,13 @@ public class WeatherContainerTest {
     Map<Integer, WeatherDto> map = new TreeMap<>();
     map.put(weatherA.getId(), weatherA);
     map.put(weatherB.getId(), weatherB);
-    container.setMap(map);
+    container.setContainer(map);
   }
 
   @Test
   public void shouldPutObjectToContainer_WhenPushObjectNotNullValid() {
     container.push(weatherC);
-    assertEquals(weatherC, container.getMap().get(WEATHER_C_CITY_ID));
+    assertEquals(weatherC, container.getContainer().get(WEATHER_C_CITY_ID));
   }
 
   @Test
@@ -48,16 +46,17 @@ public class WeatherContainerTest {
     WeatherDto newWeatherA = EnhancedRandom.random(WeatherDto.class);
     newWeatherA.setId(WEATHER_A_CITY_ID);
     container.push(newWeatherA);
-    assertEquals(newWeatherA, container.getMap().get(WEATHER_A_CITY_ID));
+    assertEquals(newWeatherA, container.getContainer().get(WEATHER_A_CITY_ID));
   }
 
   @Test
   public void containerCapacityShouldNotBeBiggerThan1000() {
-    Map<Integer, WeatherDto> map = new TreeMap<>();
+    container.setContainer(new TreeMap<>());
     for (int i = 0; i < MAX_CONTAINER_SIZE + 1; i++) {
-      map.put(i, weatherA);
+      weatherA.setId(i);
+      container.push(weatherA);
     }
-    assertTrue(container.getMap().size() <= MAX_CONTAINER_SIZE);
+    assertTrue(this.container.getContainer().size() <= MAX_CONTAINER_SIZE);
   }
 
   @Test

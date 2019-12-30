@@ -23,7 +23,7 @@ class WeatherAgentImp implements WeatherAgent {
   static final int MAX_ACTUAL_TIME = 120 * 60 * 1000;
 
   @Override
-  public Optional<WeatherDto> getWeatherByCityId(int cityId) {
+  public Optional<WeatherDto> findWeatherForCityWithId(int cityId) {
     Optional<WeatherDto> optionalWeatherDto = getWeatherFromContainer(cityId);
     return optionalWeatherDto.isPresent() ? optionalWeatherDto : getWeatherFromProvider(cityId);
   }
@@ -43,7 +43,7 @@ class WeatherAgentImp implements WeatherAgent {
 
   Optional<WeatherDto> getWeatherFromProvider(int cityId) {
     return provider
-        .provideWeather(cityId)
+        .provideWeatherForCityWithId(cityId)
         .map(
             weather -> {
               container.push(weather);

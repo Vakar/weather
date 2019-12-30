@@ -15,7 +15,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import space.vakar.weather.domain.api.WeatherProvider;
-import space.vakar.weather.domain.core.WeatherAgentImp;
 import space.vakar.weather.domain.model.WeatherDto;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -28,10 +27,10 @@ public class WeatherAgentImplTest {
   private Optional<WeatherDto> notFreshWeatherOpt;
 
   private static final long NOW = System.currentTimeMillis();  
-  private static final long MINUT = 60 * 1000;
+  private static final long ONE_MINUTE = 60 * 1000;
   private static final long MAX_ACTUAL_TIME = WeatherAgentImp.MAX_ACTUAL_TIME;
-  private static final long MAX_ACTUAL_TIME_MINUS_1_MIN =  MAX_ACTUAL_TIME - MINUT;
-  private static final long MAX_ACTUAL_TIME_PLUS_1_MIN = MAX_ACTUAL_TIME + MINUT;
+  private static final long MAX_ACTUAL_TIME_MINUS_1_MIN =  MAX_ACTUAL_TIME - ONE_MINUTE;
+  private static final long MAX_ACTUAL_TIME_PLUS_1_MIN = MAX_ACTUAL_TIME + ONE_MINUTE;
   
   private static final int CITY_ID = 1;
 
@@ -58,7 +57,7 @@ public class WeatherAgentImplTest {
   public void shouldGetWeatherFromProvider_WhenWeatherFromContainerIsEmpty() {
     when(agent.getWeatherFromContainer(CITY_ID)).thenReturn(Optional.empty());
     when(agent.getWeatherFromProvider(CITY_ID)).thenReturn(freshWeatherOpt);
-    assertEquals(freshWeatherOpt, agent.getWeatherByCityId(CITY_ID));
+    assertEquals(freshWeatherOpt, agent.findWeatherForCityWithId(CITY_ID));
   }
   
   @Test
@@ -84,21 +83,14 @@ public class WeatherAgentImplTest {
   
   @Test
   public void shouldReturnFullOptional_WhenWeatherIsPresent() {
-    when(provider.provideWeather(CITY_ID)).thenReturn(freshWeatherOpt);
+    when(provider.provideWeatherForCityWithId(CITY_ID)).thenReturn(freshWeatherOpt);
     Optional<WeatherDto> actualWeatherOpt = agent.getWeatherFromProvider(CITY_ID);
     assertEquals(freshWeatherOpt, actualWeatherOpt);
   }
   
   @Test
-  public void shouldReturnEmptyOptional_WhenWeatherIsNull() {
-    when(provider.provideWeather(CITY_ID)).thenReturn(Optional.ofNullable(null));
-    Optional<WeatherDto> actualWeatherOpt = agent.getWeatherFromProvider(CITY_ID);
-    assertEquals(Optional.empty(), actualWeatherOpt);
-  }
-  
-  @Test
   public void shouldPushWeatherIntoContainer_WhenWeatherIsPresent() {
-    when(provider.provideWeather(CITY_ID)).thenReturn(freshWeatherOpt);
+    when(provider.provideWeatherForCityWithId(CITY_ID)).thenReturn(freshWeatherOpt);
     agent.getWeatherFromProvider(CITY_ID);
     verify(container).push(freshWeather);
   }

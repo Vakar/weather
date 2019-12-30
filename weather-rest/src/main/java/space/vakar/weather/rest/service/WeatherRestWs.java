@@ -11,6 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.CacheControl;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Optional;
 
 @Path("/weather")
 public class WeatherRestWs {
@@ -27,10 +28,15 @@ public class WeatherRestWs {
   @Path("/{cityId}")
   @Produces(MediaType.APPLICATION_JSON)
   public Response getWeatherByCityId(@PathParam("cityId") int cityId) {
-    WeatherDto weather = weatherService.weather(cityId).get();
-    CacheControl cc = new CacheControl();
-    int weatherExpireTime = weatherService.getWeatherExpireTime(weather);
-    cc.setMaxAge(weatherExpireTime);
-    return Response.ok().entity(weather).cacheControl(cc).build();
+    Optional<WeatherDto> optionalWeather = weatherService.findWeatherForCityWithId(cityId);
+    if(optionalWeather.isPresent()){
+      WeatherDto weather = optionalWeather.get();
+      CacheControl cc = new CacheControl();
+      int weatherExpireTime = weatherService.calculateWeatherExpireTime(weather);
+      cc.setMaxAge(weatherExpireTime);
+      return Response.ok().entity(weather).cacheControl(cc).build();
+    } else {
+     return Response.status(Response.Status.NOT_FOUND).build();
+    }
   }
 }

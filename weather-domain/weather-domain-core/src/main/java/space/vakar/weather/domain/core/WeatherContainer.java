@@ -6,7 +6,7 @@ import space.vakar.weather.domain.model.WeatherDto;
 
 interface WeatherContainer extends Serializable {
   
-  WeatherDto push(WeatherDto weather);
+  void push(WeatherDto weather);
 
   Optional<WeatherDto> pull(int cityId);
 }

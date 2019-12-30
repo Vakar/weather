@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -21,31 +22,30 @@ public class WeatherProviderImpTest {
 
   private static final int CITY_ID = 1;
   private static final String WEATHER_JSON_FILE = "weather.json";
-    
+
   private WeatherDto weather = Populator.populate(new WeatherDto());
 
-  @Mock
-  private OpenWeatherClient apiClient;
+  @Mock private OpenWeatherClient apiClient;
 
-  @InjectMocks
-  private WeatherProviderImp provider;
+  @InjectMocks private WeatherProviderImp provider;
 
   @Test
-  public void provideWeatherTest() throws IOException{
-    String weatherJson = getFileContent(WEATHER_JSON_FILE);
+  public void provideWeatherTest() throws IOException {
+    String weatherJson = getFileContent();
     when(apiClient.getCityWeatherJsonByCityId(CITY_ID)).thenReturn(weatherJson);
-    Optional<WeatherDto> actualWeatherOpt = provider.provideWeather(CITY_ID);
+    Optional<WeatherDto> actualWeatherOpt = provider.provideWeatherForCityWithId(CITY_ID);
     assertEquals(Optional.ofNullable(weather), actualWeatherOpt);
   }
-  
-  private  String getFileContent(String relatedPath) throws IOException {
+
+  private String getFileContent() throws IOException {
     ClassLoader loader = WeatherProviderImpTest.class.getClassLoader();
-    String path = loader.getResource(relatedPath).getPath();
-    String content = null;
+    String path =
+        Objects.requireNonNull(loader.getResource(WeatherProviderImpTest.WEATHER_JSON_FILE))
+            .getPath();
+    String content;
     try (Stream<String> lines = Files.lines(Paths.get(path))) {
       content = lines.collect(Collectors.joining(System.lineSeparator()));
     }
     return content;
   }
-
 }

@@ -26,6 +26,6 @@ public class CityRestWs {
   @Path("/{cityName}")
   @Produces(MediaType.APPLICATION_JSON)
   public List<City> getCitiesByName(@PathParam("cityName") String cityName) {
-    return cityService.getCitiesByName(cityName);
+    return cityService.findCitiesWithNameLike(cityName);
   }
 }

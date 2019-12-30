@@ -11,5 +11,5 @@ public interface CityService {
    * @param cityName probable city name
    * @return list of cities
    */
-  List<City> getCitiesByName(String cityName);
+  List<City> findCitiesWithNameLike(String cityName);
 }

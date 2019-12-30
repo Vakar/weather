@@ -29,7 +29,7 @@ public class WeatherServiceImplTest {
 
   @Test
   public void shouldReturnWeather() {
-    when(agent.getWeatherByCityId(CITY_ID)).thenReturn(weatherOpt);
-    assertEquals(weatherOpt, service.weather(CITY_ID));
+    when(agent.findWeatherForCityWithId(CITY_ID)).thenReturn(weatherOpt);
+    assertEquals(weatherOpt, service.findWeatherForCityWithId(CITY_ID));
   }
 }

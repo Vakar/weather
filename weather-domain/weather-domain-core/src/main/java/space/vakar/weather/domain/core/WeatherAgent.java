@@ -5,6 +5,6 @@ import space.vakar.weather.domain.model.WeatherDto;
 
 interface WeatherAgent {
 
-  Optional<WeatherDto> getWeatherByCityId(int cityId);
+  Optional<WeatherDto> findWeatherForCityWithId(int cityId);
   
 }

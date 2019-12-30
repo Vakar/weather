@@ -2,9 +2,9 @@ package space.vakar.open.weather.persistence;
 
 import org.apache.commons.dbcp.BasicDataSource;
 
-public class DbcpDataSource {
+class DbcpDataSource {
 
-  private static final long TWENTY_MIN = 20L * 60L * 1000L;
+  private static final int TWENTY_MINUTES = 20 * 60 * 1000;
 
   private static BasicDataSource dataSource = new BasicDataSource();
 
@@ -14,10 +14,10 @@ public class DbcpDataSource {
     dataSource.setUrl(connProp.getUrl());
     dataSource.setUsername(connProp.getUser());
     dataSource.setPassword(connProp.getPsw());
-    dataSource.setMaxWait(TWENTY_MIN);
+    dataSource.setMaxWait(TWENTY_MINUTES);
   }
 
-  public static BasicDataSource getDataSource() {
+  static BasicDataSource getDataSource() {
     return dataSource;
   }
 
