@@ -8,7 +8,7 @@ public class PropertiesUtil {
 
   protected Properties readPropertiesFromFile(String fileName) throws IOException {
     Properties properties = new Properties();
-    try (InputStream inputStream = PropertiesUtil.class.getResourceAsStream(fileName);) {
+    try (InputStream inputStream = PropertiesUtil.class.getResourceAsStream(fileName)) {
       properties.load(inputStream);
     }
     return properties;

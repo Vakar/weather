@@ -19,8 +19,8 @@ import java.io.Serializable;
 @ToString
 public class Clouds implements Serializable {
 
+  /** Cloudiness, %. */
   @SerializedName("all")
   @Expose
-  /** Cloudiness, %. */
   private int all;
 }

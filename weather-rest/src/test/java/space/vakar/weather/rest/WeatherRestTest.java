@@ -40,14 +40,14 @@ public class WeatherRestTest extends JerseyTest {
 
   @Test
   public void returnHttpStatusOk_whenCorrectRequest() {
-    Mockito.when(service.weather(CITY_ID)).thenReturn(Optional.ofNullable(weather));
+    Mockito.when(service.findWeatherForCityWithId(CITY_ID)).thenReturn(Optional.ofNullable(weather));
     Response response = target(GET_WEATHER_BY_CITY_PATH + CITY_ID).request().get();
     assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
   }
 
   @Test
   public void returnApplicationJson_whenCorrectRequest() {
-    Mockito.when(service.weather(CITY_ID)).thenReturn(Optional.ofNullable(weather));
+    Mockito.when(service.findWeatherForCityWithId(CITY_ID)).thenReturn(Optional.ofNullable(weather));
     Response response = target(GET_WEATHER_BY_CITY_PATH + CITY_ID).request().get();
     assertEquals("Content type should be application/json: ",
         ContentType.APPLICATION_JSON.getMimeType(), response.getHeaderString("Content-Type"));
@@ -55,7 +55,7 @@ public class WeatherRestTest extends JerseyTest {
 
   @Test
   public void returnCorrectEntity_whenCorrectRequest() {
-    Mockito.when(service.weather(CITY_ID)).thenReturn(Optional.ofNullable(weather));
+    Mockito.when(service.findWeatherForCityWithId(CITY_ID)).thenReturn(Optional.ofNullable(weather));
     WeatherDto actualWeather =
         target(GET_WEATHER_BY_CITY_PATH + CITY_ID).request().get(WeatherDto.class);
     assertEquals("Should return entity with the same fields: ", weather, actualWeather);

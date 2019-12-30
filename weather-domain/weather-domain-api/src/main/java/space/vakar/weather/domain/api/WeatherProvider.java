@@ -11,5 +11,5 @@ public interface WeatherProvider {
    * @param cityId city id
    * @return {WeatherDto} with weather data or null if something goes wrong
    */
-  Optional<WeatherDto> provideWeather(int cityId);
+  Optional<WeatherDto> provideWeatherForCityWithId(int cityId);
 }

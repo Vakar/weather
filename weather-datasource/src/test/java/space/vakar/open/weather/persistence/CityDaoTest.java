@@ -13,9 +13,9 @@ import org.dbunit.util.fileloader.FlatXmlDataFileLoader;
 import org.h2.tools.RunScript;
 import space.vakar.weather.domain.model.City;
 
-public class DaoCityTest extends DatabaseTestConfig {
+public class CityDaoTest extends DatabaseTestConfig {
 
-  private Dao<City> cityDao = new DaoCity();
+  private Dao<City> cityDao = new CityDao();
 
   private DataFileLoader loader = new FlatXmlDataFileLoader();
 
@@ -32,7 +32,7 @@ public class DaoCityTest extends DatabaseTestConfig {
   private City berlin = new City(2950159, "Berlin", "DE");
   private City monaco = new City(2993458, "Monaco", "FR");
 
-  public DaoCityTest(String name) {
+  public CityDaoTest(String name) {
     super(name);
   }
 

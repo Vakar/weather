@@ -11,9 +11,9 @@ public class WeatherProviderImp implements WeatherProvider {
   private Gson gson = new Gson();
 
   @Override
-  public Optional<WeatherDto> provideWeather(int cityId) {
-    String wheatherJson = apiClient.getCityWeatherJsonByCityId(cityId);
-    WeatherDto weather = gson.fromJson(wheatherJson, WeatherDto.class);
+  public Optional<WeatherDto> provideWeatherForCityWithId(int cityId) {
+    String weatherJson = apiClient.getCityWeatherJsonByCityId(cityId);
+    WeatherDto weather = gson.fromJson(weatherJson, WeatherDto.class);
     return Optional.ofNullable(weather);
   }
 

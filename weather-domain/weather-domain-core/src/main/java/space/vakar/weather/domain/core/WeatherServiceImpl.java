@@ -17,12 +17,12 @@ public class WeatherServiceImpl implements WeatherService {
   private WeatherAgent agent = new WeatherAgentImp();
 
   @Override
-  public Optional<WeatherDto> weather(int cityId) {
-    return agent.getWeatherByCityId(cityId);
+  public Optional<WeatherDto> findWeatherForCityWithId(int cityId) {
+    return agent.findWeatherForCityWithId(cityId);
   }
 
   @Override
-  public int getWeatherExpireTime(WeatherDto weather) {
+  public int calculateWeatherExpireTime(WeatherDto weather) {
     long weatherTimestampMillis = weather.getDt() * 1000;
     long now = System.currentTimeMillis();
     long weatherAge = now - weatherTimestampMillis;

@@ -42,14 +42,14 @@ public class CityRestTest extends JerseyTest {
 
   @Test
   public void returnHttpStatusOk_whenCorrectRequest() {
-    Mockito.when(service.getCitiesByName(CITY_NAME)).thenReturn(cities);
+    Mockito.when(service.findCitiesWithNameLike(CITY_NAME)).thenReturn(cities);
     Response response = target(GET_CITIES_BY_NAME_PATH + CITY_NAME).request().get();
     assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
   }
 
   @Test
   public void returnApplicationJson_whenCorrectRequest() {
-    Mockito.when(service.getCitiesByName(CITY_NAME)).thenReturn(cities);
+    Mockito.when(service.findCitiesWithNameLike(CITY_NAME)).thenReturn(cities);
     Response response = target(GET_CITIES_BY_NAME_PATH + CITY_NAME).request().get();
     assertEquals("Content type should be application/json: ",
         ContentType.APPLICATION_JSON.getMimeType(), response.getHeaderString("Content-Type"));
@@ -57,7 +57,7 @@ public class CityRestTest extends JerseyTest {
 
   @Test
   public void returnCorrectEntity_whenCorrectRequest() {
-    Mockito.when(service.getCitiesByName(CITY_NAME)).thenReturn(cities);
+    Mockito.when(service.findCitiesWithNameLike(CITY_NAME)).thenReturn(cities);
     List<City> actualCity =
         target(GET_CITIES_BY_NAME_PATH + CITY_NAME).request().get(new GenericType<List<City>>() {});
     assertEquals("Should return entity with the same fields: ", cities, actualCity);

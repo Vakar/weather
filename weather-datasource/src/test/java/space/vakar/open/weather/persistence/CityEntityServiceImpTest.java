@@ -25,7 +25,7 @@ public class CityEntityServiceImpTest {
   @Test
   public void sortCitiesTest() {
     List<City> unsortedCityList = Arrays.asList(city4, city3, city5, city1, city2);
-    List<City> sortedCityList = service.sortCities(inputString, unsortedCityList);
+    List<City> sortedCityList = service.sortCityList(inputString, unsortedCityList);
     assertThat(sortedCityList, contains(city1, city2, city3, city4, city5));
   }
 

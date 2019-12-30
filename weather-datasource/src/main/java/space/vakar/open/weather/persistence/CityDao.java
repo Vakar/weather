@@ -9,7 +9,7 @@ import java.util.List;
 import org.apache.commons.dbcp.BasicDataSource;
 import space.vakar.weather.domain.model.City;
 
-class DaoCity implements Dao<City> {
+class CityDao implements Dao<City> {
 
   private static final String FIELD_ID = "ID";
   private static final String FIELD_NAME = "NAME";
