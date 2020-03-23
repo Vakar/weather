@@ -5,7 +5,15 @@ import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.core.MultivaluedMap;
 
-public class CORSResponseFilter implements ContainerResponseFilter {
+/** This filter class add Cross-Origin Resource Sharing headers for HTTP server response. */
+public class CorsResponseFilter implements ContainerResponseFilter {
+
+  /**
+   * This method add Cross-Origin Resource Sharing headers for HTTP server response.
+   *
+   * @param requestContext client request
+   * @param responseContext server response
+   */
   public void filter(
       ContainerRequestContext requestContext, ContainerResponseContext responseContext) {
     MultivaluedMap<String, Object> headers = responseContext.getHeaders();

@@ -1,11 +1,11 @@
 package space.vakar.open.weather.persistence;
 
+import java.io.IOException;
+import java.util.Properties;
+
 import lombok.Getter;
 import lombok.Setter;
 import space.vakar.weather.domain.util.PropertiesUtil;
-
-import java.io.IOException;
-import java.util.Properties;
 
 @Getter
 @Setter
