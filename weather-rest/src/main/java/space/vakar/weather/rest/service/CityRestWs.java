@@ -1,15 +1,15 @@
 package space.vakar.weather.rest.service;
 
-import space.vakar.open.weather.persistence.CityServiceImp;
-import space.vakar.weather.domain.api.CityService;
-import space.vakar.weather.domain.model.City;
-
+import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
+
+import space.vakar.open.weather.persistence.CityServiceImp;
+import space.vakar.weather.domain.api.CityService;
+import space.vakar.weather.domain.model.City;
 
 @Path("/city")
 public class CityRestWs {

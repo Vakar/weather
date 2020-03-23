@@ -1,14 +1,14 @@
 package space.vakar.open.weather.persistence;
 
-import space.vakar.weather.domain.api.CityService;
-import space.vakar.weather.domain.model.City;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
+
+import space.vakar.weather.domain.api.CityService;
+import space.vakar.weather.domain.model.City;
 
 public class CityServiceImp implements CityService {
 

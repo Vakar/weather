@@ -1,5 +1,8 @@
 package space.vakar.weather.domain.core;
 
+import java.util.Optional;
+import java.util.function.Predicate;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,9 +10,6 @@ import lombok.ToString;
 import space.vakar.open.weather.provider.WeatherProviderImp;
 import space.vakar.weather.domain.api.WeatherProvider;
 import space.vakar.weather.domain.model.WeatherDto;
-
-import java.util.Optional;
-import java.util.function.Predicate;
 
 @Getter
 @Setter

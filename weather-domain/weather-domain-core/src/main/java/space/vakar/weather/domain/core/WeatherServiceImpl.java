@@ -1,12 +1,12 @@
 package space.vakar.weather.domain.core;
 
+import java.util.Optional;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import space.vakar.weather.domain.model.WeatherDto;
-
-import java.util.Optional;
 
 @Getter
 @Setter

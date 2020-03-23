@@ -1,13 +1,13 @@
 package space.vakar.weather.domain.core;
 
-import lombok.Getter;
-import lombok.Setter;
-import space.vakar.weather.domain.model.WeatherDto;
-
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
+
+import lombok.Getter;
+import lombok.Setter;
+import space.vakar.weather.domain.model.WeatherDto;
 
 @Getter
 @Setter
