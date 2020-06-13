@@ -15,7 +15,7 @@
 
     <properties>
         <!-- Database dependencies -->
-        <mariadb.client.version>2.5.2</mariadb.client.version>
+        <mysql.connector.version>8.0.20</mysql.connector.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <!-- Test dependencies -->
         <h2.version>1.4.199</h2.version>
@@ -43,9 +43,9 @@
         </dependency>
         <!-- Database dependencies -->
         <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <version>${mariadb.client.version}</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-dbcp</groupId>
