@@ -5,7 +5,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 
 @Produces("text/html; charset=UTF-8")
-public class UncaughtException extends Throwable implements ExceptionMapper<Throwable> {
+public class ServerErrorHandler extends Throwable implements ExceptionMapper<Throwable> {
   private static final long serialVersionUID = 1L;
 
   @Override
