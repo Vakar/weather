@@ -15,9 +15,9 @@ import space.vakar.weather.domain.model.City;
 
 public class CityDaoTest extends DatabaseTestConfig {
 
-  private Dao<City> cityDao = new CityDao();
+  private final Dao<City> cityDao = new CityDao();
 
-  private DataFileLoader loader = new FlatXmlDataFileLoader();
+  private final DataFileLoader loader = new FlatXmlDataFileLoader();
 
   private static final String TABLE_NAME = "CITIES";
   private static final String COLUMN_NAME = "NAME";
@@ -29,8 +29,8 @@ public class CityDaoTest extends DatabaseTestConfig {
   private static final String CITIES_DELETE_DATASET = CITIES_DATASET_FOLDER + "/delete.xml";
   private static final String SCHEMA_FILE = "classpath:schema.sql";
 
-  private City berlin = new City(2950159, "Berlin", "DE");
-  private City monaco = new City(2993458, "Monaco", "FR");
+  private final City berlin = new City(2950159, "Berlin", "DE");
+  private final City monaco = new City(2993458, "Monaco", "FR");
 
   public CityDaoTest(String name) {
     super(name);
@@ -38,10 +38,10 @@ public class CityDaoTest extends DatabaseTestConfig {
 
   @Override
   protected void setUp() throws Exception {
-    JdbcConnectionProperties connProp = JdbcConnectionProperties.getInstance();
-    String url = connProp.getUrl();
-    String user = connProp.getUser();
-    String psw = connProp.getPsw();
+    JdbcConnectionProperties connProps = JdbcConnectionProperties.getInstance();
+    String url = connProps.getUrl();
+    String user = connProps.getUser();
+    String psw = connProps.getPsw();
     RunScript.execute(url, user, psw, SCHEMA_FILE, StandardCharsets.UTF_8, false);
     super.setUp();
   }

@@ -1,6 +1,6 @@
 package space.vakar.open.weather.provider;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
@@ -10,31 +10,33 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import space.vakar.weather.domain.model.WeatherDto;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class WeatherProviderImpTest {
 
-  private static final int CITY_ID = 1;
   private static final String WEATHER_JSON_FILE = "weather.json";
-
-  private WeatherDto weather = Populator.populate(new WeatherDto());
 
   @Mock private OpenWeatherClient apiClient;
 
   @InjectMocks private WeatherProviderImp provider;
 
   @Test
+  @DisplayName("when get weather json from api client")
   public void provideWeatherTest() throws IOException {
     String weatherJson = getFileContent();
-    when(apiClient.getCityWeatherJsonByCityId(CITY_ID)).thenReturn(weatherJson);
-    Optional<WeatherDto> actualWeatherOpt = provider.provideWeatherForCityWithId(CITY_ID);
-    assertEquals(Optional.ofNullable(weather), actualWeatherOpt);
+    int cityId = 1;
+    when(apiClient.getCityWeatherJsonByCityId(cityId)).thenReturn(weatherJson);
+    Optional<WeatherDto> actualWeatherOpt = provider.provideWeatherForCityWithId(cityId);
+    WeatherDto weather = Populator.populate(new WeatherDto());
+    assertEquals(Optional.of(weather), actualWeatherOpt, "should return weather optional");
   }
 
   private String getFileContent() throws IOException {
