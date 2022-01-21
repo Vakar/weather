@@ -18,7 +18,7 @@
         <mysql.connector.version>8.0.20</mysql.connector.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <!-- Test dependencies -->
-        <h2.version>1.4.199</h2.version>
+        <h2.version>2.1.210</h2.version>
         <dbunit.version>2.5.4</dbunit.version>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
         <slf4j-api.version>1.7.5</slf4j-api.version>
